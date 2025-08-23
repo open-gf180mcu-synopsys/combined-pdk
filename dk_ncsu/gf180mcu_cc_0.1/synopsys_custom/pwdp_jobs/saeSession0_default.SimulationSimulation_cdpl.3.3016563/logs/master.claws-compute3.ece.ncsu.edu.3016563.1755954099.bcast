@@ -1,7 +1,0 @@
-# Master Broadcast File
-time 1755954099
-pid 3016563
-log /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/synopsys_custom/pwdp_jobs/saeSession0_default.SimulationSimulation_cdpl.3.3016563/logs/master.claws-compute3.ece.ncsu.edu.3016563.log
-tcp 152.14.98.53:45003
-wlog /dev/null
-status done

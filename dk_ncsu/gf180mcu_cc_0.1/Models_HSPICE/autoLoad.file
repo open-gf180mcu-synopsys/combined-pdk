@@ -70,6 +70,8 @@ if {!("sae_shell"==$pName || "nti_shell"==$pName)} {
     db::setPrefValue saFineSimProEnvOptsIncludePath -value  "${DEVICELIB_PATH}/"
     db::setPrefValue saFineSimProModelsIncludePath -value  "${DEVICELIB_PATH}/"
     db::setPrefValue saFineSimProModelsFiles -value  [list [list ngspice/design.ngspice {}] [list ngspice/sm141064.ngspice typical ]  ]
+# https://solvnetplus.synopsys.com/s/article/Workarounds-for-Verilog-parsing-error-NETLIST-PARSER-014-due-to-version-mismatch-between-Custom-Compiler-and-VCS
+    db::setPrefValue dbImportTextCheckVCSVersion -value true    
 
 }
 

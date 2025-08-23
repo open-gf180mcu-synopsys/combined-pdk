@@ -1,0 +1,40 @@
+// VerilogA for ECE733, inverter, veriloga
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module INVX1(Y, A, VDD, VSS);
+output Y;
+electrical Y;
+input A;
+electrical A;
+inout VDD;
+electrical VDD;
+inout VSS;
+electrical VSS;
+
+parameter real vth=0.4; // Threshold
+parameter real vol=0.0; // Output Low
+parameter real voh=0.8; // Output High
+parameter real tr=10p;   //rise,fall time
+parameter real tf=10p;   //rise,fall time
+parameter real tt=0.1p;   //time tolerance
+parameter real td=10p;   //delay time
+parameter real init_outval=0;   //initial output value
+
+real vout;
+
+analog begin
+    @( initial_step ) 
+	begin // initial condition
+		if ( V(A) > vth ) vout = vol;
+		else vout = voh;
+	end 
+    @(cross(V(A) - vth, +1,tt))
+        vout = vol; // Vin>vth => vout_low
+    @(cross(V(A) - vth, -1,tt))
+        vout = voh;  // Vin<vth => vout_high 
+    V(Y) <+ transition(vout,td,tr,tf,tt);
+  end
+
+endmodule

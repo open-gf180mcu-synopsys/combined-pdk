@@ -1,0 +1,27 @@
+### WaveView session file (version W-2024.09-SP1-2 build Jan 15, ) ###
+### saved at 13:01:51 on Sat Aug 23 2025 ###
+scalar list
+waveview_begin 1  stack  offset=0 name_b=0 mntr_b=0 name_width=66 "name=waveview 1" 
+waveview_end
+browserClosed
+
+#Custom Plot Section
+simulation_begin test=VCS_PrimeSimSPICE_AMS_default history=1 idx=1000001
+run_type 1
+view_list
+end_view_list
+original_sim
+sim_id=VCS_PrimeSimSPICE_AMS_default
+history_point=1
+sim_idx=1000001
+sim_dir=/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,inverter_testbench,config_verilog/history_1/simulation/VCS_PrimeSimSPICE_AMS_default/VCS_PrimeSimSPICE_AMS/nominal/results
+from_virtuoso=0
+is_output=1
+is_mtb=0
+hasViewer=0
+{"sim_id":"VCS_PrimeSimSPICE_AMS_default","sae_session":"saeSession0","sae_session_desc":"","directory":"/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,inverter_testbench,config_verilog/history_1/simulation/VCS_PrimeSimSPICE_AMS_default/VCS_PrimeSimSPICE_AMS/nominal/results","results_directory":"./simulation","results_absdirectory":"/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation","post_results_dir":"/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,inverter_testbench,config_verilog/history_1/simulation/VCS_PrimeSimSPICE_AMS_default/VCS_PrimeSimSPICE_AMS/nominal/results","save_post_results_in_session":"0","is_mc_multiple_run":"0","is_sim_sweep_run":"0","is_data_driven_sweep":"false","runDirDelimiter":",","test_suite_info":"example:inverter_testbench:config_verilog","history_index":"1","history_name":"history_1","history_desc":"Run Simulation","is_mtb":"0","id":"1000001","child":"0","description":"","design_str":"example:inverter_testbench:config_verilog","simulator":"PrimeSimVCS","newResultsFormat":"0","is_initial":"0","sim_wave_removed":"0","chart_list":[],"isSaeAging":"0","saeAgingSimMode":"3","sonoma":"1","sonomaInc":"0","incPartial":"full","sim_netlist_removed":"0","modelIncPath":"/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/Models_HSPICE","isbreviate_historyname":"false","history_check":"false","ischange_historyname":"false","autoPlot":"1","isDirPlot":"0","invokeFrom":"SIM_DONE","save_format":"","incomplete_type":"","corparams":"","exportImageSize":"636*254","isWorstCaseAnalysis":"0","dspfIncludeOptions":"0","sweepUseDesignVar":"0","hasMSIPAceScripts":"0","equation_list":[{"equa_id":"equa#0","index":"1","equa_name":"","equa_schem":"","type":"","resultType":"","anaName":"","enable":true,"is_plot":true,"plotType":"auto","logicRadix":"auto","color":"","units":"","ParamConditions":"","isGlobal":"true","x_axis":"","x_axis_scale":"auto","y_axis_scale":"auto","goal":"","show_in_rv":"0","description":"","saveImage":"0","precision":"0","poor":"","poorHigh":"","poorLow":"","poorType":"","measExpr":"","eqnIdx":"","specEqu":false,"forceRecal":false,"originalExpr":"","measWaveDep":false,"lineIdx":"","orgErrMsg":"","suffix":""}],"probe_list":[],"ace_list":[],"model_list":[{"file":"ngspice/design.ngspice:"},{"file":"aliases.spice:"},{"file":"ngspice/sm141064.ngspice:typical"}],"globalModel_list":[],"globalTemperature_list":[{"file":"25:Celsius"}],"design_variables_list":[["vdd","3.3"]],"corner_group_params_list":[],"analyses_list":[["tran","{Transient Analysis: Stop Time: 50n }"]],"modelGrp_list":[],"corner_list":[],"no_value_corner_param_list":[],"monte_list":[],"monteSigma":"","monteUseDesignVar":"0","sweep_list":[],"job_list":[]}
+end_original_sim
+original_map
+{"sae_session":"saeSession0","map_list":[],"result_list":[{"file_name":"resultsMap.xml","resultID":"resFile0"},{"file_name":"postResultsMap.xml","is_post":"TRUE"}]}
+end_original_map
+simulation_end

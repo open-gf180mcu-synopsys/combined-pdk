@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 13:12:58 2025-->
+<file-format name="stateCategory" version="1.0">
+ <object type="saEnvironmentOptions" name="environmentOptions" version="1">
+  <attribute type="giString" value="Default" name="accuracyLevel"/>
+  <attribute type="giString" value="" name="analogSimulatorOptions"/>
+  <attribute type="giString" value="" name="commandLineOptions"/>
+  <attribute type="giString" value="" name="compilationOptions"/>
+  <attribute type="giString" value="fsdb" name="digitalOutputDataFormat"/>
+  <attribute type="giString" value="" name="elaborationOptions"/>
+  <attribute type="giBoolean" value="0" name="enableParallelSim"/>
+  <attribute type="giBoolean" value="0" name="ignoreParasitics"/>
+  <attribute type="giBoolean" value="1" name="includeGlobal"/>
+  <attribute type="giString" value="/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/Models_HSPICE/" name="includePath"/>
+  <attribute type="giBoolean" value="1" name="mergedFile"/>
+  <attribute type="giString" value="HSPICE" name="netlistLanguage"/>
+  <attribute type="giInt" value="1" name="numProcesses"/>
+  <attribute type="giString" value="fsdb" name="outputDataFormat"/>
+  <attribute type="giString" value="hspice hspiceD functional behavioral symbol" name="stopViewList"/>
+  <attribute type="giString" value="hspice hspiceD schematic verilog functional behavioral vhdl_config vhdl spice veriloga verilogams" name="switchViewList"/>
+  <attribute type="giBoolean" value="1" name="use64Bit"/>
+  <attribute type="giString" value="" name="vhdlanOptions"/>
+ </object>
+</file-format>

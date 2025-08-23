@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 13:12:58 2025-->
+<file-format name="stateData" version="1.0">
+ <attribute type="giBoolean" value="0" name="dcop_splitted"/>
+ <attribute type="giString" value="" name="description"/>
+ <attribute type="dmCellView" value="example/inverter_testbench/config_verilog" name="design"/>
+ <attribute type="giBoolean" value="1" name="enabled"/>
+ <attribute type="giBoolean" value="0" name="enabledJobClass"/>
+ <attribute type="giString" value="PrimeSim" name="migratedSimulator"/>
+ <attribute type="giString" value="VCS_PrimeSimSPICE_AMS_default" name="name"/>
+ <attribute type="dmCellView" value="example/inverter_testbench/VCS_PrimeSimSPICE_AMS_verilog" name="openaccessState"/>
+ <attribute type="giString" value="PrimeSimVCS" name="simulator"/>
+ <comment></comment>
+ <resultsDir>./simulation</resultsDir>
+ <enableTestbenchHistory>0</enableTestbenchHistory>
+ <integration version="1"/>
+</file-format>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 11:48:01 2025-->
+<file-format name="stateData" version="1.0">
+ <attribute name="dcop_splitted" type="giBoolean" value="0"/>
+ <attribute name="description" type="giString" value=""/>
+ <attribute name="design" type="dmCellView" value="example/inverter_testbench/config"/>
+ <attribute name="enabled" type="giBoolean" value="1"/>
+ <attribute name="enabledJobClass" type="giBoolean" value="0"/>
+ <attribute name="migratedSimulator" type="giString" value="PrimeSim"/>
+ <attribute name="name" type="giString" value="default"/>
+ <attribute name="openaccessState" type="dmCellView" value="//"/>
+ <attribute name="simulator" type="giString" value="PrimeSimVCS"/>
+ <comment></comment>
+ <resultsDir>./simulation</resultsDir>
+ <enableTestbenchHistory>0</enableTestbenchHistory>
+ <integration version="1"/>
+</file-format>

@@ -1,5 +1,9 @@
+synopsys_custom*
+verdiLog*
+text_editor_*
 simulation*
 latestResults*
 *.log
 *.swp
 *.sw0
+simv.*

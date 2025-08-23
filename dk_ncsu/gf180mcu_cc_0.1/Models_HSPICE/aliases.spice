@@ -41,4 +41,4 @@
 .ALIAS cap_mim_2f0fF mim_2p0fF
 * jk: not sure if the model name is a typo. note 2p vs 2fF/um2
 
-.end
+*.end

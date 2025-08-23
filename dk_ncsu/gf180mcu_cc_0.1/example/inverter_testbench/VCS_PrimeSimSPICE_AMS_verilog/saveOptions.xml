@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 13:12:58 2025-->
+<file-format name="stateCategory" version="1.0">
+ <object type="saSaveOptions" name="saveOptions" version="1">
+  <attribute type="giString" value="" name="emTStart"/>
+  <attribute type="giString" value="" name="emTStop"/>
+  <attribute type="giBoolean" value="0" name="enableEM"/>
+  <attribute type="giBoolean" value="0" name="enableVDRC"/>
+  <attribute type="giBoolean" value="1" name="firstPinOnly"/>
+  <attribute type="giString" value="selected" name="power"/>
+  <attribute type="giString" value="1" name="powerLevel"/>
+  <attribute type="giString" value="all" name="save"/>
+  <attribute type="giString" value="mixed" name="saveBy"/>
+  <attribute type="giString" value="selected" name="saveDigital"/>
+  <attribute type="giInt" value="0" name="saveDigitalLevel"/>
+  <attribute type="giString" value="selected" name="saveDigitalPorts"/>
+  <attribute type="giInt" value="0" name="saveDigitalPortsLevel"/>
+  <attribute type="giBoolean" value="0" name="saveIEPortsAll"/>
+  <attribute type="giInt" value="0" name="saveIEPortsLevel"/>
+  <attribute type="giString" value="0" name="saveLevel"/>
+  <collection name="saveOptionsInstances">
+   <object type="saSaveOptionsInstance" name="saveOptionsInstances" version="1">
+    <attribute type="saSaveOptionInstanceType" value="all" name="instType"/>
+    <attribute type="giString" value="/I0" name="instance"/>
+    <attribute type="giString" value="{}" name="level"/>
+   </object>
+  </collection>
+  <attribute type="giBoolean" value="0" name="saveSubOp"/>
+  <attribute type="giString" value="" name="saveSubOpInstances"/>
+  <attribute type="giBoolean" value="1" name="saveVerilogABranchCurrentsAll"/>
+  <attribute type="giInt" value="0" name="saveVerilogABranchCurrentsLevel"/>
+  <attribute type="giBoolean" value="1" name="saveVerilogABranchVoltagesAll"/>
+  <attribute type="giInt" value="0" name="saveVerilogABranchVoltagesLevel"/>
+  <attribute type="giBoolean" value="1" name="saveVerilogAVarsAll"/>
+  <attribute type="giInt" value="0" name="saveVerilogAVarsLevel"/>
+  <attribute type="giString" value="all" name="subcktCurrents"/>
+  <attribute type="giString" value="0" name="subcktCurrentsLevel"/>
+  <attribute type="giString" value="selected" name="subcktPower"/>
+  <attribute type="giString" value="1" name="subcktPowerLevel"/>
+  <attribute type="giString" value="selected" name="subcktVoltages"/>
+  <attribute type="giString" value="1" name="subcktVoltagesLevel"/>
+  <attribute type="giString" value="all" name="terminalCurrents"/>
+  <attribute type="giString" value="0" name="terminalCurrentsLevel"/>
+  <attribute type="giString" value="all" name="terminalVoltages"/>
+  <attribute type="giString" value="0" name="terminalVoltagesLevel"/>
+  <attribute type="giBoolean" value="0" name="totalPower"/>
+  <attribute type="giString" value="" name="vdrcTStart"/>
+  <attribute type="giString" value="" name="vdrcTStop"/>
+  <attribute type="giBoolean" value="0" name="verilogA"/>
+ </object>
+</file-format>

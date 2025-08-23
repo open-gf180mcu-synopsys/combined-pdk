@@ -1,5 +1,0 @@
-catch {source /tmp/copyScript58400}; ::sa::_backgroundSaeShell::signalProcessReady 1755952196 2861672
-::wf::updateViewerLicense 2
-::wf::updateViewerLicense 2
-::sa::_backgroundSaeShell::runScript /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/.bg_measurement_script.tcl 0 sa::_resultsDatabase::saeShellProcessingCompletedProc testSuiteName saeSession0 uniqueSessionName {} testbenchName default resultsDir /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results testSuiteDir /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal databaseName /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/resultsDatabase remoteRun {} testbenchId 1 saveImages true invokeFrom SIM_DONE
-::sa::_backgroundSaeShell::exit
