@@ -1,0 +1,3 @@
+read_lib gf180mcu_fd_sc_mcu7t5v0__ss_125C_4v50_shortname.lib
+write_lib gf180mcu_fd_sc_mcu7t5v0 -o gf180mcu_fd_sc_mcu7t5v0__ss_125C_4v50_shortname.db
+exit

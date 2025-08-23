@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 09:24:46 2025-->
+<file-format name="stateCategory" version="1.0">
+ <object type="saStimulusSets" name="stimulusSets" version="1">
+  <attribute value="default" type="giString" name="activeSet"/>
+  <collection name="allGroupDefs"/>
+  <collection name="allGroups"/>
+  <attribute value="" type="giStringList" name="allSets"/>
+  <attribute value="1" type="giBoolean" name="enabled"/>
+  <attribute value="0" type="giBoolean" name="includeGlobal"/>
+  <attribute value="0" type="giInt" name="lastModificationTime"/>
+  <object type="saStimulusPorts" name="stimulusPorts" version="1">
+   <attribute value="default" type="giString" name="activeSet"/>
+   <collection name="allPortSets"/>
+   <attribute value="1" type="giBoolean" name="enabled"/>
+  </object>
+ </object>
+</file-format>

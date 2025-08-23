@@ -1,0 +1,42 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO gf180mcu_fd_io__brk5
+  CLASS PAD ;
+  FOREIGN gf180mcu_fd_io__brk5 ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 5.000 BY 350.000 ;
+  SYMMETRY X Y R90 ;
+  SITE GF_IO_Site ;
+  PIN VSS
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER Metal3 ;
+        RECT 3.870 246.000 5.000 253.000 ;
+    END
+    PORT
+      LAYER Metal3 ;
+        RECT 3.910 318.000 5.000 325.000 ;
+    END
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 318.000 1.150 325.000 ;
+    END
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 246.000 1.110 253.000 ;
+    END
+  END VSS
+  OBS
+      LAYER Metal1 ;
+        RECT -0.160 65.540 5.160 349.785 ;
+      LAYER Metal2 ;
+        RECT 0.000 246.000 5.000 325.000 ;
+      LAYER Metal3 ;
+        RECT 1.110 254.800 3.910 316.200 ;
+  END
+END gf180mcu_fd_io__brk5
+END LIBRARY
+

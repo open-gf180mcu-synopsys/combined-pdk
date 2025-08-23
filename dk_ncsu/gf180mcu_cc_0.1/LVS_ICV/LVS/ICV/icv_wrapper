@@ -1,0 +1,64 @@
+#!/usr/bin/tclsh
+
+# Siddharth Srivastava
+# Created: 11/28/2013
+# Last Modified: 11/29/2013
+
+# Viral Gokani
+# Last Modified: 05/24/2019
+
+# Viral Gokani
+# Last Modified: 04/09/2020
+
+set oargs ""
+
+
+if {$argc eq 0} {
+    puts "try -help for syntax"
+    exit
+}
+
+if {$argc eq 1} {
+    set help [lindex $argv 0] 
+    if {$help eq "-help"} {
+	puts {./icv_wrapper -rs runset_file_path -i design_path -c top_cell -icv_options 'icv options'}
+	exit
+    }
+}
+
+# -rs runset file
+# -i design
+# -c top cell
+# -icv_options 'arg1 arg2 arg3'
+
+for {set i 0} {$i < $argc} {incr i} {
+    set nexti [expr $i + 1]
+    set op [lindex $argv $i]
+    if {$op eq "-rs"} {
+	set runset [lindex $argv $nexti]
+	set runsetpath [string trim $runset]
+    } 
+    if {$op eq "-i"} {
+	set gds [lindex $argv $nexti]
+	set gdspath [string trim $gds]
+    } 
+    if {$op eq "-c"} {
+	set top [lindex $argv $nexti]
+	set topcell [string trim $top]
+    } 
+    if {$op eq "-icv_options"} {
+	set os [lindex $argv $nexti]
+	set oargs [string trim $os]
+    }
+}
+
+set newpath [pwd]
+
+#catch {[exec icv -vue -D OVERRIDE_FILE -c $topcell -i $gdspath $runsetpath > stdout]} err
+if {$oargs ne ""} {
+    catch "exec icv -vue  $runsetpath -i $gdspath -c $topcell $oargs >&@ stdout" errmsg
+} else {
+        catch "exec icv -vue $runsetpath -i $gdspath -c $topcell >&@ stdout" errmsg
+}
+
+#exec mv $newpath/override_file.rs .override_file.rs

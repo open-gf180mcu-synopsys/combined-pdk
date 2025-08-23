@@ -1,0 +1,78 @@
+magic
+tech gf180mcuA
+magscale 1 5
+timestamp 1750858719
+<< nwell >>
+rect 0 310 220 630
+<< psubdiff >>
+rect 30 54 105 65
+rect 30 31 56 54
+rect 79 31 105 54
+rect 30 20 105 31
+<< nsubdiff >>
+rect 30 594 105 605
+rect 30 571 56 594
+rect 79 571 105 594
+rect 30 560 105 571
+<< psubdiffcont >>
+rect 56 31 79 54
+<< nsubdiffcont >>
+rect 56 571 79 594
+<< metal1 >>
+rect 0 594 220 630
+rect 0 571 56 594
+rect 79 571 220 594
+rect 0 560 220 571
+rect 55 265 80 525
+rect 140 355 165 560
+rect 50 255 80 265
+rect 45 253 165 255
+rect 45 227 57 253
+rect 83 227 165 253
+rect 45 225 165 227
+rect 50 220 80 225
+rect 55 100 80 220
+rect 140 100 165 225
+rect 0 54 220 65
+rect 0 31 56 54
+rect 79 31 220 54
+rect 0 -5 220 31
+<< via1 >>
+rect 57 227 83 253
+<< metal2 >>
+rect 50 255 90 260
+rect 45 253 95 255
+rect 45 227 57 253
+rect 83 227 95 253
+rect 45 225 95 227
+rect 50 220 90 225
+<< labels >>
+rlabel metal1 s 140 355 165 630 4 VDD
+port 1 nsew power bidirectional abutment
+rlabel metal1 s 0 -5 220 65 4 VSS
+port 2 nsew ground bidirectional abutment
+rlabel via1 s 57 227 83 253 4 A
+port 3 nsew signal input
+rlabel metal1 s 0 560 220 630 1 VDD
+port 1 nsew power bidirectional abutment
+rlabel metal2 s 50 220 90 260 1 A
+port 3 nsew signal input
+rlabel metal2 s 45 225 95 255 1 A
+port 3 nsew signal input
+rlabel metal1 s 50 220 80 265 1 A
+port 3 nsew signal input
+rlabel metal1 s 55 100 80 525 1 A
+port 3 nsew signal input
+rlabel metal1 s 140 100 165 255 1 A
+port 3 nsew signal input
+rlabel metal1 s 45 225 165 255 1 A
+port 3 nsew signal input
+<< properties >>
+string FIXED_BBOX 0 -5 220 630
+string GDS_END 40710
+string GDS_FILE $PDKPATH/libs.ref/gf180mcu_osu_sc_gp9t3v3/gds/gf180mcu_osu_sc_gp9t3v3.gds
+string GDS_START 39308
+string LEFclass CORE
+string LEFsite gf180mcu_osu_sc_gp9t3v3
+string LEFsymmetry X Y
+<< end >>

@@ -1,0 +1,9 @@
+##############################################################
+# Reference methodology option settings selected by the user.
+#
+# Copyright (C) 2022 Synopsys, Inc. All rights reserved.
+##############################################################
+ 
+Option Name:  Setting
+=====================
+

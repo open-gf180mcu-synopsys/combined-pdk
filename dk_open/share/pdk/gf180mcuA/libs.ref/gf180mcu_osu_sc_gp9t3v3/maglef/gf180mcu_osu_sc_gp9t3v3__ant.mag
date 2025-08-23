@@ -1,0 +1,57 @@
+magic
+tech gf180mcuA
+magscale 1 5
+timestamp 1750858719
+<< metal1 >>
+rect 0 565 220 635
+rect 55 270 80 530
+rect 140 360 165 565
+rect 50 260 80 270
+rect 45 258 165 260
+rect 45 232 57 258
+rect 83 232 165 258
+rect 45 230 165 232
+rect 50 225 80 230
+rect 55 105 80 225
+rect 140 105 165 230
+rect 0 0 220 70
+<< via1 >>
+rect 57 232 83 258
+<< metal2 >>
+rect 50 260 95 265
+rect 45 258 95 260
+rect 45 232 57 258
+rect 83 232 95 258
+rect 45 230 95 232
+rect 50 225 95 230
+<< labels >>
+rlabel metal1 s 140 360 165 635 6 VDD
+port 2 nsew power bidirectional abutment
+rlabel metal1 s 0 565 220 635 6 VDD
+port 2 nsew power bidirectional abutment
+rlabel metal1 s 0 0 220 70 6 VSS
+port 3 nsew ground bidirectional abutment
+rlabel via1 s 57 232 83 258 6 A
+port 1 nsew signal input
+rlabel metal2 s 45 230 95 260 6 A
+port 1 nsew signal input
+rlabel metal2 s 50 225 95 265 6 A
+port 1 nsew signal input
+rlabel metal1 s 50 225 80 270 6 A
+port 1 nsew signal input
+rlabel metal1 s 55 105 80 530 6 A
+port 1 nsew signal input
+rlabel metal1 s 140 105 165 260 6 A
+port 1 nsew signal input
+rlabel metal1 s 45 230 165 260 6 A
+port 1 nsew signal input
+<< properties >>
+string FIXED_BBOX 0 0 220 635
+string LEFclass CORE
+string LEFsite gf180mcu_osu_sc_gp9t3v3
+string LEFsymmetry X Y
+string LEFview TRUE
+string GDS_END 39244
+string GDS_FILE $PDKPATH/libs.ref/gf180mcu_osu_sc_gp9t3v3/gds/gf180mcu_osu_sc_gp9t3v3.gds
+string GDS_START 36562
+<< end >>

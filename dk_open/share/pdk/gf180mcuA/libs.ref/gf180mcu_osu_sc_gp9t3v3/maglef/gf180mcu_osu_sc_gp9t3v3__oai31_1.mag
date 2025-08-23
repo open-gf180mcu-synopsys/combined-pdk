@@ -1,0 +1,128 @@
+magic
+tech gf180mcuA
+magscale 1 5
+timestamp 1750858719
+<< metal1 >>
+rect 0 565 490 635
+rect 100 360 125 565
+rect 300 390 335 530
+rect 395 455 420 565
+rect 300 388 440 390
+rect 300 362 402 388
+rect 428 362 440 388
+rect 300 360 440 362
+rect 400 355 435 360
+rect 255 323 305 325
+rect 255 297 267 323
+rect 293 297 305 323
+rect 255 295 305 297
+rect 75 258 125 260
+rect 75 232 87 258
+rect 113 232 125 258
+rect 75 230 125 232
+rect 175 258 225 260
+rect 175 232 187 258
+rect 213 232 225 258
+rect 175 230 225 232
+rect 325 258 375 260
+rect 325 232 337 258
+rect 363 232 375 258
+rect 325 230 375 232
+rect 55 70 80 190
+rect 225 70 250 150
+rect 405 105 430 355
+rect 0 0 490 70
+<< via1 >>
+rect 402 362 428 388
+rect 267 297 293 323
+rect 87 232 113 258
+rect 187 232 213 258
+rect 337 232 363 258
+<< obsm1 >>
+rect 140 175 345 200
+rect 140 105 165 175
+rect 310 105 345 175
+<< metal2 >>
+rect 395 390 435 395
+rect 390 388 440 390
+rect 390 362 402 388
+rect 428 362 440 388
+rect 390 360 440 362
+rect 395 355 435 360
+rect 255 323 305 330
+rect 255 297 267 323
+rect 293 297 305 323
+rect 255 290 305 297
+rect 75 258 125 265
+rect 75 232 87 258
+rect 113 232 125 258
+rect 75 225 125 232
+rect 175 258 225 265
+rect 175 232 187 258
+rect 213 232 225 258
+rect 175 225 225 232
+rect 325 258 375 265
+rect 325 232 337 258
+rect 363 232 375 258
+rect 325 225 375 232
+<< labels >>
+rlabel metal1 s 100 360 125 635 6 VDD
+port 6 nsew power bidirectional abutment
+rlabel metal1 s 395 455 420 635 6 VDD
+port 6 nsew power bidirectional abutment
+rlabel metal1 s 0 565 490 635 6 VDD
+port 6 nsew power bidirectional abutment
+rlabel metal1 s 55 0 80 190 6 VSS
+port 7 nsew ground bidirectional abutment
+rlabel metal1 s 225 0 250 150 6 VSS
+port 7 nsew ground bidirectional abutment
+rlabel metal1 s 0 0 490 70 6 VSS
+port 7 nsew ground bidirectional abutment
+rlabel via1 s 187 232 213 258 6 A0
+port 1 nsew signal input
+rlabel metal2 s 175 225 225 265 6 A0
+port 1 nsew signal input
+rlabel metal1 s 175 230 225 260 6 A0
+port 1 nsew signal input
+rlabel via1 s 267 297 293 323 6 A1
+port 2 nsew signal input
+rlabel metal2 s 255 290 305 330 6 A1
+port 2 nsew signal input
+rlabel metal1 s 255 295 305 325 6 A1
+port 2 nsew signal input
+rlabel via1 s 87 232 113 258 6 A2
+port 3 nsew signal input
+rlabel metal2 s 75 225 125 265 6 A2
+port 3 nsew signal input
+rlabel metal1 s 75 230 125 260 6 A2
+port 3 nsew signal input
+rlabel via1 s 337 232 363 258 6 B
+port 4 nsew signal input
+rlabel metal2 s 325 225 375 265 6 B
+port 4 nsew signal input
+rlabel metal1 s 325 230 375 260 6 B
+port 4 nsew signal input
+rlabel via1 s 402 362 428 388 6 Y
+port 5 nsew signal output
+rlabel metal2 s 395 355 435 395 6 Y
+port 5 nsew signal output
+rlabel metal2 s 390 360 440 390 6 Y
+port 5 nsew signal output
+rlabel metal1 s 300 360 335 530 6 Y
+port 5 nsew signal output
+rlabel metal1 s 405 105 430 390 6 Y
+port 5 nsew signal output
+rlabel metal1 s 400 355 435 390 6 Y
+port 5 nsew signal output
+rlabel metal1 s 300 360 440 390 6 Y
+port 5 nsew signal output
+<< properties >>
+string FIXED_BBOX 0 0 490 635
+string LEFclass CORE
+string LEFsite gf180mcu_osu_sc_gp9t3v3
+string LEFsymmetry X Y
+string LEFview TRUE
+string GDS_END 354798
+string GDS_FILE $PDKPATH/libs.ref/gf180mcu_osu_sc_gp9t3v3/gds/gf180mcu_osu_sc_gp9t3v3.gds
+string GDS_START 348764
+<< end >>

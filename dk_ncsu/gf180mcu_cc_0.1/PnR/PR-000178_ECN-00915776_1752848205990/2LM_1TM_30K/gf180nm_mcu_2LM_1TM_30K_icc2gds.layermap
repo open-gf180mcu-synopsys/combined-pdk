@@ -1,0 +1,15 @@
+D 34:0    34 0   	; Metal1
+T 34:0    34 10  	; Metal1 TEXT
+T 34:10   34 10  	; Metal1 TEXT
+D 35:0    35   0   	; Via1
+D 36:0    36 0   	; Metal2
+T 36:0    36 10  	; Metal2 TEXT
+T 36:10   36 10  	; Metal2 TEXT
+
+
+D 92:0    75 0          ; FuseTop
+T 92:0    75 10         ; FuseTop TEXT
+T 92:10   75 10         ; FuseTop TEXT
+
+D 62:21 62 21     ; OUTLINE
+D 1:0 0:0         ; PRBOUNDARY 

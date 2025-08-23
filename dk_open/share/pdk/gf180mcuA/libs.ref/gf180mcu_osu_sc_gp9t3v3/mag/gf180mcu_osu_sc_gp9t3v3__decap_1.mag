@@ -1,0 +1,99 @@
+magic
+tech gf180mcuA
+magscale 1 10
+timestamp 1750858719
+<< nwell >>
+rect 0 630 440 1270
+<< nmos >>
+rect 190 210 250 380
+<< pmos >>
+rect 190 720 250 1060
+<< ndiff >>
+rect 90 318 190 380
+rect 90 272 112 318
+rect 158 272 190 318
+rect 90 210 190 272
+rect 250 318 350 380
+rect 250 272 282 318
+rect 328 272 350 318
+rect 250 210 350 272
+<< pdiff >>
+rect 90 1007 190 1060
+rect 90 773 112 1007
+rect 158 773 190 1007
+rect 90 720 190 773
+rect 250 1007 350 1060
+rect 250 773 282 1007
+rect 328 773 350 1007
+rect 250 720 350 773
+<< ndiffc >>
+rect 112 272 158 318
+rect 282 272 328 318
+<< pdiffc >>
+rect 112 773 158 1007
+rect 282 773 328 1007
+<< psubdiff >>
+rect 60 118 210 140
+rect 60 72 112 118
+rect 158 72 210 118
+rect 60 50 210 72
+<< nsubdiff >>
+rect 60 1198 210 1220
+rect 60 1152 112 1198
+rect 158 1152 210 1198
+rect 60 1130 210 1152
+<< psubdiffcont >>
+rect 112 72 158 118
+<< nsubdiffcont >>
+rect 112 1152 158 1198
+<< polysilicon >>
+rect 190 1060 250 1110
+rect 190 380 250 720
+rect 190 160 250 210
+<< metal1 >>
+rect 0 1198 440 1270
+rect 0 1152 112 1198
+rect 158 1152 440 1198
+rect 0 1130 440 1152
+rect 110 1007 160 1130
+rect 110 773 112 1007
+rect 158 773 160 1007
+rect 110 720 160 773
+rect 280 1007 330 1130
+rect 280 773 282 1007
+rect 328 773 330 1007
+rect 280 720 330 773
+rect 110 318 160 380
+rect 110 272 112 318
+rect 158 272 160 318
+rect 110 140 160 272
+rect 280 318 330 380
+rect 280 272 282 318
+rect 328 272 330 318
+rect 280 140 330 272
+rect 0 118 440 140
+rect 0 72 112 118
+rect 158 72 440 118
+rect 0 0 440 72
+<< labels >>
+rlabel metal1 s 110 720 160 1270 4 VDD
+port 1 nsew power bidirectional abutment
+rlabel metal1 s 110 0 160 380 4 VSS
+port 2 nsew ground bidirectional abutment
+rlabel metal1 s 280 720 330 1270 1 VDD
+port 1 nsew power bidirectional abutment
+rlabel metal1 s 0 1130 440 1270 1 VDD
+port 1 nsew power bidirectional abutment
+rlabel metal1 s 280 0 330 380 1 VSS
+port 2 nsew ground bidirectional abutment
+rlabel metal1 s 0 0 440 140 1 VSS
+port 2 nsew ground bidirectional abutment
+<< properties >>
+string FIXED_BBOX 0 0 440 1270
+string GDS_END 178180
+string GDS_FILE $PDKPATH/libs.ref/gf180mcu_osu_sc_gp9t3v3/gds/gf180mcu_osu_sc_gp9t3v3.gds
+string GDS_START 176176
+string LEFclass CORE
+string LEFsite gf180mcu_osu_sc_gp9t3v3
+string LEFsymmetry X Y
+<< end >>

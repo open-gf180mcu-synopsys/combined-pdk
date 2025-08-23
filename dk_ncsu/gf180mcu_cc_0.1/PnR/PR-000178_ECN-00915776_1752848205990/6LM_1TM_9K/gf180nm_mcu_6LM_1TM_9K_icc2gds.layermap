@@ -1,0 +1,31 @@
+D 34:0    34 0   	; Metal1
+T 34:0    34 10  	; Metal1 TEXT
+T 34:10   34 10  	; Metal1 TEXT
+D 35:0    35   0   	; Via1
+D 36:0    36 0   	; Metal2
+T 36:0    36 10  	; Metal2 TEXT
+T 36:10   36 10  	; Metal2 TEXT
+D 38:0    38   0   	; Via2
+D 42:0    42 0   	; Metal3
+T 42:0    42 10  	; Metal3 TEXT
+T 42:10   42 10  	; Metal3 TEXT
+D 40:0    40   0   	; Via3
+D 46:0    46 0   	; Metal4
+T 46:0    46 10  	; Metal4 TEXT
+T 46:10   46 10  	; Metal4 TEXT
+D 41:0    41   0   	; Via4
+D 81:0    81 0   	; Metal5
+T 81:0    81 10  	; Metal5 TEXT
+T 81:10   81 10  	; Metal5 TEXT
+D 82:0    82   0   	; Via5
+D 53:0    53 0   	; MetalTop
+T 53:0    53 10  	; MetalTop TEXT
+T 53:10   53 10  	; MetalTop TEXT
+
+
+D 92:0    75 0          ; FuseTop
+T 92:0    75 10         ; FuseTop TEXT
+T 92:10   75 10         ; FuseTop TEXT
+
+D 62:21 62 21     ; OUTLINE
+D 1:0 0:0         ; PRBOUNDARY 

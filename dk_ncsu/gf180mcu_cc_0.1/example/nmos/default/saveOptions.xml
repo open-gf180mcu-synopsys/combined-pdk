@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 09:24:46 2025-->
+<file-format name="stateCategory" version="1.0">
+ <object type="saSaveOptions" name="saveOptions" version="1">
+  <attribute value="" type="giString" name="emTStart"/>
+  <attribute value="" type="giString" name="emTStop"/>
+  <attribute value="0" type="giBoolean" name="enableEM"/>
+  <attribute value="0" type="giBoolean" name="enableVDRC"/>
+  <attribute value="0" type="giBoolean" name="firstPinOnly"/>
+  <attribute value="all" type="giString" name="power"/>
+  <attribute value="0" type="giString" name="powerLevel"/>
+  <attribute value="all" type="giString" name="save"/>
+  <attribute value="mixed" type="giString" name="saveBy"/>
+  <attribute value="0" type="giString" name="saveLevel"/>
+  <attribute value="0" type="giBoolean" name="saveSubOp"/>
+  <attribute value="" type="giString" name="saveSubOpInstances"/>
+  <attribute value="all" type="giString" name="subcktCurrents"/>
+  <attribute value="0" type="giString" name="subcktCurrentsLevel"/>
+  <attribute value="all" type="giString" name="subcktPower"/>
+  <attribute value="0" type="giString" name="subcktPowerLevel"/>
+  <attribute value="all" type="giString" name="subcktVoltages"/>
+  <attribute value="0" type="giString" name="subcktVoltagesLevel"/>
+  <attribute value="all" type="giString" name="terminalCurrents"/>
+  <attribute value="0" type="giString" name="terminalCurrentsLevel"/>
+  <attribute value="all" type="giString" name="terminalVoltages"/>
+  <attribute value="0" type="giString" name="terminalVoltagesLevel"/>
+  <attribute value="0" type="giBoolean" name="totalPower"/>
+  <attribute value="" type="giString" name="vdrcTStart"/>
+  <attribute value="" type="giString" name="vdrcTStop"/>
+  <attribute value="1" type="giBoolean" name="verilogA"/>
+ </object>
+</file-format>

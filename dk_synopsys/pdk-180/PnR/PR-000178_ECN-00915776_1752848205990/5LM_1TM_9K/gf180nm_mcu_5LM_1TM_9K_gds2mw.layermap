@@ -1,0 +1,30 @@
+/**************************************************************************************/
+/* Copyright 2018 by GLOBALFOUNDRIES Inc.                                             */
+/* The information disclosed herein is the property of GLOBALFOUNDRIES Inc.           */
+/* GLOBALFOUNDRIES reserves all proprietary, design, manufacturing, reproduction, use,*/
+/* and sales right thereto, and to any article or process utilizing such information, */
+/* except to the extent that rights are expressly granted to others.                  */
+/**************************************************************************************/
+34:0       34:0       /* Metal1 */
+34:10        34:10      /* Metal1_TEXT */
+35:0    35:0  /* Via1 */
+36:0       36:0       /* Metal2 */
+36:10        36:10      /* Metal2_TEXT */
+38:0    38:0  /* Via2 */
+42:0       42:0       /* Metal3 */
+42:10        42:10      /* Metal3_TEXT */
+40:0    40:0  /* Via3 */
+46:0       46:0       /* Metal4 */
+46:10        46:10      /* Metal4_TEXT */
+41:0    41:0  /* Via4 */
+81:0       81:0       /* Metal5 */
+81:10        81:10      /* Metal5_TEXT */
+
+
+92:0       75:0       /* FuseTop */
+92:10      75:10      /* FuseTop_TEXT */
+
+62:21 62:21     /* OUTLINE */
+1:0 0:0         /* PRBOUNDARY */
+
+

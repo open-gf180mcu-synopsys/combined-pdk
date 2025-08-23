@@ -1,0 +1,84 @@
+magic
+tech gf180mcuA
+magscale 1 5
+timestamp 1750858719
+<< metal1 >>
+rect 0 760 230 830
+rect 290 760 520 830
+rect 55 555 85 760
+rect 345 555 375 760
+rect 60 258 110 260
+rect 60 232 72 258
+rect 98 232 110 258
+rect 60 230 110 232
+rect 55 70 85 190
+rect 435 455 465 725
+rect 430 453 470 455
+rect 430 427 437 453
+rect 463 427 470 453
+rect 430 425 470 427
+rect 345 70 375 190
+rect 435 105 465 425
+rect 0 0 520 70
+<< via1 >>
+rect 72 232 98 258
+rect 437 427 463 453
+<< obsm1 >>
+rect 145 520 175 725
+rect 135 490 185 520
+rect 350 490 400 520
+rect 145 105 175 490
+<< metal2 >>
+rect 425 453 475 460
+rect 425 427 437 453
+rect 463 427 475 453
+rect 425 420 475 427
+rect 60 258 110 265
+rect 60 232 72 258
+rect 98 232 110 258
+rect 60 225 110 232
+<< obsm2 >>
+rect 135 520 185 525
+rect 350 520 400 525
+rect 135 490 400 520
+rect 135 485 185 490
+rect 350 485 400 490
+<< labels >>
+rlabel metal1 s 345 555 375 830 6 VDD
+port 4 nsew power bidirectional abutment
+rlabel metal1 s 290 760 520 830 6 VDD
+port 4 nsew power bidirectional abutment
+rlabel metal1 s 55 555 85 830 6 VDDH
+port 3 nsew power bidirectional
+rlabel metal1 s 0 760 230 830 6 VDDH
+port 3 nsew power bidirectional
+rlabel metal1 s 55 0 85 190 6 VSS
+port 5 nsew ground bidirectional abutment
+rlabel metal1 s 345 0 375 190 6 VSS
+port 5 nsew ground bidirectional abutment
+rlabel metal1 s 0 0 520 70 6 VSS
+port 5 nsew ground bidirectional abutment
+rlabel via1 s 72 232 98 258 6 A
+port 1 nsew signal input
+rlabel metal2 s 60 225 110 265 6 A
+port 1 nsew signal input
+rlabel metal1 s 60 230 110 260 6 A
+port 1 nsew signal input
+rlabel via1 s 437 427 463 453 6 Y
+port 2 nsew signal output
+rlabel metal2 s 425 420 475 460 6 Y
+port 2 nsew signal output
+rlabel metal1 s 435 105 465 725 6 Y
+port 2 nsew signal output
+rlabel metal1 s 430 425 470 455 6 Y
+port 2 nsew signal output
+<< properties >>
+string FIXED_BBOX 0 0 520 830
+string LEFclass CORE
+string LEFsite gf180mcu_osu_sc_gp12t3v3
+string LEFsymmetry X Y
+string LEFview TRUE
+string GDS_END 447772
+string GDS_FILE $PDKPATH/libs.ref/gf180mcu_osu_sc_gp12t3v3/gds/gf180mcu_osu_sc_gp12t3v3.gds
+string GDS_START 442452
+<< end >>

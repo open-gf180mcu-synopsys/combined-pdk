@@ -1,0 +1,21 @@
+magic
+tech gf180mcuA
+timestamp 1750858719
+<< metal1 >>
+rect 0 152 16 166
+rect 0 0 16 14
+<< labels >>
+rlabel metal1 s 0 152 16 166 6 VDD
+port 1 nsew power bidirectional abutment
+rlabel metal1 s 0 0 16 14 6 VSS
+port 2 nsew ground bidirectional abutment
+<< properties >>
+string FIXED_BBOX 0 0 16 166
+string LEFclass CORE
+string LEFsite gf180mcu_osu_sc_gp12t3v3
+string LEFsymmetry X Y
+string LEFview TRUE
+string GDS_END 404954
+string GDS_FILE $PDKPATH/libs.ref/gf180mcu_osu_sc_gp12t3v3/gds/gf180mcu_osu_sc_gp12t3v3.gds
+string GDS_START 404678
+<< end >>

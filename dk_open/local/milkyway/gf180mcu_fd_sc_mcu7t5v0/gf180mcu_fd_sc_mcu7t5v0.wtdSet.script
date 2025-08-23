@@ -1,0 +1,3 @@
+auSetLayerPreferDir 5 #f
+auSetLayerPreferDir 7 #t
+auSetLayerPreferDir 9 #f

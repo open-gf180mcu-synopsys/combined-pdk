@@ -1,0 +1,218 @@
+
+/****************/
+/* DRAWN LAYERS */
+/****************/
+COMP            = assign({ {22, 0} });
+DNWELL          = assign({ {12, 0} });
+NWELL           = assign({ {21, 0} });
+LVPWELL         = assign({ {204, 0} });
+POLY2           = assign({ {30, 0} });
+PPLUS           = assign({ {31, 0} });
+NPLUS           = assign({ {32, 0} });
+
+SAB             = assign({ {49, 0} });
+ESD             = assign({ {24, 0} });
+NAT             = assign({ {5, 0} });
+
+DUALGATE        = assign({ {55, 0} });
+POLYFUSE        = assign({ {220, 0} });
+
+CONT/*ACT*/     = assign({ {33, 0} });
+METAL1          = assign({ {34, 0} });
+VIA1            = assign({ {35, 0} });
+METAL2          = assign({ {36, 0} });
+VIA2            = assign({ {38, 0} });
+METAL3          = assign({ {42, 0} });
+VIA3            = assign({ {40, 0} });
+METAL4          = assign({ {46, 0} });
+VIA4            = assign({ {41, 0} });
+METAL5          = assign({ {81, 0} });
+VIA5            = assign({ {82, 0} });
+METALTOP        = assign({ {53, 0} });
+
+RES/*ISTOR*/    = assign({ {62, 0} });
+FHRES           = assign({ {227, 0} });
+FUSETOP         = assign({ {75, 0} });
+FUSEWINDOW_D    = assign({ {96, 1} });
+MVSD            = assign({ {210, 0} });
+MVPSD           = assign({ {11, 39} });
+
+COMP_DUMMY      = assign({ {22, 4} });
+POLY2_DUMMY     = assign({ {30, 4} });
+METAL1_DUMMY    = assign({ {34, 4} });
+METAL2_DUMMY    = assign({ {36, 4} });
+METAL3_DUMMY    = assign({ {42, 4} });
+METAL4_DUMMY    = assign({ {46, 4} });
+METAL5_DUMMY    = assign({ {81, 4} });
+METALTOP_DUMMY  = assign({ {53, 4} });
+
+COMP_LABEL      = assign_text({ {22, 10} });
+DNWELL_LABEL    = assign_text({ {12, 10} });
+NWELL_LABEL     = assign_text({ {21, 10} });
+LVPWELL_LABEL   = assign_text({ {204, 10} });
+POLY2_LABEL     = assign_text({ {30, 10} });
+METAL1_LABEL    = assign_text({ {34, 10} });
+METAL2_LABEL    = assign_text({ {36, 10} });
+METAL3_LABEL    = assign_text({ {42, 10} });
+METAL4_LABEL    = assign_text({ {46, 10} });
+METAL5_LABEL    = assign_text({ {81, 10} });
+METALTOP_LABEL  = assign_text({ {53, 10} });
+
+METAL1_SLOT     = assign({ {34, 3} });
+METAL2_SLOT     = assign({ {36, 3} });
+METAL3_SLOT     = assign({ {42, 3} });
+METAL4_SLOT     = assign({ {46, 3} });
+METAL5_SLOT     = assign({ {81, 3} });
+METALTOP_SLOT   = assign({ {53, 3} });
+
+PAD             = assign({ {37, 0} });
+UBMPPERI        = assign({ {183, 0} });
+UBMPARRAY       = assign({ {184, 0} });
+UBMEPLATE       = assign({ {185, 0} });
+
+SCHOTTKY_DIODE  = assign({ {241, 0} });
+ZENER           = assign({ {178, 0} });
+
+// MARKING LAYERS
+RES_MK          = assign({ {110, 5} });
+CAP_MK          = assign({ {117, 5} });
+MOS_CAP_MK      = assign({ {166, 5} });
+IND_MK          = assign({ {151, 5} });
+DIODE_MK        = assign({ {115, 5} });
+
+OPC_DRC         = assign({ {124, 5} });
+NDMY            = assign({ {111, 5} });
+PMNDMY          = assign({ {152, 5} });
+V5_XTOR         = assign({ {112, 1} });
+
+DRC_BJT         = assign({ {127, 5} });
+LVS_BJT         = assign({ {118, 5} });
+MIM_L_MK        = assign({ {117, 10} });
+LVS_RF          = assign({ {100, 5} });
+LVS_DRAIN       = assign({ {100, 7} });
+LVS_SOURCE      = assign({ {100, 8} });
+LVS_IO          = assign({ {119, 5} });
+WELL_DIODE_MK   = assign({ {153, 51} });
+
+LATCHUP_MK      = assign({ {137, 5} });
+GUARD_RING_MK   = assign({ {167, 5} });
+OTP_MK          = assign({ {173, 5} });
+MTPMARK         = assign({ {122, 5} });
+NEO_EE_MK       = assign({ {88, 17} });
+SRAMCORE        = assign({ {108, 5} });
+IND_MK1         = assign({ {151, 5} });
+HVPOLYRS        = assign({ {123, 5} });
+PROBE_MK        = assign({ {13, 17} });
+ESD_MK          = assign({ {24, 5} });
+LDMOS_XTOR      = assign({ {226, 0} });
+PLFUSE          = assign({ {125, 5} });
+EFUSE_MK        = assign({ {80, 5} });
+MCELL_FEOL_MK   = assign({ {11, 17} });
+YMTP_MK         = assign({ {86, 17} });
+DEV_WF_MK       = assign({ {128, 17} });
+
+// EDA MARK LAYERS
+METAL1_BLK      = assign({ {34, 5} });
+METAL2_BLK      = assign({ {36, 5} });
+METAL3_BLK      = assign({ {42, 5} });
+METAL4_BLK      = assign({ {46, 5} });
+METAL5_BLK      = assign({ {81, 5} });
+METALT_BLK      = assign({ {53, 5} });
+
+PR_BNDRY        = assign({ {0, 0} });
+MDIODE          = assign({ {116, 5} });
+
+METAL1_RES      = assign({ {110, 11} });
+METAL2_RES      = assign({ {110, 12} });
+METAL3_RES      = assign({ {110, 13} });
+METAL4_RES      = assign({ {110, 14} });
+METAL5_RES      = assign({ {110, 15} });
+METAL6_RES      = assign({ {110, 16} });
+
+/******************/
+/* DERIVED LAYERS */
+/******************/
+sub_nwell = buildsub(NWELL);
+sub_dnwell = buildsub(DNWELL);
+sub_lvpwell = buildsub(LVPWELL);
+sub = sub_nwell and sub_dnwell and sub_lvpwell;
+
+ncomp = COMP and NPLUS;
+pcomp = COMP and PPLUS;
+tgate = POLY2 and COMP not RES_MK;
+
+ngate = NPLUS and tgate;
+nsd = (((ncomp outside NWELL) interacting ngate) not ngate) not RES_MK;
+ptap = ((pcomp outside NWELL) outside DNWELL) not RES_MK;
+
+pgate = PPLUS and tgate;
+psd = (((pcomp and NWELL) interacting pgate) not pgate) not RES_MK;
+ntap = (ncomp and NWELL) not RES_MK;
+
+ngate_dw = ((ngate and LVPWELL) and DNWELL);
+ptap_dw = ((((pcomp and LVPWELL) and DNWELL) outside WELL_DIODE_MK) not RES_MK);
+
+pgate_dw = (pgate and DNWELL) not LVPWELL;
+ntap_dw = (((ncomp not LVPWELL) and DNWELL) not RES_MK);
+
+psd_dw = ((((pcomp not LVPWELL) and DNWELL) interacting pgate) not pgate) not RES_MK;
+nwell_con = NWELL not RES_MK;
+lvpwell_con = LVPWELL not RES_MK;
+poly2_con = (POLY2 not RES_MK) not PLFUSE;
+
+lvpwell_con_n_dw = lvpwell_con outside DNWELL;
+nwell_con_dw = nwell_con inside DNWELL;
+
+pgate_lv_base = ((pgate not V5_XTOR) not DUALGATE);
+pgate_5v_base = ((pgate and V5_XTOR) and DUALGATE);
+pgate_6v_base = ((pgate not V5_XTOR) and DUALGATE);
+
+pgate_lv_n_dw = (pgate_lv_base not DNWELL);
+pgate_5v_n_dw = (pgate_5v_base not DNWELL);
+pgate_6v_n_dw = (pgate_6v_base not DNWELL);
+
+pgate_lv_dw_base = (pgate_lv_base and pgate_dw);
+pgate_5v_dw_base = (pgate_5v_base and pgate_dw);
+pgate_6v_dw_base = (pgate_6v_base and pgate_dw);
+
+ngate_lv_base = ((ngate not V5_XTOR) not DUALGATE);
+ngate_5v_base = ((ngate and V5_XTOR) and DUALGATE);
+ngate_6v_base = ((ngate not V5_XTOR) and DUALGATE);
+
+ngate_lv_n_dw = (ngate_lv_base not DNWELL);
+ngate_5v_n_dw = (ngate_5v_base not DNWELL);
+ngate_6v_n_dw = (ngate_6v_base not DNWELL);
+
+ngate_lv_dw_base = (ngate_lv_base and ngate_dw);
+ngate_5v_dw_base = (ngate_5v_base and ngate_dw);
+ngate_6v_dw_base = (ngate_6v_base and ngate_dw);
+
+// Exclude polys for MOSFET extraction
+mos_exclude = RES or ESD or SAB or FUSEWINDOW_D or POLYFUSE or RES_MK or DRC_BJT or MOS_CAP_MK or ESD_MK or LVS_SOURCE or EFUSE_MK or PLFUSE or SCHOTTKY_DIODE;
+pmos_exclude = LVPWELL or DIODE_MK or NAT or MVSD or MVPSD or LDMOS_XTOR or mos_exclude;
+nmos_nat_exclude = NWELL or DIODE_MK or MVSD or MVPSD or LDMOS_XTOR or mos_exclude;
+nmos_nn_exclude = nmos_nat_exclude or NAT;
+
+// PMOS transistor outside DNWELL
+pgate_3p3v = pgate_lv_n_dw not pmos_exclude;
+pgate_5v = pgate_5v_n_dw not pmos_exclude;
+pgate_6v = pgate_6v_n_dw not pmos_exclude;
+
+// PMOS transistor inside DNWELL
+pgate_3p3v_dw = pgate_lv_dw_base not pmos_exclude;
+pgate_5v_dw = pgate_5v_dw_base not pmos_exclude;
+pgate_6v_dw = pgate_6v_dw_base not pmos_exclude;
+
+// NMOS transistor outside DNWELL
+ngate_3p3v = ngate_lv_n_dw not nmos_nn_exclude;
+ngate_5v = ngate_5v_n_dw not nmos_nn_exclude;
+ngate_6v = ngate_6v_n_dw not nmos_nn_exclude;
+
+// NMOS transistor inside DNWELL
+ngate_3p3v_dw = ngate_lv_dw_base not nmos_nn_exclude;
+ngate_5v_dw = ngate_5v_dw_base not nmos_nn_exclude;
+ngate_6v_dw = ngate_6v_dw_base not nmos_nn_exclude;
+
+// Native Vt NMOS transistor
+ngate_nat = (ngate_6v_n_dw and NAT) not nmos_nat_exclude;
+

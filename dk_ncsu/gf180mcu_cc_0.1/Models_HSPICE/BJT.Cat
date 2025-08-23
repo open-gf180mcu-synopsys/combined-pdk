@@ -1,0 +1,4 @@
+TDMCHECKPOINT="1.0"
+keepEmptyCategory type="unknown"
+gf180mcu/vnpn_10x10 type="cell"
+gf180mcu/vpnp_10x10 type="cell"

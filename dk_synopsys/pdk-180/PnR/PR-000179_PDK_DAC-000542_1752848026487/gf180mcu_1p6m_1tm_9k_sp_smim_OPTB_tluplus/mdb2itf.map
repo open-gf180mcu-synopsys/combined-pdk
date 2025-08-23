@@ -1,0 +1,31 @@
+**************************************************************************************
+* Copyright © 2018 by GLOBALFOUNDRIES Inc. 
+* The information disclosed herein is the property of GLOBALFOUNDRIES Inc. 
+* GLOBALFOUNDRIES reserves all proprietary, design, manufacturing, reproduction, use, 
+* and sales right thereto, and to any article or process utilizing such information, 
+* except to the extent that rights are expressly granted to others.
+***************************************************************************************
+
+conducting_layers
+MetalTop TM
+Metal5	M5
+Metal4	M4
+Metal3	M3
+Metal2	M2
+Metal1	M1
+
+via_layers
+Via1	V1
+Via2	V2
+Via3	V3
+Via4	V4
+Via5	V5
+
+remove_layers
+MFT
+POLY1
+DIFF
+V5T
+diffCont
+polyCont
+rxsubcont

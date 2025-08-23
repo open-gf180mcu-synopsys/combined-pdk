@@ -1,0 +1,93 @@
+magic
+tech gf180mcuA
+magscale 1 5
+timestamp 1750858719
+<< metal1 >>
+rect 0 565 480 635
+rect 55 360 80 565
+rect 140 335 165 530
+rect 225 360 250 565
+rect 310 390 335 530
+rect 310 388 375 390
+rect 310 362 337 388
+rect 363 362 375 388
+rect 310 360 375 362
+rect 400 360 425 565
+rect 310 335 335 360
+rect 140 310 335 335
+rect 40 258 90 260
+rect 40 232 52 258
+rect 78 232 90 258
+rect 40 230 90 232
+rect 140 240 165 310
+rect 310 240 335 310
+rect 140 215 335 240
+rect 55 70 80 190
+rect 140 105 165 215
+rect 225 70 250 190
+rect 310 105 335 215
+rect 395 70 420 190
+rect 0 0 480 70
+<< via1 >>
+rect 337 362 363 388
+rect 52 232 78 258
+<< metal2 >>
+rect 330 390 370 395
+rect 325 388 375 390
+rect 325 362 337 388
+rect 363 362 375 388
+rect 325 360 375 362
+rect 330 355 370 360
+rect 40 258 90 265
+rect 40 232 52 258
+rect 78 232 90 258
+rect 40 225 90 232
+<< labels >>
+rlabel metal1 s 55 360 80 635 6 VDD
+port 3 nsew power bidirectional abutment
+rlabel metal1 s 225 360 250 635 6 VDD
+port 3 nsew power bidirectional abutment
+rlabel metal1 s 400 360 425 635 6 VDD
+port 3 nsew power bidirectional abutment
+rlabel metal1 s 0 565 480 635 6 VDD
+port 3 nsew power bidirectional abutment
+rlabel metal1 s 55 0 80 190 6 VSS
+port 4 nsew ground bidirectional abutment
+rlabel metal1 s 225 0 250 190 6 VSS
+port 4 nsew ground bidirectional abutment
+rlabel metal1 s 395 0 420 190 6 VSS
+port 4 nsew ground bidirectional abutment
+rlabel metal1 s 0 0 480 70 6 VSS
+port 4 nsew ground bidirectional abutment
+rlabel via1 s 52 232 78 258 6 A
+port 1 nsew signal input
+rlabel metal2 s 40 225 90 265 6 A
+port 1 nsew signal input
+rlabel metal1 s 40 230 90 260 6 A
+port 1 nsew signal input
+rlabel via1 s 337 362 363 388 6 Y
+port 2 nsew signal output
+rlabel metal2 s 330 355 370 395 6 Y
+port 2 nsew signal output
+rlabel metal2 s 325 360 375 390 6 Y
+port 2 nsew signal output
+rlabel metal1 s 140 105 165 530 6 Y
+port 2 nsew signal output
+rlabel metal1 s 140 215 335 240 6 Y
+port 2 nsew signal output
+rlabel metal1 s 140 310 335 335 6 Y
+port 2 nsew signal output
+rlabel metal1 s 310 105 335 530 6 Y
+port 2 nsew signal output
+rlabel metal1 s 310 360 375 390 6 Y
+port 2 nsew signal output
+<< properties >>
+string FIXED_BBOX 0 0 480 635
+string LEFclass CORE
+string LEFsite gf180mcu_osu_sc_gp9t3v3
+string LEFsymmetry X Y
+string LEFview TRUE
+string GDS_END 296486
+string GDS_FILE $PDKPATH/libs.ref/gf180mcu_osu_sc_gp9t3v3/gds/gf180mcu_osu_sc_gp9t3v3.gds
+string GDS_START 290822
+<< end >>

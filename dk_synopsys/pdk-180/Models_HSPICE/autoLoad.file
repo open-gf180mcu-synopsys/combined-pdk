@@ -1,0 +1,6 @@
+
+db::setPrefValue dbViewWordWrap -value true
+dr::loadDisplayResources -filePath [oa::getPath [oa::LibFind gf180mcu]]/../display.tcl -format tcl
+
+
+puts "Sourced autoLoad.file" 

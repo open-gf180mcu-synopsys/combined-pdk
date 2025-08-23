@@ -1,0 +1,479 @@
+#######################################################################
+## Synopsys(R) IC Compiler(TM) II Library Manager Library Preparation 
+## Reference Methodology 
+## <Release_Notes.ICC2LM_LIBPREP-RM.txt>  
+# Version: R-2020.09 (Sep 2020)
+# Copyright (C) 2020 Synopsys, Inc. All rights reserved.
+###########################################################################
+
+R-2020.09^M
+=============^M
+Option -configure_frame_options is always part of read_lef^M
+^M
+
+Q-2019.12-SP4
+=============
+1. Jira STAR 3155537 fix
+   -proc_set_proper_site.tcl  
+   -main_validate_cell_libs.tcl
+
+2. Update icc2_lm_shell to lm_shell in 
+   -main_validate_cell_libs.tcl
+   -proc_set_proper_site.tcl
+
+P-2019.03-SP2
+=============
+1. Added a comment line in rm_setup/icc2lm_setup.tcl - Line 228
+   - process_label can be used for library aging
+
+P-2019.03
+=============
+1. Make workspace allow missing on by default 
+   - Removes variable workspace_allow_missing in rm_setup/icc2lm_setup.tcl
+
+N-2017.09-SP2
+=============
+1. Renames the following terminologies and variables to have a consistent naming style
+   - Renames create_ref_libs to create_cell_libs
+   - Renames validate_ref_libs to validate_cell_libs
+   - Renames analyze_ref_libs to analyze_cell_libs
+   - Renames $ref_lib_dir to $cell_lib_dir
+   - Renames $nlib to $clib
+
+2. Updates the IC Compiler II pin access checking utility to version 5.0
+   - icc2_lm_scripts/check_lib_cell_pin_access_v5.bin
+
+N-2017.09
+=========
+1. Added a new variable in rm_setup/icc2lm_setup.tcl
+   - process_label_mapping
+     Provides the process_label support for the read_db command to  
+     specify the mapping between process_label and the corresponding 
+     db file.
+   
+     In the following example, the tool attaches process label 'FF' to 
+     logic libraries whose file names contain characters 'ffg' and 
+     attaches process label 'SS' to logic libraries whose file names 
+     contain characters 'ssg' or 'ssx'.
+
+   Example: set process_label_mapping "{FF ffg} {SS ssg ssx}"
+
+2. Renamed variables in rm_setup/icc2lm_setup.tcl
+   - $logic_db_file => $db_files
+   - $ref_ndm => $frame_files
+   - $lef_file => $lef_files
+   - $ref_lib => $ref_lib_dir
+   - $library_name => $nlib_name
+
+
+M-2016.12-SP4
+=============
+1.  Added a new source_type value, mw, in rm_setup/icc2lm_setup.tcl
+    When source_type is set to mw, the RM script uses the following
+    fixed flow regardless of the setting of the ndm_flow variable:
+    a. Creates a frame-only library by using the Milkyway migration flow 
+    b. Reads the frame-only library and imports the logic library files 
+       by using the exploration flow
+
+    Example: set source_type "mw" ; # gds_lef_oasis | ndm | combined | mw
+
+    When source_type is set to mw, you must specify the path to the 
+    IC Compiler executable by setting the ICC1CODE variable in 
+    rm_icc2lm_scripts/mw2ndm.tcl 
+
+    Example: set ICC1CODE "/image/M-2016.12-SP4/bin/icc_shell"
+
+2. Renamed variables in rm_setup/icc2lm_setup.tcl
+   - $logic_db_file => $db_files
+   - $ref_ndm => $frame_files
+   - $lef_file => $lef_files
+   - $ref_lib => $ref_lib_dir
+   - $library_name => $nlib_name
+
+M-2016.12-SP2
+=============
+1. Added new variables in rm_setup/icc2lm_setup.tcl
+    - explore_create_aggregate
+      Specifies whether to create an aggregate library that contains all 
+      generated libraries.
+      If set to true, 
+         * The commit_workspace and process_workspaces commands create an 
+           aggregate library that contains all libraries generated 
+           from the specified workspaces. 
+         * When writing a single Tcl script, the write_workspace command 
+           appends an aggregate workspace at the end of the Tcl file.
+         * When writing multiple Tcl scripts, the write_workspace command 
+           creates a separate Tcl file for the aggregate workspace.
+      If set to false, an aggregate library is not generated.
+      Example: set explore_create_aggregate 0 
+    - min_pin_layer
+      Specifies the setting for the report_lib -min_pin_layer option.
+      The tool reports terminals on layers lower than minimum pin layer
+      Example: set min_pin_layer "M2"
+
+M-2016.12
+=========
+1. Added new variables in rm_setup/adv_frame_setup.tcl
+    - create_zero_spacing_blockages_around_pins
+      Specifies the per-layer width for creating zero-spacing routing 
+      blockages around pins in the frame view. The layer name must be 
+      defined in the technology file. The width value must be no less 
+      than zero.
+      Example: set create_zero_spacing_blockages_around_pins "{M1 0.3} {M2 0.4}"
+    - keepout_spacing_for_non_pin_shapes
+      Specifies the per-layer extension spacing and corner keepout spacing 
+      to create zero-spacing routing blockages around non-pin shapes.
+      Example: set create_zero_spacing_blockages_around_pins "{M1 {0.07 0.10 0.09}} {M2 {0 0.1 0}}"
+    - create_frame_for_subblocks
+      Controls whether to create frame views for subblocks in hierarchical 
+      designs. 
+      * If true, the tool generates frame views for both the top-level 
+        block and the subblocks. 
+      * If false, the tool generates a frame view only for the top-level block.
+      Example: set create_frame_for_subblocks "false"
+    - color_based_dpt_flow
+      Controls whether the tool sets the mask_constraint attribute on the 
+      metal shapes beyond the DRC distance. The metal shapes are added by 
+      the block_all or block_core_margin option during frame view generation.
+      * If false, the metal shapes beyond the DRC distance are colorless and 
+        are trimmed by colored shapes. 
+      * If true, for metal layers, the metal shapes beyond the DRC distance 
+        are colored and are trimmed by both colored and colorless shapes. For 
+        poly and below layers, the metal shapes beyond the DRC distance are 
+        colorless and trimmed only by colored shapes.
+      * If auto, when the following color rules are defined in the technology 
+        file, the option is treated as true; otherwise, it is treated as false.
+        - sameColorSpanTblXMinSpacing
+        - sameColorSpanTblYMinSpacing
+        - diffColorSpanTblXMinSpacing
+        - diffColorSpanTblYMinSpacing
+
+2. Added new variables in rm_setup/icc2lm_setup.tcl
+    - lef_cell_boundary
+      Specifies whether to extract rectangular or rectilinear cell boundaries 
+      for macro cells.
+      * If set to by_overlap_layer, the tool derives a rectilinear cell 
+        boundary (possibly non-rectangular) from the OVERLAP layer in the 
+        LEF file. If there is no OVERLAP layer geometry, the cell boundary 
+        is derived from the SIZE parameter.
+      * If set to by_cell_size, the tool derives a rectangular cell boundary 
+        from the SIZE parameter in the LEF file.
+      Example: set lef_cell_boundary "by_overlap_layer"
+    - ant_clf_for_existing_lib
+      Specifies the CLF antenna property file to load into an existing 
+      library using the edit flow.
+      Example: set ant_clf_for_existing_lib "test.clf"
+
+3. Updated the pin access checking utility to v4 at 
+      rm_icc2lm_scripts/check_lib_cell_pin_access_icc2_v4.bin
+   For more information, see SolvNet article #2049998.
+
+L-2016.03-SP2
+=============
+1. Added new variable in rm_setup/adv_frame_setup.tcl
+    - remove_non_pin_shapes
+      Specifies the mode to remove the non-pin shapes on the specified layers.
+      * If set to none, the non-pin shapes are not removed; this is the 
+        default behavior.
+      * If set to all, all non-pin shapes are removed from the specified layer.
+      Example: set remove_non_pin_shapes "{M3 all} {M4 all}"
+      
+2. Updated the pin access checking utility to v3 at 
+      rm_icc2lm_scripts/check_lib_cell_pin_access_icc2_v3.bin
+   For more information, see SolvNet article #2049998.
+
+L-2016.03
+=========
+1. New variables in rm_setup/icc2lm_setup.tcl
+    - set use_process_workspaces 1 ; # 1=true 0=false
+      If this variable is set to 1, the script uses the process_workspace 
+      command instead of check_workspace and commit_workspace. This variable 
+      applies only to the exploration flow. 
+    - set run_compare_db 0 ; # 1=run 0=skip
+      If this variable is set to 1, the script runs the compare_db command
+      during library validation to compare the generated reference library
+      to the input logic libary.
+    - set run_compare_ndm 0 ; # 1=run 0=skip
+      If this variable is set to 1, the script runs the compare_ndm command
+      during library validation to compare the generated reference library
+      to a specifed reference library.
+    - set comparison_ndm "" 
+      If this variable is set, the specified reference library is used by 
+      the comapare_ndm command during library validation.
+    - set oasis_file ""
+      If this variable is set, the specified OASIS file is used by the script
+    - set oasis_all_cell_type "" 
+      If this variable is set, the script uses the specified cell type for
+      all cells, regardless of the block mapping file content.
+    - set oasis_block_map_file ""
+      If this variable is set, the script uses the specified file with the
+      read_oasis -block_map option.
+    - set oasis_layer_map_file ""
+      If this is variable is set, the script uses the specified file with the
+      read_oasis -layer_map option.
+    - set oasis_trace_option "auto"
+      Specifies the value for the read_oasis -trace_option option. If set 
+      to auto, the script builds the connectivity by tracing overlapping 
+      geometries and propagating the connectivity.
+    - set oasis_exclude_layers ""
+      Specifies the rules for mapping between the input layers and the layers 
+      that are used for excluding geometries from the specified input layers.
+    - set oasis_std_cell_port_types { {power ""} {ground ""} {nwell ""} {pwell ""} }
+      Identifies the power and ground pins by mapping the pin name to its type.
+      The mapping applies to all cells in the OASIS file.
+    - set oasis_pin_text_list ""
+      Specifies the mapping between metal layers and text layers that is 
+      used for tracing ports by the read_oasis and trace_connectivity commands.
+    - set mask_info(ROUTE,NUM_MASK) ""
+      Specifies the number of masks for a technlogy-only reference libary.
+
+2. Renamed variables in rm_setup/icc2lm_setup.tcl
+    - Renamed the following variables because the script now supports OASIS
+      as a physical input format:
+      * Renamed std_cell_port_types to gds_std_cell_port_types.
+      * Renamed pin_text_list to gds_pin_text_list.
+
+3. Changed keyword values in rm_setup/icc2lm_setup.tcl
+    - set source_type "combined" ; # gds_lef_oasis | ndm | combined
+      Changed gds_lef keyword to gds_lef_oasis.
+
+K-2015.06-SP4
+=============
+1. Enhanced the validate_ref_lib step. 
+   The checking items and output files are
+   * Summary report by the report_lib command
+     Output file: /export_validation/${lib_name}_report_lib.rep
+   * Summary table by the script
+     Output file: /export_validation/${lib_name}_ref_lib_info.rep
+   * Tcl-based antenna properties
+     Output file: /export_validation/${lib_name}_antenna_prop.tcl
+   * Via region report
+     Output file: /export_validation/${lib_name}_via_region.rep
+   * Cell-based frame options
+     Output file: /export_validation/${lib_name}_cell_frame_options.tcl
+
+2. Added the following output directories to replace the /export_tcl
+   and /export_rep directories:
+   * /export_rm_tcl
+     Contains the Tcl files from the technology information information and
+     from the create_ref_libs, set_proper_site, validate_ref_libs, and 
+     analyze_ref_libs steps.
+   * /export_creation
+     Contains the report files from the create_ref_libs and set_proper_site
+     steps. 
+   * /export_validation
+     Contains the report and Tcl files from the validate_ref_libs step.  
+
+3. New and removed variables in /rm_setup/icc2lm_setup.tcl
+   - Added routing_pg_list 
+     If this variable is empty (the default), the script uses all PG ports
+     except VDD, VSS, and GND
+   - Added ant_tcl_for_new_lib 
+     This variable specifies the antenna Tcl file to load into a new 
+     library within the workspace. The default is "".
+   - Added ant_tcl_for_existing_lib 
+     This variable specifies the antenna Tcl file to load into an existing 
+     library within the workspace using the edit flow. The default is "".
+   - Removed antenna_tcl_file
+   - Added detail report
+     This variable controls whether the script outputs a detailed report.
+     The default is 0 (false). To enable, set the variable to 1.
+   - Removed detailed_wire_track_report 
+
+4. New variables in /rm_setup/adv_frame_setup.tcl
+   - Added routing_pg_list 
+     If this variable is empty (the default), the script uses all PG ports
+     except VDD, VSS, and GND
+
+K-2015.06-SP2
+=============
+1. Merged SOURCE_GDS_LEF and SOURCE_NDM into one directory, /rm_icc2lm_scripts, 
+   and specify the source type instead.  
+
+2. Supports the following source types ($source_type), which are defined in 
+   /rm_setup/icc2lm_setup.tcl
+
+   - source_type:gds_lef
+     * Supported flows: normal, physical, frame, exploration, etm
+
+   - source_type:ndm
+     * Supported flows: normal, exploration, etm, aggregate
+
+   - source_type:combined 
+     * Fixed flow 
+       Step 1: Create a frame-only reference library using the frame flow.
+       Step 2: Read the frame-only reference library, and then import the
+               logic library files using the explorartion flow.
+
+3. Removed technology-only reference library usage from the entire flow. 
+   Instead, set the technology attributes on the reference libraries.
+
+4. New and removed variables in /rm_setup/icc2lm_setup.tcl 
+   - set source_type "combined" ; # gds_lef | nmd | combined
+   - set load_tech 1 ; # 1=yes 0=no 
+     * Removed variable: create_tech_ndm 
+   - set tech_info(ROUTE,LAYER_DIRECTIONS,OFFSET) "" 
+     * Removed variables: track_offset(metal1-15), routing_dir_h, and 
+       routing_dir_v
+   - set pin_text_list "" 
+     * Removed variable: pin_text(metal1-15)
+   - set detailed_wire_track_report 0 ; # 1=true 0=false
+   - set create_tech_commands "[sh pwd]/export_tcl/icc2lm_tech.tcl"
+   - set include_design_filters ""
+   - set exclude_design_filters ""
+   - set keep_phy_cells 1 ; # 1=true 0=false
+
+5. New and removed variables in /rm_setup/adv_frame_setup.tcl
+   - set drc_distance ""
+     * Removed variable: drc_distance(metal1-15)
+   - set block_core_margin ""
+     * Removed variable: block_core_margin(metal1-15)
+   - set trim_blockage ""
+     * Removed variable: trim_blockage(metal1-15)
+   - set connect_layer ""
+     * Removed variable: connect_layer(metal1-15)
+   - set connect_threshold ""
+     * Removed variable: connect_threshold(metal1-15)
+   - set convert_blockgae ""
+     * Removed variable: convert_blockgae(metal1-15)
+ 
+6. Added scripts under /rm_icc2lm_scripts
+   - load_antenna_tcl_file.tcl
+   - report_lib.tcl
+
+7. Divided /export directory into /export_tcl and /export_rep
+   - /export_tcl contains icc2lm_create_ref_libs_export.tcl, 
+     icc2lm_set_proper_site_export.tcl, icc2lm_validate_ref_libs_export.tcl,
+     icc2_analyze_ref_libs_export.tcl, icc2lm_tech.tcl, 
+     ${library_name}_${ndm_flow}_antenna_prop.tcl, 
+     ${library_name}_${ndm_flow}_write_workspace.tcl
+
+   - /export_rep contains icc2lm_setup.rep, adv_frame_setup.rep, 
+     ${library_name}_${ndm_flow}_report_app_options.rep,
+     ${library_name}_${ndm_flow}_ref_lib_info.rep, 
+     ${library_name}_${ndm_flow}_report_lib.rep, 
+     ${library_name}_${ndm_flow}_via_region.rep    
+
+K-2015.06
+=========
+1. New variables in /rm_setup/icc2lm_setup.tcl
+
+   For the SOURCE_GDS_LEF flow:
+   - set create_tech_ndm 1 ; # 1=yes 0=no
+   - set bus_delimeter "[]"
+   - set scale_factor "10000"
+   - set workspace_allow_missing 0 ; # 1=yes 0=no
+   - set pvt_configuration 0 ; # 1=yes 0=no
+   - set process_labels ""
+   - set process_numbers ""
+   - set voltages ""
+   - set temperatures ""
+   - set gds_exclude_layers ""
+   - set lef_non_real_cut_obs_mode 1 ; # 1=true 0=false
+   - set lef_auto_rename_conflict_sites 1 ; # 1=true 0=false
+   - set adv_frame_setup 0 ; # 1=advanced 0=auto
+   - set convert_blockage_to_zero_by_min_spacing 0 ; # 1=yes 0=no
+   - set pad_rotation ""
+   - set set_proper_site 1 ; # 1=yes 0=no
+   - set run_pin_access 0 ;# 1=run 0=skip
+   - set analyze_macro 0 ;# 1=for macro 0=for stdcell
+   - set run_routing 0 ; # 1=run 0=skip
+   - set check_cell_list {}
+   - set custom_runset_file ""
+
+   For the SOURCE_NDM flow:
+   - set create_tech_ndm 1 ; # 1=yes 0=no
+   - set scale_factor "10000"
+   - set pvt_configuration 0 ; # 1=yes 0=no
+   - set process_labels ""
+   - set process_numbers ""
+   - set voltages ""
+   - set temperatures ""
+   - set run_pin_access 0 ;# 1=run 0=skip
+   - set analyze_macro 0 ;# 1=for macro 0=for stdcell
+   - set run_routing 0 ; # 1=run 0=skip
+   - set check_cell_list {}
+
+2. Added the set_proper_site step for the SOURCE_GDS_LEF flow only
+   - Script: /rm_icc2lm_scripts/icc2lm_set_proper_site.tcl and 
+             proc_set_proper_site.tcl
+   - Exported Tcl script: icc2lm_set_proper_site_dump.tcl
+
+3. Added the analyze_ref_libs step for both flows 
+   - Script: /rm_icc2lm_scripts/icc2_analyze_ref_libs.tcl and 
+             check_std_cell_pin_access_v2.0.bin
+   - Exported design library: check_lib_icc2.lib  
+
+4. Added library configuration for both flows
+
+5. Added aggregate flow for SOURCE_NDM flow
+
+6. Enhanced the validate_ref_libs step:   
+   - Script: /rm_icc2lm_scripts/icc2lm_validate_ref_libs.tcl
+   - Exported library information by 'report_lib': 
+     /export/${library_name}_${ndm_flow}_report_lib.rep
+   - Exported pin via regions by 'report_via_regions': 
+     /export/${library_name}_${ndm_flow}_via_region.rep 
+ 
+J-2014.12-SP1-2
+===============
+1. New variables in /rm_setup/icc2lm_setup.tcl
+
+   For the SOURCE_GDS_LEF flow:
+   - set save_layout_design_views 0  ; # 1=yes 0=noa
+   - set macro_grouping_strategy "minimize_libs"
+   - set allow_orien ""
+
+   For the SOURCE_NDM flow:
+   - set save_layout_design_views 0  ; # 1=yes 0=noa
+   - set macro_grouping_strategy "minimize_libs"
+
+2. Added the 'validate_ref_libs' step: 
+   - Script: /rm_icc2lm_scripts/icc2lm_validate_ref_libs.tcl
+   - Exported reference library information: 
+     /export/${library_name}_${ndm_flow}_ref_info.txt
+   - Exported antenna properties: 
+     /export/${library_name}_${ndm_flow}_antenna_prop.tcl  
+
+J-2014.12-SP1
+=============
+This is the GA release of the IC Compiler II Library Manager Library 
+Preparation Reference Methodology. It fully supports RMgen so that you
+can run the whole library preparation flow.
+
+In this release, we provide two main reference methodology flows,
+each of which supports various library preparation flows, as follows:
+
+1) SOURCE_GDS_LEF: Uses GDSII and LEF files as the input source
+   - "normal" flow
+   - "exploration" flow
+   - "physical_only" flow
+   - "frame" flow
+
+2) SOURCE_NDM: Uses existing reference libraries as the input source
+   - "normal" flow
+   - "exploration" flow
+   - "etm" flow
+
+J-2014.12-1
+===========
+This is the initial release of the IC Compiler II LM Library Preparation 
+Reference Methodology.
+
+This release supports three library preparation flows and provides three
+three directories for each flow.
+1. Exploration flow 
+2. ETM flow 
+3. Frame-only flow
+
+The ./rm_setup/* directory contains the following example side files:
+* antenna_property.tcl
+* change_site.tcl
+* gds_layer.map
+* icc2_lm_setup.tcl
+* route_direction.tcl
+
+The global application options for initial design setup are specified
+in the following file in the ./rm_setup/* directory:
+
+* library_global_lm_setting.tcl

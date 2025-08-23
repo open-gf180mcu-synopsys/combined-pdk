@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 09:24:46 2025-->
+<file-format name="stateCategory" version="1.0">
+ <object type="saModelSetup" name="models" version="1">
+  <attribute value="1" type="giBoolean" name="includeGlobal"/>
+  <attribute value="/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/Models_HSPICE/" type="giString" name="includePath"/>
+  <collection name="modelFiles">
+   <object type="saModelFile" name="modelFiles" version="1">
+    <attribute value="1" type="giBoolean" name="enabled"/>
+    <attribute value="ngspice/design.ngspice" type="giString" name="filename"/>
+    <attribute value="" type="giString" name="section"/>
+   </object>
+   <object type="saModelFile" name="modelFiles" version="1">
+    <attribute value="1" type="giBoolean" name="enabled"/>
+    <attribute value="aliases.spice" type="giString" name="filename"/>
+    <attribute value="" type="giString" name="section"/>
+   </object>
+   <object type="saModelFile" name="modelFiles" version="1">
+    <attribute value="1" type="giBoolean" name="enabled"/>
+    <attribute value="ngspice/sm141064.ngspice" type="giString" name="filename"/>
+    <attribute value="typical" type="giString" name="section"/>
+   </object>
+  </collection>
+  <collection name="modelGroupDefs"/>
+  <collection name="modelGroups"/>
+ </object>
+</file-format>

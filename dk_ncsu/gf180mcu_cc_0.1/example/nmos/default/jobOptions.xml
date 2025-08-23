@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 09:24:46 2025-->
+<file-format name="stateCategory" version="1.0">
+ <object type="saJobOptions" name="jobOptions" version="1">
+  <attribute value="" type="giString" name="dynConcurrent"/>
+  <attribute value="default" type="giString" name="dynExtraOptions"/>
+  <attribute value="" type="giString" name="dynJcName"/>
+  <attribute value="" type="giString" name="dynMeasConcurrent"/>
+  <attribute value="default" type="giString" name="dynMeasExtraOptions"/>
+  <attribute value="" type="giString" name="dynMeasJcName"/>
+  <attribute value="" type="giString" name="dynMeasQueueList"/>
+  <attribute value="" type="giString" name="dynQueueList"/>
+  <attribute value="Background" type="giString" name="measurementsCalculationMode"/>
+  <attribute value="" type="giString" name="measurementsCommandPrefix"/>
+  <attribute value="" type="giString" name="measurementsDisplayName"/>
+  <attribute value="Current" type="saDisplayEnum" name="measurementsDisplayType"/>
+  <attribute value="" type="giString" name="measurementsDisplayWrapperScript"/>
+  <attribute value="" type="giString" name="measurementsGridOptions"/>
+  <attribute value="SAEShell" type="giString" name="measurementsJobClass"/>
+  <attribute value="" type="giString" name="netlistingGridOptions"/>
+  <attribute value="Netlisting" type="giString" name="netlistingJobClass"/>
+  <attribute value="0" type="giBoolean" name="noCopyScratchResults"/>
+  <attribute value="~/simulation" type="giString" name="remoteSimDir"/>
+  <attribute value="/SCRATCH" type="giString" name="scratchDir"/>
+  <attribute value="" type="giString" name="scratchNetworkDir"/>
+  <attribute value="" type="giString" name="simulationCommandPrefix"/>
+  <attribute value="" type="giString" name="simulationGridOptions"/>
+  <attribute value="Simulation" type="giString" name="simulationJobClass"/>
+  <attribute value="0" type="giBoolean" name="useScratchDir"/>
+  <attribute value="0" type="giBoolean" name="usedGlobalResource"/>
+  <attribute value="1" type="giBoolean" name="usedSimResource"/>
+ </object>
+</file-format>

@@ -1,0 +1,7 @@
+TDMCHECKPOINT="1.0"
+keepEmptyCategory type="unknown"
+gf180mcu/mim_2p0fF type="cell"
+gf180mcu/nmoscap_3p3 type="cell"
+gf180mcu/nmoscap_6p0 type="cell"
+gf180mcu/pmoscap_3p3 type="cell"
+gf180mcu/pmoscap_6p0 type="cell"

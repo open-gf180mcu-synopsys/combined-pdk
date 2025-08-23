@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- created by Custom Compiler (TM), build #, on Sat Aug 23 10:04:28 2025
+-->
+<synopsysFile name="synopsysRecentFiles" version="1.1">
+        <recentFiles>
+                <file mode="write" file="schematic" cell="nmos" library="example" view="schematic"/>
+        </recentFiles>
+</synopsysFile>

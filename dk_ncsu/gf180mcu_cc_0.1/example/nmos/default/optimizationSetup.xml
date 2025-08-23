@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 09:24:46 2025-->
+<file-format name="stateCategory" version="1.0">
+ <object type="saOptimizationSetup" name="optimizationSetup" version="1">
+  <collection name="csoAreas"/>
+  <collection name="csoObjectives"/>
+  <object type="saDpoOptions" name="csoOptions" version="1">
+   <attribute value="" type="giString" name="activeResultsHistory"/>
+   <attribute value="0" type="giBoolean" name="autoFilterIndividualInvalidParamFlag"/>
+   <attribute value="simulation" type="giString" name="csoJobClass"/>
+   <attribute value="opt_history_1" type="giString" name="csoRunName"/>
+   <attribute value="1" type="giString" name="designMeetSpecs"/>
+   <attribute value="0" type="giBoolean" name="enableFailSampleReportFlag"/>
+   <attribute value="0" type="giBoolean" name="enableInitialValueFlag"/>
+   <attribute value="1" type="giBoolean" name="enablePVTsReduction"/>
+   <attribute value="0" type="giBoolean" name="individualInvalidParamCheckFlag"/>
+   <attribute value="0" type="giBoolean" name="keepFailedSampleFlag"/>
+   <attribute value="0" type="giBoolean" name="keepTrialDataFlag"/>
+   <attribute value="" type="giString" name="maxIterations"/>
+   <attribute value="" type="giString" name="maxRunTime"/>
+   <attribute value="50" type="giString" name="maximumTimesThanAverage"/>
+   <attribute value="" type="giString" name="maximumWallTime"/>
+   <attribute value="100" type="giString" name="noImprovementIterations"/>
+   <attribute value="0" type="giBoolean" name="optParamConstraintFlag"/>
+   <attribute value="Unified" type="giString" name="optimizerEngine"/>
+   <attribute value="0" type="giBoolean" name="removeInvalidParamsFlag"/>
+   <attribute value="1" type="giBoolean" name="rerunAbnormalSampleFlag"/>
+   <attribute value="1" type="giBoolean" name="rerunAbnormalSimFlag"/>
+   <attribute value="10" type="giString" name="topBestDesigns"/>
+   <attribute value="1" type="giBoolean" name="useSigmaCornerMethod"/>
+  </object>
+  <collection name="csoParams"/>
+  <attribute value="1" type="giBoolean" name="enabled"/>
+  <collection name="optParamConstraints"/>
+ </object>
+</file-format>

@@ -1,0 +1,55 @@
+#!/usr/bin/sh
+
+##########################################################################
+
+#		 REQUIRED PREPROCESSOR MACROS 
+
+##########################################################################
+
+# *****************************************************************************************
+# Please set the path ICV_LVS to $GF_PDK_HOME/LVS/ICV or the ICV LVS Runset path 
+# Example: setenv ICV_LVS $GF_PDK_HOME/LVS/ICV
+#****************************************************************************************** 
+
+#setenv ICV_LVS $GF_PDK_HOME/LVS/ICV
+
+#setenv BEOL_STACK 1P2M
+#setenv BEOL_STACK 1P3M
+#setenv BEOL_STACK 1P4M
+#setenv BEOL_STACK 1P5M
+#setenv BEOL_STACK 1P6M
+
+
+##########################################################################
+
+#		 OPTIONAL PREPROCESSOR MACROS 
+
+##########################################################################
+
+#setenv CONNECT_THRU_DIFF_CHECK YES
+
+#setenv ERC_RUN YES
+
+#setenv EXTRACT_MIM_CAP 1P0FF_OPT_A
+#setenv EXTRACT_MIM_CAP 1P0FF_OPT_B
+#setenv EXTRACT_MIM_CAP 1P5FF_OPT_A
+#setenv EXTRACT_MIM_CAP 1P5FF_OPT_B
+#setenv EXTRACT_MIM_CAP 2P0FF_OPT_A
+#setenv EXTRACT_MIM_CAP 2P0FF_OPT_B
+
+#setenv LVSRES_ALT_METHODOLOGY TRUE
+
+#setenv MOS_NF_BY COUNT
+
+#setenv PEX_RUN YES
+
+#setenv POLY_HIGH_RESISTOR 2K
+#setenv POLY_HIGH_RESISTOR 3K
+
+#setenv TOPMETAL 11KA
+#setenv TOPMETAL 30KA
+#setenv TOPMETAL 6KA
+#setenv TOPMETAL 9KA
+
+#setenv VIRTUAL_CONNECT TRUE
+

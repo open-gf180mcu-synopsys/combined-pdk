@@ -1,0 +1,94 @@
+set LIBDIR "/mnt/designkits/gf180MCU/dk_open/share/pdk/gf180mcuA/libs.ref/gf180mcu_fd_sc_mcu7t5v0"
+set source_type "combined" ; # gds_lef_oasis | ndm | combined | mw
+set load_tech 1 ; # 1=yes 0=no
+set techfile "./gf180nm_mcu_5LM_1TM_11K_7t_mw.tf"
+set tech_info(ROUTE,LAYER_DIRECTIONS,OFFSET) " \
+set site_default "unit"
+set site_symmetry "{unit Y}"
+set mask_info(ROUTE,NUM_MASK) ""
+set ndm_flow "frame"
+set clib_name "EXPLORE"
+set save_layout_design_views 0  ; # 1=yes 0=no
+set macro_grouping_strategy "aggregate_single_cell"
+set bus_delimeter {[]}
+set scale_factor "1000"
+set change_site 0 ; # 1=yes 0=no
+set include_design_filters ""
+set exclude_design_filters "" 
+set keep_phy_cells 1 ; # 1=true 0=false
+set use_process_workspaces 1 ; # 1=true 0=false
+set explore_create_aggregate 0 ; # 1=true, 0=false
+set db_files "${LIBDIR}/lib/gf180mcu_fd_sc_mcu7t5v0__ff_n40C_5v50_shortname.db ${LIBDIR}/lib/gf180mcu_fd_sc_mcu7t5v0__ss_125C_4v50_shortname.db"   
+set pvt_configuration 0 ; # 1=yes 0=no
+set process_labels ""
+set process_numbers ""
+set voltages ""
+set temperatures ""
+set process_label_mapping ""
+set etm_mode_label_wi_db ""
+set gds_files ""   
+set gds_all_cell_type ""     
+set gds_block_map_file ""
+set gds_layer_map_file ""
+set gds_trace_option "auto"    
+set gds_exclude_layers ""
+set gds_std_cell_port_types { \
+set gds_pin_text_list ""
+set lef_files "${LIBDIR}/lef/gf180mcu_fd_sc_mcu7t5v0.lef"
+set lef_non_real_cut_obs_mode 1 ; # 1=true 0=false
+set lef_auto_rename_conflict_sites 1 ; # 1=true 0=false
+set lef_convert_site ""
+set lef_cell_boundary "by_overlap_layer" ; 
+set oasis_files ""   
+set oasis_all_cell_type ""     
+set oasis_block_map_file ""
+set oasis_layer_map_file ""
+set oasis_trace_option "auto"    
+set oasis_exclude_layers ""
+set oasis_std_cell_port_types { \
+set oasis_pin_text_list ""
+set aggre_ndm ""
+set aggre_lib_order ""
+set frame_files ""
+set mw_file ""
+set adv_frame_setup 0 ; # 1=advanced 0=auto
+set convert_blockage_to_zero_by_min_spacing 0 ; # 1=yes 0=no
+set routing_pg_list "" ; # if empty, auto search by script(all pg ports exclude VDD/VSS/GND)
+set allow_orien ""
+set pad_rotation ""
+set enable_icv_ant 0 ; # 1=yes 0=no
+set diffusion_layer ""
+set poly_layer ""
+set cont_layer ""
+set v0_layer ""
+set m0_poly_layer ""
+set m0_diff_layer ""
+set cont_m0_diff_layer ""
+set custom_runset_file ""
+set gate_class1_layer ""
+set gate_class2_layer ""
+set gate_class3_layer ""
+set diode_cells "gf180mcu_fd_sc_mcu7t5v0__antenna"
+set diode_pin "I"
+set ant_tcl_for_new_lib "" ; # load to new library within a workspace
+set ant_tcl_for_existing_lib "" ; # load to existing library within a workspace using edit flow
+set ant_clf_for_existing_lib "" ; # load to existing library within a workspace using edit flow
+set set_proper_site 1 ; # 1=yes 0=no
+set run_pin_access 0 ;# 1=run 0=skip
+set analyze_macro 0 ;# 1=for macro 0=for stdcell
+set run_routing 0 ; # 1=run 0=skip
+set check_cell_list {}
+set detail_report 0 ; # 1=true 0=false
+set min_pin_layer ""
+set run_compare_db 0 ; # 1=run 0=skip
+set run_compare_ndm 0 ; # 1=run 0=skip
+set comparison_ndm "" 
+set cell_lib_dir "[sh pwd]/icc2_cell_lib"
+set create_tech_commands "[sh pwd]/export_rm_tcl/icc2lm_tech.tcl"
+set create_ndm_commands "[sh pwd]/export_rm_tcl/icc2lm_create_cell_libs_export.tcl"
+set set_proper_site_commands "[sh pwd]/export_rm_tcl/icc2lm_set_proper_site_export.tcl"
+set validate_ndm_commands "[sh pwd]/export_rm_tcl/icc2lm_validate_cell_libs_export.tcl"
+set analyze_ndm_commands "[sh pwd]/export_rm_tcl/icc2_analyze_cell_libs_export.tcl"
+set flow_info_prefix "ICCII LM PREP FLOW INFO >>"
+set flow_warn_prefix "ICCII LM PREP FLOW WARNING >>"
+set flow_err_prefix  "ICCII LM PREP FLOW ERROR >>"

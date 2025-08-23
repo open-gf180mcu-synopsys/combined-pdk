@@ -1,0 +1,8 @@
+TDMCHECKPOINT="1.0"
+keepEmptyCategory type="unknown"
+gf180mcu/nplus_u type="cell"
+gf180mcu/npolyf_u type="cell"
+gf180mcu/nwell type="cell"
+gf180mcu/pplus_u type="cell"
+gf180mcu/ppolyf_u type="cell"
+gf180mcu/rm1 type="cell"

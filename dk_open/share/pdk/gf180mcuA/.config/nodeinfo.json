@@ -1,0 +1,52 @@
+{
+    "foundry": "GF",
+    "foundry-name": "Global Foundries",
+    "node": "gf180mcuA",
+    "feature-size": "180nm",
+    "status": "active",
+    "description": "Global Foundries 0.18um MCU CMOS, 2fF MiM + 1k high sheet rho poly + 3 metal layer backend stack + 3um thick top metal + 2fF/um^2 MiM caps 1 1",
+    "options": [
+	"THICKMET",
+	"MIM_2P0",
+	"METAL3"
+    ],
+    "stdcells": {
+        "gf180mcu_fd_sc_mcu9t5v0": "376ea56fa36ce7702595ce4e0e3c9357ee38c81c",
+        "gf180mcu_fd_sc_mcu7t5v0": "8743b6f9641eb8707179c4e51703380d4dc90f16",
+        "gf180mcu_osu_sc_gf12t3v3": "df1d8ec95b2cfbfdb8e0128819e9899e968b92a4",
+        "gf180mcu_osu_sc_gf9t3v3": "df1d8ec95b2cfbfdb8e0128819e9899e968b92a4"
+    },
+    "iocells": {
+        "gf180mcu_fd_io": "f84fe10e67a5cb9002e9ae8210f58e570726c366"
+    },
+    "primitive": {
+        "gf180mcu_fd_pr": "faef89e8c1b392733c32820a7b12e3a3847cc18c"
+    },
+    "verification": {
+        "gf180mcu_fd_pv": "10ee7fc75437edafa56f29f2b1872e95c9f22b71"
+    },
+    "memory": {
+        "gf180mcu_fd_ip_sram": "9c411928870ce15226228fa52ddb6ecc0ea4ffbe"
+    },
+    "build": {
+        "open_pdks": "1.0.529",
+        "magic": "8.3.465"
+    },
+    "commit": {
+        "open_pdks": "9ca6f00b4360922e095033945f36198060b65086",
+        "magic": "54773957c99a304107bf37a392a0b51fad5dbcbf"
+    },
+    "reference": {
+        "open_pdks": "3863076405b31ae66bfc895a8cfe791706de9905",
+        "magic": "eb81da6c56ff200ba3d7ceab41cdba5fde32b513",
+        "gf180mcu_pdk": "a897aa30369d3bcec87d9d50ce9b01f320f854ef",
+        "gf180mcu_fd_pr": "e5e0710ba82f807f03442b15e4c16c0091aaaf8b",
+        "gf180mcu_fd_pv": "10ee7fc75437edafa56f29f2b1872e95c9f22b71",
+        "gf180mcu_fd_io": "f84fe10e67a5cb9002e9ae8210f58e570726c366",
+        "gf180mcu_fd_sc_mcu7t5v0": "8743b6f9641eb8707179c4e51703380d4dc90f16",
+        "gf180mcu_fd_sc_mcu9t5v0": "376ea56fa36ce7702595ce4e0e3c9357ee38c81c",
+        "gf180mcu_fd_ip_sram": "9c411928870ce15226228fa52ddb6ecc0ea4ffbe",
+        "gf180mcu_osu_sc_gf12t3v3": "df1d8ec95b2cfbfdb8e0128819e9899e968b92a4",
+        "gf180mcu_osu_sc_gf9t3v3": "df1d8ec95b2cfbfdb8e0128819e9899e968b92a4"
+    }
+}

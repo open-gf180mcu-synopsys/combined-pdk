@@ -1,0 +1,1977 @@
+gf180mcu_fd_sc_mcu7t5v0__addf_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ S 2
+ CO 2
+ CI 1
+ B 1
+ A 1
+gf180mcu_fd_sc_mcu7t5v0__addf_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ S 2
+ CO 2
+ CI 1
+ B 1
+ A 1
+gf180mcu_fd_sc_mcu7t5v0__addf_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ S 2
+ CO 2
+ CI 1
+ B 1
+ A 1
+gf180mcu_fd_sc_mcu7t5v0__addh_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ S 2
+ CO 2
+ B 1
+ A 1
+gf180mcu_fd_sc_mcu7t5v0__addh_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ S 2
+ CO 2
+ B 1
+ A 1
+gf180mcu_fd_sc_mcu7t5v0__addh_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ S 2
+ CO 2
+ B 1
+ A 1
+gf180mcu_fd_sc_mcu7t5v0__and2_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__and2_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__and2_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__and3_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__and3_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__and3_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__and4_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A4 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__and4_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A4 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__and4_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A4 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__antenna
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__aoi21_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi21_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi21_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi22_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi22_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi22_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi211_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C 1
+ B 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi211_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C 1
+ B 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi211_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C 1
+ B 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi221_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C 1
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi221_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C 1
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi221_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C 1
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi222_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C2 1
+ C1 1
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi222_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C2 1
+ C1 1
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__aoi222_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C2 1
+ C1 1
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__buf_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__buf_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__buf_3
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__buf_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__buf_8
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__buf_12
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__buf_16
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__buf_20
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__bufz_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__bufz_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__bufz_3
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__bufz_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__bufz_8
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__bufz_12
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__bufz_16
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__clkbuf_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkbuf_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkbuf_3
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkbuf_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkbuf_8
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkbuf_12
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkbuf_16
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkbuf_20
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkinv_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkinv_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkinv_3
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkinv_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkinv_8
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkinv_12
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkinv_16
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__clkinv_20
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__dffnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLKN 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLKN 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLKN 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffnrnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLKN 65
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffnrnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLKN 65
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffnrnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLKN 65
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffnrsnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLKN 65
+ SETN 1
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffnrsnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLKN 65
+ SETN 1
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffnrsnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLKN 65
+ SETN 1
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffnsnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLKN 65
+ SETN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffnsnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLKN 65
+ SETN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffnsnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLKN 65
+ SETN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffrnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffrnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffrnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffrsnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SETN 1
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffrsnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SETN 1
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffrsnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SETN 1
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffsnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SETN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffsnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SETN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dffsnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SETN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__dlya_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__dlya_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__dlya_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__dlyb_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__dlyb_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__dlyb_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__dlyc_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__dlyc_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__dlyc_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__dlyd_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__dlyd_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__dlyd_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__endcap
+ VSS 36
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__fill_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__fill_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__fill_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__fill_8
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__fill_16
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__fill_32
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__fill_64
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__fillcap_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__fillcap_8
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__fillcap_16
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__fillcap_32
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__fillcap_64
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__filltie
+ VSS 36
+ VDD 20
+gf180mcu_fd_sc_mcu7t5v0__hold
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 4
+gf180mcu_fd_sc_mcu7t5v0__icgtn_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ TE 1
+ E 1
+ CLKN 65
+gf180mcu_fd_sc_mcu7t5v0__icgtn_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ TE 1
+ E 1
+ CLKN 65
+gf180mcu_fd_sc_mcu7t5v0__icgtn_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ TE 1
+ E 1
+ CLKN 65
+gf180mcu_fd_sc_mcu7t5v0__icgtp_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ TE 1
+ E 1
+ CLK 65
+gf180mcu_fd_sc_mcu7t5v0__icgtp_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ TE 1
+ E 1
+ CLK 65
+gf180mcu_fd_sc_mcu7t5v0__icgtp_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ TE 1
+ E 1
+ CLK 65
+gf180mcu_fd_sc_mcu7t5v0__inv_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__inv_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__inv_3
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__inv_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__inv_8
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__inv_12
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__inv_16
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__inv_20
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+gf180mcu_fd_sc_mcu7t5v0__invz_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__invz_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__invz_3
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__invz_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__invz_8
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__invz_12
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__invz_16
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ I 1
+ EN 1
+gf180mcu_fd_sc_mcu7t5v0__latq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ E 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__latq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ E 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__latq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ E 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__latrnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ RN 1
+ E 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__latrnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ RN 1
+ E 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__latrnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ RN 1
+ E 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__latrsnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ SETN 1
+ RN 1
+ E 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__latrsnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ SETN 1
+ RN 1
+ E 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__latrsnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ SETN 1
+ RN 1
+ E 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__latsnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ SETN 1
+ E 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__latsnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ SETN 1
+ E 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__latsnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ SETN 1
+ E 65
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__mux2_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ S 1
+ I1 1
+ I0 1
+gf180mcu_fd_sc_mcu7t5v0__mux2_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ S 1
+ I1 1
+ I0 1
+gf180mcu_fd_sc_mcu7t5v0__mux2_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ S 1
+ I1 1
+ I0 1
+gf180mcu_fd_sc_mcu7t5v0__mux4_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ S1 1
+ S0 1
+ I3 1
+ I2 1
+ I1 1
+ I0 1
+gf180mcu_fd_sc_mcu7t5v0__mux4_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ S1 1
+ S0 1
+ I3 1
+ I2 1
+ I1 1
+ I0 1
+gf180mcu_fd_sc_mcu7t5v0__mux4_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ S1 1
+ S0 1
+ I3 1
+ I2 1
+ I1 1
+ I0 1
+gf180mcu_fd_sc_mcu7t5v0__nand2_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nand2_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nand2_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nand3_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nand3_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nand3_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nand4_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A4 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nand4_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A4 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nand4_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A4 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nor2_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nor2_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nor2_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nor3_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nor3_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nor3_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nor4_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A4 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nor4_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A4 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__nor4_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A4 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai21_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai21_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai21_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai22_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai22_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai22_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai31_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai31_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai31_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai32_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B2 1
+ B1 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai32_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B2 1
+ B1 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai32_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B2 1
+ B1 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai33_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B3 1
+ B2 1
+ B1 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai33_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B3 1
+ B2 1
+ B1 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai33_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ B3 1
+ B2 1
+ B1 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai211_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C 1
+ B 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai211_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C 1
+ B 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai211_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C 1
+ B 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai221_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C 1
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai221_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C 1
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai221_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C 1
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai222_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C2 1
+ C1 1
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai222_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C2 1
+ C1 1
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__oai222_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ C2 1
+ C1 1
+ B2 1
+ B1 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__or2_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__or2_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__or2_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__or3_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__or3_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__or3_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__or4_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A4 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__or4_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A4 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__or4_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A4 1
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__sdffq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SI 1
+ SE 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__sdffq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SI 1
+ SE 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__sdffq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SI 1
+ SE 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__sdffrnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SI 1
+ SE 1
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__sdffrnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SI 1
+ SE 1
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__sdffrnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SI 1
+ SE 1
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__sdffrsnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SI 1
+ SETN 1
+ SE 1
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__sdffrsnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SI 1
+ SETN 1
+ SE 1
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__sdffrsnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SI 1
+ SETN 1
+ SE 1
+ RN 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__sdffsnq_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SI 1
+ SETN 1
+ SE 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__sdffsnq_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SI 1
+ SETN 1
+ SE 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__sdffsnq_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Q 2
+ CLK 65
+ SI 1
+ SETN 1
+ SE 1
+ D 1
+gf180mcu_fd_sc_mcu7t5v0__tieh
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+gf180mcu_fd_sc_mcu7t5v0__tiel
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+gf180mcu_fd_sc_mcu7t5v0__xnor2_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__xnor2_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__xnor2_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__xnor3_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__xnor3_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__xnor3_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ ZN 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__xor2_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__xor2_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__xor2_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__xor3_1
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__xor3_2
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A3 1
+ A2 1
+ A1 1
+gf180mcu_fd_sc_mcu7t5v0__xor3_4
+ VSS 36
+ VPW 36
+ VNW 20
+ VDD 20
+ Z 2
+ A3 1
+ A2 1
+ A1 1

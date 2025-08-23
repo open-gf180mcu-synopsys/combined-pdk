@@ -1,0 +1,160 @@
+magic
+tech gf180mcuA
+magscale 1 5
+timestamp 1750858719
+<< metal1 >>
+rect 0 760 900 830
+rect 145 635 170 760
+rect 485 555 510 760
+rect 185 453 235 455
+rect 185 427 197 453
+rect 223 427 235 453
+rect 185 425 235 427
+rect 345 453 395 455
+rect 345 427 357 453
+rect 383 427 395 453
+rect 345 425 395 427
+rect 520 453 570 455
+rect 520 427 532 453
+rect 558 427 570 453
+rect 520 425 570 427
+rect 730 555 755 760
+rect 815 525 840 725
+rect 815 520 855 525
+rect 815 518 865 520
+rect 145 70 185 190
+rect 815 492 827 518
+rect 853 492 865 518
+rect 815 490 865 492
+rect 815 485 855 490
+rect 470 70 510 190
+rect 730 70 755 190
+rect 815 105 840 485
+rect 0 0 900 70
+<< via1 >>
+rect 197 427 223 453
+rect 357 427 383 453
+rect 532 427 558 453
+rect 827 492 853 518
+<< obsm1 >>
+rect 60 395 85 725
+rect 315 580 340 725
+rect 115 555 340 580
+rect 570 560 595 725
+rect 115 455 140 555
+rect 570 535 620 560
+rect 260 480 310 510
+rect 110 425 155 455
+rect 50 390 85 395
+rect 35 360 85 390
+rect 45 355 85 360
+rect 60 105 85 355
+rect 115 240 140 425
+rect 270 295 300 480
+rect 450 360 500 390
+rect 595 295 620 535
+rect 645 540 670 725
+rect 645 520 685 540
+rect 645 515 695 520
+rect 645 490 780 515
+rect 645 485 685 490
+rect 675 360 725 390
+rect 270 265 620 295
+rect 115 215 340 240
+rect 595 230 620 265
+rect 750 240 780 490
+rect 315 105 340 215
+rect 570 205 620 230
+rect 645 215 780 240
+rect 570 105 595 205
+rect 645 105 670 215
+<< metal2 >>
+rect 820 520 860 525
+rect 815 518 865 520
+rect 815 492 827 518
+rect 853 492 865 518
+rect 815 490 865 492
+rect 820 485 860 490
+rect 185 453 235 460
+rect 350 455 390 460
+rect 520 455 570 460
+rect 185 427 197 453
+rect 223 427 235 453
+rect 185 420 235 427
+rect 345 453 570 455
+rect 345 427 357 453
+rect 383 427 532 453
+rect 558 427 570 453
+rect 345 425 570 427
+rect 350 420 390 425
+rect 520 420 570 425
+<< obsm2 >>
+rect 650 520 690 525
+rect 645 490 695 520
+rect 650 485 690 490
+rect 35 390 85 395
+rect 455 390 495 395
+rect 675 390 725 395
+rect 35 360 725 390
+rect 35 355 85 360
+rect 455 355 495 360
+rect 675 355 725 360
+<< labels >>
+rlabel via1 s 532 427 558 453 6 CLK
+port 3 nsew clock input
+rlabel via1 s 357 427 383 453 6 CLK
+port 3 nsew clock input
+rlabel metal1 s 345 425 395 455 6 CLK
+port 3 nsew clock input
+rlabel metal1 s 520 425 570 455 6 CLK
+port 3 nsew clock input
+rlabel metal2 s 350 420 390 460 6 CLK
+port 3 nsew clock input
+rlabel metal2 s 345 425 570 455 6 CLK
+port 3 nsew clock input
+rlabel metal2 s 520 420 570 460 6 CLK
+port 3 nsew clock input
+rlabel metal1 s 145 635 170 830 6 VDD
+port 4 nsew power bidirectional abutment
+rlabel metal1 s 485 555 510 830 6 VDD
+port 4 nsew power bidirectional abutment
+rlabel metal1 s 730 555 755 830 6 VDD
+port 4 nsew power bidirectional abutment
+rlabel metal1 s 0 760 900 830 6 VDD
+port 4 nsew power bidirectional abutment
+rlabel metal1 s 145 0 185 190 6 VSS
+port 5 nsew ground bidirectional abutment
+rlabel metal1 s 470 0 510 190 6 VSS
+port 5 nsew ground bidirectional abutment
+rlabel metal1 s 730 0 755 190 6 VSS
+port 5 nsew ground bidirectional abutment
+rlabel metal1 s 0 0 900 70 6 VSS
+port 5 nsew ground bidirectional abutment
+rlabel via1 s 197 427 223 453 6 D
+port 1 nsew signal input
+rlabel metal1 s 185 425 235 455 6 D
+port 1 nsew signal input
+rlabel metal2 s 185 420 235 460 6 D
+port 1 nsew signal input
+rlabel via1 s 827 492 853 518 6 Q
+port 2 nsew signal output
+rlabel metal1 s 815 105 840 725 6 Q
+port 2 nsew signal output
+rlabel metal1 s 815 485 855 525 6 Q
+port 2 nsew signal output
+rlabel metal1 s 815 490 865 520 6 Q
+port 2 nsew signal output
+rlabel metal2 s 820 485 860 525 6 Q
+port 2 nsew signal output
+rlabel metal2 s 815 490 865 520 6 Q
+port 2 nsew signal output
+<< properties >>
+string FIXED_BBOX 0 0 900 830
+string LEFclass CORE
+string LEFsite gf180mcu_osu_sc_gp12t3v3
+string LEFsymmetry X Y
+string LEFview TRUE
+string GDS_END 388160
+string GDS_FILE $PDKPATH/libs.ref/gf180mcu_osu_sc_gp12t3v3/gds/gf180mcu_osu_sc_gp12t3v3.gds
+string GDS_START 375224
+<< end >>

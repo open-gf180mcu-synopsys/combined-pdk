@@ -1,0 +1,156 @@
+magic
+tech gf180mcuA
+magscale 1 5
+timestamp 1750858719
+<< metal1 >>
+rect 0 565 640 635
+rect 140 470 165 565
+rect 305 485 330 530
+rect 300 453 330 485
+rect 470 470 495 565
+rect 300 427 302 453
+rect 328 427 330 453
+rect 300 415 330 427
+rect 350 338 400 340
+rect 350 312 362 338
+rect 388 312 400 338
+rect 350 310 400 312
+rect 125 258 175 260
+rect 125 232 137 258
+rect 163 232 175 258
+rect 125 230 175 232
+rect 455 258 505 260
+rect 455 232 467 258
+rect 493 232 505 258
+rect 455 230 505 232
+rect 300 193 330 205
+rect 140 70 165 190
+rect 300 167 302 193
+rect 328 167 330 193
+rect 300 150 330 167
+rect 305 105 330 150
+rect 470 70 495 190
+rect 0 0 640 70
+<< via1 >>
+rect 302 427 328 453
+rect 362 312 388 338
+rect 137 232 163 258
+rect 467 232 493 258
+rect 302 167 328 193
+<< obsm1 >>
+rect 55 340 80 530
+rect 555 390 580 530
+rect 275 365 580 390
+rect 55 310 240 340
+rect 55 105 80 310
+rect 210 260 240 310
+rect 275 300 305 365
+rect 210 230 350 260
+rect 555 105 580 365
+<< metal2 >>
+rect 300 460 330 485
+rect 295 453 335 460
+rect 295 427 302 453
+rect 328 427 335 453
+rect 295 420 335 427
+rect 295 415 330 420
+rect 135 265 165 270
+rect 130 258 170 265
+rect 130 232 137 258
+rect 163 232 170 258
+rect 130 225 170 232
+rect 135 130 165 225
+rect 295 200 325 415
+rect 360 345 395 350
+rect 355 338 400 345
+rect 355 312 362 338
+rect 388 312 400 338
+rect 355 305 400 312
+rect 360 300 400 305
+rect 290 193 340 200
+rect 290 167 302 193
+rect 328 167 340 193
+rect 290 160 340 167
+rect 370 130 400 300
+rect 465 265 495 270
+rect 460 260 500 265
+rect 455 258 505 260
+rect 455 232 467 258
+rect 493 232 505 258
+rect 455 230 505 232
+rect 460 225 500 230
+rect 465 220 495 225
+rect 135 100 400 130
+<< labels >>
+rlabel metal1 s 140 470 165 635 6 VDD
+port 4 nsew power bidirectional abutment
+rlabel metal1 s 470 470 495 635 6 VDD
+port 4 nsew power bidirectional abutment
+rlabel metal1 s 0 565 640 635 6 VDD
+port 4 nsew power bidirectional abutment
+rlabel metal1 s 140 0 165 190 6 VSS
+port 5 nsew ground bidirectional abutment
+rlabel metal1 s 470 0 495 190 6 VSS
+port 5 nsew ground bidirectional abutment
+rlabel metal1 s 0 0 640 70 6 VSS
+port 5 nsew ground bidirectional abutment
+rlabel via1 s 362 312 388 338 6 A
+port 1 nsew signal input
+rlabel via1 s 137 232 163 258 6 A
+port 1 nsew signal input
+rlabel metal2 s 135 100 165 270 6 A
+port 1 nsew signal input
+rlabel metal2 s 130 225 170 265 6 A
+port 1 nsew signal input
+rlabel metal2 s 135 100 400 130 6 A
+port 1 nsew signal input
+rlabel metal2 s 360 300 395 350 6 A
+port 1 nsew signal input
+rlabel metal2 s 370 100 400 345 6 A
+port 1 nsew signal input
+rlabel metal2 s 355 305 400 345 6 A
+port 1 nsew signal input
+rlabel metal1 s 125 230 175 260 6 A
+port 1 nsew signal input
+rlabel metal1 s 350 310 400 340 6 A
+port 1 nsew signal input
+rlabel via1 s 467 232 493 258 6 B
+port 2 nsew signal input
+rlabel metal2 s 465 220 495 270 6 B
+port 2 nsew signal input
+rlabel metal2 s 460 225 500 265 6 B
+port 2 nsew signal input
+rlabel metal2 s 455 230 505 260 6 B
+port 2 nsew signal input
+rlabel metal1 s 455 230 505 260 6 B
+port 2 nsew signal input
+rlabel via1 s 302 167 328 193 6 Y
+port 3 nsew signal output
+rlabel via1 s 302 427 328 453 6 Y
+port 3 nsew signal output
+rlabel metal2 s 295 160 325 460 6 Y
+port 3 nsew signal output
+rlabel metal2 s 300 415 330 485 6 Y
+port 3 nsew signal output
+rlabel metal2 s 295 420 335 460 6 Y
+port 3 nsew signal output
+rlabel metal2 s 290 160 340 200 6 Y
+port 3 nsew signal output
+rlabel metal1 s 300 415 330 485 6 Y
+port 3 nsew signal output
+rlabel metal1 s 305 415 330 530 6 Y
+port 3 nsew signal output
+rlabel metal1 s 305 105 330 205 6 Y
+port 3 nsew signal output
+rlabel metal1 s 300 150 330 205 6 Y
+port 3 nsew signal output
+<< properties >>
+string FIXED_BBOX 0 0 640 635
+string LEFclass CORE
+string LEFsite gf180mcu_osu_sc_gp9t3v3
+string LEFsymmetry X Y
+string LEFview TRUE
+string GDS_END 387188
+string GDS_FILE $PDKPATH/libs.ref/gf180mcu_osu_sc_gp9t3v3/gds/gf180mcu_osu_sc_gp9t3v3.gds
+string GDS_START 378990
+<< end >>

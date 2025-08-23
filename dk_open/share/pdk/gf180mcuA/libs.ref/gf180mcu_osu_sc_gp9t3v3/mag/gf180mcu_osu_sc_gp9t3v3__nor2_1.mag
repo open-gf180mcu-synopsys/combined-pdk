@@ -1,0 +1,204 @@
+magic
+tech gf180mcuA
+magscale 1 10
+timestamp 1750858719
+<< nwell >>
+rect 0 630 640 1270
+<< nmos >>
+rect 190 210 250 380
+rect 360 210 420 380
+<< pmos >>
+rect 220 720 280 1060
+rect 330 720 390 1060
+<< ndiff >>
+rect 90 318 190 380
+rect 90 272 112 318
+rect 158 272 190 318
+rect 90 210 190 272
+rect 250 318 360 380
+rect 250 272 282 318
+rect 328 272 360 318
+rect 250 210 360 272
+rect 420 318 520 380
+rect 420 272 452 318
+rect 498 272 520 318
+rect 420 210 520 272
+<< pdiff >>
+rect 120 1007 220 1060
+rect 120 773 142 1007
+rect 188 773 220 1007
+rect 120 720 220 773
+rect 280 720 330 1060
+rect 390 995 490 1060
+rect 390 855 422 995
+rect 468 855 490 995
+rect 390 720 490 855
+<< ndiffc >>
+rect 112 272 158 318
+rect 282 272 328 318
+rect 452 272 498 318
+<< pdiffc >>
+rect 142 773 188 1007
+rect 422 855 468 995
+<< psubdiff >>
+rect 60 118 210 140
+rect 60 72 112 118
+rect 158 72 210 118
+rect 60 50 210 72
+rect 300 118 450 140
+rect 300 72 352 118
+rect 398 72 450 118
+rect 300 50 450 72
+<< nsubdiff >>
+rect 60 1198 210 1220
+rect 60 1152 112 1198
+rect 158 1152 210 1198
+rect 60 1130 210 1152
+rect 300 1198 450 1220
+rect 300 1152 352 1198
+rect 398 1152 450 1198
+rect 300 1130 450 1152
+<< psubdiffcont >>
+rect 112 72 158 118
+rect 352 72 398 118
+<< nsubdiffcont >>
+rect 112 1152 158 1198
+rect 352 1152 398 1198
+<< polysilicon >>
+rect 220 1060 280 1110
+rect 330 1060 390 1110
+rect 220 680 280 720
+rect 190 630 280 680
+rect 330 690 390 720
+rect 330 670 420 690
+rect 330 643 500 670
+rect 330 630 427 643
+rect 190 540 250 630
+rect 110 513 250 540
+rect 110 467 147 513
+rect 193 467 250 513
+rect 110 440 250 467
+rect 190 380 250 440
+rect 360 597 427 630
+rect 473 597 500 643
+rect 360 570 500 597
+rect 360 380 420 570
+rect 190 160 250 210
+rect 360 160 420 210
+<< polycontact >>
+rect 147 467 193 513
+rect 427 597 473 643
+<< metal1 >>
+rect 0 1198 640 1270
+rect 0 1152 112 1198
+rect 158 1152 352 1198
+rect 398 1152 640 1198
+rect 0 1130 640 1152
+rect 140 1007 190 1130
+rect 140 773 142 1007
+rect 188 773 190 1007
+rect 420 995 470 1060
+rect 420 855 422 995
+rect 468 855 470 995
+rect 420 790 470 855
+rect 280 780 470 790
+rect 140 720 190 773
+rect 260 776 470 780
+rect 260 724 284 776
+rect 336 740 470 776
+rect 336 724 360 740
+rect 260 720 360 724
+rect 120 516 220 520
+rect 120 464 144 516
+rect 196 464 220 516
+rect 120 460 220 464
+rect 110 318 160 380
+rect 110 272 112 318
+rect 158 272 160 318
+rect 110 140 160 272
+rect 280 318 330 720
+rect 400 646 500 650
+rect 400 594 424 646
+rect 476 594 500 646
+rect 400 590 500 594
+rect 280 272 282 318
+rect 328 272 330 318
+rect 280 210 330 272
+rect 450 318 500 380
+rect 450 272 452 318
+rect 498 272 500 318
+rect 450 140 500 272
+rect 0 118 640 140
+rect 0 72 112 118
+rect 158 72 352 118
+rect 398 72 640 118
+rect 0 0 640 72
+<< via1 >>
+rect 284 724 336 776
+rect 144 513 196 516
+rect 144 467 147 513
+rect 147 467 193 513
+rect 193 467 196 513
+rect 144 464 196 467
+rect 424 643 476 646
+rect 424 597 427 643
+rect 427 597 473 643
+rect 473 597 476 643
+rect 424 594 476 597
+<< metal2 >>
+rect 260 776 360 790
+rect 260 724 284 776
+rect 336 724 360 776
+rect 260 710 360 724
+rect 400 646 500 660
+rect 400 594 424 646
+rect 476 594 500 646
+rect 400 580 500 594
+rect 120 516 220 530
+rect 120 464 144 516
+rect 196 464 220 516
+rect 120 450 220 464
+<< labels >>
+rlabel via1 s 144 464 196 516 4 A
+port 1 nsew signal input
+rlabel via1 s 424 594 476 646 4 B
+port 2 nsew signal input
+rlabel via1 s 284 724 336 776 4 Y
+port 3 nsew signal output
+rlabel metal1 s 140 720 190 1270 4 VDD
+port 4 nsew power bidirectional abutment
+rlabel metal1 s 110 0 160 380 4 VSS
+port 5 nsew ground bidirectional abutment
+rlabel metal1 s 0 1130 640 1270 1 VDD
+port 4 nsew power bidirectional abutment
+rlabel metal1 s 450 0 500 380 1 VSS
+port 5 nsew ground bidirectional abutment
+rlabel metal1 s 0 0 640 140 1 VSS
+port 5 nsew ground bidirectional abutment
+rlabel metal2 s 120 450 220 530 1 A
+port 1 nsew signal input
+rlabel metal1 s 120 460 220 520 1 A
+port 1 nsew signal input
+rlabel metal2 s 400 580 500 660 1 B
+port 2 nsew signal input
+rlabel metal1 s 400 590 500 650 1 B
+port 2 nsew signal input
+rlabel metal2 s 260 710 360 790 1 Y
+port 3 nsew signal output
+rlabel metal1 s 280 210 330 790 1 Y
+port 3 nsew signal output
+rlabel metal1 s 260 720 360 780 1 Y
+port 3 nsew signal output
+rlabel metal1 s 280 740 470 790 1 Y
+port 3 nsew signal output
+rlabel metal1 s 420 740 470 1060 1 Y
+port 3 nsew signal output
+<< properties >>
+string FIXED_BBOX 0 0 640 1270
+string GDS_END 336798
+string GDS_FILE $PDKPATH/libs.ref/gf180mcu_osu_sc_gp9t3v3/gds/gf180mcu_osu_sc_gp9t3v3.gds
+string GDS_START 332824
+string LEFclass CORE
+string LEFsite gf180mcu_osu_sc_gp9t3v3
+string LEFsymmetry X Y
+<< end >>

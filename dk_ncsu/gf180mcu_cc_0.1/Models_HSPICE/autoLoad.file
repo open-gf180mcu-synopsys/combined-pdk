@@ -1,0 +1,112 @@
+#########################################################################
+# gf180MCU Custom Compiler autoLoad script
+#
+# Copyright (c) 2025, North Carolina State University
+# All Rights Reserved.
+#
+# Please see the file LICENSE included with this distribution for license.
+# You may not use these files except in compliance with the License.
+#########################################################################
+
+set DEVICELIB_NAME "gf180mcu"
+set DEVICELIB_PATH [file dirname [file normalize [info script]]]
+set toolChk_gf180MCU "CustomCompiler"
+set pName "tool_console"
+catch { set pName [db::getAttr name -of [db::getProcessInfo]] }
+
+puts "Loading: Callback files..."
+#Loading Tcl callback files 
+foreach i [lsort [glob -nocomplain ${DEVICELIB_PATH}/../scripts/callbacks/*.tcl ${DEVICELIB_PATH}/../scripts/callbacks/*.tbc]] {
+    if {[catch {source $i} err]} {
+        puts "Error-Loading: $i\n    $err"
+        #puts "Error: $i $err"
+    } else {
+        set fileName [regsub "${DEVICELIB_PATH}\/..\/" $i ""]
+        puts "Loading: $fileName"
+    }
+}
+
+if {[info exists ::env(iPDK_load_display_${DEVICELIB_NAME})]} {
+    if {$env(iPDK_load_display_${DEVICELIB_NAME}) == 1} {
+        puts "\n\[INFO\] : Loading display.tcl from ${DEVICELIB_PATH}\n\n if you wish to Load other display.tcl, please set shell environment valiable \"iPDK_load_display_${DEVICELIB_NAME}\" to value = 0"
+        dr::loadDisplayResources -filePath ${DEVICELIB_PATH}/../CC/display.tcl -format tcl
+
+    } elseif {$env(iPDK_load_display_${DEVICELIB_NAME}) == 0} {
+        puts "\n\[INFO\] : Not loading display.drf as shell environment variable iPDK_load_display_${DEVICELIB_NAME} is set to value = 0"
+    } else {
+        puts "\n\[INFO\] : $env(iPDK_load_display_${DEVICELIB_NAME}) is not a valid value for the environment variable iPDK_load_display_${DEVICELIB_NAME}. Accepted values are 0,1\n\nLoading display.drf from ${DEVICELIB_PATH}\n if you wish to Load other display.tcl, please set shell environment valiable \"iPDK_load_display_${DEVICELIB_NAME}\" to value = 0"
+        dr::loadDisplayResources -filePath ${DEVICELIB_PATH}/../CC/display.tcl -format tcl
+    }
+} else {
+    puts "\n\[INFO\] : Loading display.tcl from ${DEVICELIB_PATH}\n\n if you wish to Load other display.tcl, please set shell environment valiable \"iPDK_load_display_${DEVICELIB_NAME}\" to value = 0"
+    dr::loadDisplayResources -filePath ${DEVICELIB_PATH}/../CC/display.tcl -format tcl
+}
+
+if {!("sae_shell"==$pName || "nti_shell"==$pName)} {
+    # Set preference to use ICV DRC
+    db::setPrefValue xtDRCTool          -value "IC Validator"
+    db::setPrefValue xtDRCICVRunsetFile -value "${DEVICELIB_PATH}/../DRC_ICV/gf180mcu_drc.rs"
+    db::setPrefValue xtDRCICVIncludePaths -value "${DEVICELIB_PATH}/../DRC_ICV/"
+    db::setPrefValue xtDRCLayDBFormat -value "Stream"
+    db::setPrefValue xtLVSTool          -value "IC Validator"
+    db::setPrefValue xtLVSICVRunsetFile -value "${DEVICELIB_PATH}/../LVS_ICV/LVS/ICV/cmos018hv.3p3.6v.lvs.rs"
+    db::setPrefValue xtLVSICVIncludePaths -value "${DEVICELIB_PATH}/../LVS_ICV/LVS/ICV/"
+    db::setPrefValue xtLVSLayDBFormat -value "Stream"
+    db::setPrefValue xtLPELVSTool          -value "IC Validator"
+    db::setPrefValue xtLPETool          -value "StarRC"
+    db::setPrefValue xtLPEOpenParasiticView -value false
+#    db::setPrefValue xtStarTcadGrdFile   -value "${DEVICELIB_PATH}/../PEX_StarRC/latest/gf180mcu_1p2m_1tm_30k_sp/gf180mcu_1p2m_1tm_30k_sp_typ.nxtgrd"
+#    db::setPrefValue xtLPEStarOADeviceMappingFile -value "${DEVICELIB_PATH}/../starrc/oa.device.map"
+#    db::setPrefValue xtStarOALayerMappingFile -value "${DEVICELIB_PATH}/../starrc/oa.layer.map"
+    db::setPrefValue saSimulator -value  "PrimeSim"
+    db::setPrefValue saResultsDir -value  "./simulation"
+    db::setPrefValue saPrimeSimEnvOptsNetlistLanguage -value  "HSPICE"
+    db::setPrefValue saPrimeSimEnvOptsIncludePath -value  "${DEVICELIB_PATH}/"
+    db::setPrefValue saPrimeSimModelsIncludePath -value  "${DEVICELIB_PATH}/"
+    db::setPrefValue saPrimeSimModelsFiles -value  [list [list ngspice/design.ngspice {}] [list aliases.spice {}] [list ngspice/sm141064.ngspice typical ]  ]
+    db::setPrefValue saHSPICEEnvOptsIncludePath -value  "${DEVICELIB_PATH}/"
+    db::setPrefValue saHSPICEModelsIncludePath -value  "${DEVICELIB_PATH}/"
+    db::setPrefValue saHSPICEModelsFiles -value  [list [list ngspice/design.ngspice {}] [list ngspice/sm141064.ngspice typical ]  ]
+    db::setPrefValue saFineSimProEnvOptsIncludePath -value  "${DEVICELIB_PATH}/"
+    db::setPrefValue saFineSimProModelsIncludePath -value  "${DEVICELIB_PATH}/"
+    db::setPrefValue saFineSimProModelsFiles -value  [list [list ngspice/design.ngspice {}] [list ngspice/sm141064.ngspice typical ]  ]
+
+}
+
+puts "\t#######################################"
+puts "\tCC-PDK Library Name\t: gf180MCU Open"
+puts "\t#######################################\n"
+
+
+ 
+
+#set DEVICELIB_NAME "gf180mcu"
+#set DEVICELIB_PATH [file dirname [file normalize [info script]]]
+#
+## db::setPrefValue xtDRCTool          -value "IC Validator"
+## db::setPrefValue xtDRCICVRunsetFile -value "${DEVICELIB_PATH}/../../icv/FreePDK3_main.drc.rs"
+## db::setPrefValue xtDRCICVIncludePaths -value "${DEVICELIB_PATH}/../../icv"
+## db::setPrefValue xtDRCLayDBFormat -value "Stream"
+#
+## db::setPrefValue xtLVSTool          -value "IC Validator"
+## db::setPrefValue xtLVSICVRunsetFile -value "${DEVICELIB_PATH}/../../icv/FreePDK3_main.lvs.rs"
+## db::setPrefValue xtLVSICVIncludePaths -value "${DEVICELIB_PATH}/../../icv"
+## db::setPrefValue xtLVSLayDBFormat -value "Stream"
+#
+## db::setPrefValue xtLPELVSTool          -value "IC Validator"
+## db::setPrefValue xtLPETool          -value "StarRC"
+## db::setPrefValue xtLPEOpenParasiticView -value false
+## db::setPrefValue xtStarTcadGrdFile   -value "${DEVICELIB_PATH}/../../starrc/FreePDK3_RCtyp.nxtgrd"
+## db::setPrefValue xtLPEStarOADeviceMappingFile -value "${DEVICELIB_PATH}/../../starrc/oa.device.map"
+## db::setPrefValue xtStarOALayerMappingFile -value "${DEVICELIB_PATH}/../../starrc/oa.layer.map"
+#
+# db::setPrefValue saSimulator -value  "PrimeSim"
+# db::setPrefValue saResultsDir -value  "./simulation"
+# db::setPrefValue saHSPICEEnvOptsIncludePath -value  "${DEVICELIB_PATH}/../../hspice/models/"
+# db::setPrefValue saHSPICEModelsIncludePath -value  "${DEVICELIB_PATH}/../dk_open_spice"
+# db::setPrefValue saHSPICEModelsFiles -value  [list [list sm141064.ngspice typical ] ]
+# db::setPrefValue saFineSimProEnvOptsIncludePath -value  "${DEVICELIB_PATH}/../../hspice/models/"
+# db::setPrefValue saFineSimProModelsIncludePath -value  "${DEVICELIB_PATH}/../dk_open_spice"
+# db::setPrefValue saFineSimProModelsFiles -value  [list [list sm141064.ngspice typical ] ]
+#
+#dr::loadDisplayResources -filePath [oa::getPath [oa::LibFind gf180mcu]]/../CC/display.tcl -format tcl

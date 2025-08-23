@@ -1,0 +1,9 @@
+define		 _libId (dbGetCurrentLibId)
+
+dbDefineAntennaRule _libId 1 4 0 0
+dbDefineAntennaRule _libId 4 4 0 0
+dbAddAntennaLayerRule _libId 4 "Metal1" 400 '(0 0 1e+08 400)
+dbAddAntennaLayerRule _libId 1 "Via1" 20 '(0 0 1e+08 20)
+dbAddAntennaLayerRule _libId 4 "Metal2" 400 '(0 0 0 400 400)
+dbAddAntennaLayerRule _libId 1 "Via2" 20 '(0 0 1e+08 20)
+dbAddAntennaLayerRule _libId 4 "Metal3" 400 '(0 0 0 400 400)

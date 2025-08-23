@@ -1,0 +1,6 @@
+TDMCHECKPOINT="1.0"
+gf180mcu/BJT.Cat type="category"
+gf180mcu/CAP.Cat type="category"
+gf180mcu/DIODE.Cat type="category"
+gf180mcu/MOS.Cat type="category"
+gf180mcu/RES.Cat type="category"

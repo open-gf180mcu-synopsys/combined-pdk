@@ -1,0 +1,46 @@
+### WaveView session file (version W-2024.09-SP1-2 build Jan 15, ) ###
+### saved at 09:24:33 on Sat Aug 23 2025 ###
+wdf 0 "/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results/resultsMap.xml" load=used "title=dc:dc" "atype=dc:dc" 
+wdf 1 "/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results/resultsMap.xml" load=used "title=dc:dc" "atype=dc:dc" 
+wdf 2 "/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results/postResultsMap.xml" load=open "title=null:null1" "atype=null:null1" 
+cvt_begin
+  cvt_expr 0 1 '-1*i(/V2/PLUS)' '-1*"i1(v2)"' eqn=-1*"F|.|I|i1(v2)" target_id=0 fidx=1 alias='-1*i(/V2/PLUS)' 
+  cvt_expr 1 1 '-1*i(/V2/PLUS)' '-1*"i1(v2)"' target_id=1 fidx=2 alias='-1*i(/V2/PLUS)' 
+cvt_end
+scalar list
+waveview_begin 1  stack  offset=0 name_b=212 mntr_b=212 name_width=197 "name=dc" showtitle=true "wvtitle=example:nmos:default:dc" 
+  panel_begin linear pidx=0 spath=name+file xlabel="vds(-)" ylabel="A" 
+    line src=wdf lidx=1 derv_sig=1 fidx=1 "delim=." sigtype=2 "name=-1*i(/V2/PLUS)" attr=0:5:1:0 alias="-1*i(/V2/PLUS)" disp=show 
+  panel_end
+  panel_begin linear pidx=1 spath=name+file xlabel="vds(-)" ylabel="A" 
+    line src=wdf lidx=0 fidx=0 "delim=." sigtype=2 "name=xmn0.isub(d)" attr=1:1:1:0 autoset=true disp=show 
+  panel_end
+waveview_end
+browserOpened
+
+#Custom Plot Section
+simulation_begin test=default history=1 idx=18200003
+run_type 1
+view_list
+  4 dc
+end_view_list
+probe_list
+end_probe_list
+equation_list
+  null str=-1*i(/V2/PLUS)
+end_equation_list
+original_sim
+sim_id=default
+history_point=1
+sim_idx=18200003
+sim_dir=/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results
+from_virtuoso=0
+is_output=1
+is_mtb=0
+hasViewer=0
+{"sim_id":"default","sae_session":"saeSession0","sae_session_desc":"","directory":"/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results","results_directory":"./simulation","results_absdirectory":"/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation","post_results_dir":"/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results","save_post_results_in_session":"0","is_mc_multiple_run":"0","is_sim_sweep_run":"0","is_data_driven_sweep":"false","runDirDelimiter":",","test_suite_info":"example:nmos:schematic","history_index":"1","history_name":"history_1","history_desc":"Run Simulation","is_mtb":"0","id":"18200003","child":"0","description":"","design_str":"example:nmos:schematic","simulator":"PrimeSim","newResultsFormat":"0","is_initial":"0","is_append_run":"0","is_new_worker":"1","isSaeAging":"0","saeAgingSimMode":"3","sonoma":"1","sonomaInc":"0","incPartial":"append","rerun":"0","modelIncPath":"/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/Models_HSPICE","isbreviate_historyname":"false","history_check":"false","ischange_historyname":"false","autoPlot":"1","isDirPlot":"0","invokeFrom":"OPV","save_format":"","incomplete_type":"","corparams":"","exportImageSize":"636*254","isWorstCaseAnalysis":"0","dspfIncludeOptions":"0","sweepUseDesignVar":"0","hasMSIPAceScripts":"0","equation_list":[{"equa_id":"equa#0","index":"3000005","equa_name":"","equa_schem":"","type":"","resultType":"","anaName":"","enable":true,"is_plot":true,"plotType":"auto","logicRadix":"auto","color":"","units":"","ParamConditions":"","isGlobal":"true","x_axis":"","x_axis_scale":"auto","y_axis_scale":"auto","goal":"","show_in_rv":"0","description":"","saveImage":"0","precision":"0","poor":"","poorHigh":"","poorLow":"","poorType":"","measExpr":"","eqnIdx":"","specEqu":false,"forceRecal":false,"originalExpr":"","measWaveDep":false,"lineIdx":"","orgErrMsg":"","suffix":""},{"equa_id":"equa#1","index":"3000006","equa_name":"","equa_schem":"-1*i(/V2/PLUS)","type":"expression","resultType":"dc","anaName":"","enable":true,"is_plot":true,"plotType":"auto","logicRadix":"auto","color":"","units":"","ParamConditions":"","isGlobal":"false","x_axis":"","x_axis_scale":"auto","y_axis_scale":"auto","goal":"","show_in_rv":"1","description":"","saveImage":"0","precision":"6","poor":"0%","poorHigh":"","poorLow":"","poorType":"Greater Than","measExpr":"","eqnIdx":"1","specEqu":false,"forceRecal":false,"originalExpr":"","measWaveDep":false,"lineIdx":"1","orgErrMsg":"","suffix":""}],"probe_list":[],"ace_list":[],"model_list":[{"file":"ngspice/design.ngspice:"},{"file":"aliases.spice:"},{"file":"ngspice/sm141064.ngspice:typical"}],"globalModel_list":[],"globalTemperature_list":[{"file":"25:Celsius"}],"design_variables_list":[["vds","3.3"],["vgs","2.0"]],"corner_group_params_list":[],"analyses_list":[["dc","{Sweep Variable: Design Variable vds Sweep Type: Linear }"]],"modelGrp_list":[],"corner_list":[],"no_value_corner_param_list":[],"monte_list":[],"monteSigma":"","monteUseDesignVar":"0","sweep_list":[],"chart_list":[]}
+end_original_sim
+original_map
+{"sae_session":"saeSession0","map_list":[{"schemName":"i(/V2/PLUS)","waveName":"i1(v2)","resultID":"resFile0","resultType":"dc","analysisName":"dc","dataType":"","time":"","paramName":"","type":"anytype","display_type":"analogv","paramConditions":"","bits":"","lo":"0.0","hi":"0.0","percent":false,"expr_index":"3000006","is_expression":false}],"result_list":[{"file_name":"resultsMap.xml","resultID":"resFile0"}]}
+end_original_map
+simulation_end

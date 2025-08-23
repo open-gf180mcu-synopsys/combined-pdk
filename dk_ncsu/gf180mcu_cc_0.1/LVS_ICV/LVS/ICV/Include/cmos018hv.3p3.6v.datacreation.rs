@@ -1,0 +1,5408 @@
+aSRAMCORE = aSRAM_MK;
+#ifdef d_PEX_RUN
+   
+#else
+   
+#endif                                      
+
+#ifdef d_LVSRES_ALT_METHODOLOGY
+   gRM1_DEV = aMETAL1 and aM1_RES_MK;
+#else
+   gMET_AND_RES_MARK_0_m16 = aMETAL1 and aM1_RES_MK;
+   gMET_AND_RES_MARK_1_m16_2i = aCONT and gMET_AND_RES_MARK_0_m16;
+   gMET_AND_RES_MARK_1_m16_1i = not_interacting( gMET_AND_RES_MARK_0_m16, gMET_AND_RES_MARK_1_m16_2i );
+   gMET_AND_RES_MARK_1_m16_3i = aVIA1 and gMET_AND_RES_MARK_0_m16;
+   gMET_AND_RES_MARK_1_m16 = not_interacting( gMET_AND_RES_MARK_1_m16_1i, gMET_AND_RES_MARK_1_m16_3i );
+   gMET_NOT_RES_MARK_1_m16 = aMETAL1 not aM1_RES_MK;
+   gMET_TERM_ALL_SIDES_1_m16_1i = gMET_AND_RES_MARK_1_m16 coincident_edge gMET_NOT_RES_MARK_1_m16;
+   gMET_TERM_ALL_SIDES_1_m16 = edge_size( gMET_TERM_ALL_SIDES_1_m16_1i, inside = vSIZE_VALUE_m526, outside = vSIZE_VALUE_m526 );
+   gMET_TERM_ALL_SIDES_INSIDE_m16 = gMET_TERM_ALL_SIDES_1_m16 and gMET_AND_RES_MARK_1_m16;
+   gIN_RES_MARK_1_m16_1i = aM1_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m16;
+   gIN_RES_MARK_1_m16 = outside_touching( gIN_RES_MARK_1_m16_1i, gMET_TERM_ALL_SIDES_INSIDE_m16, >= 2 );
+   gMET_TERM_MARK_1_m16 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m16, gIN_RES_MARK_1_m16 );
+   gIN_RES_MARK_2_m16_1i = aM1_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m16;
+   gIN_RES_MARK_2_m16 = outside_touching( gIN_RES_MARK_2_m16_1i, gMET_TERM_ALL_SIDES_INSIDE_m16, == 1 );
+   gMET_TERM_MARK_2_m16 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m16, gIN_RES_MARK_2_m16 );
+   gIN_RES_MARK_FINAL_m16_1i = gIN_RES_MARK_1_m16 or gMET_TERM_MARK_1_m16;
+   gIN_RES_MARK_FINAL_m16_3i = gIN_RES_MARK_2_m16 or gMET_TERM_MARK_2_m16;
+   gIN_RES_MARK_FINAL_m16_2i = size( gIN_RES_MARK_FINAL_m16_3i, clip_acute = TRUNCATE, distance = 0.001 );
+   gIN_RES_MARK_FINAL_m16 = gIN_RES_MARK_FINAL_m16_1i or gIN_RES_MARK_FINAL_m16_2i;
+   gMET_AND_RES_MARK_FINAL_m16 = aMETAL1 and gIN_RES_MARK_FINAL_m16;
+   gMET_AND_RES_MARK_m16_2i = aCONT and gMET_AND_RES_MARK_0_m16;
+   gMET_AND_RES_MARK_m16_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m16, gMET_AND_RES_MARK_m16_2i );
+   gMET_AND_RES_MARK_m16_3i = aVIA1 and gMET_AND_RES_MARK_0_m16;
+   gMET_AND_RES_MARK_m16 = not_interacting( gMET_AND_RES_MARK_m16_1i, gMET_AND_RES_MARK_m16_3i );
+   gMET_NOT_RES_MARK_m16 = aMETAL1 not gIN_RES_MARK_FINAL_m16;
+   gMET_TERM_ALL_SIDES_m16_1i = gMET_AND_RES_MARK_m16 coincident_edge gMET_NOT_RES_MARK_m16;
+   gMET_TERM_ALL_SIDES_m16 = edge_size( gMET_TERM_ALL_SIDES_m16_1i, inside = vSIZE_VALUE_m526, outside = vSIZE_VALUE_m526 );
+   gMET_TERM_TOP_m16_2i = grow( gMET_AND_RES_MARK_m16, north = vSIZE_VALUE_m526 );
+   gMET_TERM_TOP_m16_1i = gMET_TERM_TOP_m16_2i not gMET_AND_RES_MARK_m16;
+   gMET_TERM_TOP_m16 = gMET_TERM_TOP_m16_1i inside gMET_NOT_RES_MARK_m16;
+   gMET_DEV_TOP_m16_3i = gMET_AND_RES_MARK_m16 or gMET_TERM_ALL_SIDES_m16;
+   gMET_DEV_TOP_m16_4i = shrink( gMET_AND_RES_MARK_m16, north = vSIZE_VALUE_m526 );
+   gMET_DEV_TOP_m16_2i = gMET_DEV_TOP_m16_3i not gMET_DEV_TOP_m16_4i;
+   gMET_DEV_TOP_m16_1i = interacting( gMET_DEV_TOP_m16_2i, gMET_TERM_TOP_m16 );
+   gMET_DEV_TOP_m16 = gMET_DEV_TOP_m16_1i not gMET_TERM_TOP_m16;
+   gMET_TERM_RIGHT_m16_3i = not_interacting( gMET_AND_RES_MARK_m16, gMET_DEV_TOP_m16 );
+   gMET_TERM_RIGHT_m16_2i = grow( gMET_TERM_RIGHT_m16_3i, east = vSIZE_VALUE_m526 );
+   gMET_TERM_RIGHT_m16_1i = gMET_TERM_RIGHT_m16_2i not gMET_AND_RES_MARK_m16;
+   gMET_TERM_RIGHT_m16 = gMET_TERM_RIGHT_m16_1i inside gMET_NOT_RES_MARK_m16;
+   gMET_DEV_RIGHT_m16_3i = gMET_AND_RES_MARK_m16 or gMET_TERM_ALL_SIDES_m16;
+   gMET_DEV_RIGHT_m16_4i = shrink( gMET_AND_RES_MARK_m16, east = vSIZE_VALUE_m526 );
+   gMET_DEV_RIGHT_m16_2i = gMET_DEV_RIGHT_m16_3i not gMET_DEV_RIGHT_m16_4i;
+   gMET_DEV_RIGHT_m16_1i = interacting( gMET_DEV_RIGHT_m16_2i, gMET_TERM_RIGHT_m16 );
+   gMET_DEV_RIGHT_m16 = gMET_DEV_RIGHT_m16_1i not gMET_TERM_RIGHT_m16;
+   gMET_TERM_BOTTOM_m16_4i = not_interacting( gMET_AND_RES_MARK_m16, gMET_DEV_TOP_m16 );
+   gMET_TERM_BOTTOM_m16_3i = not_interacting( gMET_TERM_BOTTOM_m16_4i, gMET_DEV_RIGHT_m16 );
+   gMET_TERM_BOTTOM_m16_2i = grow( gMET_TERM_BOTTOM_m16_3i, south = vSIZE_VALUE_m526 );
+   gMET_TERM_BOTTOM_m16_1i = gMET_TERM_BOTTOM_m16_2i not gMET_AND_RES_MARK_m16;
+   gMET_TERM_BOTTOM_m16 = gMET_TERM_BOTTOM_m16_1i inside gMET_NOT_RES_MARK_m16;
+   gMET_DEV_BOTTOM_m16_3i = gMET_AND_RES_MARK_m16 or gMET_TERM_ALL_SIDES_m16;
+   gMET_DEV_BOTTOM_m16_4i = shrink( gMET_AND_RES_MARK_m16, south = vSIZE_VALUE_m526 );
+   gMET_DEV_BOTTOM_m16_2i = gMET_DEV_BOTTOM_m16_3i not gMET_DEV_BOTTOM_m16_4i;
+   gMET_DEV_BOTTOM_m16_1i = interacting( gMET_DEV_BOTTOM_m16_2i, gMET_TERM_BOTTOM_m16 );
+   gMET_DEV_BOTTOM_m16 = gMET_DEV_BOTTOM_m16_1i not gMET_TERM_BOTTOM_m16;
+   gMET_DEV_LEFT_m16_3i = gMET_AND_RES_MARK_m16 or gMET_TERM_ALL_SIDES_m16;
+   gMET_DEV_LEFT_m16_4i = shrink( gMET_AND_RES_MARK_m16, west = vSIZE_VALUE_m526 );
+   gMET_DEV_LEFT_m16_2i = gMET_DEV_LEFT_m16_3i not gMET_DEV_LEFT_m16_4i;
+   gMET_DEV_LEFT_m16_1i = interacting( gMET_DEV_LEFT_m16_2i, gMET_TERM_RIGHT_m16 );
+   gMET_DEV_LEFT_m16 = gMET_DEV_LEFT_m16_1i not gMET_TERM_RIGHT_m16;
+   gMET_DEV_TOP_2_m16_2i = shrink( gMET_AND_RES_MARK_m16, north = vSIZE_VALUE_m526 );
+   gMET_DEV_TOP_2_m16_1i = gMET_AND_RES_MARK_m16 not gMET_DEV_TOP_2_m16_2i;
+   gMET_DEV_TOP_2_m16 = interacting( gMET_DEV_TOP_2_m16_1i, gMET_TERM_TOP_m16 );
+   gMET_DEV_RIGHT_2_m16_2i = shrink( gMET_AND_RES_MARK_m16, east = vSIZE_VALUE_m526 );
+   gMET_DEV_RIGHT_2_m16_1i = gMET_AND_RES_MARK_m16 not gMET_DEV_RIGHT_2_m16_2i;
+   gMET_DEV_RIGHT_2_m16 = interacting( gMET_DEV_RIGHT_2_m16_1i, gMET_TERM_RIGHT_m16 );
+   gMET_DEV_BOTTOM_2_m16_2i = shrink( gMET_AND_RES_MARK_m16, south = vSIZE_VALUE_m526 );
+   gMET_DEV_BOTTOM_2_m16_1i = gMET_AND_RES_MARK_m16 not gMET_DEV_BOTTOM_2_m16_2i;
+   gMET_DEV_BOTTOM_2_m16 = interacting( gMET_DEV_BOTTOM_2_m16_1i, gMET_TERM_BOTTOM_m16 );
+   gMET_DEV_LEFT_2_m16_2i = shrink( gMET_AND_RES_MARK_m16, west = vSIZE_VALUE_m526 );
+   gMET_DEV_LEFT_2_m16_1i = gMET_AND_RES_MARK_m16 not gMET_DEV_LEFT_2_m16_2i;
+   gMET_DEV_LEFT_2_m16 = interacting( gMET_DEV_LEFT_2_m16_1i, gMET_TERM_RIGHT_m16 );
+   gRM1_OUT_2i = gMET_DEV_TOP_2_m16 or gMET_DEV_RIGHT_2_m16;
+   gRM1_OUT_1i = gRM1_OUT_2i or gMET_DEV_BOTTOM_2_m16;
+   gRM1_OUT = gRM1_OUT_1i or gMET_DEV_LEFT_2_m16;
+   gRM1_DEV_3i = gMET_DEV_TOP_m16 or gMET_DEV_RIGHT_m16;
+   gRM1_DEV_2i = gRM1_DEV_3i or gMET_DEV_BOTTOM_m16;
+   gRM1_DEV_1i = gRM1_DEV_2i or gMET_DEV_LEFT_m16;
+   gRM1_DEV = gRM1_DEV_1i or gRM1_OUT;
+#endif
+#ifdef d_LVSRES_ALT_METHODOLOGY
+   gRM1_TERM_1i = and_edge( gRM1_DEV, aMETAL1, false );
+   gRM1_TERM = edge_size( gRM1_TERM_1i, outside = 0.001 );
+#else
+   gMET_TERM_LEFT_m16_5i = not_interacting( gMET_AND_RES_MARK_m16, gMET_DEV_TOP_m16 );
+   gMET_TERM_LEFT_m16_4i = not_interacting( gMET_TERM_LEFT_m16_5i, gMET_DEV_RIGHT_m16 );
+   gMET_TERM_LEFT_m16_3i = not_interacting( gMET_TERM_LEFT_m16_4i, gMET_DEV_BOTTOM_m16 );
+   gMET_TERM_LEFT_m16_2i = grow( gMET_TERM_LEFT_m16_3i, west = vSIZE_VALUE_m526 );
+   gMET_TERM_LEFT_m16_1i = gMET_TERM_LEFT_m16_2i not gMET_AND_RES_MARK_m16;
+   gMET_TERM_LEFT_m16 = gMET_TERM_LEFT_m16_1i inside gMET_NOT_RES_MARK_m16;
+   gOUT_DEV_TERM_1_m16_2i = gMET_TERM_TOP_m16 or gMET_TERM_RIGHT_m16;
+   gOUT_DEV_TERM_1_m16_1i = gOUT_DEV_TERM_1_m16_2i or gMET_TERM_BOTTOM_m16;
+   gOUT_DEV_TERM_1_m16 = gOUT_DEV_TERM_1_m16_1i or gMET_TERM_LEFT_m16;
+   gMET_TERM_TOP_2_m16 = gMET_AND_RES_MARK_m16 not gMET_DEV_TOP_m16;
+   gMET_TERM_RIGHT_2_m16 = gMET_AND_RES_MARK_m16 not gMET_DEV_RIGHT_m16;
+   gMET_TERM_BOTTOM_2_m16 = gMET_AND_RES_MARK_m16 not gMET_DEV_BOTTOM_m16;
+   gMET_TERM_LEFT_2_m16 = gMET_AND_RES_MARK_m16 not gMET_DEV_LEFT_m16;
+   gOUT_DEV_TERM_2_m16_2i = gMET_TERM_TOP_2_m16 or gMET_TERM_RIGHT_2_m16;
+   gOUT_DEV_TERM_2_m16_1i = gOUT_DEV_TERM_2_m16_2i or gMET_TERM_BOTTOM_2_m16;
+   gOUT_DEV_TERM_2_m16 = gOUT_DEV_TERM_2_m16_1i or gMET_TERM_LEFT_2_m16;
+   gRM1_TERM_2i = gOUT_DEV_TERM_1_m16 or gOUT_DEV_TERM_2_m16;
+   gRM1_TERM = gRM1_TERM_2i not gRM1_DEV;
+#endif
+gM1_NODEV_2i = gRM1_DEV or aMETAL1_SLOT;
+gM1_NODEV_1i = gM1_NODEV_2i or gRM1_TERM;
+gM1_NODEV = aMETAL1 not gM1_NODEV_1i;
+
+
+
+gBOUND = cell_extent( cell_list = { "*" }, exclude_text_layers = false, extent_layers = USED_ASSIGN_LAYERS , expand_text = true );
+gBULK = size( gBOUND, clip_acute = TRUNCATE, distance = 1.0 );
+gLVS_PSUB2_EXPAND = size( aLVS_PSUB2, clip_acute = TRUNCATE, distance = 0.001 );
+gLVS_PSUB2_RING = gLVS_PSUB2_EXPAND not aLVS_PSUB2;
+#ifdef d_NWRING_SEPARATION
+   gSUB_NOT_1i = aDNWELL or aNWELL;
+   gSUB_NOT = gSUB_NOT_1i or gLVS_PSUB2_RING;
+#else
+   gSUB_NOT = aDNWELL or gLVS_PSUB2_RING;
+#endif
+gPSUB = gBULK not gSUB_NOT;                 
+gPSUB_BULK = gPSUB not aNWELL;
+gDN_LP_ALL = aDNWELL and aLVPWELL;
+gPDIF = aCOMP and aPPLUS;
+gPDIFF_1i = gPDIF not aPOLY2;
+gPDIFF = gPDIFF_1i not aRES_MK;
+gPTAP_ALL_1i = gPSUB_BULK or gDN_LP_ALL;
+gPTAP_ALL = gPDIFF inside gPTAP_ALL_1i;
+gPMOSCAP_PSD_B_3i = gPSUB_BULK or gDN_LP_ALL;
+gPMOSCAP_PSD_B_2i = gPDIFF inside gPMOSCAP_PSD_B_3i;
+gPMOSCAP_PSD_B_1i = gPMOSCAP_PSD_B_2i not aRES_MK;
+gPMOSCAP_PSD_B = gPMOSCAP_PSD_B_1i inside aMOS_CAP_MK;
+gPTAP = gPTAP_ALL not gPMOSCAP_PSD_B;
+gPTAP_ASYM = donuts( gPTAP );
+gNDIF = aCOMP and aNPLUS;
+
+gLVS_RF = aMETAL1 not gBULK;
+gASYM_NGATE_ALL_5i = aPOLY2 and gNDIF;
+gASYM_NGATE_ALL_4i = gASYM_NGATE_ALL_5i not aPPLUS;
+gASYM_NGATE_ALL_3i = not_interacting( gASYM_NGATE_ALL_4i, aLVS_BJT );
+gASYM_NGATE_ALL_2i = gASYM_NGATE_ALL_3i not gLVS_RF;
+gASYM_NGATE_ALL_1i = gASYM_NGATE_ALL_2i not aMOS_CAP_MK;
+gASYM_NGATE_ALL = gASYM_NGATE_ALL_1i not aEFUSE_MK;
+gASYM_NGATE_1i = interacting( gASYM_NGATE_ALL, aESD_MK );
+gASYM_NGATE = not_interacting( gASYM_NGATE_1i, aMVNSD );
+
+gSAB_NGATE_1i = gASYM_NGATE and aESD_MK;
+gSAB_NGATE = interacting( gSAB_NGATE_1i, aSAB );
+gMFACT_NSD_3i = interacting( aCOMP, aNPLUS );
+gMFACT_NSD_2i = gMFACT_NSD_3i not gPTAP_ASYM;
+gMFACT_NSD_1i = gMFACT_NSD_2i not aPOLY2;
+gMFACT_NSD = interacting( gMFACT_NSD_1i, gSAB_NGATE );
+gSAL_RES_MARK = not_interacting( aRES_MK, aSAB );
+gNDIFF_1i = gNDIF not aPOLY2;
+gNDIFF = gNDIFF_1i not aRES_MK;
+g_RES_EXCL_LAY_20i = aESD or aFUSEWINDOW;
+g_RES_EXCL_LAY_19i = g_RES_EXCL_LAY_20i or aPOLYFUSE;
+g_RES_EXCL_LAY_18i = g_RES_EXCL_LAY_19i or aLVS_BJT;
+g_RES_EXCL_LAY_17i = g_RES_EXCL_LAY_18i or aNAT;
+g_RES_EXCL_LAY_16i = g_RES_EXCL_LAY_17i or aMOS_CAP_MK;
+g_RES_EXCL_LAY_15i = g_RES_EXCL_LAY_16i or aESD_MK;
+g_RES_EXCL_LAY_14i = g_RES_EXCL_LAY_15i or aEFUSE_MK;
+g_RES_EXCL_LAY_13i = g_RES_EXCL_LAY_14i or aMVNSD;
+g_RES_EXCL_LAY_12i = g_RES_EXCL_LAY_13i or aMVPSD;
+g_RES_EXCL_LAY_11i = g_RES_EXCL_LAY_12i or aLDMOS;
+g_RES_EXCL_LAY = g_RES_EXCL_LAY_11i or aSCHOTTKY_DIODE;
+gNWELL_DEV_5i = aNWELL and gSAL_RES_MARK;
+gNWELL_DEV_4i = not_interacting( gNWELL_DEV_5i, gPDIFF );
+gNWELL_DEV_3i = outside_touching( gNWELL_DEV_4i, gNDIFF );
+gNWELL_DEV_2i = gNWELL_DEV_3i not aLVPWELL;
+gNWELL_DEV_1i = gNWELL_DEV_2i not aPOLY2;
+gNWELL_DEV = gNWELL_DEV_1i not g_RES_EXCL_LAY;
+gPURENWELL_ALL_1i = aNWELL outside aDNWELL;
+gPURENWELL_ALL = gPURENWELL_ALL_1i not gNWELL_DEV;
+gDN_SUB_ALL = aDNWELL not aLVPWELL;         
+gNTAP_ALL_1i = gPURENWELL_ALL or gDN_SUB_ALL;
+gNTAP_ALL = gNDIFF inside gNTAP_ALL_1i;
+gNTAP_ASYM = donuts( gNTAP_ALL );
+gASYM_PGATE_ALL_5i = aPOLY2 and gPDIF;
+gASYM_PGATE_ALL_4i = gASYM_PGATE_ALL_5i not aNPLUS;
+gASYM_PGATE_ALL_3i = not_interacting( gASYM_PGATE_ALL_4i, aLVS_BJT );
+gASYM_PGATE_ALL_2i = gASYM_PGATE_ALL_3i not gLVS_RF;
+gASYM_PGATE_ALL_1i = gASYM_PGATE_ALL_2i not aMOS_CAP_MK;
+gASYM_PGATE_ALL = gASYM_PGATE_ALL_1i not aEFUSE_MK;
+gASYM_PGATE_1i = interacting( gASYM_PGATE_ALL, aESD_MK );
+gASYM_PGATE = not_interacting( gASYM_PGATE_1i, aMVPSD );
+gSAB_PGATE_1i = gASYM_PGATE and aESD_MK;
+gSAB_PGATE = interacting( gSAB_PGATE_1i, aSAB );
+gMFACT_PSD_3i = interacting( aCOMP, aPPLUS );
+gMFACT_PSD_2i = gMFACT_PSD_3i not gNTAP_ASYM;
+gMFACT_PSD_1i = gMFACT_PSD_2i not aPOLY2;
+gMFACT_PSD = interacting( gMFACT_PSD_1i, gSAB_PGATE );
+gMFACT_SD = gMFACT_NSD or gMFACT_PSD;
+gNDIFF_CONT_1i = aCONT and aCOMP;
+gNDIFF_CONT = gNDIFF_CONT_1i and aNPLUS;
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gMFACT_SD }, gNDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+gPDIFF_CONT_1i = aCONT and aCOMP;
+gPDIFF_CONT = gPDIFF_CONT_1i and aPPLUS;
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gMFACT_SD }, gPDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+
+gGATE_ASYM = gSAB_NGATE or gSAB_PGATE;
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_NGATE, gGATE_ASYM }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_PGATE, gGATE_ASYM }}} );
+gLDMOS_NGATE_1i = interacting( gASYM_NGATE_ALL, aMVNSD );
+gLDMOS_NGATE = not_interacting( gLDMOS_NGATE_1i, aESD_MK );
+
+gLDMNGATE_10P0_L_4i = gLDMOS_NGATE and aLDMOS;
+gLDMNGATE_10P0_L_3i = gLDMNGATE_10P0_L_4i and aDUALGATE;
+gLDMNGATE_10P0_L_2i = interacting( gLDMNGATE_10P0_L_3i, aMVNSD );
+gLDMNGATE_10P0_L_1i = gLDMNGATE_10P0_L_2i not aMVNSD;
+gLDMNGATE_10P0_L = gLDMNGATE_10P0_L_1i inside gPSUB;
+gLDMNSRC_10P0_4i = gNDIFF and aLDMOS;
+gLDMNSRC_10P0_3i = gLDMNSRC_10P0_4i and aDUALGATE;
+gLDMNSRC_10P0_2i = gLDMNSRC_10P0_3i inside gPSUB;
+gLDMNSRC_10P0_1i = gLDMNSRC_10P0_2i outside aMVNSD;
+gLDMNSRC_10P0 = interacting( gLDMNSRC_10P0_1i, gLDMNGATE_10P0_L );
+
+
+
+
+
+
+g_HVMOS_EXCL_LAY_22i = aHSR or aESD;
+g_HVMOS_EXCL_LAY_21i = g_HVMOS_EXCL_LAY_22i or aSAB;
+g_HVMOS_EXCL_LAY_20i = g_HVMOS_EXCL_LAY_21i or aFUSEWINDOW;
+g_HVMOS_EXCL_LAY_19i = g_HVMOS_EXCL_LAY_20i or aPOLYFUSE;
+g_HVMOS_EXCL_LAY_18i = g_HVMOS_EXCL_LAY_19i or aRES_MK;
+g_HVMOS_EXCL_LAY_17i = g_HVMOS_EXCL_LAY_18i or aLVS_BJT;
+g_HVMOS_EXCL_LAY_16i = g_HVMOS_EXCL_LAY_17i or aNAT;
+g_HVMOS_EXCL_LAY_15i = g_HVMOS_EXCL_LAY_16i or aMOS_CAP_MK;
+g_HVMOS_EXCL_LAY_14i = g_HVMOS_EXCL_LAY_15i or aESD_MK;
+g_HVMOS_EXCL_LAY_13i = g_HVMOS_EXCL_LAY_14i or aEFUSE_MK;
+g_HVMOS_EXCL_LAY_12i = g_HVMOS_EXCL_LAY_13i or aV5_XTOR;
+g_HVMOS_EXCL_LAY = g_HVMOS_EXCL_LAY_12i or aSCHOTTKY_DIODE;
+gNMOS_10P0_ASYM_DEV_8i = gLDMOS_NGATE or aMVNSD;
+gNMOS_10P0_ASYM_DEV_7i = gNMOS_10P0_ASYM_DEV_8i or gLDMNSRC_10P0;
+gNMOS_10P0_ASYM_DEV_6i = gNMOS_10P0_ASYM_DEV_7i and aNPLUS;
+gNMOS_10P0_ASYM_DEV_5i = gNMOS_10P0_ASYM_DEV_6i and aDUALGATE;
+gNMOS_10P0_ASYM_DEV_4i = gNMOS_10P0_ASYM_DEV_5i and aLDMOS;
+gNMOS_10P0_ASYM_DEV_3i = gNMOS_10P0_ASYM_DEV_4i not aNWELL;
+gNMOS_10P0_ASYM_DEV_2i = gNMOS_10P0_ASYM_DEV_3i not aDNWELL;
+gNMOS_10P0_ASYM_DEV_1i = gNMOS_10P0_ASYM_DEV_2i not aLVPWELL;
+gNMOS_10P0_ASYM_DEV = gNMOS_10P0_ASYM_DEV_1i not g_HVMOS_EXCL_LAY;
+
+gNGATE_LDMNGATE_1i = interacting( gLDMOS_NGATE, gLDMNGATE_10P0_L );
+gNGATE_LDMNGATE = interacting( gNGATE_LDMNGATE_1i, gNMOS_10P0_ASYM_DEV );
+gLDMNGATE_GROW_R_2i = grow( gNGATE_LDMNGATE, east = 0.2 );
+gLDMNGATE_GROW_R_1i = gLDMNGATE_GROW_R_2i not gLDMOS_NGATE;
+gLDMNGATE_GROW_R = gLDMNGATE_GROW_R_1i inside aMVNSD;
+gLDMNGATE_GROW_L_2i = grow( gNGATE_LDMNGATE, west = 0.2 );
+gLDMNGATE_GROW_L_1i = gLDMNGATE_GROW_L_2i not gLDMOS_NGATE;
+gLDMNGATE_GROW_L = gLDMNGATE_GROW_L_1i inside aMVNSD;
+gLDMNGATE_GROW_T_2i = grow( gNGATE_LDMNGATE, north = 0.2 );
+gLDMNGATE_GROW_T_1i = gLDMNGATE_GROW_T_2i not gLDMOS_NGATE;
+gLDMNGATE_GROW_T = gLDMNGATE_GROW_T_1i inside aMVNSD;
+gLDMNGATE_GROW_B_2i = grow( gNGATE_LDMNGATE, south = 0.2 );
+gLDMNGATE_GROW_B_1i = gLDMNGATE_GROW_B_2i not gLDMOS_NGATE;
+gLDMNGATE_GROW_B = gLDMNGATE_GROW_B_1i inside aMVNSD;
+gLDMNGATE_ALL_3i = gLDMNGATE_10P0_L or gLDMNGATE_GROW_R;
+gLDMNGATE_ALL_2i = gLDMNGATE_ALL_3i or gLDMNGATE_GROW_L;
+gLDMNGATE_ALL_1i = gLDMNGATE_ALL_2i or gLDMNGATE_GROW_T;
+gLDMNGATE_ALL = gLDMNGATE_ALL_1i or gLDMNGATE_GROW_B;
+gNOT_LDMNGATE = gLDMNGATE_ALL not gNGATE_LDMNGATE;
+gLDMNGATE_10P0_1i = interacting( gLDMOS_NGATE, gLDMNGATE_10P0_L );
+gLDMNGATE_10P0 = gLDMNGATE_10P0_1i or gNOT_LDMNGATE;
+gLDMOS_PGATE_1i = interacting( gASYM_PGATE_ALL, aMVPSD );
+gLDMOS_PGATE = not_interacting( gLDMOS_PGATE_1i, aESD_MK );
+
+gLDMPGATE_10P0_L_4i = gLDMOS_PGATE and aLDMOS;
+gLDMPGATE_10P0_L_3i = gLDMPGATE_10P0_L_4i and aDUALGATE;
+gLDMPGATE_10P0_L_2i = interacting( gLDMPGATE_10P0_L_3i, aMVPSD );
+gLDMPGATE_10P0_L_1i = gLDMPGATE_10P0_L_2i not aMVPSD;
+gLDMPGATE_10P0_L = gLDMPGATE_10P0_L_1i inside gDN_SUB_ALL;
+gLDMPSRC_10P0_4i = gPDIFF and aLDMOS;
+gLDMPSRC_10P0_3i = gLDMPSRC_10P0_4i and aDUALGATE;
+gLDMPSRC_10P0_2i = gLDMPSRC_10P0_3i inside gDN_SUB_ALL;
+gLDMPSRC_10P0_1i = gLDMPSRC_10P0_2i outside aMVPSD;
+gLDMPSRC_10P0 = interacting( gLDMPSRC_10P0_1i, gLDMPGATE_10P0_L );
+gPMOS_10P0_ASYM_DEV_8i = gLDMOS_PGATE or aMVPSD;
+gPMOS_10P0_ASYM_DEV_7i = gPMOS_10P0_ASYM_DEV_8i or gLDMPSRC_10P0;
+gPMOS_10P0_ASYM_DEV_6i = gPMOS_10P0_ASYM_DEV_7i and aPPLUS;
+gPMOS_10P0_ASYM_DEV_5i = gPMOS_10P0_ASYM_DEV_6i and aDNWELL;
+gPMOS_10P0_ASYM_DEV_4i = gPMOS_10P0_ASYM_DEV_5i and aLDMOS;
+gPMOS_10P0_ASYM_DEV_3i = gPMOS_10P0_ASYM_DEV_4i and aDUALGATE;
+gPMOS_10P0_ASYM_DEV_2i = gPMOS_10P0_ASYM_DEV_3i not aLVPWELL;
+gPMOS_10P0_ASYM_DEV_1i = gPMOS_10P0_ASYM_DEV_2i not aNWELL;
+gPMOS_10P0_ASYM_DEV = gPMOS_10P0_ASYM_DEV_1i not g_HVMOS_EXCL_LAY;
+
+gPGATE_LDMPGATE_1i = interacting( gLDMOS_PGATE, gLDMPGATE_10P0_L );
+gPGATE_LDMPGATE = interacting( gPGATE_LDMPGATE_1i, gPMOS_10P0_ASYM_DEV );
+gLDMPGATE_GROW_R_2i = grow( gPGATE_LDMPGATE, east = 0.2 );
+gLDMPGATE_GROW_R_1i = gLDMPGATE_GROW_R_2i not gLDMOS_PGATE;
+gLDMPGATE_GROW_R = gLDMPGATE_GROW_R_1i inside aMVPSD;
+gLDMPGATE_GROW_L_2i = grow( gPGATE_LDMPGATE, west = 0.2 );
+gLDMPGATE_GROW_L_1i = gLDMPGATE_GROW_L_2i not gLDMOS_PGATE;
+gLDMPGATE_GROW_L = gLDMPGATE_GROW_L_1i inside aMVPSD;
+gLDMPGATE_GROW_T_2i = grow( gPGATE_LDMPGATE, north = 0.2 );
+gLDMPGATE_GROW_T_1i = gLDMPGATE_GROW_T_2i not gLDMOS_PGATE;
+gLDMPGATE_GROW_T = gLDMPGATE_GROW_T_1i inside aMVPSD;
+gLDMPGATE_GROW_B_2i = grow( gPGATE_LDMPGATE, south = 0.2 );
+gLDMPGATE_GROW_B_1i = gLDMPGATE_GROW_B_2i not gLDMOS_PGATE;
+gLDMPGATE_GROW_B = gLDMPGATE_GROW_B_1i inside aMVPSD;
+gLDMPGATE_ALL_3i = gLDMPGATE_10P0_L or gLDMPGATE_GROW_R;
+gLDMPGATE_ALL_2i = gLDMPGATE_ALL_3i or gLDMPGATE_GROW_L;
+gLDMPGATE_ALL_1i = gLDMPGATE_ALL_2i or gLDMPGATE_GROW_T;
+gLDMPGATE_ALL = gLDMPGATE_ALL_1i or gLDMPGATE_GROW_B;
+gNOT_LDMPGATE = gLDMPGATE_ALL not gPGATE_LDMPGATE;
+gLDMPGATE_10P0_1i = interacting( gLDMOS_PGATE, gLDMPGATE_10P0_L );
+gLDMPGATE_10P0 = gLDMPGATE_10P0_1i or gNOT_LDMPGATE;
+gGATE_5i = aPOLY2 and aCOMP;
+gGATE_4i = not_interacting( gGATE_5i, aLVS_BJT );
+gGATE_3i = gGATE_4i not gLVS_RF;
+gGATE_2i = gGATE_3i not aMOS_CAP_MK;
+gGATE_1i = gGATE_2i not aEFUSE_MK;
+gGATE_8i = gSAB_NGATE or gSAB_PGATE;
+gGATE_7i = gGATE_8i or gLDMNGATE_10P0;
+gGATE_6i = gGATE_7i or gLDMPGATE_10P0;
+gGATE = gGATE_1i not gGATE_6i;
+gLVS_CAP_FE = not_interacting( aLVS_CAP, aFUSETOP );    
+gPOLY_MOD_3i = aPOLY2 and aCOMP;
+gPOLY_MOD_4i = aMOS_CAP_MK or gLVS_CAP_FE;
+gPOLY_MOD_2i = gPOLY_MOD_3i and gPOLY_MOD_4i;
+gPOLY_MOD_6i = aNPLUS not aPPLUS;
+gPOLY_MOD_7i = aPPLUS not aNPLUS;
+gPOLY_MOD_5i = gPOLY_MOD_6i or gPOLY_MOD_7i;
+gPOLY_MOD_1i = gPOLY_MOD_2i and gPOLY_MOD_5i;
+gPOLY_MOD = gPOLY_MOD_1i not aEFUSE_MK;     
+gGPLY_7i = gGATE or gPOLY_MOD;
+gGPLY_6i = gGPLY_7i or aEFUSE_MK;
+gGPLY_5i = gGPLY_6i or aRES_MK;
+gGPLY_4i = gGPLY_5i or gSAB_NGATE;
+gGPLY_3i = gGPLY_4i or gSAB_PGATE;
+gGPLY_2i = gGPLY_3i or gLDMNGATE_10P0;
+gGPLY_1i = gGPLY_2i or gLDMPGATE_10P0;
+gGPLY = aPOLY2 not gGPLY_1i;                
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGATE_ASYM, gGPLY }}} );
+
+    
+                
+        
+        gSD_SHIFT_0_1_m2 = rectangles( gMFACT_SD );
+
+    gSD_SHIFT_0_2_m2 = gMFACT_SD not gSD_SHIFT_0_1_m2;
+gSD_SHIFT_0_m2 = gSD_SHIFT_0_1_m2 or gSD_SHIFT_0_2_m2;
+
+    gGATE_SHIFT_0_m2 = interacting( gGATE_ASYM, gSD_SHIFT_0_m2, == 2 );
+gLAYER_1i = grow( gGATE_SHIFT_0_m2, west = 0.001 );
+gLAYER_2i = shrink( gLAYER_1i, east = 0.001 );
+gLAYER_3i = grow( gLAYER_2i, north = 0.001 );
+gGATE_SHIFT_1_MOS = shrink( gLAYER_3i, south = 0.001 );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGATE_SHIFT_1_MOS, gMFACT_SD }}} );
+gLAYER_4i = shrink( gGATE_SHIFT_0_m2, west = 0.001 );
+gLAYER_5i = grow( gLAYER_4i, east = 0.001 );
+gLAYER_6i = shrink( gLAYER_5i, north = 0.001 );
+gGATE_SHIFT_2_MOS = grow( gLAYER_6i, south = 0.001 );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGATE_SHIFT_2_MOS, gMFACT_SD }}} );
+gNGATE_1i = gGATE and gNDIF;
+gNGATE = gNGATE_1i not aPPLUS;
+gPGATE_1i = gGATE and gPDIF;
+gPGATE = gPGATE_1i not aNPLUS;
+#ifdef d_MOS_NF_BY_COUNT
+   gMFACT_NSD_LOGIC_4i = interacting( aCOMP, aNPLUS );
+   gMFACT_NSD_LOGIC_3i = gMFACT_NSD_LOGIC_4i not gPTAP_ASYM;
+   gMFACT_NSD_LOGIC_2i = gMFACT_NSD_LOGIC_3i not aPOLY2;
+   gMFACT_NSD_LOGIC_1i = interacting( gMFACT_NSD_LOGIC_2i, gNGATE );
+   gMFACT_NSD_LOGIC = not_interacting( gMFACT_NSD_LOGIC_1i, aESD_MK );
+   gMFACT_PSD_LOGIC_4i = interacting( aCOMP, aPPLUS );
+   gMFACT_PSD_LOGIC_3i = gMFACT_PSD_LOGIC_4i not gNTAP_ASYM;
+   gMFACT_PSD_LOGIC_2i = gMFACT_PSD_LOGIC_3i not aPOLY2;
+   gMFACT_PSD_LOGIC_1i = interacting( gMFACT_PSD_LOGIC_2i, gPGATE );
+   gMFACT_PSD_LOGIC = not_interacting( gMFACT_PSD_LOGIC_1i, aESD_MK );
+   gMFACT_SD_LOGIC = gMFACT_NSD_LOGIC or gMFACT_PSD_LOGIC;
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gMFACT_SD_LOGIC }, gNDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gMFACT_SD_LOGIC }, gPDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   
+      gGATE_LOGIC = copy( gGATE, ancestry = true );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGATE, gGATE_LOGIC }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGATE_LOGIC, gGPLY }}} );
+   
+          
+                               
+                 
+                 gSD_SHIFT_0_1_m1 = rectangles( gMFACT_SD_LOGIC );
+   
+          gSD_SHIFT_0_2_m1 = gMFACT_SD_LOGIC not gSD_SHIFT_0_1_m1;
+   gSD_SHIFT_0_m1 = gSD_SHIFT_0_1_m1 or gSD_SHIFT_0_2_m1;
+   
+          gGATE_SHIFT_0_m1 = interacting( gGATE_LOGIC, gSD_SHIFT_0_m1, == 2 );
+   gLAYER_7i = grow( gGATE_SHIFT_0_m1, west = 0.001 );
+   gLAYER_8i = shrink( gLAYER_7i, east = 0.001 );
+   gLAYER_9i = grow( gLAYER_8i, north = 0.001 );
+   gGATE_SHIFT_1_MOS_LOGIC = shrink( gLAYER_9i, south = 0.001 );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGATE_SHIFT_1_MOS_LOGIC, gMFACT_SD_LOGIC }}} );
+   gLAYER_10i = shrink( gGATE_SHIFT_0_m1, west = 0.001 );
+   gLAYER_11i = grow( gLAYER_10i, east = 0.001 );
+   gLAYER_12i = shrink( gLAYER_11i, north = 0.001 );
+   gGATE_SHIFT_2_MOS_LOGIC = grow( gLAYER_12i, south = 0.001 );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGATE_SHIFT_2_MOS_LOGIC, gMFACT_SD_LOGIC }}} );
+#endif
+#ifdef d_BEOL_1P6M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM6_DEV = aMETAL6 and aM6_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m1 = aMETAL6 and aM6_RES_MK;
+      gMET_AND_RES_MARK_1_m1_2i = aVIA5 and gMET_AND_RES_MARK_0_m1;
+      gMET_AND_RES_MARK_1_m1_1i = not_interacting( gMET_AND_RES_MARK_0_m1, gMET_AND_RES_MARK_1_m1_2i );
+      gMET_AND_RES_MARK_1_m1_3i = aVIA5 and gMET_AND_RES_MARK_0_m1;
+      gMET_AND_RES_MARK_1_m1 = not_interacting( gMET_AND_RES_MARK_1_m1_1i, gMET_AND_RES_MARK_1_m1_3i );
+      gMET_NOT_RES_MARK_1_m1 = aMETAL6 not aM6_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m1_1i = gMET_AND_RES_MARK_1_m1 coincident_edge gMET_NOT_RES_MARK_1_m1;
+      gMET_TERM_ALL_SIDES_1_m1 = edge_size( gMET_TERM_ALL_SIDES_1_m1_1i, inside = vSIZE_VALUE_m496, outside = vSIZE_VALUE_m496 );
+      gMET_TERM_ALL_SIDES_INSIDE_m1 = gMET_TERM_ALL_SIDES_1_m1 and gMET_AND_RES_MARK_1_m1;
+      gIN_RES_MARK_1_m1_1i = aM6_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m1;
+      gIN_RES_MARK_1_m1 = outside_touching( gIN_RES_MARK_1_m1_1i, gMET_TERM_ALL_SIDES_INSIDE_m1, >= 2 );
+      gMET_TERM_MARK_1_m1 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m1, gIN_RES_MARK_1_m1 );
+      gIN_RES_MARK_2_m1_1i = aM6_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m1;
+      gIN_RES_MARK_2_m1 = outside_touching( gIN_RES_MARK_2_m1_1i, gMET_TERM_ALL_SIDES_INSIDE_m1, == 1 );
+      gMET_TERM_MARK_2_m1 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m1, gIN_RES_MARK_2_m1 );
+      gIN_RES_MARK_FINAL_m1_1i = gIN_RES_MARK_1_m1 or gMET_TERM_MARK_1_m1;
+      gIN_RES_MARK_FINAL_m1_3i = gIN_RES_MARK_2_m1 or gMET_TERM_MARK_2_m1;
+      gIN_RES_MARK_FINAL_m1_2i = size( gIN_RES_MARK_FINAL_m1_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m1 = gIN_RES_MARK_FINAL_m1_1i or gIN_RES_MARK_FINAL_m1_2i;
+      gMET_AND_RES_MARK_FINAL_m1 = aMETAL6 and gIN_RES_MARK_FINAL_m1;
+      gMET_AND_RES_MARK_m1_2i = aVIA5 and gMET_AND_RES_MARK_0_m1;
+      gMET_AND_RES_MARK_m1_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m1, gMET_AND_RES_MARK_m1_2i );
+      gMET_AND_RES_MARK_m1_3i = aVIA5 and gMET_AND_RES_MARK_0_m1;
+      gMET_AND_RES_MARK_m1 = not_interacting( gMET_AND_RES_MARK_m1_1i, gMET_AND_RES_MARK_m1_3i );
+      gMET_NOT_RES_MARK_m1 = aMETAL6 not gIN_RES_MARK_FINAL_m1;
+      gMET_TERM_ALL_SIDES_m1_1i = gMET_AND_RES_MARK_m1 coincident_edge gMET_NOT_RES_MARK_m1;
+      gMET_TERM_ALL_SIDES_m1 = edge_size( gMET_TERM_ALL_SIDES_m1_1i, inside = vSIZE_VALUE_m496, outside = vSIZE_VALUE_m496 );
+      gMET_TERM_TOP_m1_2i = grow( gMET_AND_RES_MARK_m1, north = vSIZE_VALUE_m496 );
+      gMET_TERM_TOP_m1_1i = gMET_TERM_TOP_m1_2i not gMET_AND_RES_MARK_m1;
+      gMET_TERM_TOP_m1 = gMET_TERM_TOP_m1_1i inside gMET_NOT_RES_MARK_m1;
+      gMET_DEV_TOP_m1_3i = gMET_AND_RES_MARK_m1 or gMET_TERM_ALL_SIDES_m1;
+      gMET_DEV_TOP_m1_4i = shrink( gMET_AND_RES_MARK_m1, north = vSIZE_VALUE_m496 );
+      gMET_DEV_TOP_m1_2i = gMET_DEV_TOP_m1_3i not gMET_DEV_TOP_m1_4i;
+      gMET_DEV_TOP_m1_1i = interacting( gMET_DEV_TOP_m1_2i, gMET_TERM_TOP_m1 );
+      gMET_DEV_TOP_m1 = gMET_DEV_TOP_m1_1i not gMET_TERM_TOP_m1;
+      gMET_TERM_RIGHT_m1_3i = not_interacting( gMET_AND_RES_MARK_m1, gMET_DEV_TOP_m1 );
+      gMET_TERM_RIGHT_m1_2i = grow( gMET_TERM_RIGHT_m1_3i, east = vSIZE_VALUE_m496 );
+      gMET_TERM_RIGHT_m1_1i = gMET_TERM_RIGHT_m1_2i not gMET_AND_RES_MARK_m1;
+      gMET_TERM_RIGHT_m1 = gMET_TERM_RIGHT_m1_1i inside gMET_NOT_RES_MARK_m1;
+      gMET_DEV_RIGHT_m1_3i = gMET_AND_RES_MARK_m1 or gMET_TERM_ALL_SIDES_m1;
+      gMET_DEV_RIGHT_m1_4i = shrink( gMET_AND_RES_MARK_m1, east = vSIZE_VALUE_m496 );
+      gMET_DEV_RIGHT_m1_2i = gMET_DEV_RIGHT_m1_3i not gMET_DEV_RIGHT_m1_4i;
+      gMET_DEV_RIGHT_m1_1i = interacting( gMET_DEV_RIGHT_m1_2i, gMET_TERM_RIGHT_m1 );
+      gMET_DEV_RIGHT_m1 = gMET_DEV_RIGHT_m1_1i not gMET_TERM_RIGHT_m1;
+      gMET_TERM_BOTTOM_m1_4i = not_interacting( gMET_AND_RES_MARK_m1, gMET_DEV_TOP_m1 );
+      gMET_TERM_BOTTOM_m1_3i = not_interacting( gMET_TERM_BOTTOM_m1_4i, gMET_DEV_RIGHT_m1 );
+      gMET_TERM_BOTTOM_m1_2i = grow( gMET_TERM_BOTTOM_m1_3i, south = vSIZE_VALUE_m496 );
+      gMET_TERM_BOTTOM_m1_1i = gMET_TERM_BOTTOM_m1_2i not gMET_AND_RES_MARK_m1;
+      gMET_TERM_BOTTOM_m1 = gMET_TERM_BOTTOM_m1_1i inside gMET_NOT_RES_MARK_m1;
+      gMET_DEV_BOTTOM_m1_3i = gMET_AND_RES_MARK_m1 or gMET_TERM_ALL_SIDES_m1;
+      gMET_DEV_BOTTOM_m1_4i = shrink( gMET_AND_RES_MARK_m1, south = vSIZE_VALUE_m496 );
+      gMET_DEV_BOTTOM_m1_2i = gMET_DEV_BOTTOM_m1_3i not gMET_DEV_BOTTOM_m1_4i;
+      gMET_DEV_BOTTOM_m1_1i = interacting( gMET_DEV_BOTTOM_m1_2i, gMET_TERM_BOTTOM_m1 );
+      gMET_DEV_BOTTOM_m1 = gMET_DEV_BOTTOM_m1_1i not gMET_TERM_BOTTOM_m1;
+      gMET_DEV_LEFT_m1_3i = gMET_AND_RES_MARK_m1 or gMET_TERM_ALL_SIDES_m1;
+      gMET_DEV_LEFT_m1_4i = shrink( gMET_AND_RES_MARK_m1, west = vSIZE_VALUE_m496 );
+      gMET_DEV_LEFT_m1_2i = gMET_DEV_LEFT_m1_3i not gMET_DEV_LEFT_m1_4i;
+      gMET_DEV_LEFT_m1_1i = interacting( gMET_DEV_LEFT_m1_2i, gMET_TERM_RIGHT_m1 );
+      gMET_DEV_LEFT_m1 = gMET_DEV_LEFT_m1_1i not gMET_TERM_RIGHT_m1;
+      gMET_DEV_TOP_2_m1_2i = shrink( gMET_AND_RES_MARK_m1, north = vSIZE_VALUE_m496 );
+      gMET_DEV_TOP_2_m1_1i = gMET_AND_RES_MARK_m1 not gMET_DEV_TOP_2_m1_2i;
+      gMET_DEV_TOP_2_m1 = interacting( gMET_DEV_TOP_2_m1_1i, gMET_TERM_TOP_m1 );
+      gMET_DEV_RIGHT_2_m1_2i = shrink( gMET_AND_RES_MARK_m1, east = vSIZE_VALUE_m496 );
+      gMET_DEV_RIGHT_2_m1_1i = gMET_AND_RES_MARK_m1 not gMET_DEV_RIGHT_2_m1_2i;
+      gMET_DEV_RIGHT_2_m1 = interacting( gMET_DEV_RIGHT_2_m1_1i, gMET_TERM_RIGHT_m1 );
+      gMET_DEV_BOTTOM_2_m1_2i = shrink( gMET_AND_RES_MARK_m1, south = vSIZE_VALUE_m496 );
+      gMET_DEV_BOTTOM_2_m1_1i = gMET_AND_RES_MARK_m1 not gMET_DEV_BOTTOM_2_m1_2i;
+      gMET_DEV_BOTTOM_2_m1 = interacting( gMET_DEV_BOTTOM_2_m1_1i, gMET_TERM_BOTTOM_m1 );
+      gMET_DEV_LEFT_2_m1_2i = shrink( gMET_AND_RES_MARK_m1, west = vSIZE_VALUE_m496 );
+      gMET_DEV_LEFT_2_m1_1i = gMET_AND_RES_MARK_m1 not gMET_DEV_LEFT_2_m1_2i;
+      gMET_DEV_LEFT_2_m1 = interacting( gMET_DEV_LEFT_2_m1_1i, gMET_TERM_RIGHT_m1 );
+      gRM6_OUT_2i = gMET_DEV_TOP_2_m1 or gMET_DEV_RIGHT_2_m1;
+      gRM6_OUT_1i = gRM6_OUT_2i or gMET_DEV_BOTTOM_2_m1;
+      gRM6_OUT = gRM6_OUT_1i or gMET_DEV_LEFT_2_m1;
+      gRM6_DEV_3i = gMET_DEV_TOP_m1 or gMET_DEV_RIGHT_m1;
+      gRM6_DEV_2i = gRM6_DEV_3i or gMET_DEV_BOTTOM_m1;
+      gRM6_DEV_1i = gRM6_DEV_2i or gMET_DEV_LEFT_m1;
+      gRM6_DEV = gRM6_DEV_1i or gRM6_OUT;
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM6_TERM_1i = and_edge( gRM6_DEV, aMETAL6, false );
+      gRM6_TERM = edge_size( gRM6_TERM_1i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m1_5i = not_interacting( gMET_AND_RES_MARK_m1, gMET_DEV_TOP_m1 );
+      gMET_TERM_LEFT_m1_4i = not_interacting( gMET_TERM_LEFT_m1_5i, gMET_DEV_RIGHT_m1 );
+      gMET_TERM_LEFT_m1_3i = not_interacting( gMET_TERM_LEFT_m1_4i, gMET_DEV_BOTTOM_m1 );
+      gMET_TERM_LEFT_m1_2i = grow( gMET_TERM_LEFT_m1_3i, west = vSIZE_VALUE_m496 );
+      gMET_TERM_LEFT_m1_1i = gMET_TERM_LEFT_m1_2i not gMET_AND_RES_MARK_m1;
+      gMET_TERM_LEFT_m1 = gMET_TERM_LEFT_m1_1i inside gMET_NOT_RES_MARK_m1;
+      gOUT_DEV_TERM_1_m1_2i = gMET_TERM_TOP_m1 or gMET_TERM_RIGHT_m1;
+      gOUT_DEV_TERM_1_m1_1i = gOUT_DEV_TERM_1_m1_2i or gMET_TERM_BOTTOM_m1;
+      gOUT_DEV_TERM_1_m1 = gOUT_DEV_TERM_1_m1_1i or gMET_TERM_LEFT_m1;
+      gMET_TERM_TOP_2_m1 = gMET_AND_RES_MARK_m1 not gMET_DEV_TOP_m1;
+      gMET_TERM_RIGHT_2_m1 = gMET_AND_RES_MARK_m1 not gMET_DEV_RIGHT_m1;
+      gMET_TERM_BOTTOM_2_m1 = gMET_AND_RES_MARK_m1 not gMET_DEV_BOTTOM_m1;
+      gMET_TERM_LEFT_2_m1 = gMET_AND_RES_MARK_m1 not gMET_DEV_LEFT_m1;
+      gOUT_DEV_TERM_2_m1_2i = gMET_TERM_TOP_2_m1 or gMET_TERM_RIGHT_2_m1;
+      gOUT_DEV_TERM_2_m1_1i = gOUT_DEV_TERM_2_m1_2i or gMET_TERM_BOTTOM_2_m1;
+      gOUT_DEV_TERM_2_m1 = gOUT_DEV_TERM_2_m1_1i or gMET_TERM_LEFT_2_m1;
+      gRM6_TERM_2i = gOUT_DEV_TERM_1_m1 or gOUT_DEV_TERM_2_m1;
+      gRM6_TERM = gRM6_TERM_2i not gRM6_DEV;
+   #endif
+   #ifdef d_MIM_OPTION_A
+      gM6_NODEV_2i = gRM6_DEV or aMETAL6_SLOT;
+      gM6_NODEV_1i = gM6_NODEV_2i or gRM6_TERM;
+      gM6_NODEV = aMETAL6 not gM6_NODEV_1i;
+   #endif
+#endif
+gLVS_CAP_FT = enclosing( aLVS_CAP, aFUSETOP );
+#ifndef d_MIM_OPTION_A
+   #ifdef d_BEOL_1P6M
+      gFTVIA5_1i = aVIA5 and aFUSETOP;
+      gFTVIA5 = gFTVIA5_1i and aLVS_CAP;
+      gM6_FTDEV_2i = aMETAL6 and gLVS_CAP_FT;
+      gM6_FTDEV_1i = enclosing( gM6_FTDEV_2i, gFTVIA5 );
+      gM6_FTDEV = interacting( gM6_FTDEV_1i, aFUSETOP );
+   #endif
+#endif
+#ifdef d_BEOL_1P6M
+   #ifndef d_MIM_OPTION_A
+      gM6_NODEV_5i = gRM6_DEV or aMETAL6_SLOT;
+      gM6_NODEV_4i = gM6_NODEV_5i or gRM6_TERM;
+      gM6_NODEV_3i = gM6_NODEV_4i or gM6_FTDEV;
+      gM6_NODEV = aMETAL6 not gM6_NODEV_3i;
+   #endif
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_NODEV, gRM6_TERM }}} );
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM5_DEV = aMETAL5 and aM5_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m2 = aMETAL5 and aM5_RES_MK;
+      gMET_AND_RES_MARK_1_m2_2i = aVIA4 and gMET_AND_RES_MARK_0_m2;
+      gMET_AND_RES_MARK_1_m2_1i = not_interacting( gMET_AND_RES_MARK_0_m2, gMET_AND_RES_MARK_1_m2_2i );
+      gMET_AND_RES_MARK_1_m2_3i = aVIA5 and gMET_AND_RES_MARK_0_m2;
+      gMET_AND_RES_MARK_1_m2 = not_interacting( gMET_AND_RES_MARK_1_m2_1i, gMET_AND_RES_MARK_1_m2_3i );
+      gMET_NOT_RES_MARK_1_m2 = aMETAL5 not aM5_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m2_1i = gMET_AND_RES_MARK_1_m2 coincident_edge gMET_NOT_RES_MARK_1_m2;
+      gMET_TERM_ALL_SIDES_1_m2 = edge_size( gMET_TERM_ALL_SIDES_1_m2_1i, inside = vSIZE_VALUE_m498, outside = vSIZE_VALUE_m498 );
+      gMET_TERM_ALL_SIDES_INSIDE_m2 = gMET_TERM_ALL_SIDES_1_m2 and gMET_AND_RES_MARK_1_m2;
+      gIN_RES_MARK_1_m2_1i = aM5_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m2;
+      gIN_RES_MARK_1_m2 = outside_touching( gIN_RES_MARK_1_m2_1i, gMET_TERM_ALL_SIDES_INSIDE_m2, >= 2 );
+      gMET_TERM_MARK_1_m2 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m2, gIN_RES_MARK_1_m2 );
+      gIN_RES_MARK_2_m2_1i = aM5_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m2;
+      gIN_RES_MARK_2_m2 = outside_touching( gIN_RES_MARK_2_m2_1i, gMET_TERM_ALL_SIDES_INSIDE_m2, == 1 );
+      gMET_TERM_MARK_2_m2 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m2, gIN_RES_MARK_2_m2 );
+      gIN_RES_MARK_FINAL_m2_1i = gIN_RES_MARK_1_m2 or gMET_TERM_MARK_1_m2;
+      gIN_RES_MARK_FINAL_m2_3i = gIN_RES_MARK_2_m2 or gMET_TERM_MARK_2_m2;
+      gIN_RES_MARK_FINAL_m2_2i = size( gIN_RES_MARK_FINAL_m2_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m2 = gIN_RES_MARK_FINAL_m2_1i or gIN_RES_MARK_FINAL_m2_2i;
+      gMET_AND_RES_MARK_FINAL_m2 = aMETAL5 and gIN_RES_MARK_FINAL_m2;
+      gMET_AND_RES_MARK_m2_2i = aVIA4 and gMET_AND_RES_MARK_0_m2;
+      gMET_AND_RES_MARK_m2_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m2, gMET_AND_RES_MARK_m2_2i );
+      gMET_AND_RES_MARK_m2_3i = aVIA5 and gMET_AND_RES_MARK_0_m2;
+      gMET_AND_RES_MARK_m2 = not_interacting( gMET_AND_RES_MARK_m2_1i, gMET_AND_RES_MARK_m2_3i );
+      gMET_NOT_RES_MARK_m2 = aMETAL5 not gIN_RES_MARK_FINAL_m2;
+      gMET_TERM_ALL_SIDES_m2_1i = gMET_AND_RES_MARK_m2 coincident_edge gMET_NOT_RES_MARK_m2;
+      gMET_TERM_ALL_SIDES_m2 = edge_size( gMET_TERM_ALL_SIDES_m2_1i, inside = vSIZE_VALUE_m498, outside = vSIZE_VALUE_m498 );
+      gMET_TERM_TOP_m2_2i = grow( gMET_AND_RES_MARK_m2, north = vSIZE_VALUE_m498 );
+      gMET_TERM_TOP_m2_1i = gMET_TERM_TOP_m2_2i not gMET_AND_RES_MARK_m2;
+      gMET_TERM_TOP_m2 = gMET_TERM_TOP_m2_1i inside gMET_NOT_RES_MARK_m2;
+      gMET_DEV_TOP_m2_3i = gMET_AND_RES_MARK_m2 or gMET_TERM_ALL_SIDES_m2;
+      gMET_DEV_TOP_m2_4i = shrink( gMET_AND_RES_MARK_m2, north = vSIZE_VALUE_m498 );
+      gMET_DEV_TOP_m2_2i = gMET_DEV_TOP_m2_3i not gMET_DEV_TOP_m2_4i;
+      gMET_DEV_TOP_m2_1i = interacting( gMET_DEV_TOP_m2_2i, gMET_TERM_TOP_m2 );
+      gMET_DEV_TOP_m2 = gMET_DEV_TOP_m2_1i not gMET_TERM_TOP_m2;
+      gMET_TERM_RIGHT_m2_3i = not_interacting( gMET_AND_RES_MARK_m2, gMET_DEV_TOP_m2 );
+      gMET_TERM_RIGHT_m2_2i = grow( gMET_TERM_RIGHT_m2_3i, east = vSIZE_VALUE_m498 );
+      gMET_TERM_RIGHT_m2_1i = gMET_TERM_RIGHT_m2_2i not gMET_AND_RES_MARK_m2;
+      gMET_TERM_RIGHT_m2 = gMET_TERM_RIGHT_m2_1i inside gMET_NOT_RES_MARK_m2;
+      gMET_DEV_RIGHT_m2_3i = gMET_AND_RES_MARK_m2 or gMET_TERM_ALL_SIDES_m2;
+      gMET_DEV_RIGHT_m2_4i = shrink( gMET_AND_RES_MARK_m2, east = vSIZE_VALUE_m498 );
+      gMET_DEV_RIGHT_m2_2i = gMET_DEV_RIGHT_m2_3i not gMET_DEV_RIGHT_m2_4i;
+      gMET_DEV_RIGHT_m2_1i = interacting( gMET_DEV_RIGHT_m2_2i, gMET_TERM_RIGHT_m2 );
+      gMET_DEV_RIGHT_m2 = gMET_DEV_RIGHT_m2_1i not gMET_TERM_RIGHT_m2;
+      gMET_TERM_BOTTOM_m2_4i = not_interacting( gMET_AND_RES_MARK_m2, gMET_DEV_TOP_m2 );
+      gMET_TERM_BOTTOM_m2_3i = not_interacting( gMET_TERM_BOTTOM_m2_4i, gMET_DEV_RIGHT_m2 );
+      gMET_TERM_BOTTOM_m2_2i = grow( gMET_TERM_BOTTOM_m2_3i, south = vSIZE_VALUE_m498 );
+      gMET_TERM_BOTTOM_m2_1i = gMET_TERM_BOTTOM_m2_2i not gMET_AND_RES_MARK_m2;
+      gMET_TERM_BOTTOM_m2 = gMET_TERM_BOTTOM_m2_1i inside gMET_NOT_RES_MARK_m2;
+      gMET_DEV_BOTTOM_m2_3i = gMET_AND_RES_MARK_m2 or gMET_TERM_ALL_SIDES_m2;
+      gMET_DEV_BOTTOM_m2_4i = shrink( gMET_AND_RES_MARK_m2, south = vSIZE_VALUE_m498 );
+      gMET_DEV_BOTTOM_m2_2i = gMET_DEV_BOTTOM_m2_3i not gMET_DEV_BOTTOM_m2_4i;
+      gMET_DEV_BOTTOM_m2_1i = interacting( gMET_DEV_BOTTOM_m2_2i, gMET_TERM_BOTTOM_m2 );
+      gMET_DEV_BOTTOM_m2 = gMET_DEV_BOTTOM_m2_1i not gMET_TERM_BOTTOM_m2;
+      gMET_DEV_LEFT_m2_3i = gMET_AND_RES_MARK_m2 or gMET_TERM_ALL_SIDES_m2;
+      gMET_DEV_LEFT_m2_4i = shrink( gMET_AND_RES_MARK_m2, west = vSIZE_VALUE_m498 );
+      gMET_DEV_LEFT_m2_2i = gMET_DEV_LEFT_m2_3i not gMET_DEV_LEFT_m2_4i;
+      gMET_DEV_LEFT_m2_1i = interacting( gMET_DEV_LEFT_m2_2i, gMET_TERM_RIGHT_m2 );
+      gMET_DEV_LEFT_m2 = gMET_DEV_LEFT_m2_1i not gMET_TERM_RIGHT_m2;
+      gMET_DEV_TOP_2_m2_2i = shrink( gMET_AND_RES_MARK_m2, north = vSIZE_VALUE_m498 );
+      gMET_DEV_TOP_2_m2_1i = gMET_AND_RES_MARK_m2 not gMET_DEV_TOP_2_m2_2i;
+      gMET_DEV_TOP_2_m2 = interacting( gMET_DEV_TOP_2_m2_1i, gMET_TERM_TOP_m2 );
+      gMET_DEV_RIGHT_2_m2_2i = shrink( gMET_AND_RES_MARK_m2, east = vSIZE_VALUE_m498 );
+      gMET_DEV_RIGHT_2_m2_1i = gMET_AND_RES_MARK_m2 not gMET_DEV_RIGHT_2_m2_2i;
+      gMET_DEV_RIGHT_2_m2 = interacting( gMET_DEV_RIGHT_2_m2_1i, gMET_TERM_RIGHT_m2 );
+      gMET_DEV_BOTTOM_2_m2_2i = shrink( gMET_AND_RES_MARK_m2, south = vSIZE_VALUE_m498 );
+      gMET_DEV_BOTTOM_2_m2_1i = gMET_AND_RES_MARK_m2 not gMET_DEV_BOTTOM_2_m2_2i;
+      gMET_DEV_BOTTOM_2_m2 = interacting( gMET_DEV_BOTTOM_2_m2_1i, gMET_TERM_BOTTOM_m2 );
+      gMET_DEV_LEFT_2_m2_2i = shrink( gMET_AND_RES_MARK_m2, west = vSIZE_VALUE_m498 );
+      gMET_DEV_LEFT_2_m2_1i = gMET_AND_RES_MARK_m2 not gMET_DEV_LEFT_2_m2_2i;
+      gMET_DEV_LEFT_2_m2 = interacting( gMET_DEV_LEFT_2_m2_1i, gMET_TERM_RIGHT_m2 );
+      gRM5_OUT_4i = gMET_DEV_TOP_2_m2 or gMET_DEV_RIGHT_2_m2;
+      gRM5_OUT_3i = gRM5_OUT_4i or gMET_DEV_BOTTOM_2_m2;
+      gRM5_OUT = gRM5_OUT_3i or gMET_DEV_LEFT_2_m2;
+      gRM5_DEV_6i = gMET_DEV_TOP_m2 or gMET_DEV_RIGHT_m2;
+      gRM5_DEV_5i = gRM5_DEV_6i or gMET_DEV_BOTTOM_m2;
+      gRM5_DEV_4i = gRM5_DEV_5i or gMET_DEV_LEFT_m2;
+      gRM5_DEV = gRM5_DEV_4i or gRM5_OUT;
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM5_TERM_3i = and_edge( gRM5_DEV, aMETAL5, false );
+      gRM5_TERM = edge_size( gRM5_TERM_3i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m2_5i = not_interacting( gMET_AND_RES_MARK_m2, gMET_DEV_TOP_m2 );
+      gMET_TERM_LEFT_m2_4i = not_interacting( gMET_TERM_LEFT_m2_5i, gMET_DEV_RIGHT_m2 );
+      gMET_TERM_LEFT_m2_3i = not_interacting( gMET_TERM_LEFT_m2_4i, gMET_DEV_BOTTOM_m2 );
+      gMET_TERM_LEFT_m2_2i = grow( gMET_TERM_LEFT_m2_3i, west = vSIZE_VALUE_m498 );
+      gMET_TERM_LEFT_m2_1i = gMET_TERM_LEFT_m2_2i not gMET_AND_RES_MARK_m2;
+      gMET_TERM_LEFT_m2 = gMET_TERM_LEFT_m2_1i inside gMET_NOT_RES_MARK_m2;
+      gOUT_DEV_TERM_1_m2_2i = gMET_TERM_TOP_m2 or gMET_TERM_RIGHT_m2;
+      gOUT_DEV_TERM_1_m2_1i = gOUT_DEV_TERM_1_m2_2i or gMET_TERM_BOTTOM_m2;
+      gOUT_DEV_TERM_1_m2 = gOUT_DEV_TERM_1_m2_1i or gMET_TERM_LEFT_m2;
+      gMET_TERM_TOP_2_m2 = gMET_AND_RES_MARK_m2 not gMET_DEV_TOP_m2;
+      gMET_TERM_RIGHT_2_m2 = gMET_AND_RES_MARK_m2 not gMET_DEV_RIGHT_m2;
+      gMET_TERM_BOTTOM_2_m2 = gMET_AND_RES_MARK_m2 not gMET_DEV_BOTTOM_m2;
+      gMET_TERM_LEFT_2_m2 = gMET_AND_RES_MARK_m2 not gMET_DEV_LEFT_m2;
+      gOUT_DEV_TERM_2_m2_2i = gMET_TERM_TOP_2_m2 or gMET_TERM_RIGHT_2_m2;
+      gOUT_DEV_TERM_2_m2_1i = gOUT_DEV_TERM_2_m2_2i or gMET_TERM_BOTTOM_2_m2;
+      gOUT_DEV_TERM_2_m2 = gOUT_DEV_TERM_2_m2_1i or gMET_TERM_LEFT_2_m2;
+      gRM5_TERM_4i = gOUT_DEV_TERM_1_m2 or gOUT_DEV_TERM_2_m2;
+      gRM5_TERM = gRM5_TERM_4i not gRM5_DEV;
+   #endif
+   #ifdef d_MIM_OPTION_A
+      gM5_NODEV_7i = gRM5_DEV or aMETAL5_SLOT;
+      gM5_NODEV_6i = gM5_NODEV_7i or gRM5_TERM;
+      gM5_NODEV = aMETAL5 not gM5_NODEV_6i;
+   #endif
+#endif
+#ifndef d_MIM_OPTION_A
+   #ifdef d_BEOL_1P6M
+      gM5_MIMDEV_OPT_B_1i = aMETAL5 and gLVS_CAP_FT;
+      gM5_MIMDEV_OPT_B = interacting( gM5_MIMDEV_OPT_B_1i, aFUSETOP );
+   #endif
+#endif
+#ifdef d_BEOL_1P6M
+   #ifndef d_MIM_OPTION_A
+      gM5_NODEV_10i = gRM5_DEV or aMETAL5_SLOT;
+      gM5_NODEV_9i = gM5_NODEV_10i or gRM5_TERM;
+      gM5_NODEV_8i = gM5_NODEV_9i or gM5_MIMDEV_OPT_B;
+      gM5_NODEV = aMETAL5 not gM5_NODEV_8i;
+   #endif
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_NODEV, gRM5_TERM }}} );
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM4_DEV = aMETAL4 and aM4_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m3 = aMETAL4 and aM4_RES_MK;
+      gMET_AND_RES_MARK_1_m3_2i = aVIA3 and gMET_AND_RES_MARK_0_m3;
+      gMET_AND_RES_MARK_1_m3_1i = not_interacting( gMET_AND_RES_MARK_0_m3, gMET_AND_RES_MARK_1_m3_2i );
+      gMET_AND_RES_MARK_1_m3_3i = aVIA4 and gMET_AND_RES_MARK_0_m3;
+      gMET_AND_RES_MARK_1_m3 = not_interacting( gMET_AND_RES_MARK_1_m3_1i, gMET_AND_RES_MARK_1_m3_3i );
+      gMET_NOT_RES_MARK_1_m3 = aMETAL4 not aM4_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m3_1i = gMET_AND_RES_MARK_1_m3 coincident_edge gMET_NOT_RES_MARK_1_m3;
+      gMET_TERM_ALL_SIDES_1_m3 = edge_size( gMET_TERM_ALL_SIDES_1_m3_1i, inside = vSIZE_VALUE_m500, outside = vSIZE_VALUE_m500 );
+      gMET_TERM_ALL_SIDES_INSIDE_m3 = gMET_TERM_ALL_SIDES_1_m3 and gMET_AND_RES_MARK_1_m3;
+      gIN_RES_MARK_1_m3_1i = aM4_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m3;
+      gIN_RES_MARK_1_m3 = outside_touching( gIN_RES_MARK_1_m3_1i, gMET_TERM_ALL_SIDES_INSIDE_m3, >= 2 );
+      gMET_TERM_MARK_1_m3 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m3, gIN_RES_MARK_1_m3 );
+      gIN_RES_MARK_2_m3_1i = aM4_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m3;
+      gIN_RES_MARK_2_m3 = outside_touching( gIN_RES_MARK_2_m3_1i, gMET_TERM_ALL_SIDES_INSIDE_m3, == 1 );
+      gMET_TERM_MARK_2_m3 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m3, gIN_RES_MARK_2_m3 );
+      gIN_RES_MARK_FINAL_m3_1i = gIN_RES_MARK_1_m3 or gMET_TERM_MARK_1_m3;
+      gIN_RES_MARK_FINAL_m3_3i = gIN_RES_MARK_2_m3 or gMET_TERM_MARK_2_m3;
+      gIN_RES_MARK_FINAL_m3_2i = size( gIN_RES_MARK_FINAL_m3_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m3 = gIN_RES_MARK_FINAL_m3_1i or gIN_RES_MARK_FINAL_m3_2i;
+      gMET_AND_RES_MARK_FINAL_m3 = aMETAL4 and gIN_RES_MARK_FINAL_m3;
+      gMET_AND_RES_MARK_m3_2i = aVIA3 and gMET_AND_RES_MARK_0_m3;
+      gMET_AND_RES_MARK_m3_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m3, gMET_AND_RES_MARK_m3_2i );
+      gMET_AND_RES_MARK_m3_3i = aVIA4 and gMET_AND_RES_MARK_0_m3;
+      gMET_AND_RES_MARK_m3 = not_interacting( gMET_AND_RES_MARK_m3_1i, gMET_AND_RES_MARK_m3_3i );
+      gMET_NOT_RES_MARK_m3 = aMETAL4 not gIN_RES_MARK_FINAL_m3;
+      gMET_TERM_ALL_SIDES_m3_1i = gMET_AND_RES_MARK_m3 coincident_edge gMET_NOT_RES_MARK_m3;
+      gMET_TERM_ALL_SIDES_m3 = edge_size( gMET_TERM_ALL_SIDES_m3_1i, inside = vSIZE_VALUE_m500, outside = vSIZE_VALUE_m500 );
+      gMET_TERM_TOP_m3_2i = grow( gMET_AND_RES_MARK_m3, north = vSIZE_VALUE_m500 );
+      gMET_TERM_TOP_m3_1i = gMET_TERM_TOP_m3_2i not gMET_AND_RES_MARK_m3;
+      gMET_TERM_TOP_m3 = gMET_TERM_TOP_m3_1i inside gMET_NOT_RES_MARK_m3;
+      gMET_DEV_TOP_m3_3i = gMET_AND_RES_MARK_m3 or gMET_TERM_ALL_SIDES_m3;
+      gMET_DEV_TOP_m3_4i = shrink( gMET_AND_RES_MARK_m3, north = vSIZE_VALUE_m500 );
+      gMET_DEV_TOP_m3_2i = gMET_DEV_TOP_m3_3i not gMET_DEV_TOP_m3_4i;
+      gMET_DEV_TOP_m3_1i = interacting( gMET_DEV_TOP_m3_2i, gMET_TERM_TOP_m3 );
+      gMET_DEV_TOP_m3 = gMET_DEV_TOP_m3_1i not gMET_TERM_TOP_m3;
+      gMET_TERM_RIGHT_m3_3i = not_interacting( gMET_AND_RES_MARK_m3, gMET_DEV_TOP_m3 );
+      gMET_TERM_RIGHT_m3_2i = grow( gMET_TERM_RIGHT_m3_3i, east = vSIZE_VALUE_m500 );
+      gMET_TERM_RIGHT_m3_1i = gMET_TERM_RIGHT_m3_2i not gMET_AND_RES_MARK_m3;
+      gMET_TERM_RIGHT_m3 = gMET_TERM_RIGHT_m3_1i inside gMET_NOT_RES_MARK_m3;
+      gMET_DEV_RIGHT_m3_3i = gMET_AND_RES_MARK_m3 or gMET_TERM_ALL_SIDES_m3;
+      gMET_DEV_RIGHT_m3_4i = shrink( gMET_AND_RES_MARK_m3, east = vSIZE_VALUE_m500 );
+      gMET_DEV_RIGHT_m3_2i = gMET_DEV_RIGHT_m3_3i not gMET_DEV_RIGHT_m3_4i;
+      gMET_DEV_RIGHT_m3_1i = interacting( gMET_DEV_RIGHT_m3_2i, gMET_TERM_RIGHT_m3 );
+      gMET_DEV_RIGHT_m3 = gMET_DEV_RIGHT_m3_1i not gMET_TERM_RIGHT_m3;
+      gMET_TERM_BOTTOM_m3_4i = not_interacting( gMET_AND_RES_MARK_m3, gMET_DEV_TOP_m3 );
+      gMET_TERM_BOTTOM_m3_3i = not_interacting( gMET_TERM_BOTTOM_m3_4i, gMET_DEV_RIGHT_m3 );
+      gMET_TERM_BOTTOM_m3_2i = grow( gMET_TERM_BOTTOM_m3_3i, south = vSIZE_VALUE_m500 );
+      gMET_TERM_BOTTOM_m3_1i = gMET_TERM_BOTTOM_m3_2i not gMET_AND_RES_MARK_m3;
+      gMET_TERM_BOTTOM_m3 = gMET_TERM_BOTTOM_m3_1i inside gMET_NOT_RES_MARK_m3;
+      gMET_DEV_BOTTOM_m3_3i = gMET_AND_RES_MARK_m3 or gMET_TERM_ALL_SIDES_m3;
+      gMET_DEV_BOTTOM_m3_4i = shrink( gMET_AND_RES_MARK_m3, south = vSIZE_VALUE_m500 );
+      gMET_DEV_BOTTOM_m3_2i = gMET_DEV_BOTTOM_m3_3i not gMET_DEV_BOTTOM_m3_4i;
+      gMET_DEV_BOTTOM_m3_1i = interacting( gMET_DEV_BOTTOM_m3_2i, gMET_TERM_BOTTOM_m3 );
+      gMET_DEV_BOTTOM_m3 = gMET_DEV_BOTTOM_m3_1i not gMET_TERM_BOTTOM_m3;
+      gMET_DEV_LEFT_m3_3i = gMET_AND_RES_MARK_m3 or gMET_TERM_ALL_SIDES_m3;
+      gMET_DEV_LEFT_m3_4i = shrink( gMET_AND_RES_MARK_m3, west = vSIZE_VALUE_m500 );
+      gMET_DEV_LEFT_m3_2i = gMET_DEV_LEFT_m3_3i not gMET_DEV_LEFT_m3_4i;
+      gMET_DEV_LEFT_m3_1i = interacting( gMET_DEV_LEFT_m3_2i, gMET_TERM_RIGHT_m3 );
+      gMET_DEV_LEFT_m3 = gMET_DEV_LEFT_m3_1i not gMET_TERM_RIGHT_m3;
+      gMET_DEV_TOP_2_m3_2i = shrink( gMET_AND_RES_MARK_m3, north = vSIZE_VALUE_m500 );
+      gMET_DEV_TOP_2_m3_1i = gMET_AND_RES_MARK_m3 not gMET_DEV_TOP_2_m3_2i;
+      gMET_DEV_TOP_2_m3 = interacting( gMET_DEV_TOP_2_m3_1i, gMET_TERM_TOP_m3 );
+      gMET_DEV_RIGHT_2_m3_2i = shrink( gMET_AND_RES_MARK_m3, east = vSIZE_VALUE_m500 );
+      gMET_DEV_RIGHT_2_m3_1i = gMET_AND_RES_MARK_m3 not gMET_DEV_RIGHT_2_m3_2i;
+      gMET_DEV_RIGHT_2_m3 = interacting( gMET_DEV_RIGHT_2_m3_1i, gMET_TERM_RIGHT_m3 );
+      gMET_DEV_BOTTOM_2_m3_2i = shrink( gMET_AND_RES_MARK_m3, south = vSIZE_VALUE_m500 );
+      gMET_DEV_BOTTOM_2_m3_1i = gMET_AND_RES_MARK_m3 not gMET_DEV_BOTTOM_2_m3_2i;
+      gMET_DEV_BOTTOM_2_m3 = interacting( gMET_DEV_BOTTOM_2_m3_1i, gMET_TERM_BOTTOM_m3 );
+      gMET_DEV_LEFT_2_m3_2i = shrink( gMET_AND_RES_MARK_m3, west = vSIZE_VALUE_m500 );
+      gMET_DEV_LEFT_2_m3_1i = gMET_AND_RES_MARK_m3 not gMET_DEV_LEFT_2_m3_2i;
+      gMET_DEV_LEFT_2_m3 = interacting( gMET_DEV_LEFT_2_m3_1i, gMET_TERM_RIGHT_m3 );
+      gRM4_OUT_6i = gMET_DEV_TOP_2_m3 or gMET_DEV_RIGHT_2_m3;
+      gRM4_OUT_5i = gRM4_OUT_6i or gMET_DEV_BOTTOM_2_m3;
+      gRM4_OUT = gRM4_OUT_5i or gMET_DEV_LEFT_2_m3;
+      gRM4_DEV_9i = gMET_DEV_TOP_m3 or gMET_DEV_RIGHT_m3;
+      gRM4_DEV_8i = gRM4_DEV_9i or gMET_DEV_BOTTOM_m3;
+      gRM4_DEV_7i = gRM4_DEV_8i or gMET_DEV_LEFT_m3;
+      gRM4_DEV = gRM4_DEV_7i or gRM4_OUT;
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM4_TERM_5i = and_edge( gRM4_DEV, aMETAL4, false );
+      gRM4_TERM = edge_size( gRM4_TERM_5i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m3_5i = not_interacting( gMET_AND_RES_MARK_m3, gMET_DEV_TOP_m3 );
+      gMET_TERM_LEFT_m3_4i = not_interacting( gMET_TERM_LEFT_m3_5i, gMET_DEV_RIGHT_m3 );
+      gMET_TERM_LEFT_m3_3i = not_interacting( gMET_TERM_LEFT_m3_4i, gMET_DEV_BOTTOM_m3 );
+      gMET_TERM_LEFT_m3_2i = grow( gMET_TERM_LEFT_m3_3i, west = vSIZE_VALUE_m500 );
+      gMET_TERM_LEFT_m3_1i = gMET_TERM_LEFT_m3_2i not gMET_AND_RES_MARK_m3;
+      gMET_TERM_LEFT_m3 = gMET_TERM_LEFT_m3_1i inside gMET_NOT_RES_MARK_m3;
+      gOUT_DEV_TERM_1_m3_2i = gMET_TERM_TOP_m3 or gMET_TERM_RIGHT_m3;
+      gOUT_DEV_TERM_1_m3_1i = gOUT_DEV_TERM_1_m3_2i or gMET_TERM_BOTTOM_m3;
+      gOUT_DEV_TERM_1_m3 = gOUT_DEV_TERM_1_m3_1i or gMET_TERM_LEFT_m3;
+      gMET_TERM_TOP_2_m3 = gMET_AND_RES_MARK_m3 not gMET_DEV_TOP_m3;
+      gMET_TERM_RIGHT_2_m3 = gMET_AND_RES_MARK_m3 not gMET_DEV_RIGHT_m3;
+      gMET_TERM_BOTTOM_2_m3 = gMET_AND_RES_MARK_m3 not gMET_DEV_BOTTOM_m3;
+      gMET_TERM_LEFT_2_m3 = gMET_AND_RES_MARK_m3 not gMET_DEV_LEFT_m3;
+      gOUT_DEV_TERM_2_m3_2i = gMET_TERM_TOP_2_m3 or gMET_TERM_RIGHT_2_m3;
+      gOUT_DEV_TERM_2_m3_1i = gOUT_DEV_TERM_2_m3_2i or gMET_TERM_BOTTOM_2_m3;
+      gOUT_DEV_TERM_2_m3 = gOUT_DEV_TERM_2_m3_1i or gMET_TERM_LEFT_2_m3;
+      gRM4_TERM_6i = gOUT_DEV_TERM_1_m3 or gOUT_DEV_TERM_2_m3;
+      gRM4_TERM = gRM4_TERM_6i not gRM4_DEV;
+   #endif
+   #ifdef d_MIM_OPTION_A
+      gM4_NODEV_12i = gRM4_DEV or aMETAL4_SLOT;
+      gM4_NODEV_11i = gM4_NODEV_12i or gRM4_TERM;
+      gM4_NODEV = aMETAL4 not gM4_NODEV_11i;
+   #else
+      gM4_NODEV_14i = gRM4_DEV or aMETAL4_SLOT;
+      gM4_NODEV_13i = gM4_NODEV_14i or gRM4_TERM;
+      gM4_NODEV = aMETAL4 not gM4_NODEV_13i;
+   #endif
+#endif
+#ifdef d_BEOL_1P3M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM3_DEV = aMETAL3 and aM3_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m13 = aMETAL3 and aM3_RES_MK;
+      gMET_AND_RES_MARK_1_m13_2i = aVIA2 and gMET_AND_RES_MARK_0_m13;
+      gMET_AND_RES_MARK_1_m13_1i = not_interacting( gMET_AND_RES_MARK_0_m13, gMET_AND_RES_MARK_1_m13_2i );
+      gMET_AND_RES_MARK_1_m13_3i = aVIA2 and gMET_AND_RES_MARK_0_m13;
+      gMET_AND_RES_MARK_1_m13 = not_interacting( gMET_AND_RES_MARK_1_m13_1i, gMET_AND_RES_MARK_1_m13_3i );
+      gMET_NOT_RES_MARK_1_m13 = aMETAL3 not aM3_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m13_1i = gMET_AND_RES_MARK_1_m13 coincident_edge gMET_NOT_RES_MARK_1_m13;
+      gMET_TERM_ALL_SIDES_1_m13 = edge_size( gMET_TERM_ALL_SIDES_1_m13_1i, inside = vSIZE_VALUE_m520, outside = vSIZE_VALUE_m520 );
+      gMET_TERM_ALL_SIDES_INSIDE_m13 = gMET_TERM_ALL_SIDES_1_m13 and gMET_AND_RES_MARK_1_m13;
+      gIN_RES_MARK_1_m13_1i = aM3_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m13;
+      gIN_RES_MARK_1_m13 = outside_touching( gIN_RES_MARK_1_m13_1i, gMET_TERM_ALL_SIDES_INSIDE_m13, >= 2 );
+      gMET_TERM_MARK_1_m13 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m13, gIN_RES_MARK_1_m13 );
+      gIN_RES_MARK_2_m13_1i = aM3_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m13;
+      gIN_RES_MARK_2_m13 = outside_touching( gIN_RES_MARK_2_m13_1i, gMET_TERM_ALL_SIDES_INSIDE_m13, == 1 );
+      gMET_TERM_MARK_2_m13 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m13, gIN_RES_MARK_2_m13 );
+      gIN_RES_MARK_FINAL_m13_1i = gIN_RES_MARK_1_m13 or gMET_TERM_MARK_1_m13;
+      gIN_RES_MARK_FINAL_m13_3i = gIN_RES_MARK_2_m13 or gMET_TERM_MARK_2_m13;
+      gIN_RES_MARK_FINAL_m13_2i = size( gIN_RES_MARK_FINAL_m13_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m13 = gIN_RES_MARK_FINAL_m13_1i or gIN_RES_MARK_FINAL_m13_2i;
+      gMET_AND_RES_MARK_FINAL_m13 = aMETAL3 and gIN_RES_MARK_FINAL_m13;
+      gMET_AND_RES_MARK_m13_2i = aVIA2 and gMET_AND_RES_MARK_0_m13;
+      gMET_AND_RES_MARK_m13_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m13, gMET_AND_RES_MARK_m13_2i );
+      gMET_AND_RES_MARK_m13_3i = aVIA2 and gMET_AND_RES_MARK_0_m13;
+      gMET_AND_RES_MARK_m13 = not_interacting( gMET_AND_RES_MARK_m13_1i, gMET_AND_RES_MARK_m13_3i );
+      gMET_NOT_RES_MARK_m13 = aMETAL3 not gIN_RES_MARK_FINAL_m13;
+      gMET_TERM_ALL_SIDES_m13_1i = gMET_AND_RES_MARK_m13 coincident_edge gMET_NOT_RES_MARK_m13;
+      gMET_TERM_ALL_SIDES_m13 = edge_size( gMET_TERM_ALL_SIDES_m13_1i, inside = vSIZE_VALUE_m520, outside = vSIZE_VALUE_m520 );
+      gMET_TERM_TOP_m13_2i = grow( gMET_AND_RES_MARK_m13, north = vSIZE_VALUE_m520 );
+      gMET_TERM_TOP_m13_1i = gMET_TERM_TOP_m13_2i not gMET_AND_RES_MARK_m13;
+      gMET_TERM_TOP_m13 = gMET_TERM_TOP_m13_1i inside gMET_NOT_RES_MARK_m13;
+      gMET_DEV_TOP_m13_3i = gMET_AND_RES_MARK_m13 or gMET_TERM_ALL_SIDES_m13;
+      gMET_DEV_TOP_m13_4i = shrink( gMET_AND_RES_MARK_m13, north = vSIZE_VALUE_m520 );
+      gMET_DEV_TOP_m13_2i = gMET_DEV_TOP_m13_3i not gMET_DEV_TOP_m13_4i;
+      gMET_DEV_TOP_m13_1i = interacting( gMET_DEV_TOP_m13_2i, gMET_TERM_TOP_m13 );
+      gMET_DEV_TOP_m13 = gMET_DEV_TOP_m13_1i not gMET_TERM_TOP_m13;
+      gMET_TERM_RIGHT_m13_3i = not_interacting( gMET_AND_RES_MARK_m13, gMET_DEV_TOP_m13 );
+      gMET_TERM_RIGHT_m13_2i = grow( gMET_TERM_RIGHT_m13_3i, east = vSIZE_VALUE_m520 );
+      gMET_TERM_RIGHT_m13_1i = gMET_TERM_RIGHT_m13_2i not gMET_AND_RES_MARK_m13;
+      gMET_TERM_RIGHT_m13 = gMET_TERM_RIGHT_m13_1i inside gMET_NOT_RES_MARK_m13;
+      gMET_DEV_RIGHT_m13_3i = gMET_AND_RES_MARK_m13 or gMET_TERM_ALL_SIDES_m13;
+      gMET_DEV_RIGHT_m13_4i = shrink( gMET_AND_RES_MARK_m13, east = vSIZE_VALUE_m520 );
+      gMET_DEV_RIGHT_m13_2i = gMET_DEV_RIGHT_m13_3i not gMET_DEV_RIGHT_m13_4i;
+      gMET_DEV_RIGHT_m13_1i = interacting( gMET_DEV_RIGHT_m13_2i, gMET_TERM_RIGHT_m13 );
+      gMET_DEV_RIGHT_m13 = gMET_DEV_RIGHT_m13_1i not gMET_TERM_RIGHT_m13;
+      gMET_TERM_BOTTOM_m13_4i = not_interacting( gMET_AND_RES_MARK_m13, gMET_DEV_TOP_m13 );
+      gMET_TERM_BOTTOM_m13_3i = not_interacting( gMET_TERM_BOTTOM_m13_4i, gMET_DEV_RIGHT_m13 );
+      gMET_TERM_BOTTOM_m13_2i = grow( gMET_TERM_BOTTOM_m13_3i, south = vSIZE_VALUE_m520 );
+      gMET_TERM_BOTTOM_m13_1i = gMET_TERM_BOTTOM_m13_2i not gMET_AND_RES_MARK_m13;
+      gMET_TERM_BOTTOM_m13 = gMET_TERM_BOTTOM_m13_1i inside gMET_NOT_RES_MARK_m13;
+      gMET_DEV_BOTTOM_m13_3i = gMET_AND_RES_MARK_m13 or gMET_TERM_ALL_SIDES_m13;
+      gMET_DEV_BOTTOM_m13_4i = shrink( gMET_AND_RES_MARK_m13, south = vSIZE_VALUE_m520 );
+      gMET_DEV_BOTTOM_m13_2i = gMET_DEV_BOTTOM_m13_3i not gMET_DEV_BOTTOM_m13_4i;
+      gMET_DEV_BOTTOM_m13_1i = interacting( gMET_DEV_BOTTOM_m13_2i, gMET_TERM_BOTTOM_m13 );
+      gMET_DEV_BOTTOM_m13 = gMET_DEV_BOTTOM_m13_1i not gMET_TERM_BOTTOM_m13;
+      gMET_DEV_LEFT_m13_3i = gMET_AND_RES_MARK_m13 or gMET_TERM_ALL_SIDES_m13;
+      gMET_DEV_LEFT_m13_4i = shrink( gMET_AND_RES_MARK_m13, west = vSIZE_VALUE_m520 );
+      gMET_DEV_LEFT_m13_2i = gMET_DEV_LEFT_m13_3i not gMET_DEV_LEFT_m13_4i;
+      gMET_DEV_LEFT_m13_1i = interacting( gMET_DEV_LEFT_m13_2i, gMET_TERM_RIGHT_m13 );
+      gMET_DEV_LEFT_m13 = gMET_DEV_LEFT_m13_1i not gMET_TERM_RIGHT_m13;
+      gMET_DEV_TOP_2_m13_2i = shrink( gMET_AND_RES_MARK_m13, north = vSIZE_VALUE_m520 );
+      gMET_DEV_TOP_2_m13_1i = gMET_AND_RES_MARK_m13 not gMET_DEV_TOP_2_m13_2i;
+      gMET_DEV_TOP_2_m13 = interacting( gMET_DEV_TOP_2_m13_1i, gMET_TERM_TOP_m13 );
+      gMET_DEV_RIGHT_2_m13_2i = shrink( gMET_AND_RES_MARK_m13, east = vSIZE_VALUE_m520 );
+      gMET_DEV_RIGHT_2_m13_1i = gMET_AND_RES_MARK_m13 not gMET_DEV_RIGHT_2_m13_2i;
+      gMET_DEV_RIGHT_2_m13 = interacting( gMET_DEV_RIGHT_2_m13_1i, gMET_TERM_RIGHT_m13 );
+      gMET_DEV_BOTTOM_2_m13_2i = shrink( gMET_AND_RES_MARK_m13, south = vSIZE_VALUE_m520 );
+      gMET_DEV_BOTTOM_2_m13_1i = gMET_AND_RES_MARK_m13 not gMET_DEV_BOTTOM_2_m13_2i;
+      gMET_DEV_BOTTOM_2_m13 = interacting( gMET_DEV_BOTTOM_2_m13_1i, gMET_TERM_BOTTOM_m13 );
+      gMET_DEV_LEFT_2_m13_2i = shrink( gMET_AND_RES_MARK_m13, west = vSIZE_VALUE_m520 );
+      gMET_DEV_LEFT_2_m13_1i = gMET_AND_RES_MARK_m13 not gMET_DEV_LEFT_2_m13_2i;
+      gMET_DEV_LEFT_2_m13 = interacting( gMET_DEV_LEFT_2_m13_1i, gMET_TERM_RIGHT_m13 );
+      gRM3_OUT_2i = gMET_DEV_TOP_2_m13 or gMET_DEV_RIGHT_2_m13;
+      gRM3_OUT_1i = gRM3_OUT_2i or gMET_DEV_BOTTOM_2_m13;
+      gRM3_OUT = gRM3_OUT_1i or gMET_DEV_LEFT_2_m13;
+      gRM3_DEV_3i = gMET_DEV_TOP_m13 or gMET_DEV_RIGHT_m13;
+      gRM3_DEV_2i = gRM3_DEV_3i or gMET_DEV_BOTTOM_m13;
+      gRM3_DEV_1i = gRM3_DEV_2i or gMET_DEV_LEFT_m13;
+      gRM3_DEV = gRM3_DEV_1i or gRM3_OUT;
+   #endif
+#endif
+#ifdef d_BEOL_1P4M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM3_DEV = aMETAL3 and aM3_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m11 = aMETAL3 and aM3_RES_MK;
+      gMET_AND_RES_MARK_1_m11_2i = aVIA2 and gMET_AND_RES_MARK_0_m11;
+      gMET_AND_RES_MARK_1_m11_1i = not_interacting( gMET_AND_RES_MARK_0_m11, gMET_AND_RES_MARK_1_m11_2i );
+      gMET_AND_RES_MARK_1_m11_3i = aVIA3 and gMET_AND_RES_MARK_0_m11;
+      gMET_AND_RES_MARK_1_m11 = not_interacting( gMET_AND_RES_MARK_1_m11_1i, gMET_AND_RES_MARK_1_m11_3i );
+      gMET_NOT_RES_MARK_1_m11 = aMETAL3 not aM3_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m11_1i = gMET_AND_RES_MARK_1_m11 coincident_edge gMET_NOT_RES_MARK_1_m11;
+      gMET_TERM_ALL_SIDES_1_m11 = edge_size( gMET_TERM_ALL_SIDES_1_m11_1i, inside = vSIZE_VALUE_m516, outside = vSIZE_VALUE_m516 );
+      gMET_TERM_ALL_SIDES_INSIDE_m11 = gMET_TERM_ALL_SIDES_1_m11 and gMET_AND_RES_MARK_1_m11;
+      gIN_RES_MARK_1_m11_1i = aM3_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m11;
+      gIN_RES_MARK_1_m11 = outside_touching( gIN_RES_MARK_1_m11_1i, gMET_TERM_ALL_SIDES_INSIDE_m11, >= 2 );
+      gMET_TERM_MARK_1_m11 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m11, gIN_RES_MARK_1_m11 );
+      gIN_RES_MARK_2_m11_1i = aM3_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m11;
+      gIN_RES_MARK_2_m11 = outside_touching( gIN_RES_MARK_2_m11_1i, gMET_TERM_ALL_SIDES_INSIDE_m11, == 1 );
+      gMET_TERM_MARK_2_m11 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m11, gIN_RES_MARK_2_m11 );
+      gIN_RES_MARK_FINAL_m11_1i = gIN_RES_MARK_1_m11 or gMET_TERM_MARK_1_m11;
+      gIN_RES_MARK_FINAL_m11_3i = gIN_RES_MARK_2_m11 or gMET_TERM_MARK_2_m11;
+      gIN_RES_MARK_FINAL_m11_2i = size( gIN_RES_MARK_FINAL_m11_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m11 = gIN_RES_MARK_FINAL_m11_1i or gIN_RES_MARK_FINAL_m11_2i;
+      gMET_AND_RES_MARK_FINAL_m11 = aMETAL3 and gIN_RES_MARK_FINAL_m11;
+      gMET_AND_RES_MARK_m11_2i = aVIA2 and gMET_AND_RES_MARK_0_m11;
+      gMET_AND_RES_MARK_m11_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m11, gMET_AND_RES_MARK_m11_2i );
+      gMET_AND_RES_MARK_m11_3i = aVIA3 and gMET_AND_RES_MARK_0_m11;
+      gMET_AND_RES_MARK_m11 = not_interacting( gMET_AND_RES_MARK_m11_1i, gMET_AND_RES_MARK_m11_3i );
+      gMET_NOT_RES_MARK_m11 = aMETAL3 not gIN_RES_MARK_FINAL_m11;
+      gMET_TERM_ALL_SIDES_m11_1i = gMET_AND_RES_MARK_m11 coincident_edge gMET_NOT_RES_MARK_m11;
+      gMET_TERM_ALL_SIDES_m11 = edge_size( gMET_TERM_ALL_SIDES_m11_1i, inside = vSIZE_VALUE_m516, outside = vSIZE_VALUE_m516 );
+      gMET_TERM_TOP_m11_2i = grow( gMET_AND_RES_MARK_m11, north = vSIZE_VALUE_m516 );
+      gMET_TERM_TOP_m11_1i = gMET_TERM_TOP_m11_2i not gMET_AND_RES_MARK_m11;
+      gMET_TERM_TOP_m11 = gMET_TERM_TOP_m11_1i inside gMET_NOT_RES_MARK_m11;
+      gMET_DEV_TOP_m11_3i = gMET_AND_RES_MARK_m11 or gMET_TERM_ALL_SIDES_m11;
+      gMET_DEV_TOP_m11_4i = shrink( gMET_AND_RES_MARK_m11, north = vSIZE_VALUE_m516 );
+      gMET_DEV_TOP_m11_2i = gMET_DEV_TOP_m11_3i not gMET_DEV_TOP_m11_4i;
+      gMET_DEV_TOP_m11_1i = interacting( gMET_DEV_TOP_m11_2i, gMET_TERM_TOP_m11 );
+      gMET_DEV_TOP_m11 = gMET_DEV_TOP_m11_1i not gMET_TERM_TOP_m11;
+      gMET_TERM_RIGHT_m11_3i = not_interacting( gMET_AND_RES_MARK_m11, gMET_DEV_TOP_m11 );
+      gMET_TERM_RIGHT_m11_2i = grow( gMET_TERM_RIGHT_m11_3i, east = vSIZE_VALUE_m516 );
+      gMET_TERM_RIGHT_m11_1i = gMET_TERM_RIGHT_m11_2i not gMET_AND_RES_MARK_m11;
+      gMET_TERM_RIGHT_m11 = gMET_TERM_RIGHT_m11_1i inside gMET_NOT_RES_MARK_m11;
+      gMET_DEV_RIGHT_m11_3i = gMET_AND_RES_MARK_m11 or gMET_TERM_ALL_SIDES_m11;
+      gMET_DEV_RIGHT_m11_4i = shrink( gMET_AND_RES_MARK_m11, east = vSIZE_VALUE_m516 );
+      gMET_DEV_RIGHT_m11_2i = gMET_DEV_RIGHT_m11_3i not gMET_DEV_RIGHT_m11_4i;
+      gMET_DEV_RIGHT_m11_1i = interacting( gMET_DEV_RIGHT_m11_2i, gMET_TERM_RIGHT_m11 );
+      gMET_DEV_RIGHT_m11 = gMET_DEV_RIGHT_m11_1i not gMET_TERM_RIGHT_m11;
+      gMET_TERM_BOTTOM_m11_4i = not_interacting( gMET_AND_RES_MARK_m11, gMET_DEV_TOP_m11 );
+      gMET_TERM_BOTTOM_m11_3i = not_interacting( gMET_TERM_BOTTOM_m11_4i, gMET_DEV_RIGHT_m11 );
+      gMET_TERM_BOTTOM_m11_2i = grow( gMET_TERM_BOTTOM_m11_3i, south = vSIZE_VALUE_m516 );
+      gMET_TERM_BOTTOM_m11_1i = gMET_TERM_BOTTOM_m11_2i not gMET_AND_RES_MARK_m11;
+      gMET_TERM_BOTTOM_m11 = gMET_TERM_BOTTOM_m11_1i inside gMET_NOT_RES_MARK_m11;
+      gMET_DEV_BOTTOM_m11_3i = gMET_AND_RES_MARK_m11 or gMET_TERM_ALL_SIDES_m11;
+      gMET_DEV_BOTTOM_m11_4i = shrink( gMET_AND_RES_MARK_m11, south = vSIZE_VALUE_m516 );
+      gMET_DEV_BOTTOM_m11_2i = gMET_DEV_BOTTOM_m11_3i not gMET_DEV_BOTTOM_m11_4i;
+      gMET_DEV_BOTTOM_m11_1i = interacting( gMET_DEV_BOTTOM_m11_2i, gMET_TERM_BOTTOM_m11 );
+      gMET_DEV_BOTTOM_m11 = gMET_DEV_BOTTOM_m11_1i not gMET_TERM_BOTTOM_m11;
+      gMET_DEV_LEFT_m11_3i = gMET_AND_RES_MARK_m11 or gMET_TERM_ALL_SIDES_m11;
+      gMET_DEV_LEFT_m11_4i = shrink( gMET_AND_RES_MARK_m11, west = vSIZE_VALUE_m516 );
+      gMET_DEV_LEFT_m11_2i = gMET_DEV_LEFT_m11_3i not gMET_DEV_LEFT_m11_4i;
+      gMET_DEV_LEFT_m11_1i = interacting( gMET_DEV_LEFT_m11_2i, gMET_TERM_RIGHT_m11 );
+      gMET_DEV_LEFT_m11 = gMET_DEV_LEFT_m11_1i not gMET_TERM_RIGHT_m11;
+      gMET_DEV_TOP_2_m11_2i = shrink( gMET_AND_RES_MARK_m11, north = vSIZE_VALUE_m516 );
+      gMET_DEV_TOP_2_m11_1i = gMET_AND_RES_MARK_m11 not gMET_DEV_TOP_2_m11_2i;
+      gMET_DEV_TOP_2_m11 = interacting( gMET_DEV_TOP_2_m11_1i, gMET_TERM_TOP_m11 );
+      gMET_DEV_RIGHT_2_m11_2i = shrink( gMET_AND_RES_MARK_m11, east = vSIZE_VALUE_m516 );
+      gMET_DEV_RIGHT_2_m11_1i = gMET_AND_RES_MARK_m11 not gMET_DEV_RIGHT_2_m11_2i;
+      gMET_DEV_RIGHT_2_m11 = interacting( gMET_DEV_RIGHT_2_m11_1i, gMET_TERM_RIGHT_m11 );
+      gMET_DEV_BOTTOM_2_m11_2i = shrink( gMET_AND_RES_MARK_m11, south = vSIZE_VALUE_m516 );
+      gMET_DEV_BOTTOM_2_m11_1i = gMET_AND_RES_MARK_m11 not gMET_DEV_BOTTOM_2_m11_2i;
+      gMET_DEV_BOTTOM_2_m11 = interacting( gMET_DEV_BOTTOM_2_m11_1i, gMET_TERM_BOTTOM_m11 );
+      gMET_DEV_LEFT_2_m11_2i = shrink( gMET_AND_RES_MARK_m11, west = vSIZE_VALUE_m516 );
+      gMET_DEV_LEFT_2_m11_1i = gMET_AND_RES_MARK_m11 not gMET_DEV_LEFT_2_m11_2i;
+      gMET_DEV_LEFT_2_m11 = interacting( gMET_DEV_LEFT_2_m11_1i, gMET_TERM_RIGHT_m11 );
+      gRM3_OUT_4i = gMET_DEV_TOP_2_m11 or gMET_DEV_RIGHT_2_m11;
+      gRM3_OUT_3i = gRM3_OUT_4i or gMET_DEV_BOTTOM_2_m11;
+      gRM3_OUT = gRM3_OUT_3i or gMET_DEV_LEFT_2_m11;
+      gRM3_DEV_6i = gMET_DEV_TOP_m11 or gMET_DEV_RIGHT_m11;
+      gRM3_DEV_5i = gRM3_DEV_6i or gMET_DEV_BOTTOM_m11;
+      gRM3_DEV_4i = gRM3_DEV_5i or gMET_DEV_LEFT_m11;
+      gRM3_DEV = gRM3_DEV_4i or gRM3_OUT;
+   #endif
+#endif
+#ifdef d_BEOL_1P5M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM3_DEV = aMETAL3 and aM3_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m8 = aMETAL3 and aM3_RES_MK;
+      gMET_AND_RES_MARK_1_m8_2i = aVIA2 and gMET_AND_RES_MARK_0_m8;
+      gMET_AND_RES_MARK_1_m8_1i = not_interacting( gMET_AND_RES_MARK_0_m8, gMET_AND_RES_MARK_1_m8_2i );
+      gMET_AND_RES_MARK_1_m8_3i = aVIA3 and gMET_AND_RES_MARK_0_m8;
+      gMET_AND_RES_MARK_1_m8 = not_interacting( gMET_AND_RES_MARK_1_m8_1i, gMET_AND_RES_MARK_1_m8_3i );
+      gMET_NOT_RES_MARK_1_m8 = aMETAL3 not aM3_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m8_1i = gMET_AND_RES_MARK_1_m8 coincident_edge gMET_NOT_RES_MARK_1_m8;
+      gMET_TERM_ALL_SIDES_1_m8 = edge_size( gMET_TERM_ALL_SIDES_1_m8_1i, inside = vSIZE_VALUE_m510, outside = vSIZE_VALUE_m510 );
+      gMET_TERM_ALL_SIDES_INSIDE_m8 = gMET_TERM_ALL_SIDES_1_m8 and gMET_AND_RES_MARK_1_m8;
+      gIN_RES_MARK_1_m8_1i = aM3_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m8;
+      gIN_RES_MARK_1_m8 = outside_touching( gIN_RES_MARK_1_m8_1i, gMET_TERM_ALL_SIDES_INSIDE_m8, >= 2 );
+      gMET_TERM_MARK_1_m8 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m8, gIN_RES_MARK_1_m8 );
+      gIN_RES_MARK_2_m8_1i = aM3_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m8;
+      gIN_RES_MARK_2_m8 = outside_touching( gIN_RES_MARK_2_m8_1i, gMET_TERM_ALL_SIDES_INSIDE_m8, == 1 );
+      gMET_TERM_MARK_2_m8 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m8, gIN_RES_MARK_2_m8 );
+      gIN_RES_MARK_FINAL_m8_1i = gIN_RES_MARK_1_m8 or gMET_TERM_MARK_1_m8;
+      gIN_RES_MARK_FINAL_m8_3i = gIN_RES_MARK_2_m8 or gMET_TERM_MARK_2_m8;
+      gIN_RES_MARK_FINAL_m8_2i = size( gIN_RES_MARK_FINAL_m8_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m8 = gIN_RES_MARK_FINAL_m8_1i or gIN_RES_MARK_FINAL_m8_2i;
+      gMET_AND_RES_MARK_FINAL_m8 = aMETAL3 and gIN_RES_MARK_FINAL_m8;
+      gMET_AND_RES_MARK_m8_2i = aVIA2 and gMET_AND_RES_MARK_0_m8;
+      gMET_AND_RES_MARK_m8_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m8, gMET_AND_RES_MARK_m8_2i );
+      gMET_AND_RES_MARK_m8_3i = aVIA3 and gMET_AND_RES_MARK_0_m8;
+      gMET_AND_RES_MARK_m8 = not_interacting( gMET_AND_RES_MARK_m8_1i, gMET_AND_RES_MARK_m8_3i );
+      gMET_NOT_RES_MARK_m8 = aMETAL3 not gIN_RES_MARK_FINAL_m8;
+      gMET_TERM_ALL_SIDES_m8_1i = gMET_AND_RES_MARK_m8 coincident_edge gMET_NOT_RES_MARK_m8;
+      gMET_TERM_ALL_SIDES_m8 = edge_size( gMET_TERM_ALL_SIDES_m8_1i, inside = vSIZE_VALUE_m510, outside = vSIZE_VALUE_m510 );
+      gMET_TERM_TOP_m8_2i = grow( gMET_AND_RES_MARK_m8, north = vSIZE_VALUE_m510 );
+      gMET_TERM_TOP_m8_1i = gMET_TERM_TOP_m8_2i not gMET_AND_RES_MARK_m8;
+      gMET_TERM_TOP_m8 = gMET_TERM_TOP_m8_1i inside gMET_NOT_RES_MARK_m8;
+      gMET_DEV_TOP_m8_3i = gMET_AND_RES_MARK_m8 or gMET_TERM_ALL_SIDES_m8;
+      gMET_DEV_TOP_m8_4i = shrink( gMET_AND_RES_MARK_m8, north = vSIZE_VALUE_m510 );
+      gMET_DEV_TOP_m8_2i = gMET_DEV_TOP_m8_3i not gMET_DEV_TOP_m8_4i;
+      gMET_DEV_TOP_m8_1i = interacting( gMET_DEV_TOP_m8_2i, gMET_TERM_TOP_m8 );
+      gMET_DEV_TOP_m8 = gMET_DEV_TOP_m8_1i not gMET_TERM_TOP_m8;
+      gMET_TERM_RIGHT_m8_3i = not_interacting( gMET_AND_RES_MARK_m8, gMET_DEV_TOP_m8 );
+      gMET_TERM_RIGHT_m8_2i = grow( gMET_TERM_RIGHT_m8_3i, east = vSIZE_VALUE_m510 );
+      gMET_TERM_RIGHT_m8_1i = gMET_TERM_RIGHT_m8_2i not gMET_AND_RES_MARK_m8;
+      gMET_TERM_RIGHT_m8 = gMET_TERM_RIGHT_m8_1i inside gMET_NOT_RES_MARK_m8;
+      gMET_DEV_RIGHT_m8_3i = gMET_AND_RES_MARK_m8 or gMET_TERM_ALL_SIDES_m8;
+      gMET_DEV_RIGHT_m8_4i = shrink( gMET_AND_RES_MARK_m8, east = vSIZE_VALUE_m510 );
+      gMET_DEV_RIGHT_m8_2i = gMET_DEV_RIGHT_m8_3i not gMET_DEV_RIGHT_m8_4i;
+      gMET_DEV_RIGHT_m8_1i = interacting( gMET_DEV_RIGHT_m8_2i, gMET_TERM_RIGHT_m8 );
+      gMET_DEV_RIGHT_m8 = gMET_DEV_RIGHT_m8_1i not gMET_TERM_RIGHT_m8;
+      gMET_TERM_BOTTOM_m8_4i = not_interacting( gMET_AND_RES_MARK_m8, gMET_DEV_TOP_m8 );
+      gMET_TERM_BOTTOM_m8_3i = not_interacting( gMET_TERM_BOTTOM_m8_4i, gMET_DEV_RIGHT_m8 );
+      gMET_TERM_BOTTOM_m8_2i = grow( gMET_TERM_BOTTOM_m8_3i, south = vSIZE_VALUE_m510 );
+      gMET_TERM_BOTTOM_m8_1i = gMET_TERM_BOTTOM_m8_2i not gMET_AND_RES_MARK_m8;
+      gMET_TERM_BOTTOM_m8 = gMET_TERM_BOTTOM_m8_1i inside gMET_NOT_RES_MARK_m8;
+      gMET_DEV_BOTTOM_m8_3i = gMET_AND_RES_MARK_m8 or gMET_TERM_ALL_SIDES_m8;
+      gMET_DEV_BOTTOM_m8_4i = shrink( gMET_AND_RES_MARK_m8, south = vSIZE_VALUE_m510 );
+      gMET_DEV_BOTTOM_m8_2i = gMET_DEV_BOTTOM_m8_3i not gMET_DEV_BOTTOM_m8_4i;
+      gMET_DEV_BOTTOM_m8_1i = interacting( gMET_DEV_BOTTOM_m8_2i, gMET_TERM_BOTTOM_m8 );
+      gMET_DEV_BOTTOM_m8 = gMET_DEV_BOTTOM_m8_1i not gMET_TERM_BOTTOM_m8;
+      gMET_DEV_LEFT_m8_3i = gMET_AND_RES_MARK_m8 or gMET_TERM_ALL_SIDES_m8;
+      gMET_DEV_LEFT_m8_4i = shrink( gMET_AND_RES_MARK_m8, west = vSIZE_VALUE_m510 );
+      gMET_DEV_LEFT_m8_2i = gMET_DEV_LEFT_m8_3i not gMET_DEV_LEFT_m8_4i;
+      gMET_DEV_LEFT_m8_1i = interacting( gMET_DEV_LEFT_m8_2i, gMET_TERM_RIGHT_m8 );
+      gMET_DEV_LEFT_m8 = gMET_DEV_LEFT_m8_1i not gMET_TERM_RIGHT_m8;
+      gMET_DEV_TOP_2_m8_2i = shrink( gMET_AND_RES_MARK_m8, north = vSIZE_VALUE_m510 );
+      gMET_DEV_TOP_2_m8_1i = gMET_AND_RES_MARK_m8 not gMET_DEV_TOP_2_m8_2i;
+      gMET_DEV_TOP_2_m8 = interacting( gMET_DEV_TOP_2_m8_1i, gMET_TERM_TOP_m8 );
+      gMET_DEV_RIGHT_2_m8_2i = shrink( gMET_AND_RES_MARK_m8, east = vSIZE_VALUE_m510 );
+      gMET_DEV_RIGHT_2_m8_1i = gMET_AND_RES_MARK_m8 not gMET_DEV_RIGHT_2_m8_2i;
+      gMET_DEV_RIGHT_2_m8 = interacting( gMET_DEV_RIGHT_2_m8_1i, gMET_TERM_RIGHT_m8 );
+      gMET_DEV_BOTTOM_2_m8_2i = shrink( gMET_AND_RES_MARK_m8, south = vSIZE_VALUE_m510 );
+      gMET_DEV_BOTTOM_2_m8_1i = gMET_AND_RES_MARK_m8 not gMET_DEV_BOTTOM_2_m8_2i;
+      gMET_DEV_BOTTOM_2_m8 = interacting( gMET_DEV_BOTTOM_2_m8_1i, gMET_TERM_BOTTOM_m8 );
+      gMET_DEV_LEFT_2_m8_2i = shrink( gMET_AND_RES_MARK_m8, west = vSIZE_VALUE_m510 );
+      gMET_DEV_LEFT_2_m8_1i = gMET_AND_RES_MARK_m8 not gMET_DEV_LEFT_2_m8_2i;
+      gMET_DEV_LEFT_2_m8 = interacting( gMET_DEV_LEFT_2_m8_1i, gMET_TERM_RIGHT_m8 );
+      gRM3_OUT_6i = gMET_DEV_TOP_2_m8 or gMET_DEV_RIGHT_2_m8;
+      gRM3_OUT_5i = gRM3_OUT_6i or gMET_DEV_BOTTOM_2_m8;
+      gRM3_OUT = gRM3_OUT_5i or gMET_DEV_LEFT_2_m8;
+      gRM3_DEV_9i = gMET_DEV_TOP_m8 or gMET_DEV_RIGHT_m8;
+      gRM3_DEV_8i = gRM3_DEV_9i or gMET_DEV_BOTTOM_m8;
+      gRM3_DEV_7i = gRM3_DEV_8i or gMET_DEV_LEFT_m8;
+      gRM3_DEV = gRM3_DEV_7i or gRM3_OUT;
+   #endif
+#endif
+#ifdef d_BEOL_1P6M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM3_DEV = aMETAL3 and aM3_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m4 = aMETAL3 and aM3_RES_MK;
+      gMET_AND_RES_MARK_1_m4_2i = aVIA2 and gMET_AND_RES_MARK_0_m4;
+      gMET_AND_RES_MARK_1_m4_1i = not_interacting( gMET_AND_RES_MARK_0_m4, gMET_AND_RES_MARK_1_m4_2i );
+      gMET_AND_RES_MARK_1_m4_3i = aVIA3 and gMET_AND_RES_MARK_0_m4;
+      gMET_AND_RES_MARK_1_m4 = not_interacting( gMET_AND_RES_MARK_1_m4_1i, gMET_AND_RES_MARK_1_m4_3i );
+      gMET_NOT_RES_MARK_1_m4 = aMETAL3 not aM3_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m4_1i = gMET_AND_RES_MARK_1_m4 coincident_edge gMET_NOT_RES_MARK_1_m4;
+      gMET_TERM_ALL_SIDES_1_m4 = edge_size( gMET_TERM_ALL_SIDES_1_m4_1i, inside = vSIZE_VALUE_m502, outside = vSIZE_VALUE_m502 );
+      gMET_TERM_ALL_SIDES_INSIDE_m4 = gMET_TERM_ALL_SIDES_1_m4 and gMET_AND_RES_MARK_1_m4;
+      gIN_RES_MARK_1_m4_1i = aM3_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m4;
+      gIN_RES_MARK_1_m4 = outside_touching( gIN_RES_MARK_1_m4_1i, gMET_TERM_ALL_SIDES_INSIDE_m4, >= 2 );
+      gMET_TERM_MARK_1_m4 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m4, gIN_RES_MARK_1_m4 );
+      gIN_RES_MARK_2_m4_1i = aM3_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m4;
+      gIN_RES_MARK_2_m4 = outside_touching( gIN_RES_MARK_2_m4_1i, gMET_TERM_ALL_SIDES_INSIDE_m4, == 1 );
+      gMET_TERM_MARK_2_m4 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m4, gIN_RES_MARK_2_m4 );
+      gIN_RES_MARK_FINAL_m4_1i = gIN_RES_MARK_1_m4 or gMET_TERM_MARK_1_m4;
+      gIN_RES_MARK_FINAL_m4_3i = gIN_RES_MARK_2_m4 or gMET_TERM_MARK_2_m4;
+      gIN_RES_MARK_FINAL_m4_2i = size( gIN_RES_MARK_FINAL_m4_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m4 = gIN_RES_MARK_FINAL_m4_1i or gIN_RES_MARK_FINAL_m4_2i;
+      gMET_AND_RES_MARK_FINAL_m4 = aMETAL3 and gIN_RES_MARK_FINAL_m4;
+      gMET_AND_RES_MARK_m4_2i = aVIA2 and gMET_AND_RES_MARK_0_m4;
+      gMET_AND_RES_MARK_m4_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m4, gMET_AND_RES_MARK_m4_2i );
+      gMET_AND_RES_MARK_m4_3i = aVIA3 and gMET_AND_RES_MARK_0_m4;
+      gMET_AND_RES_MARK_m4 = not_interacting( gMET_AND_RES_MARK_m4_1i, gMET_AND_RES_MARK_m4_3i );
+      gMET_NOT_RES_MARK_m4 = aMETAL3 not gIN_RES_MARK_FINAL_m4;
+      gMET_TERM_ALL_SIDES_m4_1i = gMET_AND_RES_MARK_m4 coincident_edge gMET_NOT_RES_MARK_m4;
+      gMET_TERM_ALL_SIDES_m4 = edge_size( gMET_TERM_ALL_SIDES_m4_1i, inside = vSIZE_VALUE_m502, outside = vSIZE_VALUE_m502 );
+      gMET_TERM_TOP_m4_2i = grow( gMET_AND_RES_MARK_m4, north = vSIZE_VALUE_m502 );
+      gMET_TERM_TOP_m4_1i = gMET_TERM_TOP_m4_2i not gMET_AND_RES_MARK_m4;
+      gMET_TERM_TOP_m4 = gMET_TERM_TOP_m4_1i inside gMET_NOT_RES_MARK_m4;
+      gMET_DEV_TOP_m4_3i = gMET_AND_RES_MARK_m4 or gMET_TERM_ALL_SIDES_m4;
+      gMET_DEV_TOP_m4_4i = shrink( gMET_AND_RES_MARK_m4, north = vSIZE_VALUE_m502 );
+      gMET_DEV_TOP_m4_2i = gMET_DEV_TOP_m4_3i not gMET_DEV_TOP_m4_4i;
+      gMET_DEV_TOP_m4_1i = interacting( gMET_DEV_TOP_m4_2i, gMET_TERM_TOP_m4 );
+      gMET_DEV_TOP_m4 = gMET_DEV_TOP_m4_1i not gMET_TERM_TOP_m4;
+      gMET_TERM_RIGHT_m4_3i = not_interacting( gMET_AND_RES_MARK_m4, gMET_DEV_TOP_m4 );
+      gMET_TERM_RIGHT_m4_2i = grow( gMET_TERM_RIGHT_m4_3i, east = vSIZE_VALUE_m502 );
+      gMET_TERM_RIGHT_m4_1i = gMET_TERM_RIGHT_m4_2i not gMET_AND_RES_MARK_m4;
+      gMET_TERM_RIGHT_m4 = gMET_TERM_RIGHT_m4_1i inside gMET_NOT_RES_MARK_m4;
+      gMET_DEV_RIGHT_m4_3i = gMET_AND_RES_MARK_m4 or gMET_TERM_ALL_SIDES_m4;
+      gMET_DEV_RIGHT_m4_4i = shrink( gMET_AND_RES_MARK_m4, east = vSIZE_VALUE_m502 );
+      gMET_DEV_RIGHT_m4_2i = gMET_DEV_RIGHT_m4_3i not gMET_DEV_RIGHT_m4_4i;
+      gMET_DEV_RIGHT_m4_1i = interacting( gMET_DEV_RIGHT_m4_2i, gMET_TERM_RIGHT_m4 );
+      gMET_DEV_RIGHT_m4 = gMET_DEV_RIGHT_m4_1i not gMET_TERM_RIGHT_m4;
+      gMET_TERM_BOTTOM_m4_4i = not_interacting( gMET_AND_RES_MARK_m4, gMET_DEV_TOP_m4 );
+      gMET_TERM_BOTTOM_m4_3i = not_interacting( gMET_TERM_BOTTOM_m4_4i, gMET_DEV_RIGHT_m4 );
+      gMET_TERM_BOTTOM_m4_2i = grow( gMET_TERM_BOTTOM_m4_3i, south = vSIZE_VALUE_m502 );
+      gMET_TERM_BOTTOM_m4_1i = gMET_TERM_BOTTOM_m4_2i not gMET_AND_RES_MARK_m4;
+      gMET_TERM_BOTTOM_m4 = gMET_TERM_BOTTOM_m4_1i inside gMET_NOT_RES_MARK_m4;
+      gMET_DEV_BOTTOM_m4_3i = gMET_AND_RES_MARK_m4 or gMET_TERM_ALL_SIDES_m4;
+      gMET_DEV_BOTTOM_m4_4i = shrink( gMET_AND_RES_MARK_m4, south = vSIZE_VALUE_m502 );
+      gMET_DEV_BOTTOM_m4_2i = gMET_DEV_BOTTOM_m4_3i not gMET_DEV_BOTTOM_m4_4i;
+      gMET_DEV_BOTTOM_m4_1i = interacting( gMET_DEV_BOTTOM_m4_2i, gMET_TERM_BOTTOM_m4 );
+      gMET_DEV_BOTTOM_m4 = gMET_DEV_BOTTOM_m4_1i not gMET_TERM_BOTTOM_m4;
+      gMET_DEV_LEFT_m4_3i = gMET_AND_RES_MARK_m4 or gMET_TERM_ALL_SIDES_m4;
+      gMET_DEV_LEFT_m4_4i = shrink( gMET_AND_RES_MARK_m4, west = vSIZE_VALUE_m502 );
+      gMET_DEV_LEFT_m4_2i = gMET_DEV_LEFT_m4_3i not gMET_DEV_LEFT_m4_4i;
+      gMET_DEV_LEFT_m4_1i = interacting( gMET_DEV_LEFT_m4_2i, gMET_TERM_RIGHT_m4 );
+      gMET_DEV_LEFT_m4 = gMET_DEV_LEFT_m4_1i not gMET_TERM_RIGHT_m4;
+      gMET_DEV_TOP_2_m4_2i = shrink( gMET_AND_RES_MARK_m4, north = vSIZE_VALUE_m502 );
+      gMET_DEV_TOP_2_m4_1i = gMET_AND_RES_MARK_m4 not gMET_DEV_TOP_2_m4_2i;
+      gMET_DEV_TOP_2_m4 = interacting( gMET_DEV_TOP_2_m4_1i, gMET_TERM_TOP_m4 );
+      gMET_DEV_RIGHT_2_m4_2i = shrink( gMET_AND_RES_MARK_m4, east = vSIZE_VALUE_m502 );
+      gMET_DEV_RIGHT_2_m4_1i = gMET_AND_RES_MARK_m4 not gMET_DEV_RIGHT_2_m4_2i;
+      gMET_DEV_RIGHT_2_m4 = interacting( gMET_DEV_RIGHT_2_m4_1i, gMET_TERM_RIGHT_m4 );
+      gMET_DEV_BOTTOM_2_m4_2i = shrink( gMET_AND_RES_MARK_m4, south = vSIZE_VALUE_m502 );
+      gMET_DEV_BOTTOM_2_m4_1i = gMET_AND_RES_MARK_m4 not gMET_DEV_BOTTOM_2_m4_2i;
+      gMET_DEV_BOTTOM_2_m4 = interacting( gMET_DEV_BOTTOM_2_m4_1i, gMET_TERM_BOTTOM_m4 );
+      gMET_DEV_LEFT_2_m4_2i = shrink( gMET_AND_RES_MARK_m4, west = vSIZE_VALUE_m502 );
+      gMET_DEV_LEFT_2_m4_1i = gMET_AND_RES_MARK_m4 not gMET_DEV_LEFT_2_m4_2i;
+      gMET_DEV_LEFT_2_m4 = interacting( gMET_DEV_LEFT_2_m4_1i, gMET_TERM_RIGHT_m4 );
+      gRM3_OUT_8i = gMET_DEV_TOP_2_m4 or gMET_DEV_RIGHT_2_m4;
+      gRM3_OUT_7i = gRM3_OUT_8i or gMET_DEV_BOTTOM_2_m4;
+      gRM3_OUT = gRM3_OUT_7i or gMET_DEV_LEFT_2_m4;
+      gRM3_DEV_12i = gMET_DEV_TOP_m4 or gMET_DEV_RIGHT_m4;
+      gRM3_DEV_11i = gRM3_DEV_12i or gMET_DEV_BOTTOM_m4;
+      gRM3_DEV_10i = gRM3_DEV_11i or gMET_DEV_LEFT_m4;
+      gRM3_DEV = gRM3_DEV_10i or gRM3_OUT;
+   #endif
+#endif
+#ifdef d_BEOL_1P3M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM3_TERM_1i = and_edge( gRM3_DEV, aMETAL3, false );
+      gRM3_TERM = edge_size( gRM3_TERM_1i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m13_5i = not_interacting( gMET_AND_RES_MARK_m13, gMET_DEV_TOP_m13 );
+      gMET_TERM_LEFT_m13_4i = not_interacting( gMET_TERM_LEFT_m13_5i, gMET_DEV_RIGHT_m13 );
+      gMET_TERM_LEFT_m13_3i = not_interacting( gMET_TERM_LEFT_m13_4i, gMET_DEV_BOTTOM_m13 );
+      gMET_TERM_LEFT_m13_2i = grow( gMET_TERM_LEFT_m13_3i, west = vSIZE_VALUE_m520 );
+      gMET_TERM_LEFT_m13_1i = gMET_TERM_LEFT_m13_2i not gMET_AND_RES_MARK_m13;
+      gMET_TERM_LEFT_m13 = gMET_TERM_LEFT_m13_1i inside gMET_NOT_RES_MARK_m13;
+      gOUT_DEV_TERM_1_m13_2i = gMET_TERM_TOP_m13 or gMET_TERM_RIGHT_m13;
+      gOUT_DEV_TERM_1_m13_1i = gOUT_DEV_TERM_1_m13_2i or gMET_TERM_BOTTOM_m13;
+      gOUT_DEV_TERM_1_m13 = gOUT_DEV_TERM_1_m13_1i or gMET_TERM_LEFT_m13;
+      gMET_TERM_TOP_2_m13 = gMET_AND_RES_MARK_m13 not gMET_DEV_TOP_m13;
+      gMET_TERM_RIGHT_2_m13 = gMET_AND_RES_MARK_m13 not gMET_DEV_RIGHT_m13;
+      gMET_TERM_BOTTOM_2_m13 = gMET_AND_RES_MARK_m13 not gMET_DEV_BOTTOM_m13;
+      gMET_TERM_LEFT_2_m13 = gMET_AND_RES_MARK_m13 not gMET_DEV_LEFT_m13;
+      gOUT_DEV_TERM_2_m13_2i = gMET_TERM_TOP_2_m13 or gMET_TERM_RIGHT_2_m13;
+      gOUT_DEV_TERM_2_m13_1i = gOUT_DEV_TERM_2_m13_2i or gMET_TERM_BOTTOM_2_m13;
+      gOUT_DEV_TERM_2_m13 = gOUT_DEV_TERM_2_m13_1i or gMET_TERM_LEFT_2_m13;
+      gRM3_TERM_2i = gOUT_DEV_TERM_1_m13 or gOUT_DEV_TERM_2_m13;
+      gRM3_TERM = gRM3_TERM_2i not gRM3_DEV;
+   #endif
+#endif
+#ifdef d_BEOL_1P4M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM3_TERM_3i = and_edge( gRM3_DEV, aMETAL3, false );
+      gRM3_TERM = edge_size( gRM3_TERM_3i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m11_5i = not_interacting( gMET_AND_RES_MARK_m11, gMET_DEV_TOP_m11 );
+      gMET_TERM_LEFT_m11_4i = not_interacting( gMET_TERM_LEFT_m11_5i, gMET_DEV_RIGHT_m11 );
+      gMET_TERM_LEFT_m11_3i = not_interacting( gMET_TERM_LEFT_m11_4i, gMET_DEV_BOTTOM_m11 );
+      gMET_TERM_LEFT_m11_2i = grow( gMET_TERM_LEFT_m11_3i, west = vSIZE_VALUE_m516 );
+      gMET_TERM_LEFT_m11_1i = gMET_TERM_LEFT_m11_2i not gMET_AND_RES_MARK_m11;
+      gMET_TERM_LEFT_m11 = gMET_TERM_LEFT_m11_1i inside gMET_NOT_RES_MARK_m11;
+      gOUT_DEV_TERM_1_m11_2i = gMET_TERM_TOP_m11 or gMET_TERM_RIGHT_m11;
+      gOUT_DEV_TERM_1_m11_1i = gOUT_DEV_TERM_1_m11_2i or gMET_TERM_BOTTOM_m11;
+      gOUT_DEV_TERM_1_m11 = gOUT_DEV_TERM_1_m11_1i or gMET_TERM_LEFT_m11;
+      gMET_TERM_TOP_2_m11 = gMET_AND_RES_MARK_m11 not gMET_DEV_TOP_m11;
+      gMET_TERM_RIGHT_2_m11 = gMET_AND_RES_MARK_m11 not gMET_DEV_RIGHT_m11;
+      gMET_TERM_BOTTOM_2_m11 = gMET_AND_RES_MARK_m11 not gMET_DEV_BOTTOM_m11;
+      gMET_TERM_LEFT_2_m11 = gMET_AND_RES_MARK_m11 not gMET_DEV_LEFT_m11;
+      gOUT_DEV_TERM_2_m11_2i = gMET_TERM_TOP_2_m11 or gMET_TERM_RIGHT_2_m11;
+      gOUT_DEV_TERM_2_m11_1i = gOUT_DEV_TERM_2_m11_2i or gMET_TERM_BOTTOM_2_m11;
+      gOUT_DEV_TERM_2_m11 = gOUT_DEV_TERM_2_m11_1i or gMET_TERM_LEFT_2_m11;
+      gRM3_TERM_4i = gOUT_DEV_TERM_1_m11 or gOUT_DEV_TERM_2_m11;
+      gRM3_TERM = gRM3_TERM_4i not gRM3_DEV;
+   #endif
+#endif
+#ifdef d_BEOL_1P5M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM3_TERM_5i = and_edge( gRM3_DEV, aMETAL3, false );
+      gRM3_TERM = edge_size( gRM3_TERM_5i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m8_5i = not_interacting( gMET_AND_RES_MARK_m8, gMET_DEV_TOP_m8 );
+      gMET_TERM_LEFT_m8_4i = not_interacting( gMET_TERM_LEFT_m8_5i, gMET_DEV_RIGHT_m8 );
+      gMET_TERM_LEFT_m8_3i = not_interacting( gMET_TERM_LEFT_m8_4i, gMET_DEV_BOTTOM_m8 );
+      gMET_TERM_LEFT_m8_2i = grow( gMET_TERM_LEFT_m8_3i, west = vSIZE_VALUE_m510 );
+      gMET_TERM_LEFT_m8_1i = gMET_TERM_LEFT_m8_2i not gMET_AND_RES_MARK_m8;
+      gMET_TERM_LEFT_m8 = gMET_TERM_LEFT_m8_1i inside gMET_NOT_RES_MARK_m8;
+      gOUT_DEV_TERM_1_m8_2i = gMET_TERM_TOP_m8 or gMET_TERM_RIGHT_m8;
+      gOUT_DEV_TERM_1_m8_1i = gOUT_DEV_TERM_1_m8_2i or gMET_TERM_BOTTOM_m8;
+      gOUT_DEV_TERM_1_m8 = gOUT_DEV_TERM_1_m8_1i or gMET_TERM_LEFT_m8;
+      gMET_TERM_TOP_2_m8 = gMET_AND_RES_MARK_m8 not gMET_DEV_TOP_m8;
+      gMET_TERM_RIGHT_2_m8 = gMET_AND_RES_MARK_m8 not gMET_DEV_RIGHT_m8;
+      gMET_TERM_BOTTOM_2_m8 = gMET_AND_RES_MARK_m8 not gMET_DEV_BOTTOM_m8;
+      gMET_TERM_LEFT_2_m8 = gMET_AND_RES_MARK_m8 not gMET_DEV_LEFT_m8;
+      gOUT_DEV_TERM_2_m8_2i = gMET_TERM_TOP_2_m8 or gMET_TERM_RIGHT_2_m8;
+      gOUT_DEV_TERM_2_m8_1i = gOUT_DEV_TERM_2_m8_2i or gMET_TERM_BOTTOM_2_m8;
+      gOUT_DEV_TERM_2_m8 = gOUT_DEV_TERM_2_m8_1i or gMET_TERM_LEFT_2_m8;
+      gRM3_TERM_6i = gOUT_DEV_TERM_1_m8 or gOUT_DEV_TERM_2_m8;
+      gRM3_TERM = gRM3_TERM_6i not gRM3_DEV;
+   #endif
+#endif
+#ifdef d_BEOL_1P6M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM3_TERM_7i = and_edge( gRM3_DEV, aMETAL3, false );
+      gRM3_TERM = edge_size( gRM3_TERM_7i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m4_5i = not_interacting( gMET_AND_RES_MARK_m4, gMET_DEV_TOP_m4 );
+      gMET_TERM_LEFT_m4_4i = not_interacting( gMET_TERM_LEFT_m4_5i, gMET_DEV_RIGHT_m4 );
+      gMET_TERM_LEFT_m4_3i = not_interacting( gMET_TERM_LEFT_m4_4i, gMET_DEV_BOTTOM_m4 );
+      gMET_TERM_LEFT_m4_2i = grow( gMET_TERM_LEFT_m4_3i, west = vSIZE_VALUE_m502 );
+      gMET_TERM_LEFT_m4_1i = gMET_TERM_LEFT_m4_2i not gMET_AND_RES_MARK_m4;
+      gMET_TERM_LEFT_m4 = gMET_TERM_LEFT_m4_1i inside gMET_NOT_RES_MARK_m4;
+      gOUT_DEV_TERM_1_m4_2i = gMET_TERM_TOP_m4 or gMET_TERM_RIGHT_m4;
+      gOUT_DEV_TERM_1_m4_1i = gOUT_DEV_TERM_1_m4_2i or gMET_TERM_BOTTOM_m4;
+      gOUT_DEV_TERM_1_m4 = gOUT_DEV_TERM_1_m4_1i or gMET_TERM_LEFT_m4;
+      gMET_TERM_TOP_2_m4 = gMET_AND_RES_MARK_m4 not gMET_DEV_TOP_m4;
+      gMET_TERM_RIGHT_2_m4 = gMET_AND_RES_MARK_m4 not gMET_DEV_RIGHT_m4;
+      gMET_TERM_BOTTOM_2_m4 = gMET_AND_RES_MARK_m4 not gMET_DEV_BOTTOM_m4;
+      gMET_TERM_LEFT_2_m4 = gMET_AND_RES_MARK_m4 not gMET_DEV_LEFT_m4;
+      gOUT_DEV_TERM_2_m4_2i = gMET_TERM_TOP_2_m4 or gMET_TERM_RIGHT_2_m4;
+      gOUT_DEV_TERM_2_m4_1i = gOUT_DEV_TERM_2_m4_2i or gMET_TERM_BOTTOM_2_m4;
+      gOUT_DEV_TERM_2_m4 = gOUT_DEV_TERM_2_m4_1i or gMET_TERM_LEFT_2_m4;
+      gRM3_TERM_8i = gOUT_DEV_TERM_1_m4 or gOUT_DEV_TERM_2_m4;
+      gRM3_TERM = gRM3_TERM_8i not gRM3_DEV;
+   #endif
+#endif
+#ifdef d_MIM_OPTION_A
+   gFTVIA2_1i = aVIA2 and aFUSETOP;
+   gFTVIA2 = gFTVIA2_1i and aLVS_CAP;
+   gM3_FTDEV_2i = aMETAL3 and gLVS_CAP_FT;
+   gM3_FTDEV_1i = enclosing( gM3_FTDEV_2i, gFTVIA2 );
+   gM3_FTDEV = interacting( gM3_FTDEV_1i, aFUSETOP );
+#endif
+#ifdef d_BEOL_1P3M
+   #ifdef d_MIM_OPTION_A
+      gM3_NODEV_3i = gRM3_DEV or aMETAL3_SLOT;
+      gM3_NODEV_2i = gM3_NODEV_3i or gRM3_TERM;
+      gM3_NODEV_1i = gM3_NODEV_2i or gM3_FTDEV;
+      gM3_NODEV = aMETAL3 not gM3_NODEV_1i;
+   #else
+      gM3_NODEV_5i = gRM3_DEV or aMETAL3_SLOT;
+      gM3_NODEV_4i = gM3_NODEV_5i or gRM3_TERM;
+      gM3_NODEV = aMETAL3 not gM3_NODEV_4i;
+   #endif
+#endif
+#ifdef d_BEOL_1P6M
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gRM4_TERM }}} );
+   #ifdef d_MIM_OPTION_A
+      gM3_NODEV_19i = gRM3_DEV or aMETAL3_SLOT;
+      gM3_NODEV_18i = gM3_NODEV_19i or gRM3_TERM;
+      gM3_NODEV_17i = gM3_NODEV_18i or gM3_FTDEV;
+      gM3_NODEV = aMETAL3 not gM3_NODEV_17i;
+   #else
+      gM3_NODEV_21i = gRM3_DEV or aMETAL3_SLOT;
+      gM3_NODEV_20i = gM3_NODEV_21i or gRM3_TERM;
+      gM3_NODEV = aMETAL3 not gM3_NODEV_20i;
+   #endif
+#endif
+#ifdef d_BEOL_1P2M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_DEV = aMETAL2 and aM2_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m15 = aMETAL2 and aM2_RES_MK;
+      gMET_AND_RES_MARK_1_m15_2i = aVIA1 and gMET_AND_RES_MARK_0_m15;
+      gMET_AND_RES_MARK_1_m15_1i = not_interacting( gMET_AND_RES_MARK_0_m15, gMET_AND_RES_MARK_1_m15_2i );
+      gMET_AND_RES_MARK_1_m15_3i = aVIA1 and gMET_AND_RES_MARK_0_m15;
+      gMET_AND_RES_MARK_1_m15 = not_interacting( gMET_AND_RES_MARK_1_m15_1i, gMET_AND_RES_MARK_1_m15_3i );
+      gMET_NOT_RES_MARK_1_m15 = aMETAL2 not aM2_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m15_1i = gMET_AND_RES_MARK_1_m15 coincident_edge gMET_NOT_RES_MARK_1_m15;
+      gMET_TERM_ALL_SIDES_1_m15 = edge_size( gMET_TERM_ALL_SIDES_1_m15_1i, inside = vSIZE_VALUE_m524, outside = vSIZE_VALUE_m524 );
+      gMET_TERM_ALL_SIDES_INSIDE_m15 = gMET_TERM_ALL_SIDES_1_m15 and gMET_AND_RES_MARK_1_m15;
+      gIN_RES_MARK_1_m15_1i = aM2_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m15;
+      gIN_RES_MARK_1_m15 = outside_touching( gIN_RES_MARK_1_m15_1i, gMET_TERM_ALL_SIDES_INSIDE_m15, >= 2 );
+      gMET_TERM_MARK_1_m15 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m15, gIN_RES_MARK_1_m15 );
+      gIN_RES_MARK_2_m15_1i = aM2_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m15;
+      gIN_RES_MARK_2_m15 = outside_touching( gIN_RES_MARK_2_m15_1i, gMET_TERM_ALL_SIDES_INSIDE_m15, == 1 );
+      gMET_TERM_MARK_2_m15 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m15, gIN_RES_MARK_2_m15 );
+      gIN_RES_MARK_FINAL_m15_1i = gIN_RES_MARK_1_m15 or gMET_TERM_MARK_1_m15;
+      gIN_RES_MARK_FINAL_m15_3i = gIN_RES_MARK_2_m15 or gMET_TERM_MARK_2_m15;
+      gIN_RES_MARK_FINAL_m15_2i = size( gIN_RES_MARK_FINAL_m15_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m15 = gIN_RES_MARK_FINAL_m15_1i or gIN_RES_MARK_FINAL_m15_2i;
+      gMET_AND_RES_MARK_FINAL_m15 = aMETAL2 and gIN_RES_MARK_FINAL_m15;
+      gMET_AND_RES_MARK_m15_2i = aVIA1 and gMET_AND_RES_MARK_0_m15;
+      gMET_AND_RES_MARK_m15_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m15, gMET_AND_RES_MARK_m15_2i );
+      gMET_AND_RES_MARK_m15_3i = aVIA1 and gMET_AND_RES_MARK_0_m15;
+      gMET_AND_RES_MARK_m15 = not_interacting( gMET_AND_RES_MARK_m15_1i, gMET_AND_RES_MARK_m15_3i );
+      gMET_NOT_RES_MARK_m15 = aMETAL2 not gIN_RES_MARK_FINAL_m15;
+      gMET_TERM_ALL_SIDES_m15_1i = gMET_AND_RES_MARK_m15 coincident_edge gMET_NOT_RES_MARK_m15;
+      gMET_TERM_ALL_SIDES_m15 = edge_size( gMET_TERM_ALL_SIDES_m15_1i, inside = vSIZE_VALUE_m524, outside = vSIZE_VALUE_m524 );
+      gMET_TERM_TOP_m15_2i = grow( gMET_AND_RES_MARK_m15, north = vSIZE_VALUE_m524 );
+      gMET_TERM_TOP_m15_1i = gMET_TERM_TOP_m15_2i not gMET_AND_RES_MARK_m15;
+      gMET_TERM_TOP_m15 = gMET_TERM_TOP_m15_1i inside gMET_NOT_RES_MARK_m15;
+      gMET_DEV_TOP_m15_3i = gMET_AND_RES_MARK_m15 or gMET_TERM_ALL_SIDES_m15;
+      gMET_DEV_TOP_m15_4i = shrink( gMET_AND_RES_MARK_m15, north = vSIZE_VALUE_m524 );
+      gMET_DEV_TOP_m15_2i = gMET_DEV_TOP_m15_3i not gMET_DEV_TOP_m15_4i;
+      gMET_DEV_TOP_m15_1i = interacting( gMET_DEV_TOP_m15_2i, gMET_TERM_TOP_m15 );
+      gMET_DEV_TOP_m15 = gMET_DEV_TOP_m15_1i not gMET_TERM_TOP_m15;
+      gMET_TERM_RIGHT_m15_3i = not_interacting( gMET_AND_RES_MARK_m15, gMET_DEV_TOP_m15 );
+      gMET_TERM_RIGHT_m15_2i = grow( gMET_TERM_RIGHT_m15_3i, east = vSIZE_VALUE_m524 );
+      gMET_TERM_RIGHT_m15_1i = gMET_TERM_RIGHT_m15_2i not gMET_AND_RES_MARK_m15;
+      gMET_TERM_RIGHT_m15 = gMET_TERM_RIGHT_m15_1i inside gMET_NOT_RES_MARK_m15;
+      gMET_DEV_RIGHT_m15_3i = gMET_AND_RES_MARK_m15 or gMET_TERM_ALL_SIDES_m15;
+      gMET_DEV_RIGHT_m15_4i = shrink( gMET_AND_RES_MARK_m15, east = vSIZE_VALUE_m524 );
+      gMET_DEV_RIGHT_m15_2i = gMET_DEV_RIGHT_m15_3i not gMET_DEV_RIGHT_m15_4i;
+      gMET_DEV_RIGHT_m15_1i = interacting( gMET_DEV_RIGHT_m15_2i, gMET_TERM_RIGHT_m15 );
+      gMET_DEV_RIGHT_m15 = gMET_DEV_RIGHT_m15_1i not gMET_TERM_RIGHT_m15;
+      gMET_TERM_BOTTOM_m15_4i = not_interacting( gMET_AND_RES_MARK_m15, gMET_DEV_TOP_m15 );
+      gMET_TERM_BOTTOM_m15_3i = not_interacting( gMET_TERM_BOTTOM_m15_4i, gMET_DEV_RIGHT_m15 );
+      gMET_TERM_BOTTOM_m15_2i = grow( gMET_TERM_BOTTOM_m15_3i, south = vSIZE_VALUE_m524 );
+      gMET_TERM_BOTTOM_m15_1i = gMET_TERM_BOTTOM_m15_2i not gMET_AND_RES_MARK_m15;
+      gMET_TERM_BOTTOM_m15 = gMET_TERM_BOTTOM_m15_1i inside gMET_NOT_RES_MARK_m15;
+      gMET_DEV_BOTTOM_m15_3i = gMET_AND_RES_MARK_m15 or gMET_TERM_ALL_SIDES_m15;
+      gMET_DEV_BOTTOM_m15_4i = shrink( gMET_AND_RES_MARK_m15, south = vSIZE_VALUE_m524 );
+      gMET_DEV_BOTTOM_m15_2i = gMET_DEV_BOTTOM_m15_3i not gMET_DEV_BOTTOM_m15_4i;
+      gMET_DEV_BOTTOM_m15_1i = interacting( gMET_DEV_BOTTOM_m15_2i, gMET_TERM_BOTTOM_m15 );
+      gMET_DEV_BOTTOM_m15 = gMET_DEV_BOTTOM_m15_1i not gMET_TERM_BOTTOM_m15;
+      gMET_DEV_LEFT_m15_3i = gMET_AND_RES_MARK_m15 or gMET_TERM_ALL_SIDES_m15;
+      gMET_DEV_LEFT_m15_4i = shrink( gMET_AND_RES_MARK_m15, west = vSIZE_VALUE_m524 );
+      gMET_DEV_LEFT_m15_2i = gMET_DEV_LEFT_m15_3i not gMET_DEV_LEFT_m15_4i;
+      gMET_DEV_LEFT_m15_1i = interacting( gMET_DEV_LEFT_m15_2i, gMET_TERM_RIGHT_m15 );
+      gMET_DEV_LEFT_m15 = gMET_DEV_LEFT_m15_1i not gMET_TERM_RIGHT_m15;
+      gMET_DEV_TOP_2_m15_2i = shrink( gMET_AND_RES_MARK_m15, north = vSIZE_VALUE_m524 );
+      gMET_DEV_TOP_2_m15_1i = gMET_AND_RES_MARK_m15 not gMET_DEV_TOP_2_m15_2i;
+      gMET_DEV_TOP_2_m15 = interacting( gMET_DEV_TOP_2_m15_1i, gMET_TERM_TOP_m15 );
+      gMET_DEV_RIGHT_2_m15_2i = shrink( gMET_AND_RES_MARK_m15, east = vSIZE_VALUE_m524 );
+      gMET_DEV_RIGHT_2_m15_1i = gMET_AND_RES_MARK_m15 not gMET_DEV_RIGHT_2_m15_2i;
+      gMET_DEV_RIGHT_2_m15 = interacting( gMET_DEV_RIGHT_2_m15_1i, gMET_TERM_RIGHT_m15 );
+      gMET_DEV_BOTTOM_2_m15_2i = shrink( gMET_AND_RES_MARK_m15, south = vSIZE_VALUE_m524 );
+      gMET_DEV_BOTTOM_2_m15_1i = gMET_AND_RES_MARK_m15 not gMET_DEV_BOTTOM_2_m15_2i;
+      gMET_DEV_BOTTOM_2_m15 = interacting( gMET_DEV_BOTTOM_2_m15_1i, gMET_TERM_BOTTOM_m15 );
+      gMET_DEV_LEFT_2_m15_2i = shrink( gMET_AND_RES_MARK_m15, west = vSIZE_VALUE_m524 );
+      gMET_DEV_LEFT_2_m15_1i = gMET_AND_RES_MARK_m15 not gMET_DEV_LEFT_2_m15_2i;
+      gMET_DEV_LEFT_2_m15 = interacting( gMET_DEV_LEFT_2_m15_1i, gMET_TERM_RIGHT_m15 );
+      gRM2_OUT_2i = gMET_DEV_TOP_2_m15 or gMET_DEV_RIGHT_2_m15;
+      gRM2_OUT_1i = gRM2_OUT_2i or gMET_DEV_BOTTOM_2_m15;
+      gRM2_OUT = gRM2_OUT_1i or gMET_DEV_LEFT_2_m15;
+      gRM2_DEV_3i = gMET_DEV_TOP_m15 or gMET_DEV_RIGHT_m15;
+      gRM2_DEV_2i = gRM2_DEV_3i or gMET_DEV_BOTTOM_m15;
+      gRM2_DEV_1i = gRM2_DEV_2i or gMET_DEV_LEFT_m15;
+      gRM2_DEV = gRM2_DEV_1i or gRM2_OUT;
+   #endif
+#endif
+#ifdef d_BEOL_1P3M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_DEV = aMETAL2 and aM2_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m14 = aMETAL2 and aM2_RES_MK;
+      gMET_AND_RES_MARK_1_m14_2i = aVIA1 and gMET_AND_RES_MARK_0_m14;
+      gMET_AND_RES_MARK_1_m14_1i = not_interacting( gMET_AND_RES_MARK_0_m14, gMET_AND_RES_MARK_1_m14_2i );
+      gMET_AND_RES_MARK_1_m14_3i = aVIA1 and gMET_AND_RES_MARK_0_m14;
+      gMET_AND_RES_MARK_1_m14 = not_interacting( gMET_AND_RES_MARK_1_m14_1i, gMET_AND_RES_MARK_1_m14_3i );
+      gMET_NOT_RES_MARK_1_m14 = aMETAL2 not aM2_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m14_1i = gMET_AND_RES_MARK_1_m14 coincident_edge gMET_NOT_RES_MARK_1_m14;
+      gMET_TERM_ALL_SIDES_1_m14 = edge_size( gMET_TERM_ALL_SIDES_1_m14_1i, inside = vSIZE_VALUE_m522, outside = vSIZE_VALUE_m522 );
+      gMET_TERM_ALL_SIDES_INSIDE_m14 = gMET_TERM_ALL_SIDES_1_m14 and gMET_AND_RES_MARK_1_m14;
+      gIN_RES_MARK_1_m14_1i = aM2_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m14;
+      gIN_RES_MARK_1_m14 = outside_touching( gIN_RES_MARK_1_m14_1i, gMET_TERM_ALL_SIDES_INSIDE_m14, >= 2 );
+      gMET_TERM_MARK_1_m14 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m14, gIN_RES_MARK_1_m14 );
+      gIN_RES_MARK_2_m14_1i = aM2_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m14;
+      gIN_RES_MARK_2_m14 = outside_touching( gIN_RES_MARK_2_m14_1i, gMET_TERM_ALL_SIDES_INSIDE_m14, == 1 );
+      gMET_TERM_MARK_2_m14 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m14, gIN_RES_MARK_2_m14 );
+      gIN_RES_MARK_FINAL_m14_1i = gIN_RES_MARK_1_m14 or gMET_TERM_MARK_1_m14;
+      gIN_RES_MARK_FINAL_m14_3i = gIN_RES_MARK_2_m14 or gMET_TERM_MARK_2_m14;
+      gIN_RES_MARK_FINAL_m14_2i = size( gIN_RES_MARK_FINAL_m14_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m14 = gIN_RES_MARK_FINAL_m14_1i or gIN_RES_MARK_FINAL_m14_2i;
+      gMET_AND_RES_MARK_FINAL_m14 = aMETAL2 and gIN_RES_MARK_FINAL_m14;
+      gMET_AND_RES_MARK_m14_2i = aVIA1 and gMET_AND_RES_MARK_0_m14;
+      gMET_AND_RES_MARK_m14_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m14, gMET_AND_RES_MARK_m14_2i );
+      gMET_AND_RES_MARK_m14_3i = aVIA1 and gMET_AND_RES_MARK_0_m14;
+      gMET_AND_RES_MARK_m14 = not_interacting( gMET_AND_RES_MARK_m14_1i, gMET_AND_RES_MARK_m14_3i );
+      gMET_NOT_RES_MARK_m14 = aMETAL2 not gIN_RES_MARK_FINAL_m14;
+      gMET_TERM_ALL_SIDES_m14_1i = gMET_AND_RES_MARK_m14 coincident_edge gMET_NOT_RES_MARK_m14;
+      gMET_TERM_ALL_SIDES_m14 = edge_size( gMET_TERM_ALL_SIDES_m14_1i, inside = vSIZE_VALUE_m522, outside = vSIZE_VALUE_m522 );
+      gMET_TERM_TOP_m14_2i = grow( gMET_AND_RES_MARK_m14, north = vSIZE_VALUE_m522 );
+      gMET_TERM_TOP_m14_1i = gMET_TERM_TOP_m14_2i not gMET_AND_RES_MARK_m14;
+      gMET_TERM_TOP_m14 = gMET_TERM_TOP_m14_1i inside gMET_NOT_RES_MARK_m14;
+      gMET_DEV_TOP_m14_3i = gMET_AND_RES_MARK_m14 or gMET_TERM_ALL_SIDES_m14;
+      gMET_DEV_TOP_m14_4i = shrink( gMET_AND_RES_MARK_m14, north = vSIZE_VALUE_m522 );
+      gMET_DEV_TOP_m14_2i = gMET_DEV_TOP_m14_3i not gMET_DEV_TOP_m14_4i;
+      gMET_DEV_TOP_m14_1i = interacting( gMET_DEV_TOP_m14_2i, gMET_TERM_TOP_m14 );
+      gMET_DEV_TOP_m14 = gMET_DEV_TOP_m14_1i not gMET_TERM_TOP_m14;
+      gMET_TERM_RIGHT_m14_3i = not_interacting( gMET_AND_RES_MARK_m14, gMET_DEV_TOP_m14 );
+      gMET_TERM_RIGHT_m14_2i = grow( gMET_TERM_RIGHT_m14_3i, east = vSIZE_VALUE_m522 );
+      gMET_TERM_RIGHT_m14_1i = gMET_TERM_RIGHT_m14_2i not gMET_AND_RES_MARK_m14;
+      gMET_TERM_RIGHT_m14 = gMET_TERM_RIGHT_m14_1i inside gMET_NOT_RES_MARK_m14;
+      gMET_DEV_RIGHT_m14_3i = gMET_AND_RES_MARK_m14 or gMET_TERM_ALL_SIDES_m14;
+      gMET_DEV_RIGHT_m14_4i = shrink( gMET_AND_RES_MARK_m14, east = vSIZE_VALUE_m522 );
+      gMET_DEV_RIGHT_m14_2i = gMET_DEV_RIGHT_m14_3i not gMET_DEV_RIGHT_m14_4i;
+      gMET_DEV_RIGHT_m14_1i = interacting( gMET_DEV_RIGHT_m14_2i, gMET_TERM_RIGHT_m14 );
+      gMET_DEV_RIGHT_m14 = gMET_DEV_RIGHT_m14_1i not gMET_TERM_RIGHT_m14;
+      gMET_TERM_BOTTOM_m14_4i = not_interacting( gMET_AND_RES_MARK_m14, gMET_DEV_TOP_m14 );
+      gMET_TERM_BOTTOM_m14_3i = not_interacting( gMET_TERM_BOTTOM_m14_4i, gMET_DEV_RIGHT_m14 );
+      gMET_TERM_BOTTOM_m14_2i = grow( gMET_TERM_BOTTOM_m14_3i, south = vSIZE_VALUE_m522 );
+      gMET_TERM_BOTTOM_m14_1i = gMET_TERM_BOTTOM_m14_2i not gMET_AND_RES_MARK_m14;
+      gMET_TERM_BOTTOM_m14 = gMET_TERM_BOTTOM_m14_1i inside gMET_NOT_RES_MARK_m14;
+      gMET_DEV_BOTTOM_m14_3i = gMET_AND_RES_MARK_m14 or gMET_TERM_ALL_SIDES_m14;
+      gMET_DEV_BOTTOM_m14_4i = shrink( gMET_AND_RES_MARK_m14, south = vSIZE_VALUE_m522 );
+      gMET_DEV_BOTTOM_m14_2i = gMET_DEV_BOTTOM_m14_3i not gMET_DEV_BOTTOM_m14_4i;
+      gMET_DEV_BOTTOM_m14_1i = interacting( gMET_DEV_BOTTOM_m14_2i, gMET_TERM_BOTTOM_m14 );
+      gMET_DEV_BOTTOM_m14 = gMET_DEV_BOTTOM_m14_1i not gMET_TERM_BOTTOM_m14;
+      gMET_DEV_LEFT_m14_3i = gMET_AND_RES_MARK_m14 or gMET_TERM_ALL_SIDES_m14;
+      gMET_DEV_LEFT_m14_4i = shrink( gMET_AND_RES_MARK_m14, west = vSIZE_VALUE_m522 );
+      gMET_DEV_LEFT_m14_2i = gMET_DEV_LEFT_m14_3i not gMET_DEV_LEFT_m14_4i;
+      gMET_DEV_LEFT_m14_1i = interacting( gMET_DEV_LEFT_m14_2i, gMET_TERM_RIGHT_m14 );
+      gMET_DEV_LEFT_m14 = gMET_DEV_LEFT_m14_1i not gMET_TERM_RIGHT_m14;
+      gMET_DEV_TOP_2_m14_2i = shrink( gMET_AND_RES_MARK_m14, north = vSIZE_VALUE_m522 );
+      gMET_DEV_TOP_2_m14_1i = gMET_AND_RES_MARK_m14 not gMET_DEV_TOP_2_m14_2i;
+      gMET_DEV_TOP_2_m14 = interacting( gMET_DEV_TOP_2_m14_1i, gMET_TERM_TOP_m14 );
+      gMET_DEV_RIGHT_2_m14_2i = shrink( gMET_AND_RES_MARK_m14, east = vSIZE_VALUE_m522 );
+      gMET_DEV_RIGHT_2_m14_1i = gMET_AND_RES_MARK_m14 not gMET_DEV_RIGHT_2_m14_2i;
+      gMET_DEV_RIGHT_2_m14 = interacting( gMET_DEV_RIGHT_2_m14_1i, gMET_TERM_RIGHT_m14 );
+      gMET_DEV_BOTTOM_2_m14_2i = shrink( gMET_AND_RES_MARK_m14, south = vSIZE_VALUE_m522 );
+      gMET_DEV_BOTTOM_2_m14_1i = gMET_AND_RES_MARK_m14 not gMET_DEV_BOTTOM_2_m14_2i;
+      gMET_DEV_BOTTOM_2_m14 = interacting( gMET_DEV_BOTTOM_2_m14_1i, gMET_TERM_BOTTOM_m14 );
+      gMET_DEV_LEFT_2_m14_2i = shrink( gMET_AND_RES_MARK_m14, west = vSIZE_VALUE_m522 );
+      gMET_DEV_LEFT_2_m14_1i = gMET_AND_RES_MARK_m14 not gMET_DEV_LEFT_2_m14_2i;
+      gMET_DEV_LEFT_2_m14 = interacting( gMET_DEV_LEFT_2_m14_1i, gMET_TERM_RIGHT_m14 );
+      gRM2_OUT_4i = gMET_DEV_TOP_2_m14 or gMET_DEV_RIGHT_2_m14;
+      gRM2_OUT_3i = gRM2_OUT_4i or gMET_DEV_BOTTOM_2_m14;
+      gRM2_OUT = gRM2_OUT_3i or gMET_DEV_LEFT_2_m14;
+      gRM2_DEV_6i = gMET_DEV_TOP_m14 or gMET_DEV_RIGHT_m14;
+      gRM2_DEV_5i = gRM2_DEV_6i or gMET_DEV_BOTTOM_m14;
+      gRM2_DEV_4i = gRM2_DEV_5i or gMET_DEV_LEFT_m14;
+      gRM2_DEV = gRM2_DEV_4i or gRM2_OUT;
+   #endif
+#endif
+#ifdef d_BEOL_1P4M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_DEV = aMETAL2 and aM2_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m12 = aMETAL2 and aM2_RES_MK;
+      gMET_AND_RES_MARK_1_m12_2i = aVIA1 and gMET_AND_RES_MARK_0_m12;
+      gMET_AND_RES_MARK_1_m12_1i = not_interacting( gMET_AND_RES_MARK_0_m12, gMET_AND_RES_MARK_1_m12_2i );
+      gMET_AND_RES_MARK_1_m12_3i = aVIA1 and gMET_AND_RES_MARK_0_m12;
+      gMET_AND_RES_MARK_1_m12 = not_interacting( gMET_AND_RES_MARK_1_m12_1i, gMET_AND_RES_MARK_1_m12_3i );
+      gMET_NOT_RES_MARK_1_m12 = aMETAL2 not aM2_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m12_1i = gMET_AND_RES_MARK_1_m12 coincident_edge gMET_NOT_RES_MARK_1_m12;
+      gMET_TERM_ALL_SIDES_1_m12 = edge_size( gMET_TERM_ALL_SIDES_1_m12_1i, inside = vSIZE_VALUE_m518, outside = vSIZE_VALUE_m518 );
+      gMET_TERM_ALL_SIDES_INSIDE_m12 = gMET_TERM_ALL_SIDES_1_m12 and gMET_AND_RES_MARK_1_m12;
+      gIN_RES_MARK_1_m12_1i = aM2_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m12;
+      gIN_RES_MARK_1_m12 = outside_touching( gIN_RES_MARK_1_m12_1i, gMET_TERM_ALL_SIDES_INSIDE_m12, >= 2 );
+      gMET_TERM_MARK_1_m12 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m12, gIN_RES_MARK_1_m12 );
+      gIN_RES_MARK_2_m12_1i = aM2_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m12;
+      gIN_RES_MARK_2_m12 = outside_touching( gIN_RES_MARK_2_m12_1i, gMET_TERM_ALL_SIDES_INSIDE_m12, == 1 );
+      gMET_TERM_MARK_2_m12 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m12, gIN_RES_MARK_2_m12 );
+      gIN_RES_MARK_FINAL_m12_1i = gIN_RES_MARK_1_m12 or gMET_TERM_MARK_1_m12;
+      gIN_RES_MARK_FINAL_m12_3i = gIN_RES_MARK_2_m12 or gMET_TERM_MARK_2_m12;
+      gIN_RES_MARK_FINAL_m12_2i = size( gIN_RES_MARK_FINAL_m12_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m12 = gIN_RES_MARK_FINAL_m12_1i or gIN_RES_MARK_FINAL_m12_2i;
+      gMET_AND_RES_MARK_FINAL_m12 = aMETAL2 and gIN_RES_MARK_FINAL_m12;
+      gMET_AND_RES_MARK_m12_2i = aVIA1 and gMET_AND_RES_MARK_0_m12;
+      gMET_AND_RES_MARK_m12_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m12, gMET_AND_RES_MARK_m12_2i );
+      gMET_AND_RES_MARK_m12_3i = aVIA1 and gMET_AND_RES_MARK_0_m12;
+      gMET_AND_RES_MARK_m12 = not_interacting( gMET_AND_RES_MARK_m12_1i, gMET_AND_RES_MARK_m12_3i );
+      gMET_NOT_RES_MARK_m12 = aMETAL2 not gIN_RES_MARK_FINAL_m12;
+      gMET_TERM_ALL_SIDES_m12_1i = gMET_AND_RES_MARK_m12 coincident_edge gMET_NOT_RES_MARK_m12;
+      gMET_TERM_ALL_SIDES_m12 = edge_size( gMET_TERM_ALL_SIDES_m12_1i, inside = vSIZE_VALUE_m518, outside = vSIZE_VALUE_m518 );
+      gMET_TERM_TOP_m12_2i = grow( gMET_AND_RES_MARK_m12, north = vSIZE_VALUE_m518 );
+      gMET_TERM_TOP_m12_1i = gMET_TERM_TOP_m12_2i not gMET_AND_RES_MARK_m12;
+      gMET_TERM_TOP_m12 = gMET_TERM_TOP_m12_1i inside gMET_NOT_RES_MARK_m12;
+      gMET_DEV_TOP_m12_3i = gMET_AND_RES_MARK_m12 or gMET_TERM_ALL_SIDES_m12;
+      gMET_DEV_TOP_m12_4i = shrink( gMET_AND_RES_MARK_m12, north = vSIZE_VALUE_m518 );
+      gMET_DEV_TOP_m12_2i = gMET_DEV_TOP_m12_3i not gMET_DEV_TOP_m12_4i;
+      gMET_DEV_TOP_m12_1i = interacting( gMET_DEV_TOP_m12_2i, gMET_TERM_TOP_m12 );
+      gMET_DEV_TOP_m12 = gMET_DEV_TOP_m12_1i not gMET_TERM_TOP_m12;
+      gMET_TERM_RIGHT_m12_3i = not_interacting( gMET_AND_RES_MARK_m12, gMET_DEV_TOP_m12 );
+      gMET_TERM_RIGHT_m12_2i = grow( gMET_TERM_RIGHT_m12_3i, east = vSIZE_VALUE_m518 );
+      gMET_TERM_RIGHT_m12_1i = gMET_TERM_RIGHT_m12_2i not gMET_AND_RES_MARK_m12;
+      gMET_TERM_RIGHT_m12 = gMET_TERM_RIGHT_m12_1i inside gMET_NOT_RES_MARK_m12;
+      gMET_DEV_RIGHT_m12_3i = gMET_AND_RES_MARK_m12 or gMET_TERM_ALL_SIDES_m12;
+      gMET_DEV_RIGHT_m12_4i = shrink( gMET_AND_RES_MARK_m12, east = vSIZE_VALUE_m518 );
+      gMET_DEV_RIGHT_m12_2i = gMET_DEV_RIGHT_m12_3i not gMET_DEV_RIGHT_m12_4i;
+      gMET_DEV_RIGHT_m12_1i = interacting( gMET_DEV_RIGHT_m12_2i, gMET_TERM_RIGHT_m12 );
+      gMET_DEV_RIGHT_m12 = gMET_DEV_RIGHT_m12_1i not gMET_TERM_RIGHT_m12;
+      gMET_TERM_BOTTOM_m12_4i = not_interacting( gMET_AND_RES_MARK_m12, gMET_DEV_TOP_m12 );
+      gMET_TERM_BOTTOM_m12_3i = not_interacting( gMET_TERM_BOTTOM_m12_4i, gMET_DEV_RIGHT_m12 );
+      gMET_TERM_BOTTOM_m12_2i = grow( gMET_TERM_BOTTOM_m12_3i, south = vSIZE_VALUE_m518 );
+      gMET_TERM_BOTTOM_m12_1i = gMET_TERM_BOTTOM_m12_2i not gMET_AND_RES_MARK_m12;
+      gMET_TERM_BOTTOM_m12 = gMET_TERM_BOTTOM_m12_1i inside gMET_NOT_RES_MARK_m12;
+      gMET_DEV_BOTTOM_m12_3i = gMET_AND_RES_MARK_m12 or gMET_TERM_ALL_SIDES_m12;
+      gMET_DEV_BOTTOM_m12_4i = shrink( gMET_AND_RES_MARK_m12, south = vSIZE_VALUE_m518 );
+      gMET_DEV_BOTTOM_m12_2i = gMET_DEV_BOTTOM_m12_3i not gMET_DEV_BOTTOM_m12_4i;
+      gMET_DEV_BOTTOM_m12_1i = interacting( gMET_DEV_BOTTOM_m12_2i, gMET_TERM_BOTTOM_m12 );
+      gMET_DEV_BOTTOM_m12 = gMET_DEV_BOTTOM_m12_1i not gMET_TERM_BOTTOM_m12;
+      gMET_DEV_LEFT_m12_3i = gMET_AND_RES_MARK_m12 or gMET_TERM_ALL_SIDES_m12;
+      gMET_DEV_LEFT_m12_4i = shrink( gMET_AND_RES_MARK_m12, west = vSIZE_VALUE_m518 );
+      gMET_DEV_LEFT_m12_2i = gMET_DEV_LEFT_m12_3i not gMET_DEV_LEFT_m12_4i;
+      gMET_DEV_LEFT_m12_1i = interacting( gMET_DEV_LEFT_m12_2i, gMET_TERM_RIGHT_m12 );
+      gMET_DEV_LEFT_m12 = gMET_DEV_LEFT_m12_1i not gMET_TERM_RIGHT_m12;
+      gMET_DEV_TOP_2_m12_2i = shrink( gMET_AND_RES_MARK_m12, north = vSIZE_VALUE_m518 );
+      gMET_DEV_TOP_2_m12_1i = gMET_AND_RES_MARK_m12 not gMET_DEV_TOP_2_m12_2i;
+      gMET_DEV_TOP_2_m12 = interacting( gMET_DEV_TOP_2_m12_1i, gMET_TERM_TOP_m12 );
+      gMET_DEV_RIGHT_2_m12_2i = shrink( gMET_AND_RES_MARK_m12, east = vSIZE_VALUE_m518 );
+      gMET_DEV_RIGHT_2_m12_1i = gMET_AND_RES_MARK_m12 not gMET_DEV_RIGHT_2_m12_2i;
+      gMET_DEV_RIGHT_2_m12 = interacting( gMET_DEV_RIGHT_2_m12_1i, gMET_TERM_RIGHT_m12 );
+      gMET_DEV_BOTTOM_2_m12_2i = shrink( gMET_AND_RES_MARK_m12, south = vSIZE_VALUE_m518 );
+      gMET_DEV_BOTTOM_2_m12_1i = gMET_AND_RES_MARK_m12 not gMET_DEV_BOTTOM_2_m12_2i;
+      gMET_DEV_BOTTOM_2_m12 = interacting( gMET_DEV_BOTTOM_2_m12_1i, gMET_TERM_BOTTOM_m12 );
+      gMET_DEV_LEFT_2_m12_2i = shrink( gMET_AND_RES_MARK_m12, west = vSIZE_VALUE_m518 );
+      gMET_DEV_LEFT_2_m12_1i = gMET_AND_RES_MARK_m12 not gMET_DEV_LEFT_2_m12_2i;
+      gMET_DEV_LEFT_2_m12 = interacting( gMET_DEV_LEFT_2_m12_1i, gMET_TERM_RIGHT_m12 );
+      gRM2_OUT_6i = gMET_DEV_TOP_2_m12 or gMET_DEV_RIGHT_2_m12;
+      gRM2_OUT_5i = gRM2_OUT_6i or gMET_DEV_BOTTOM_2_m12;
+      gRM2_OUT = gRM2_OUT_5i or gMET_DEV_LEFT_2_m12;
+      gRM2_DEV_9i = gMET_DEV_TOP_m12 or gMET_DEV_RIGHT_m12;
+      gRM2_DEV_8i = gRM2_DEV_9i or gMET_DEV_BOTTOM_m12;
+      gRM2_DEV_7i = gRM2_DEV_8i or gMET_DEV_LEFT_m12;
+      gRM2_DEV = gRM2_DEV_7i or gRM2_OUT;
+   #endif
+#endif
+#ifdef d_BEOL_1P5M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_DEV = aMETAL2 and aM2_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m9 = aMETAL2 and aM2_RES_MK;
+      gMET_AND_RES_MARK_1_m9_2i = aVIA1 and gMET_AND_RES_MARK_0_m9;
+      gMET_AND_RES_MARK_1_m9_1i = not_interacting( gMET_AND_RES_MARK_0_m9, gMET_AND_RES_MARK_1_m9_2i );
+      gMET_AND_RES_MARK_1_m9_3i = aVIA1 and gMET_AND_RES_MARK_0_m9;
+      gMET_AND_RES_MARK_1_m9 = not_interacting( gMET_AND_RES_MARK_1_m9_1i, gMET_AND_RES_MARK_1_m9_3i );
+      gMET_NOT_RES_MARK_1_m9 = aMETAL2 not aM2_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m9_1i = gMET_AND_RES_MARK_1_m9 coincident_edge gMET_NOT_RES_MARK_1_m9;
+      gMET_TERM_ALL_SIDES_1_m9 = edge_size( gMET_TERM_ALL_SIDES_1_m9_1i, inside = vSIZE_VALUE_m512, outside = vSIZE_VALUE_m512 );
+      gMET_TERM_ALL_SIDES_INSIDE_m9 = gMET_TERM_ALL_SIDES_1_m9 and gMET_AND_RES_MARK_1_m9;
+      gIN_RES_MARK_1_m9_1i = aM2_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m9;
+      gIN_RES_MARK_1_m9 = outside_touching( gIN_RES_MARK_1_m9_1i, gMET_TERM_ALL_SIDES_INSIDE_m9, >= 2 );
+      gMET_TERM_MARK_1_m9 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m9, gIN_RES_MARK_1_m9 );
+      gIN_RES_MARK_2_m9_1i = aM2_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m9;
+      gIN_RES_MARK_2_m9 = outside_touching( gIN_RES_MARK_2_m9_1i, gMET_TERM_ALL_SIDES_INSIDE_m9, == 1 );
+      gMET_TERM_MARK_2_m9 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m9, gIN_RES_MARK_2_m9 );
+      gIN_RES_MARK_FINAL_m9_1i = gIN_RES_MARK_1_m9 or gMET_TERM_MARK_1_m9;
+      gIN_RES_MARK_FINAL_m9_3i = gIN_RES_MARK_2_m9 or gMET_TERM_MARK_2_m9;
+      gIN_RES_MARK_FINAL_m9_2i = size( gIN_RES_MARK_FINAL_m9_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m9 = gIN_RES_MARK_FINAL_m9_1i or gIN_RES_MARK_FINAL_m9_2i;
+      gMET_AND_RES_MARK_FINAL_m9 = aMETAL2 and gIN_RES_MARK_FINAL_m9;
+      gMET_AND_RES_MARK_m9_2i = aVIA1 and gMET_AND_RES_MARK_0_m9;
+      gMET_AND_RES_MARK_m9_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m9, gMET_AND_RES_MARK_m9_2i );
+      gMET_AND_RES_MARK_m9_3i = aVIA1 and gMET_AND_RES_MARK_0_m9;
+      gMET_AND_RES_MARK_m9 = not_interacting( gMET_AND_RES_MARK_m9_1i, gMET_AND_RES_MARK_m9_3i );
+      gMET_NOT_RES_MARK_m9 = aMETAL2 not gIN_RES_MARK_FINAL_m9;
+      gMET_TERM_ALL_SIDES_m9_1i = gMET_AND_RES_MARK_m9 coincident_edge gMET_NOT_RES_MARK_m9;
+      gMET_TERM_ALL_SIDES_m9 = edge_size( gMET_TERM_ALL_SIDES_m9_1i, inside = vSIZE_VALUE_m512, outside = vSIZE_VALUE_m512 );
+      gMET_TERM_TOP_m9_2i = grow( gMET_AND_RES_MARK_m9, north = vSIZE_VALUE_m512 );
+      gMET_TERM_TOP_m9_1i = gMET_TERM_TOP_m9_2i not gMET_AND_RES_MARK_m9;
+      gMET_TERM_TOP_m9 = gMET_TERM_TOP_m9_1i inside gMET_NOT_RES_MARK_m9;
+      gMET_DEV_TOP_m9_3i = gMET_AND_RES_MARK_m9 or gMET_TERM_ALL_SIDES_m9;
+      gMET_DEV_TOP_m9_4i = shrink( gMET_AND_RES_MARK_m9, north = vSIZE_VALUE_m512 );
+      gMET_DEV_TOP_m9_2i = gMET_DEV_TOP_m9_3i not gMET_DEV_TOP_m9_4i;
+      gMET_DEV_TOP_m9_1i = interacting( gMET_DEV_TOP_m9_2i, gMET_TERM_TOP_m9 );
+      gMET_DEV_TOP_m9 = gMET_DEV_TOP_m9_1i not gMET_TERM_TOP_m9;
+      gMET_TERM_RIGHT_m9_3i = not_interacting( gMET_AND_RES_MARK_m9, gMET_DEV_TOP_m9 );
+      gMET_TERM_RIGHT_m9_2i = grow( gMET_TERM_RIGHT_m9_3i, east = vSIZE_VALUE_m512 );
+      gMET_TERM_RIGHT_m9_1i = gMET_TERM_RIGHT_m9_2i not gMET_AND_RES_MARK_m9;
+      gMET_TERM_RIGHT_m9 = gMET_TERM_RIGHT_m9_1i inside gMET_NOT_RES_MARK_m9;
+      gMET_DEV_RIGHT_m9_3i = gMET_AND_RES_MARK_m9 or gMET_TERM_ALL_SIDES_m9;
+      gMET_DEV_RIGHT_m9_4i = shrink( gMET_AND_RES_MARK_m9, east = vSIZE_VALUE_m512 );
+      gMET_DEV_RIGHT_m9_2i = gMET_DEV_RIGHT_m9_3i not gMET_DEV_RIGHT_m9_4i;
+      gMET_DEV_RIGHT_m9_1i = interacting( gMET_DEV_RIGHT_m9_2i, gMET_TERM_RIGHT_m9 );
+      gMET_DEV_RIGHT_m9 = gMET_DEV_RIGHT_m9_1i not gMET_TERM_RIGHT_m9;
+      gMET_TERM_BOTTOM_m9_4i = not_interacting( gMET_AND_RES_MARK_m9, gMET_DEV_TOP_m9 );
+      gMET_TERM_BOTTOM_m9_3i = not_interacting( gMET_TERM_BOTTOM_m9_4i, gMET_DEV_RIGHT_m9 );
+      gMET_TERM_BOTTOM_m9_2i = grow( gMET_TERM_BOTTOM_m9_3i, south = vSIZE_VALUE_m512 );
+      gMET_TERM_BOTTOM_m9_1i = gMET_TERM_BOTTOM_m9_2i not gMET_AND_RES_MARK_m9;
+      gMET_TERM_BOTTOM_m9 = gMET_TERM_BOTTOM_m9_1i inside gMET_NOT_RES_MARK_m9;
+      gMET_DEV_BOTTOM_m9_3i = gMET_AND_RES_MARK_m9 or gMET_TERM_ALL_SIDES_m9;
+      gMET_DEV_BOTTOM_m9_4i = shrink( gMET_AND_RES_MARK_m9, south = vSIZE_VALUE_m512 );
+      gMET_DEV_BOTTOM_m9_2i = gMET_DEV_BOTTOM_m9_3i not gMET_DEV_BOTTOM_m9_4i;
+      gMET_DEV_BOTTOM_m9_1i = interacting( gMET_DEV_BOTTOM_m9_2i, gMET_TERM_BOTTOM_m9 );
+      gMET_DEV_BOTTOM_m9 = gMET_DEV_BOTTOM_m9_1i not gMET_TERM_BOTTOM_m9;
+      gMET_DEV_LEFT_m9_3i = gMET_AND_RES_MARK_m9 or gMET_TERM_ALL_SIDES_m9;
+      gMET_DEV_LEFT_m9_4i = shrink( gMET_AND_RES_MARK_m9, west = vSIZE_VALUE_m512 );
+      gMET_DEV_LEFT_m9_2i = gMET_DEV_LEFT_m9_3i not gMET_DEV_LEFT_m9_4i;
+      gMET_DEV_LEFT_m9_1i = interacting( gMET_DEV_LEFT_m9_2i, gMET_TERM_RIGHT_m9 );
+      gMET_DEV_LEFT_m9 = gMET_DEV_LEFT_m9_1i not gMET_TERM_RIGHT_m9;
+      gMET_DEV_TOP_2_m9_2i = shrink( gMET_AND_RES_MARK_m9, north = vSIZE_VALUE_m512 );
+      gMET_DEV_TOP_2_m9_1i = gMET_AND_RES_MARK_m9 not gMET_DEV_TOP_2_m9_2i;
+      gMET_DEV_TOP_2_m9 = interacting( gMET_DEV_TOP_2_m9_1i, gMET_TERM_TOP_m9 );
+      gMET_DEV_RIGHT_2_m9_2i = shrink( gMET_AND_RES_MARK_m9, east = vSIZE_VALUE_m512 );
+      gMET_DEV_RIGHT_2_m9_1i = gMET_AND_RES_MARK_m9 not gMET_DEV_RIGHT_2_m9_2i;
+      gMET_DEV_RIGHT_2_m9 = interacting( gMET_DEV_RIGHT_2_m9_1i, gMET_TERM_RIGHT_m9 );
+      gMET_DEV_BOTTOM_2_m9_2i = shrink( gMET_AND_RES_MARK_m9, south = vSIZE_VALUE_m512 );
+      gMET_DEV_BOTTOM_2_m9_1i = gMET_AND_RES_MARK_m9 not gMET_DEV_BOTTOM_2_m9_2i;
+      gMET_DEV_BOTTOM_2_m9 = interacting( gMET_DEV_BOTTOM_2_m9_1i, gMET_TERM_BOTTOM_m9 );
+      gMET_DEV_LEFT_2_m9_2i = shrink( gMET_AND_RES_MARK_m9, west = vSIZE_VALUE_m512 );
+      gMET_DEV_LEFT_2_m9_1i = gMET_AND_RES_MARK_m9 not gMET_DEV_LEFT_2_m9_2i;
+      gMET_DEV_LEFT_2_m9 = interacting( gMET_DEV_LEFT_2_m9_1i, gMET_TERM_RIGHT_m9 );
+      gRM2_OUT_8i = gMET_DEV_TOP_2_m9 or gMET_DEV_RIGHT_2_m9;
+      gRM2_OUT_7i = gRM2_OUT_8i or gMET_DEV_BOTTOM_2_m9;
+      gRM2_OUT = gRM2_OUT_7i or gMET_DEV_LEFT_2_m9;
+      gRM2_DEV_12i = gMET_DEV_TOP_m9 or gMET_DEV_RIGHT_m9;
+      gRM2_DEV_11i = gRM2_DEV_12i or gMET_DEV_BOTTOM_m9;
+      gRM2_DEV_10i = gRM2_DEV_11i or gMET_DEV_LEFT_m9;
+      gRM2_DEV = gRM2_DEV_10i or gRM2_OUT;
+   #endif
+#endif
+#ifdef d_BEOL_1P6M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_DEV = aMETAL2 and aM2_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m5 = aMETAL2 and aM2_RES_MK;
+      gMET_AND_RES_MARK_1_m5_2i = aVIA1 and gMET_AND_RES_MARK_0_m5;
+      gMET_AND_RES_MARK_1_m5_1i = not_interacting( gMET_AND_RES_MARK_0_m5, gMET_AND_RES_MARK_1_m5_2i );
+      gMET_AND_RES_MARK_1_m5_3i = aVIA1 and gMET_AND_RES_MARK_0_m5;
+      gMET_AND_RES_MARK_1_m5 = not_interacting( gMET_AND_RES_MARK_1_m5_1i, gMET_AND_RES_MARK_1_m5_3i );
+      gMET_NOT_RES_MARK_1_m5 = aMETAL2 not aM2_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m5_1i = gMET_AND_RES_MARK_1_m5 coincident_edge gMET_NOT_RES_MARK_1_m5;
+      gMET_TERM_ALL_SIDES_1_m5 = edge_size( gMET_TERM_ALL_SIDES_1_m5_1i, inside = vSIZE_VALUE_m504, outside = vSIZE_VALUE_m504 );
+      gMET_TERM_ALL_SIDES_INSIDE_m5 = gMET_TERM_ALL_SIDES_1_m5 and gMET_AND_RES_MARK_1_m5;
+      gIN_RES_MARK_1_m5_1i = aM2_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m5;
+      gIN_RES_MARK_1_m5 = outside_touching( gIN_RES_MARK_1_m5_1i, gMET_TERM_ALL_SIDES_INSIDE_m5, >= 2 );
+      gMET_TERM_MARK_1_m5 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m5, gIN_RES_MARK_1_m5 );
+      gIN_RES_MARK_2_m5_1i = aM2_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m5;
+      gIN_RES_MARK_2_m5 = outside_touching( gIN_RES_MARK_2_m5_1i, gMET_TERM_ALL_SIDES_INSIDE_m5, == 1 );
+      gMET_TERM_MARK_2_m5 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m5, gIN_RES_MARK_2_m5 );
+      gIN_RES_MARK_FINAL_m5_1i = gIN_RES_MARK_1_m5 or gMET_TERM_MARK_1_m5;
+      gIN_RES_MARK_FINAL_m5_3i = gIN_RES_MARK_2_m5 or gMET_TERM_MARK_2_m5;
+      gIN_RES_MARK_FINAL_m5_2i = size( gIN_RES_MARK_FINAL_m5_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m5 = gIN_RES_MARK_FINAL_m5_1i or gIN_RES_MARK_FINAL_m5_2i;
+      gMET_AND_RES_MARK_FINAL_m5 = aMETAL2 and gIN_RES_MARK_FINAL_m5;
+      gMET_AND_RES_MARK_m5_2i = aVIA1 and gMET_AND_RES_MARK_0_m5;
+      gMET_AND_RES_MARK_m5_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m5, gMET_AND_RES_MARK_m5_2i );
+      gMET_AND_RES_MARK_m5_3i = aVIA1 and gMET_AND_RES_MARK_0_m5;
+      gMET_AND_RES_MARK_m5 = not_interacting( gMET_AND_RES_MARK_m5_1i, gMET_AND_RES_MARK_m5_3i );
+      gMET_NOT_RES_MARK_m5 = aMETAL2 not gIN_RES_MARK_FINAL_m5;
+      gMET_TERM_ALL_SIDES_m5_1i = gMET_AND_RES_MARK_m5 coincident_edge gMET_NOT_RES_MARK_m5;
+      gMET_TERM_ALL_SIDES_m5 = edge_size( gMET_TERM_ALL_SIDES_m5_1i, inside = vSIZE_VALUE_m504, outside = vSIZE_VALUE_m504 );
+      gMET_TERM_TOP_m5_2i = grow( gMET_AND_RES_MARK_m5, north = vSIZE_VALUE_m504 );
+      gMET_TERM_TOP_m5_1i = gMET_TERM_TOP_m5_2i not gMET_AND_RES_MARK_m5;
+      gMET_TERM_TOP_m5 = gMET_TERM_TOP_m5_1i inside gMET_NOT_RES_MARK_m5;
+      gMET_DEV_TOP_m5_3i = gMET_AND_RES_MARK_m5 or gMET_TERM_ALL_SIDES_m5;
+      gMET_DEV_TOP_m5_4i = shrink( gMET_AND_RES_MARK_m5, north = vSIZE_VALUE_m504 );
+      gMET_DEV_TOP_m5_2i = gMET_DEV_TOP_m5_3i not gMET_DEV_TOP_m5_4i;
+      gMET_DEV_TOP_m5_1i = interacting( gMET_DEV_TOP_m5_2i, gMET_TERM_TOP_m5 );
+      gMET_DEV_TOP_m5 = gMET_DEV_TOP_m5_1i not gMET_TERM_TOP_m5;
+      gMET_TERM_RIGHT_m5_3i = not_interacting( gMET_AND_RES_MARK_m5, gMET_DEV_TOP_m5 );
+      gMET_TERM_RIGHT_m5_2i = grow( gMET_TERM_RIGHT_m5_3i, east = vSIZE_VALUE_m504 );
+      gMET_TERM_RIGHT_m5_1i = gMET_TERM_RIGHT_m5_2i not gMET_AND_RES_MARK_m5;
+      gMET_TERM_RIGHT_m5 = gMET_TERM_RIGHT_m5_1i inside gMET_NOT_RES_MARK_m5;
+      gMET_DEV_RIGHT_m5_3i = gMET_AND_RES_MARK_m5 or gMET_TERM_ALL_SIDES_m5;
+      gMET_DEV_RIGHT_m5_4i = shrink( gMET_AND_RES_MARK_m5, east = vSIZE_VALUE_m504 );
+      gMET_DEV_RIGHT_m5_2i = gMET_DEV_RIGHT_m5_3i not gMET_DEV_RIGHT_m5_4i;
+      gMET_DEV_RIGHT_m5_1i = interacting( gMET_DEV_RIGHT_m5_2i, gMET_TERM_RIGHT_m5 );
+      gMET_DEV_RIGHT_m5 = gMET_DEV_RIGHT_m5_1i not gMET_TERM_RIGHT_m5;
+      gMET_TERM_BOTTOM_m5_4i = not_interacting( gMET_AND_RES_MARK_m5, gMET_DEV_TOP_m5 );
+      gMET_TERM_BOTTOM_m5_3i = not_interacting( gMET_TERM_BOTTOM_m5_4i, gMET_DEV_RIGHT_m5 );
+      gMET_TERM_BOTTOM_m5_2i = grow( gMET_TERM_BOTTOM_m5_3i, south = vSIZE_VALUE_m504 );
+      gMET_TERM_BOTTOM_m5_1i = gMET_TERM_BOTTOM_m5_2i not gMET_AND_RES_MARK_m5;
+      gMET_TERM_BOTTOM_m5 = gMET_TERM_BOTTOM_m5_1i inside gMET_NOT_RES_MARK_m5;
+      gMET_DEV_BOTTOM_m5_3i = gMET_AND_RES_MARK_m5 or gMET_TERM_ALL_SIDES_m5;
+      gMET_DEV_BOTTOM_m5_4i = shrink( gMET_AND_RES_MARK_m5, south = vSIZE_VALUE_m504 );
+      gMET_DEV_BOTTOM_m5_2i = gMET_DEV_BOTTOM_m5_3i not gMET_DEV_BOTTOM_m5_4i;
+      gMET_DEV_BOTTOM_m5_1i = interacting( gMET_DEV_BOTTOM_m5_2i, gMET_TERM_BOTTOM_m5 );
+      gMET_DEV_BOTTOM_m5 = gMET_DEV_BOTTOM_m5_1i not gMET_TERM_BOTTOM_m5;
+      gMET_DEV_LEFT_m5_3i = gMET_AND_RES_MARK_m5 or gMET_TERM_ALL_SIDES_m5;
+      gMET_DEV_LEFT_m5_4i = shrink( gMET_AND_RES_MARK_m5, west = vSIZE_VALUE_m504 );
+      gMET_DEV_LEFT_m5_2i = gMET_DEV_LEFT_m5_3i not gMET_DEV_LEFT_m5_4i;
+      gMET_DEV_LEFT_m5_1i = interacting( gMET_DEV_LEFT_m5_2i, gMET_TERM_RIGHT_m5 );
+      gMET_DEV_LEFT_m5 = gMET_DEV_LEFT_m5_1i not gMET_TERM_RIGHT_m5;
+      gMET_DEV_TOP_2_m5_2i = shrink( gMET_AND_RES_MARK_m5, north = vSIZE_VALUE_m504 );
+      gMET_DEV_TOP_2_m5_1i = gMET_AND_RES_MARK_m5 not gMET_DEV_TOP_2_m5_2i;
+      gMET_DEV_TOP_2_m5 = interacting( gMET_DEV_TOP_2_m5_1i, gMET_TERM_TOP_m5 );
+      gMET_DEV_RIGHT_2_m5_2i = shrink( gMET_AND_RES_MARK_m5, east = vSIZE_VALUE_m504 );
+      gMET_DEV_RIGHT_2_m5_1i = gMET_AND_RES_MARK_m5 not gMET_DEV_RIGHT_2_m5_2i;
+      gMET_DEV_RIGHT_2_m5 = interacting( gMET_DEV_RIGHT_2_m5_1i, gMET_TERM_RIGHT_m5 );
+      gMET_DEV_BOTTOM_2_m5_2i = shrink( gMET_AND_RES_MARK_m5, south = vSIZE_VALUE_m504 );
+      gMET_DEV_BOTTOM_2_m5_1i = gMET_AND_RES_MARK_m5 not gMET_DEV_BOTTOM_2_m5_2i;
+      gMET_DEV_BOTTOM_2_m5 = interacting( gMET_DEV_BOTTOM_2_m5_1i, gMET_TERM_BOTTOM_m5 );
+      gMET_DEV_LEFT_2_m5_2i = shrink( gMET_AND_RES_MARK_m5, west = vSIZE_VALUE_m504 );
+      gMET_DEV_LEFT_2_m5_1i = gMET_AND_RES_MARK_m5 not gMET_DEV_LEFT_2_m5_2i;
+      gMET_DEV_LEFT_2_m5 = interacting( gMET_DEV_LEFT_2_m5_1i, gMET_TERM_RIGHT_m5 );
+      gRM2_OUT_10i = gMET_DEV_TOP_2_m5 or gMET_DEV_RIGHT_2_m5;
+      gRM2_OUT_9i = gRM2_OUT_10i or gMET_DEV_BOTTOM_2_m5;
+      gRM2_OUT = gRM2_OUT_9i or gMET_DEV_LEFT_2_m5;
+      gRM2_DEV_15i = gMET_DEV_TOP_m5 or gMET_DEV_RIGHT_m5;
+      gRM2_DEV_14i = gRM2_DEV_15i or gMET_DEV_BOTTOM_m5;
+      gRM2_DEV_13i = gRM2_DEV_14i or gMET_DEV_LEFT_m5;
+      gRM2_DEV = gRM2_DEV_13i or gRM2_OUT;
+   #endif
+#endif
+#ifdef d_BEOL_1P2M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_TERM_1i = and_edge( gRM2_DEV, aMETAL2, false );
+      gRM2_TERM = edge_size( gRM2_TERM_1i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m15_5i = not_interacting( gMET_AND_RES_MARK_m15, gMET_DEV_TOP_m15 );
+      gMET_TERM_LEFT_m15_4i = not_interacting( gMET_TERM_LEFT_m15_5i, gMET_DEV_RIGHT_m15 );
+      gMET_TERM_LEFT_m15_3i = not_interacting( gMET_TERM_LEFT_m15_4i, gMET_DEV_BOTTOM_m15 );
+      gMET_TERM_LEFT_m15_2i = grow( gMET_TERM_LEFT_m15_3i, west = vSIZE_VALUE_m524 );
+      gMET_TERM_LEFT_m15_1i = gMET_TERM_LEFT_m15_2i not gMET_AND_RES_MARK_m15;
+      gMET_TERM_LEFT_m15 = gMET_TERM_LEFT_m15_1i inside gMET_NOT_RES_MARK_m15;
+      gOUT_DEV_TERM_1_m15_2i = gMET_TERM_TOP_m15 or gMET_TERM_RIGHT_m15;
+      gOUT_DEV_TERM_1_m15_1i = gOUT_DEV_TERM_1_m15_2i or gMET_TERM_BOTTOM_m15;
+      gOUT_DEV_TERM_1_m15 = gOUT_DEV_TERM_1_m15_1i or gMET_TERM_LEFT_m15;
+      gMET_TERM_TOP_2_m15 = gMET_AND_RES_MARK_m15 not gMET_DEV_TOP_m15;
+      gMET_TERM_RIGHT_2_m15 = gMET_AND_RES_MARK_m15 not gMET_DEV_RIGHT_m15;
+      gMET_TERM_BOTTOM_2_m15 = gMET_AND_RES_MARK_m15 not gMET_DEV_BOTTOM_m15;
+      gMET_TERM_LEFT_2_m15 = gMET_AND_RES_MARK_m15 not gMET_DEV_LEFT_m15;
+      gOUT_DEV_TERM_2_m15_2i = gMET_TERM_TOP_2_m15 or gMET_TERM_RIGHT_2_m15;
+      gOUT_DEV_TERM_2_m15_1i = gOUT_DEV_TERM_2_m15_2i or gMET_TERM_BOTTOM_2_m15;
+      gOUT_DEV_TERM_2_m15 = gOUT_DEV_TERM_2_m15_1i or gMET_TERM_LEFT_2_m15;
+      gRM2_TERM_2i = gOUT_DEV_TERM_1_m15 or gOUT_DEV_TERM_2_m15;
+      gRM2_TERM = gRM2_TERM_2i not gRM2_DEV;
+   #endif
+#endif
+#ifdef d_BEOL_1P3M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_TERM_3i = and_edge( gRM2_DEV, aMETAL2, false );
+      gRM2_TERM = edge_size( gRM2_TERM_3i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m14_5i = not_interacting( gMET_AND_RES_MARK_m14, gMET_DEV_TOP_m14 );
+      gMET_TERM_LEFT_m14_4i = not_interacting( gMET_TERM_LEFT_m14_5i, gMET_DEV_RIGHT_m14 );
+      gMET_TERM_LEFT_m14_3i = not_interacting( gMET_TERM_LEFT_m14_4i, gMET_DEV_BOTTOM_m14 );
+      gMET_TERM_LEFT_m14_2i = grow( gMET_TERM_LEFT_m14_3i, west = vSIZE_VALUE_m522 );
+      gMET_TERM_LEFT_m14_1i = gMET_TERM_LEFT_m14_2i not gMET_AND_RES_MARK_m14;
+      gMET_TERM_LEFT_m14 = gMET_TERM_LEFT_m14_1i inside gMET_NOT_RES_MARK_m14;
+      gOUT_DEV_TERM_1_m14_2i = gMET_TERM_TOP_m14 or gMET_TERM_RIGHT_m14;
+      gOUT_DEV_TERM_1_m14_1i = gOUT_DEV_TERM_1_m14_2i or gMET_TERM_BOTTOM_m14;
+      gOUT_DEV_TERM_1_m14 = gOUT_DEV_TERM_1_m14_1i or gMET_TERM_LEFT_m14;
+      gMET_TERM_TOP_2_m14 = gMET_AND_RES_MARK_m14 not gMET_DEV_TOP_m14;
+      gMET_TERM_RIGHT_2_m14 = gMET_AND_RES_MARK_m14 not gMET_DEV_RIGHT_m14;
+      gMET_TERM_BOTTOM_2_m14 = gMET_AND_RES_MARK_m14 not gMET_DEV_BOTTOM_m14;
+      gMET_TERM_LEFT_2_m14 = gMET_AND_RES_MARK_m14 not gMET_DEV_LEFT_m14;
+      gOUT_DEV_TERM_2_m14_2i = gMET_TERM_TOP_2_m14 or gMET_TERM_RIGHT_2_m14;
+      gOUT_DEV_TERM_2_m14_1i = gOUT_DEV_TERM_2_m14_2i or gMET_TERM_BOTTOM_2_m14;
+      gOUT_DEV_TERM_2_m14 = gOUT_DEV_TERM_2_m14_1i or gMET_TERM_LEFT_2_m14;
+      gRM2_TERM_4i = gOUT_DEV_TERM_1_m14 or gOUT_DEV_TERM_2_m14;
+      gRM2_TERM = gRM2_TERM_4i not gRM2_DEV;
+   #endif
+#endif
+#ifdef d_BEOL_1P4M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_TERM_5i = and_edge( gRM2_DEV, aMETAL2, false );
+      gRM2_TERM = edge_size( gRM2_TERM_5i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m12_5i = not_interacting( gMET_AND_RES_MARK_m12, gMET_DEV_TOP_m12 );
+      gMET_TERM_LEFT_m12_4i = not_interacting( gMET_TERM_LEFT_m12_5i, gMET_DEV_RIGHT_m12 );
+      gMET_TERM_LEFT_m12_3i = not_interacting( gMET_TERM_LEFT_m12_4i, gMET_DEV_BOTTOM_m12 );
+      gMET_TERM_LEFT_m12_2i = grow( gMET_TERM_LEFT_m12_3i, west = vSIZE_VALUE_m518 );
+      gMET_TERM_LEFT_m12_1i = gMET_TERM_LEFT_m12_2i not gMET_AND_RES_MARK_m12;
+      gMET_TERM_LEFT_m12 = gMET_TERM_LEFT_m12_1i inside gMET_NOT_RES_MARK_m12;
+      gOUT_DEV_TERM_1_m12_2i = gMET_TERM_TOP_m12 or gMET_TERM_RIGHT_m12;
+      gOUT_DEV_TERM_1_m12_1i = gOUT_DEV_TERM_1_m12_2i or gMET_TERM_BOTTOM_m12;
+      gOUT_DEV_TERM_1_m12 = gOUT_DEV_TERM_1_m12_1i or gMET_TERM_LEFT_m12;
+      gMET_TERM_TOP_2_m12 = gMET_AND_RES_MARK_m12 not gMET_DEV_TOP_m12;
+      gMET_TERM_RIGHT_2_m12 = gMET_AND_RES_MARK_m12 not gMET_DEV_RIGHT_m12;
+      gMET_TERM_BOTTOM_2_m12 = gMET_AND_RES_MARK_m12 not gMET_DEV_BOTTOM_m12;
+      gMET_TERM_LEFT_2_m12 = gMET_AND_RES_MARK_m12 not gMET_DEV_LEFT_m12;
+      gOUT_DEV_TERM_2_m12_2i = gMET_TERM_TOP_2_m12 or gMET_TERM_RIGHT_2_m12;
+      gOUT_DEV_TERM_2_m12_1i = gOUT_DEV_TERM_2_m12_2i or gMET_TERM_BOTTOM_2_m12;
+      gOUT_DEV_TERM_2_m12 = gOUT_DEV_TERM_2_m12_1i or gMET_TERM_LEFT_2_m12;
+      gRM2_TERM_6i = gOUT_DEV_TERM_1_m12 or gOUT_DEV_TERM_2_m12;
+      gRM2_TERM = gRM2_TERM_6i not gRM2_DEV;
+   #endif
+#endif
+#ifdef d_BEOL_1P5M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_TERM_7i = and_edge( gRM2_DEV, aMETAL2, false );
+      gRM2_TERM = edge_size( gRM2_TERM_7i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m9_5i = not_interacting( gMET_AND_RES_MARK_m9, gMET_DEV_TOP_m9 );
+      gMET_TERM_LEFT_m9_4i = not_interacting( gMET_TERM_LEFT_m9_5i, gMET_DEV_RIGHT_m9 );
+      gMET_TERM_LEFT_m9_3i = not_interacting( gMET_TERM_LEFT_m9_4i, gMET_DEV_BOTTOM_m9 );
+      gMET_TERM_LEFT_m9_2i = grow( gMET_TERM_LEFT_m9_3i, west = vSIZE_VALUE_m512 );
+      gMET_TERM_LEFT_m9_1i = gMET_TERM_LEFT_m9_2i not gMET_AND_RES_MARK_m9;
+      gMET_TERM_LEFT_m9 = gMET_TERM_LEFT_m9_1i inside gMET_NOT_RES_MARK_m9;
+      gOUT_DEV_TERM_1_m9_2i = gMET_TERM_TOP_m9 or gMET_TERM_RIGHT_m9;
+      gOUT_DEV_TERM_1_m9_1i = gOUT_DEV_TERM_1_m9_2i or gMET_TERM_BOTTOM_m9;
+      gOUT_DEV_TERM_1_m9 = gOUT_DEV_TERM_1_m9_1i or gMET_TERM_LEFT_m9;
+      gMET_TERM_TOP_2_m9 = gMET_AND_RES_MARK_m9 not gMET_DEV_TOP_m9;
+      gMET_TERM_RIGHT_2_m9 = gMET_AND_RES_MARK_m9 not gMET_DEV_RIGHT_m9;
+      gMET_TERM_BOTTOM_2_m9 = gMET_AND_RES_MARK_m9 not gMET_DEV_BOTTOM_m9;
+      gMET_TERM_LEFT_2_m9 = gMET_AND_RES_MARK_m9 not gMET_DEV_LEFT_m9;
+      gOUT_DEV_TERM_2_m9_2i = gMET_TERM_TOP_2_m9 or gMET_TERM_RIGHT_2_m9;
+      gOUT_DEV_TERM_2_m9_1i = gOUT_DEV_TERM_2_m9_2i or gMET_TERM_BOTTOM_2_m9;
+      gOUT_DEV_TERM_2_m9 = gOUT_DEV_TERM_2_m9_1i or gMET_TERM_LEFT_2_m9;
+      gRM2_TERM_8i = gOUT_DEV_TERM_1_m9 or gOUT_DEV_TERM_2_m9;
+      gRM2_TERM = gRM2_TERM_8i not gRM2_DEV;
+   #endif
+#endif
+#ifdef d_BEOL_1P6M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_TERM_9i = and_edge( gRM2_DEV, aMETAL2, false );
+      gRM2_TERM = edge_size( gRM2_TERM_9i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m5_5i = not_interacting( gMET_AND_RES_MARK_m5, gMET_DEV_TOP_m5 );
+      gMET_TERM_LEFT_m5_4i = not_interacting( gMET_TERM_LEFT_m5_5i, gMET_DEV_RIGHT_m5 );
+      gMET_TERM_LEFT_m5_3i = not_interacting( gMET_TERM_LEFT_m5_4i, gMET_DEV_BOTTOM_m5 );
+      gMET_TERM_LEFT_m5_2i = grow( gMET_TERM_LEFT_m5_3i, west = vSIZE_VALUE_m504 );
+      gMET_TERM_LEFT_m5_1i = gMET_TERM_LEFT_m5_2i not gMET_AND_RES_MARK_m5;
+      gMET_TERM_LEFT_m5 = gMET_TERM_LEFT_m5_1i inside gMET_NOT_RES_MARK_m5;
+      gOUT_DEV_TERM_1_m5_2i = gMET_TERM_TOP_m5 or gMET_TERM_RIGHT_m5;
+      gOUT_DEV_TERM_1_m5_1i = gOUT_DEV_TERM_1_m5_2i or gMET_TERM_BOTTOM_m5;
+      gOUT_DEV_TERM_1_m5 = gOUT_DEV_TERM_1_m5_1i or gMET_TERM_LEFT_m5;
+      gMET_TERM_TOP_2_m5 = gMET_AND_RES_MARK_m5 not gMET_DEV_TOP_m5;
+      gMET_TERM_RIGHT_2_m5 = gMET_AND_RES_MARK_m5 not gMET_DEV_RIGHT_m5;
+      gMET_TERM_BOTTOM_2_m5 = gMET_AND_RES_MARK_m5 not gMET_DEV_BOTTOM_m5;
+      gMET_TERM_LEFT_2_m5 = gMET_AND_RES_MARK_m5 not gMET_DEV_LEFT_m5;
+      gOUT_DEV_TERM_2_m5_2i = gMET_TERM_TOP_2_m5 or gMET_TERM_RIGHT_2_m5;
+      gOUT_DEV_TERM_2_m5_1i = gOUT_DEV_TERM_2_m5_2i or gMET_TERM_BOTTOM_2_m5;
+      gOUT_DEV_TERM_2_m5 = gOUT_DEV_TERM_2_m5_1i or gMET_TERM_LEFT_2_m5;
+      gRM2_TERM_10i = gOUT_DEV_TERM_1_m5 or gOUT_DEV_TERM_2_m5;
+      gRM2_TERM = gRM2_TERM_10i not gRM2_DEV;
+   #endif
+#endif
+#ifdef d_BEOL_1P2M
+   gM2_NODEV_2i = gRM2_DEV or aMETAL2_SLOT;
+   gM2_NODEV_1i = gM2_NODEV_2i or gRM2_TERM;
+   gM2_NODEV = aMETAL2 not gM2_NODEV_1i;
+#endif
+#ifdef d_MIM_OPTION_A
+   gM2_MIMDEV_1i = aMETAL2 and gLVS_CAP_FT;
+   gM2_MIMDEV = interacting( gM2_MIMDEV_1i, aFUSETOP );
+#endif
+#ifdef d_BEOL_1P3M
+   #ifdef d_MIM_OPTION_A
+      gM2_NODEV_5i = gRM2_DEV or aMETAL2_SLOT;
+      gM2_NODEV_4i = gM2_NODEV_5i or gRM2_TERM;
+      gM2_NODEV_3i = gM2_NODEV_4i or gM2_MIMDEV;
+      gM2_NODEV = aMETAL2 not gM2_NODEV_3i;
+   #else
+      gM2_NODEV_7i = gRM2_DEV or aMETAL2_SLOT;
+      gM2_NODEV_6i = gM2_NODEV_7i or gRM2_TERM;
+      gM2_NODEV = aMETAL2 not gM2_NODEV_6i;
+   #endif
+#endif
+#ifdef d_BEOL_1P6M
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gRM3_TERM }}} );
+   #ifdef d_MIM_OPTION_A
+      gM2_NODEV_20i = gRM2_DEV or aMETAL2_SLOT;
+      gM2_NODEV_19i = gM2_NODEV_20i or gRM2_TERM;
+      gM2_NODEV_18i = gM2_NODEV_19i or gM2_MIMDEV;
+      gM2_NODEV = aMETAL2 not gM2_NODEV_18i;
+   #else
+      gM2_NODEV_22i = gRM2_DEV or aMETAL2_SLOT;
+      gM2_NODEV_21i = gM2_NODEV_22i or gRM2_TERM;
+      gM2_NODEV = aMETAL2 not gM2_NODEV_21i;
+   #endif
+#endif
+#ifdef d_MIM_OPTION_A
+   gMVIA23 = aVIA2 not gFTVIA2;
+#endif
+#ifdef d_BEOL_1P6M
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gRM2_TERM }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gRM1_TERM }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_NODEV, gRM4_TERM }, aVIA4, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM5_TERM, gRM4_TERM }, aVIA4, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM5_TERM, gM4_NODEV }, aVIA4, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gRM3_TERM }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM4_TERM, gRM3_TERM }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM4_TERM, gM3_NODEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM2_TERM, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM2_TERM, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_NODEV, gM4_NODEV }, aVIA4, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gM3_NODEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   #ifdef d_MIM_OPTION_A
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gM3_FTDEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM4_TERM, gM3_FTDEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, aFUSETOP }, gFTVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gM2_NODEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gM2_MIMDEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gRM2_TERM }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gM2_MIMDEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gM2_MIMDEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gM3_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gRM3_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gM2_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gRM2_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_NODEV, gRM5_TERM }, aVIA5, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM6_TERM, gRM5_TERM }, aVIA5, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM6_TERM, gM5_NODEV }, aVIA5, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gRM2_TERM }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gRM2_TERM }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gM2_NODEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_NODEV, gM5_NODEV }, aVIA5, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gM2_NODEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+   #endif
+#endif
+#ifndef d_MIM_OPTION_A
+   #ifdef d_BEOL_1P6M
+      gMVIA56 = aVIA5 not gFTVIA5;
+   #endif
+#endif
+#ifdef d_BEOL_1P6M
+   #ifndef d_MIM_OPTION_A
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_FTDEV, aFUSETOP }, gFTVIA5, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_FTDEV, gM5_NODEV }, gMVIA56, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_FTDEV, gM5_MIMDEV_OPT_B }, gMVIA56, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_FTDEV, gRM5_TERM }, gMVIA56, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_NODEV, gM5_MIMDEV_OPT_B }, gMVIA56, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM6_TERM, gM5_MIMDEV_OPT_B }, gMVIA56, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_MIMDEV_OPT_B, gM4_NODEV }, aVIA4, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_MIMDEV_OPT_B, gRM4_TERM }, aVIA4, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_FTDEV, gM6_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_MIMDEV_OPT_B, gM5_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_FTDEV, gRM6_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_MIMDEV_OPT_B, gRM5_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_NODEV, gRM5_TERM }, gMVIA56, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM6_TERM, gRM5_TERM }, gMVIA56, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM6_TERM, gM5_NODEV }, gMVIA56, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gRM2_TERM }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gRM2_TERM }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gM2_NODEV }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_NODEV, gM5_NODEV }, gMVIA56, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gM2_NODEV }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+   #endif
+#endif
+#ifdef d_BEOL_1P5M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM5_DEV = aMETAL5 and aM5_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m6 = aMETAL5 and aM5_RES_MK;
+      gMET_AND_RES_MARK_1_m6_2i = aVIA4 and gMET_AND_RES_MARK_0_m6;
+      gMET_AND_RES_MARK_1_m6_1i = not_interacting( gMET_AND_RES_MARK_0_m6, gMET_AND_RES_MARK_1_m6_2i );
+      gMET_AND_RES_MARK_1_m6_3i = aVIA4 and gMET_AND_RES_MARK_0_m6;
+      gMET_AND_RES_MARK_1_m6 = not_interacting( gMET_AND_RES_MARK_1_m6_1i, gMET_AND_RES_MARK_1_m6_3i );
+      gMET_NOT_RES_MARK_1_m6 = aMETAL5 not aM5_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m6_1i = gMET_AND_RES_MARK_1_m6 coincident_edge gMET_NOT_RES_MARK_1_m6;
+      gMET_TERM_ALL_SIDES_1_m6 = edge_size( gMET_TERM_ALL_SIDES_1_m6_1i, inside = vSIZE_VALUE_m506, outside = vSIZE_VALUE_m506 );
+      gMET_TERM_ALL_SIDES_INSIDE_m6 = gMET_TERM_ALL_SIDES_1_m6 and gMET_AND_RES_MARK_1_m6;
+      gIN_RES_MARK_1_m6_1i = aM5_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m6;
+      gIN_RES_MARK_1_m6 = outside_touching( gIN_RES_MARK_1_m6_1i, gMET_TERM_ALL_SIDES_INSIDE_m6, >= 2 );
+      gMET_TERM_MARK_1_m6 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m6, gIN_RES_MARK_1_m6 );
+      gIN_RES_MARK_2_m6_1i = aM5_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m6;
+      gIN_RES_MARK_2_m6 = outside_touching( gIN_RES_MARK_2_m6_1i, gMET_TERM_ALL_SIDES_INSIDE_m6, == 1 );
+      gMET_TERM_MARK_2_m6 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m6, gIN_RES_MARK_2_m6 );
+      gIN_RES_MARK_FINAL_m6_1i = gIN_RES_MARK_1_m6 or gMET_TERM_MARK_1_m6;
+      gIN_RES_MARK_FINAL_m6_3i = gIN_RES_MARK_2_m6 or gMET_TERM_MARK_2_m6;
+      gIN_RES_MARK_FINAL_m6_2i = size( gIN_RES_MARK_FINAL_m6_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m6 = gIN_RES_MARK_FINAL_m6_1i or gIN_RES_MARK_FINAL_m6_2i;
+      gMET_AND_RES_MARK_FINAL_m6 = aMETAL5 and gIN_RES_MARK_FINAL_m6;
+      gMET_AND_RES_MARK_m6_2i = aVIA4 and gMET_AND_RES_MARK_0_m6;
+      gMET_AND_RES_MARK_m6_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m6, gMET_AND_RES_MARK_m6_2i );
+      gMET_AND_RES_MARK_m6_3i = aVIA4 and gMET_AND_RES_MARK_0_m6;
+      gMET_AND_RES_MARK_m6 = not_interacting( gMET_AND_RES_MARK_m6_1i, gMET_AND_RES_MARK_m6_3i );
+      gMET_NOT_RES_MARK_m6 = aMETAL5 not gIN_RES_MARK_FINAL_m6;
+      gMET_TERM_ALL_SIDES_m6_1i = gMET_AND_RES_MARK_m6 coincident_edge gMET_NOT_RES_MARK_m6;
+      gMET_TERM_ALL_SIDES_m6 = edge_size( gMET_TERM_ALL_SIDES_m6_1i, inside = vSIZE_VALUE_m506, outside = vSIZE_VALUE_m506 );
+      gMET_TERM_TOP_m6_2i = grow( gMET_AND_RES_MARK_m6, north = vSIZE_VALUE_m506 );
+      gMET_TERM_TOP_m6_1i = gMET_TERM_TOP_m6_2i not gMET_AND_RES_MARK_m6;
+      gMET_TERM_TOP_m6 = gMET_TERM_TOP_m6_1i inside gMET_NOT_RES_MARK_m6;
+      gMET_DEV_TOP_m6_3i = gMET_AND_RES_MARK_m6 or gMET_TERM_ALL_SIDES_m6;
+      gMET_DEV_TOP_m6_4i = shrink( gMET_AND_RES_MARK_m6, north = vSIZE_VALUE_m506 );
+      gMET_DEV_TOP_m6_2i = gMET_DEV_TOP_m6_3i not gMET_DEV_TOP_m6_4i;
+      gMET_DEV_TOP_m6_1i = interacting( gMET_DEV_TOP_m6_2i, gMET_TERM_TOP_m6 );
+      gMET_DEV_TOP_m6 = gMET_DEV_TOP_m6_1i not gMET_TERM_TOP_m6;
+      gMET_TERM_RIGHT_m6_3i = not_interacting( gMET_AND_RES_MARK_m6, gMET_DEV_TOP_m6 );
+      gMET_TERM_RIGHT_m6_2i = grow( gMET_TERM_RIGHT_m6_3i, east = vSIZE_VALUE_m506 );
+      gMET_TERM_RIGHT_m6_1i = gMET_TERM_RIGHT_m6_2i not gMET_AND_RES_MARK_m6;
+      gMET_TERM_RIGHT_m6 = gMET_TERM_RIGHT_m6_1i inside gMET_NOT_RES_MARK_m6;
+      gMET_DEV_RIGHT_m6_3i = gMET_AND_RES_MARK_m6 or gMET_TERM_ALL_SIDES_m6;
+      gMET_DEV_RIGHT_m6_4i = shrink( gMET_AND_RES_MARK_m6, east = vSIZE_VALUE_m506 );
+      gMET_DEV_RIGHT_m6_2i = gMET_DEV_RIGHT_m6_3i not gMET_DEV_RIGHT_m6_4i;
+      gMET_DEV_RIGHT_m6_1i = interacting( gMET_DEV_RIGHT_m6_2i, gMET_TERM_RIGHT_m6 );
+      gMET_DEV_RIGHT_m6 = gMET_DEV_RIGHT_m6_1i not gMET_TERM_RIGHT_m6;
+      gMET_TERM_BOTTOM_m6_4i = not_interacting( gMET_AND_RES_MARK_m6, gMET_DEV_TOP_m6 );
+      gMET_TERM_BOTTOM_m6_3i = not_interacting( gMET_TERM_BOTTOM_m6_4i, gMET_DEV_RIGHT_m6 );
+      gMET_TERM_BOTTOM_m6_2i = grow( gMET_TERM_BOTTOM_m6_3i, south = vSIZE_VALUE_m506 );
+      gMET_TERM_BOTTOM_m6_1i = gMET_TERM_BOTTOM_m6_2i not gMET_AND_RES_MARK_m6;
+      gMET_TERM_BOTTOM_m6 = gMET_TERM_BOTTOM_m6_1i inside gMET_NOT_RES_MARK_m6;
+      gMET_DEV_BOTTOM_m6_3i = gMET_AND_RES_MARK_m6 or gMET_TERM_ALL_SIDES_m6;
+      gMET_DEV_BOTTOM_m6_4i = shrink( gMET_AND_RES_MARK_m6, south = vSIZE_VALUE_m506 );
+      gMET_DEV_BOTTOM_m6_2i = gMET_DEV_BOTTOM_m6_3i not gMET_DEV_BOTTOM_m6_4i;
+      gMET_DEV_BOTTOM_m6_1i = interacting( gMET_DEV_BOTTOM_m6_2i, gMET_TERM_BOTTOM_m6 );
+      gMET_DEV_BOTTOM_m6 = gMET_DEV_BOTTOM_m6_1i not gMET_TERM_BOTTOM_m6;
+      gMET_DEV_LEFT_m6_3i = gMET_AND_RES_MARK_m6 or gMET_TERM_ALL_SIDES_m6;
+      gMET_DEV_LEFT_m6_4i = shrink( gMET_AND_RES_MARK_m6, west = vSIZE_VALUE_m506 );
+      gMET_DEV_LEFT_m6_2i = gMET_DEV_LEFT_m6_3i not gMET_DEV_LEFT_m6_4i;
+      gMET_DEV_LEFT_m6_1i = interacting( gMET_DEV_LEFT_m6_2i, gMET_TERM_RIGHT_m6 );
+      gMET_DEV_LEFT_m6 = gMET_DEV_LEFT_m6_1i not gMET_TERM_RIGHT_m6;
+      gMET_DEV_TOP_2_m6_2i = shrink( gMET_AND_RES_MARK_m6, north = vSIZE_VALUE_m506 );
+      gMET_DEV_TOP_2_m6_1i = gMET_AND_RES_MARK_m6 not gMET_DEV_TOP_2_m6_2i;
+      gMET_DEV_TOP_2_m6 = interacting( gMET_DEV_TOP_2_m6_1i, gMET_TERM_TOP_m6 );
+      gMET_DEV_RIGHT_2_m6_2i = shrink( gMET_AND_RES_MARK_m6, east = vSIZE_VALUE_m506 );
+      gMET_DEV_RIGHT_2_m6_1i = gMET_AND_RES_MARK_m6 not gMET_DEV_RIGHT_2_m6_2i;
+      gMET_DEV_RIGHT_2_m6 = interacting( gMET_DEV_RIGHT_2_m6_1i, gMET_TERM_RIGHT_m6 );
+      gMET_DEV_BOTTOM_2_m6_2i = shrink( gMET_AND_RES_MARK_m6, south = vSIZE_VALUE_m506 );
+      gMET_DEV_BOTTOM_2_m6_1i = gMET_AND_RES_MARK_m6 not gMET_DEV_BOTTOM_2_m6_2i;
+      gMET_DEV_BOTTOM_2_m6 = interacting( gMET_DEV_BOTTOM_2_m6_1i, gMET_TERM_BOTTOM_m6 );
+      gMET_DEV_LEFT_2_m6_2i = shrink( gMET_AND_RES_MARK_m6, west = vSIZE_VALUE_m506 );
+      gMET_DEV_LEFT_2_m6_1i = gMET_AND_RES_MARK_m6 not gMET_DEV_LEFT_2_m6_2i;
+      gMET_DEV_LEFT_2_m6 = interacting( gMET_DEV_LEFT_2_m6_1i, gMET_TERM_RIGHT_m6 );
+      gRM5_OUT_2i = gMET_DEV_TOP_2_m6 or gMET_DEV_RIGHT_2_m6;
+      gRM5_OUT_1i = gRM5_OUT_2i or gMET_DEV_BOTTOM_2_m6;
+      gRM5_OUT = gRM5_OUT_1i or gMET_DEV_LEFT_2_m6;
+      gRM5_DEV_3i = gMET_DEV_TOP_m6 or gMET_DEV_RIGHT_m6;
+      gRM5_DEV_2i = gRM5_DEV_3i or gMET_DEV_BOTTOM_m6;
+      gRM5_DEV_1i = gRM5_DEV_2i or gMET_DEV_LEFT_m6;
+      gRM5_DEV = gRM5_DEV_1i or gRM5_OUT;
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM5_TERM_1i = and_edge( gRM5_DEV, aMETAL5, false );
+      gRM5_TERM = edge_size( gRM5_TERM_1i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m6_5i = not_interacting( gMET_AND_RES_MARK_m6, gMET_DEV_TOP_m6 );
+      gMET_TERM_LEFT_m6_4i = not_interacting( gMET_TERM_LEFT_m6_5i, gMET_DEV_RIGHT_m6 );
+      gMET_TERM_LEFT_m6_3i = not_interacting( gMET_TERM_LEFT_m6_4i, gMET_DEV_BOTTOM_m6 );
+      gMET_TERM_LEFT_m6_2i = grow( gMET_TERM_LEFT_m6_3i, west = vSIZE_VALUE_m506 );
+      gMET_TERM_LEFT_m6_1i = gMET_TERM_LEFT_m6_2i not gMET_AND_RES_MARK_m6;
+      gMET_TERM_LEFT_m6 = gMET_TERM_LEFT_m6_1i inside gMET_NOT_RES_MARK_m6;
+      gOUT_DEV_TERM_1_m6_2i = gMET_TERM_TOP_m6 or gMET_TERM_RIGHT_m6;
+      gOUT_DEV_TERM_1_m6_1i = gOUT_DEV_TERM_1_m6_2i or gMET_TERM_BOTTOM_m6;
+      gOUT_DEV_TERM_1_m6 = gOUT_DEV_TERM_1_m6_1i or gMET_TERM_LEFT_m6;
+      gMET_TERM_TOP_2_m6 = gMET_AND_RES_MARK_m6 not gMET_DEV_TOP_m6;
+      gMET_TERM_RIGHT_2_m6 = gMET_AND_RES_MARK_m6 not gMET_DEV_RIGHT_m6;
+      gMET_TERM_BOTTOM_2_m6 = gMET_AND_RES_MARK_m6 not gMET_DEV_BOTTOM_m6;
+      gMET_TERM_LEFT_2_m6 = gMET_AND_RES_MARK_m6 not gMET_DEV_LEFT_m6;
+      gOUT_DEV_TERM_2_m6_2i = gMET_TERM_TOP_2_m6 or gMET_TERM_RIGHT_2_m6;
+      gOUT_DEV_TERM_2_m6_1i = gOUT_DEV_TERM_2_m6_2i or gMET_TERM_BOTTOM_2_m6;
+      gOUT_DEV_TERM_2_m6 = gOUT_DEV_TERM_2_m6_1i or gMET_TERM_LEFT_2_m6;
+      gRM5_TERM_2i = gOUT_DEV_TERM_1_m6 or gOUT_DEV_TERM_2_m6;
+      gRM5_TERM = gRM5_TERM_2i not gRM5_DEV;
+   #endif
+   #ifdef d_MIM_OPTION_A
+      gM5_NODEV_2i = gRM5_DEV or aMETAL5_SLOT;
+      gM5_NODEV_1i = gM5_NODEV_2i or gRM5_TERM;
+      gM5_NODEV = aMETAL5 not gM5_NODEV_1i;
+   #endif
+#endif
+#ifndef d_MIM_OPTION_A
+   #ifdef d_BEOL_1P5M
+      gFTVIA4_1i = aVIA4 and aFUSETOP;
+      gFTVIA4 = gFTVIA4_1i and aLVS_CAP;
+      gM5_FTDEV_2i = aMETAL5 and gLVS_CAP_FT;
+      gM5_FTDEV_1i = enclosing( gM5_FTDEV_2i, gFTVIA4 );
+      gM5_FTDEV = interacting( gM5_FTDEV_1i, aFUSETOP );
+   #endif
+#endif
+#ifdef d_BEOL_1P5M
+   #ifndef d_MIM_OPTION_A
+      gM5_NODEV_5i = gRM5_DEV or aMETAL5_SLOT;
+      gM5_NODEV_4i = gM5_NODEV_5i or gRM5_TERM;
+      gM5_NODEV_3i = gM5_NODEV_4i or gM5_FTDEV;
+      gM5_NODEV = aMETAL5 not gM5_NODEV_3i;
+   #endif
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_NODEV, gRM5_TERM }}} );
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM4_DEV = aMETAL4 and aM4_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m7 = aMETAL4 and aM4_RES_MK;
+      gMET_AND_RES_MARK_1_m7_2i = aVIA3 and gMET_AND_RES_MARK_0_m7;
+      gMET_AND_RES_MARK_1_m7_1i = not_interacting( gMET_AND_RES_MARK_0_m7, gMET_AND_RES_MARK_1_m7_2i );
+      gMET_AND_RES_MARK_1_m7_3i = aVIA4 and gMET_AND_RES_MARK_0_m7;
+      gMET_AND_RES_MARK_1_m7 = not_interacting( gMET_AND_RES_MARK_1_m7_1i, gMET_AND_RES_MARK_1_m7_3i );
+      gMET_NOT_RES_MARK_1_m7 = aMETAL4 not aM4_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m7_1i = gMET_AND_RES_MARK_1_m7 coincident_edge gMET_NOT_RES_MARK_1_m7;
+      gMET_TERM_ALL_SIDES_1_m7 = edge_size( gMET_TERM_ALL_SIDES_1_m7_1i, inside = vSIZE_VALUE_m508, outside = vSIZE_VALUE_m508 );
+      gMET_TERM_ALL_SIDES_INSIDE_m7 = gMET_TERM_ALL_SIDES_1_m7 and gMET_AND_RES_MARK_1_m7;
+      gIN_RES_MARK_1_m7_1i = aM4_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m7;
+      gIN_RES_MARK_1_m7 = outside_touching( gIN_RES_MARK_1_m7_1i, gMET_TERM_ALL_SIDES_INSIDE_m7, >= 2 );
+      gMET_TERM_MARK_1_m7 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m7, gIN_RES_MARK_1_m7 );
+      gIN_RES_MARK_2_m7_1i = aM4_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m7;
+      gIN_RES_MARK_2_m7 = outside_touching( gIN_RES_MARK_2_m7_1i, gMET_TERM_ALL_SIDES_INSIDE_m7, == 1 );
+      gMET_TERM_MARK_2_m7 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m7, gIN_RES_MARK_2_m7 );
+      gIN_RES_MARK_FINAL_m7_1i = gIN_RES_MARK_1_m7 or gMET_TERM_MARK_1_m7;
+      gIN_RES_MARK_FINAL_m7_3i = gIN_RES_MARK_2_m7 or gMET_TERM_MARK_2_m7;
+      gIN_RES_MARK_FINAL_m7_2i = size( gIN_RES_MARK_FINAL_m7_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m7 = gIN_RES_MARK_FINAL_m7_1i or gIN_RES_MARK_FINAL_m7_2i;
+      gMET_AND_RES_MARK_FINAL_m7 = aMETAL4 and gIN_RES_MARK_FINAL_m7;
+      gMET_AND_RES_MARK_m7_2i = aVIA3 and gMET_AND_RES_MARK_0_m7;
+      gMET_AND_RES_MARK_m7_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m7, gMET_AND_RES_MARK_m7_2i );
+      gMET_AND_RES_MARK_m7_3i = aVIA4 and gMET_AND_RES_MARK_0_m7;
+      gMET_AND_RES_MARK_m7 = not_interacting( gMET_AND_RES_MARK_m7_1i, gMET_AND_RES_MARK_m7_3i );
+      gMET_NOT_RES_MARK_m7 = aMETAL4 not gIN_RES_MARK_FINAL_m7;
+      gMET_TERM_ALL_SIDES_m7_1i = gMET_AND_RES_MARK_m7 coincident_edge gMET_NOT_RES_MARK_m7;
+      gMET_TERM_ALL_SIDES_m7 = edge_size( gMET_TERM_ALL_SIDES_m7_1i, inside = vSIZE_VALUE_m508, outside = vSIZE_VALUE_m508 );
+      gMET_TERM_TOP_m7_2i = grow( gMET_AND_RES_MARK_m7, north = vSIZE_VALUE_m508 );
+      gMET_TERM_TOP_m7_1i = gMET_TERM_TOP_m7_2i not gMET_AND_RES_MARK_m7;
+      gMET_TERM_TOP_m7 = gMET_TERM_TOP_m7_1i inside gMET_NOT_RES_MARK_m7;
+      gMET_DEV_TOP_m7_3i = gMET_AND_RES_MARK_m7 or gMET_TERM_ALL_SIDES_m7;
+      gMET_DEV_TOP_m7_4i = shrink( gMET_AND_RES_MARK_m7, north = vSIZE_VALUE_m508 );
+      gMET_DEV_TOP_m7_2i = gMET_DEV_TOP_m7_3i not gMET_DEV_TOP_m7_4i;
+      gMET_DEV_TOP_m7_1i = interacting( gMET_DEV_TOP_m7_2i, gMET_TERM_TOP_m7 );
+      gMET_DEV_TOP_m7 = gMET_DEV_TOP_m7_1i not gMET_TERM_TOP_m7;
+      gMET_TERM_RIGHT_m7_3i = not_interacting( gMET_AND_RES_MARK_m7, gMET_DEV_TOP_m7 );
+      gMET_TERM_RIGHT_m7_2i = grow( gMET_TERM_RIGHT_m7_3i, east = vSIZE_VALUE_m508 );
+      gMET_TERM_RIGHT_m7_1i = gMET_TERM_RIGHT_m7_2i not gMET_AND_RES_MARK_m7;
+      gMET_TERM_RIGHT_m7 = gMET_TERM_RIGHT_m7_1i inside gMET_NOT_RES_MARK_m7;
+      gMET_DEV_RIGHT_m7_3i = gMET_AND_RES_MARK_m7 or gMET_TERM_ALL_SIDES_m7;
+      gMET_DEV_RIGHT_m7_4i = shrink( gMET_AND_RES_MARK_m7, east = vSIZE_VALUE_m508 );
+      gMET_DEV_RIGHT_m7_2i = gMET_DEV_RIGHT_m7_3i not gMET_DEV_RIGHT_m7_4i;
+      gMET_DEV_RIGHT_m7_1i = interacting( gMET_DEV_RIGHT_m7_2i, gMET_TERM_RIGHT_m7 );
+      gMET_DEV_RIGHT_m7 = gMET_DEV_RIGHT_m7_1i not gMET_TERM_RIGHT_m7;
+      gMET_TERM_BOTTOM_m7_4i = not_interacting( gMET_AND_RES_MARK_m7, gMET_DEV_TOP_m7 );
+      gMET_TERM_BOTTOM_m7_3i = not_interacting( gMET_TERM_BOTTOM_m7_4i, gMET_DEV_RIGHT_m7 );
+      gMET_TERM_BOTTOM_m7_2i = grow( gMET_TERM_BOTTOM_m7_3i, south = vSIZE_VALUE_m508 );
+      gMET_TERM_BOTTOM_m7_1i = gMET_TERM_BOTTOM_m7_2i not gMET_AND_RES_MARK_m7;
+      gMET_TERM_BOTTOM_m7 = gMET_TERM_BOTTOM_m7_1i inside gMET_NOT_RES_MARK_m7;
+      gMET_DEV_BOTTOM_m7_3i = gMET_AND_RES_MARK_m7 or gMET_TERM_ALL_SIDES_m7;
+      gMET_DEV_BOTTOM_m7_4i = shrink( gMET_AND_RES_MARK_m7, south = vSIZE_VALUE_m508 );
+      gMET_DEV_BOTTOM_m7_2i = gMET_DEV_BOTTOM_m7_3i not gMET_DEV_BOTTOM_m7_4i;
+      gMET_DEV_BOTTOM_m7_1i = interacting( gMET_DEV_BOTTOM_m7_2i, gMET_TERM_BOTTOM_m7 );
+      gMET_DEV_BOTTOM_m7 = gMET_DEV_BOTTOM_m7_1i not gMET_TERM_BOTTOM_m7;
+      gMET_DEV_LEFT_m7_3i = gMET_AND_RES_MARK_m7 or gMET_TERM_ALL_SIDES_m7;
+      gMET_DEV_LEFT_m7_4i = shrink( gMET_AND_RES_MARK_m7, west = vSIZE_VALUE_m508 );
+      gMET_DEV_LEFT_m7_2i = gMET_DEV_LEFT_m7_3i not gMET_DEV_LEFT_m7_4i;
+      gMET_DEV_LEFT_m7_1i = interacting( gMET_DEV_LEFT_m7_2i, gMET_TERM_RIGHT_m7 );
+      gMET_DEV_LEFT_m7 = gMET_DEV_LEFT_m7_1i not gMET_TERM_RIGHT_m7;
+      gMET_DEV_TOP_2_m7_2i = shrink( gMET_AND_RES_MARK_m7, north = vSIZE_VALUE_m508 );
+      gMET_DEV_TOP_2_m7_1i = gMET_AND_RES_MARK_m7 not gMET_DEV_TOP_2_m7_2i;
+      gMET_DEV_TOP_2_m7 = interacting( gMET_DEV_TOP_2_m7_1i, gMET_TERM_TOP_m7 );
+      gMET_DEV_RIGHT_2_m7_2i = shrink( gMET_AND_RES_MARK_m7, east = vSIZE_VALUE_m508 );
+      gMET_DEV_RIGHT_2_m7_1i = gMET_AND_RES_MARK_m7 not gMET_DEV_RIGHT_2_m7_2i;
+      gMET_DEV_RIGHT_2_m7 = interacting( gMET_DEV_RIGHT_2_m7_1i, gMET_TERM_RIGHT_m7 );
+      gMET_DEV_BOTTOM_2_m7_2i = shrink( gMET_AND_RES_MARK_m7, south = vSIZE_VALUE_m508 );
+      gMET_DEV_BOTTOM_2_m7_1i = gMET_AND_RES_MARK_m7 not gMET_DEV_BOTTOM_2_m7_2i;
+      gMET_DEV_BOTTOM_2_m7 = interacting( gMET_DEV_BOTTOM_2_m7_1i, gMET_TERM_BOTTOM_m7 );
+      gMET_DEV_LEFT_2_m7_2i = shrink( gMET_AND_RES_MARK_m7, west = vSIZE_VALUE_m508 );
+      gMET_DEV_LEFT_2_m7_1i = gMET_AND_RES_MARK_m7 not gMET_DEV_LEFT_2_m7_2i;
+      gMET_DEV_LEFT_2_m7 = interacting( gMET_DEV_LEFT_2_m7_1i, gMET_TERM_RIGHT_m7 );
+      gRM4_OUT_4i = gMET_DEV_TOP_2_m7 or gMET_DEV_RIGHT_2_m7;
+      gRM4_OUT_3i = gRM4_OUT_4i or gMET_DEV_BOTTOM_2_m7;
+      gRM4_OUT = gRM4_OUT_3i or gMET_DEV_LEFT_2_m7;
+      gRM4_DEV_6i = gMET_DEV_TOP_m7 or gMET_DEV_RIGHT_m7;
+      gRM4_DEV_5i = gRM4_DEV_6i or gMET_DEV_BOTTOM_m7;
+      gRM4_DEV_4i = gRM4_DEV_5i or gMET_DEV_LEFT_m7;
+      gRM4_DEV = gRM4_DEV_4i or gRM4_OUT;
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM4_TERM_3i = and_edge( gRM4_DEV, aMETAL4, false );
+      gRM4_TERM = edge_size( gRM4_TERM_3i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m7_5i = not_interacting( gMET_AND_RES_MARK_m7, gMET_DEV_TOP_m7 );
+      gMET_TERM_LEFT_m7_4i = not_interacting( gMET_TERM_LEFT_m7_5i, gMET_DEV_RIGHT_m7 );
+      gMET_TERM_LEFT_m7_3i = not_interacting( gMET_TERM_LEFT_m7_4i, gMET_DEV_BOTTOM_m7 );
+      gMET_TERM_LEFT_m7_2i = grow( gMET_TERM_LEFT_m7_3i, west = vSIZE_VALUE_m508 );
+      gMET_TERM_LEFT_m7_1i = gMET_TERM_LEFT_m7_2i not gMET_AND_RES_MARK_m7;
+      gMET_TERM_LEFT_m7 = gMET_TERM_LEFT_m7_1i inside gMET_NOT_RES_MARK_m7;
+      gOUT_DEV_TERM_1_m7_2i = gMET_TERM_TOP_m7 or gMET_TERM_RIGHT_m7;
+      gOUT_DEV_TERM_1_m7_1i = gOUT_DEV_TERM_1_m7_2i or gMET_TERM_BOTTOM_m7;
+      gOUT_DEV_TERM_1_m7 = gOUT_DEV_TERM_1_m7_1i or gMET_TERM_LEFT_m7;
+      gMET_TERM_TOP_2_m7 = gMET_AND_RES_MARK_m7 not gMET_DEV_TOP_m7;
+      gMET_TERM_RIGHT_2_m7 = gMET_AND_RES_MARK_m7 not gMET_DEV_RIGHT_m7;
+      gMET_TERM_BOTTOM_2_m7 = gMET_AND_RES_MARK_m7 not gMET_DEV_BOTTOM_m7;
+      gMET_TERM_LEFT_2_m7 = gMET_AND_RES_MARK_m7 not gMET_DEV_LEFT_m7;
+      gOUT_DEV_TERM_2_m7_2i = gMET_TERM_TOP_2_m7 or gMET_TERM_RIGHT_2_m7;
+      gOUT_DEV_TERM_2_m7_1i = gOUT_DEV_TERM_2_m7_2i or gMET_TERM_BOTTOM_2_m7;
+      gOUT_DEV_TERM_2_m7 = gOUT_DEV_TERM_2_m7_1i or gMET_TERM_LEFT_2_m7;
+      gRM4_TERM_4i = gOUT_DEV_TERM_1_m7 or gOUT_DEV_TERM_2_m7;
+      gRM4_TERM = gRM4_TERM_4i not gRM4_DEV;
+   #endif
+   #ifdef d_MIM_OPTION_A
+      gM4_NODEV_7i = gRM4_DEV or aMETAL4_SLOT;
+      gM4_NODEV_6i = gM4_NODEV_7i or gRM4_TERM;
+      gM4_NODEV = aMETAL4 not gM4_NODEV_6i;
+   #endif
+#endif
+#ifndef d_MIM_OPTION_A
+   #ifdef d_BEOL_1P5M
+      gM4_MIMDEV_OPT_B_1i = aMETAL4 and gLVS_CAP_FT;
+      gM4_MIMDEV_OPT_B = interacting( gM4_MIMDEV_OPT_B_1i, aFUSETOP );
+   #endif
+#endif
+#ifdef d_BEOL_1P5M
+   #ifndef d_MIM_OPTION_A
+      gM4_NODEV_10i = gRM4_DEV or aMETAL4_SLOT;
+      gM4_NODEV_9i = gM4_NODEV_10i or gRM4_TERM;
+      gM4_NODEV_8i = gM4_NODEV_9i or gM4_MIMDEV_OPT_B;
+      gM4_NODEV = aMETAL4 not gM4_NODEV_8i;
+   #endif
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gRM4_TERM }}} );
+   #ifdef d_MIM_OPTION_A
+      gM3_NODEV_14i = gRM3_DEV or aMETAL3_SLOT;
+      gM3_NODEV_13i = gM3_NODEV_14i or gRM3_TERM;
+      gM3_NODEV_12i = gM3_NODEV_13i or gM3_FTDEV;
+      gM3_NODEV = aMETAL3 not gM3_NODEV_12i;
+   #else
+      gM3_NODEV_16i = gRM3_DEV or aMETAL3_SLOT;
+      gM3_NODEV_15i = gM3_NODEV_16i or gRM3_TERM;
+      gM3_NODEV = aMETAL3 not gM3_NODEV_15i;
+   #endif
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gRM3_TERM }}} );
+   #ifdef d_MIM_OPTION_A
+      gM2_NODEV_15i = gRM2_DEV or aMETAL2_SLOT;
+      gM2_NODEV_14i = gM2_NODEV_15i or gRM2_TERM;
+      gM2_NODEV_13i = gM2_NODEV_14i or gM2_MIMDEV;
+      gM2_NODEV = aMETAL2 not gM2_NODEV_13i;
+   #else
+      gM2_NODEV_17i = gRM2_DEV or aMETAL2_SLOT;
+      gM2_NODEV_16i = gM2_NODEV_17i or gRM2_TERM;
+      gM2_NODEV = aMETAL2 not gM2_NODEV_16i;
+   #endif
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gRM2_TERM }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gRM1_TERM }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gRM3_TERM }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM4_TERM, gRM3_TERM }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM4_TERM, gM3_NODEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM2_TERM, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM2_TERM, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gM3_NODEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   #ifdef d_MIM_OPTION_A
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gM3_FTDEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM4_TERM, gM3_FTDEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, aFUSETOP }, gFTVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gM2_NODEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gM2_MIMDEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gRM2_TERM }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gM2_MIMDEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gM2_MIMDEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gM3_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gRM3_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gM2_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gRM2_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_NODEV, gRM4_TERM }, aVIA4, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM5_TERM, gRM4_TERM }, aVIA4, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM5_TERM, gM4_NODEV }, aVIA4, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gRM2_TERM }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gRM2_TERM }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gM2_NODEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_NODEV, gM4_NODEV }, aVIA4, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gM2_NODEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+   #endif
+#endif
+#ifndef d_MIM_OPTION_A
+   #ifdef d_BEOL_1P5M
+      gMVIA45 = aVIA4 not gFTVIA4;
+   #endif
+#endif
+#ifdef d_BEOL_1P5M
+   #ifndef d_MIM_OPTION_A
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_FTDEV, aFUSETOP }, gFTVIA4, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_FTDEV, gM4_NODEV }, gMVIA45, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_FTDEV, gM4_MIMDEV_OPT_B }, gMVIA45, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_FTDEV, gRM4_TERM }, gMVIA45, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_NODEV, gM4_MIMDEV_OPT_B }, gMVIA45, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM5_TERM, gM4_MIMDEV_OPT_B }, gMVIA45, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_MIMDEV_OPT_B, gM3_NODEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_MIMDEV_OPT_B, gRM3_TERM }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_FTDEV, gM5_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_MIMDEV_OPT_B, gM4_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_FTDEV, gRM5_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_MIMDEV_OPT_B, gRM4_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_NODEV, gRM4_TERM }, gMVIA45, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM5_TERM, gRM4_TERM }, gMVIA45, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM5_TERM, gM4_NODEV }, gMVIA45, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gRM2_TERM }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gRM2_TERM }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gM2_NODEV }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_NODEV, gM4_NODEV }, gMVIA45, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gM2_NODEV }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+   #endif
+#endif
+#ifdef d_BEOL_1P4M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM4_DEV = aMETAL4 and aM4_RES_MK;
+   #else
+      gMET_AND_RES_MARK_0_m10 = aMETAL4 and aM4_RES_MK;
+      gMET_AND_RES_MARK_1_m10_2i = aVIA3 and gMET_AND_RES_MARK_0_m10;
+      gMET_AND_RES_MARK_1_m10_1i = not_interacting( gMET_AND_RES_MARK_0_m10, gMET_AND_RES_MARK_1_m10_2i );
+      gMET_AND_RES_MARK_1_m10_3i = aVIA3 and gMET_AND_RES_MARK_0_m10;
+      gMET_AND_RES_MARK_1_m10 = not_interacting( gMET_AND_RES_MARK_1_m10_1i, gMET_AND_RES_MARK_1_m10_3i );
+      gMET_NOT_RES_MARK_1_m10 = aMETAL4 not aM4_RES_MK;
+      gMET_TERM_ALL_SIDES_1_m10_1i = gMET_AND_RES_MARK_1_m10 coincident_edge gMET_NOT_RES_MARK_1_m10;
+      gMET_TERM_ALL_SIDES_1_m10 = edge_size( gMET_TERM_ALL_SIDES_1_m10_1i, inside = vSIZE_VALUE_m514, outside = vSIZE_VALUE_m514 );
+      gMET_TERM_ALL_SIDES_INSIDE_m10 = gMET_TERM_ALL_SIDES_1_m10 and gMET_AND_RES_MARK_1_m10;
+      gIN_RES_MARK_1_m10_1i = aM4_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m10;
+      gIN_RES_MARK_1_m10 = outside_touching( gIN_RES_MARK_1_m10_1i, gMET_TERM_ALL_SIDES_INSIDE_m10, >= 2 );
+      gMET_TERM_MARK_1_m10 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m10, gIN_RES_MARK_1_m10 );
+      gIN_RES_MARK_2_m10_1i = aM4_RES_MK not gMET_TERM_ALL_SIDES_INSIDE_m10;
+      gIN_RES_MARK_2_m10 = outside_touching( gIN_RES_MARK_2_m10_1i, gMET_TERM_ALL_SIDES_INSIDE_m10, == 1 );
+      gMET_TERM_MARK_2_m10 = outside_touching( gMET_TERM_ALL_SIDES_INSIDE_m10, gIN_RES_MARK_2_m10 );
+      gIN_RES_MARK_FINAL_m10_1i = gIN_RES_MARK_1_m10 or gMET_TERM_MARK_1_m10;
+      gIN_RES_MARK_FINAL_m10_3i = gIN_RES_MARK_2_m10 or gMET_TERM_MARK_2_m10;
+      gIN_RES_MARK_FINAL_m10_2i = size( gIN_RES_MARK_FINAL_m10_3i, clip_acute = TRUNCATE, distance = 0.001 );
+      gIN_RES_MARK_FINAL_m10 = gIN_RES_MARK_FINAL_m10_1i or gIN_RES_MARK_FINAL_m10_2i;
+      gMET_AND_RES_MARK_FINAL_m10 = aMETAL4 and gIN_RES_MARK_FINAL_m10;
+      gMET_AND_RES_MARK_m10_2i = aVIA3 and gMET_AND_RES_MARK_0_m10;
+      gMET_AND_RES_MARK_m10_1i = not_interacting( gMET_AND_RES_MARK_FINAL_m10, gMET_AND_RES_MARK_m10_2i );
+      gMET_AND_RES_MARK_m10_3i = aVIA3 and gMET_AND_RES_MARK_0_m10;
+      gMET_AND_RES_MARK_m10 = not_interacting( gMET_AND_RES_MARK_m10_1i, gMET_AND_RES_MARK_m10_3i );
+      gMET_NOT_RES_MARK_m10 = aMETAL4 not gIN_RES_MARK_FINAL_m10;
+      gMET_TERM_ALL_SIDES_m10_1i = gMET_AND_RES_MARK_m10 coincident_edge gMET_NOT_RES_MARK_m10;
+      gMET_TERM_ALL_SIDES_m10 = edge_size( gMET_TERM_ALL_SIDES_m10_1i, inside = vSIZE_VALUE_m514, outside = vSIZE_VALUE_m514 );
+      gMET_TERM_TOP_m10_2i = grow( gMET_AND_RES_MARK_m10, north = vSIZE_VALUE_m514 );
+      gMET_TERM_TOP_m10_1i = gMET_TERM_TOP_m10_2i not gMET_AND_RES_MARK_m10;
+      gMET_TERM_TOP_m10 = gMET_TERM_TOP_m10_1i inside gMET_NOT_RES_MARK_m10;
+      gMET_DEV_TOP_m10_3i = gMET_AND_RES_MARK_m10 or gMET_TERM_ALL_SIDES_m10;
+      gMET_DEV_TOP_m10_4i = shrink( gMET_AND_RES_MARK_m10, north = vSIZE_VALUE_m514 );
+      gMET_DEV_TOP_m10_2i = gMET_DEV_TOP_m10_3i not gMET_DEV_TOP_m10_4i;
+      gMET_DEV_TOP_m10_1i = interacting( gMET_DEV_TOP_m10_2i, gMET_TERM_TOP_m10 );
+      gMET_DEV_TOP_m10 = gMET_DEV_TOP_m10_1i not gMET_TERM_TOP_m10;
+      gMET_TERM_RIGHT_m10_3i = not_interacting( gMET_AND_RES_MARK_m10, gMET_DEV_TOP_m10 );
+      gMET_TERM_RIGHT_m10_2i = grow( gMET_TERM_RIGHT_m10_3i, east = vSIZE_VALUE_m514 );
+      gMET_TERM_RIGHT_m10_1i = gMET_TERM_RIGHT_m10_2i not gMET_AND_RES_MARK_m10;
+      gMET_TERM_RIGHT_m10 = gMET_TERM_RIGHT_m10_1i inside gMET_NOT_RES_MARK_m10;
+      gMET_DEV_RIGHT_m10_3i = gMET_AND_RES_MARK_m10 or gMET_TERM_ALL_SIDES_m10;
+      gMET_DEV_RIGHT_m10_4i = shrink( gMET_AND_RES_MARK_m10, east = vSIZE_VALUE_m514 );
+      gMET_DEV_RIGHT_m10_2i = gMET_DEV_RIGHT_m10_3i not gMET_DEV_RIGHT_m10_4i;
+      gMET_DEV_RIGHT_m10_1i = interacting( gMET_DEV_RIGHT_m10_2i, gMET_TERM_RIGHT_m10 );
+      gMET_DEV_RIGHT_m10 = gMET_DEV_RIGHT_m10_1i not gMET_TERM_RIGHT_m10;
+      gMET_TERM_BOTTOM_m10_4i = not_interacting( gMET_AND_RES_MARK_m10, gMET_DEV_TOP_m10 );
+      gMET_TERM_BOTTOM_m10_3i = not_interacting( gMET_TERM_BOTTOM_m10_4i, gMET_DEV_RIGHT_m10 );
+      gMET_TERM_BOTTOM_m10_2i = grow( gMET_TERM_BOTTOM_m10_3i, south = vSIZE_VALUE_m514 );
+      gMET_TERM_BOTTOM_m10_1i = gMET_TERM_BOTTOM_m10_2i not gMET_AND_RES_MARK_m10;
+      gMET_TERM_BOTTOM_m10 = gMET_TERM_BOTTOM_m10_1i inside gMET_NOT_RES_MARK_m10;
+      gMET_DEV_BOTTOM_m10_3i = gMET_AND_RES_MARK_m10 or gMET_TERM_ALL_SIDES_m10;
+      gMET_DEV_BOTTOM_m10_4i = shrink( gMET_AND_RES_MARK_m10, south = vSIZE_VALUE_m514 );
+      gMET_DEV_BOTTOM_m10_2i = gMET_DEV_BOTTOM_m10_3i not gMET_DEV_BOTTOM_m10_4i;
+      gMET_DEV_BOTTOM_m10_1i = interacting( gMET_DEV_BOTTOM_m10_2i, gMET_TERM_BOTTOM_m10 );
+      gMET_DEV_BOTTOM_m10 = gMET_DEV_BOTTOM_m10_1i not gMET_TERM_BOTTOM_m10;
+      gMET_DEV_LEFT_m10_3i = gMET_AND_RES_MARK_m10 or gMET_TERM_ALL_SIDES_m10;
+      gMET_DEV_LEFT_m10_4i = shrink( gMET_AND_RES_MARK_m10, west = vSIZE_VALUE_m514 );
+      gMET_DEV_LEFT_m10_2i = gMET_DEV_LEFT_m10_3i not gMET_DEV_LEFT_m10_4i;
+      gMET_DEV_LEFT_m10_1i = interacting( gMET_DEV_LEFT_m10_2i, gMET_TERM_RIGHT_m10 );
+      gMET_DEV_LEFT_m10 = gMET_DEV_LEFT_m10_1i not gMET_TERM_RIGHT_m10;
+      gMET_DEV_TOP_2_m10_2i = shrink( gMET_AND_RES_MARK_m10, north = vSIZE_VALUE_m514 );
+      gMET_DEV_TOP_2_m10_1i = gMET_AND_RES_MARK_m10 not gMET_DEV_TOP_2_m10_2i;
+      gMET_DEV_TOP_2_m10 = interacting( gMET_DEV_TOP_2_m10_1i, gMET_TERM_TOP_m10 );
+      gMET_DEV_RIGHT_2_m10_2i = shrink( gMET_AND_RES_MARK_m10, east = vSIZE_VALUE_m514 );
+      gMET_DEV_RIGHT_2_m10_1i = gMET_AND_RES_MARK_m10 not gMET_DEV_RIGHT_2_m10_2i;
+      gMET_DEV_RIGHT_2_m10 = interacting( gMET_DEV_RIGHT_2_m10_1i, gMET_TERM_RIGHT_m10 );
+      gMET_DEV_BOTTOM_2_m10_2i = shrink( gMET_AND_RES_MARK_m10, south = vSIZE_VALUE_m514 );
+      gMET_DEV_BOTTOM_2_m10_1i = gMET_AND_RES_MARK_m10 not gMET_DEV_BOTTOM_2_m10_2i;
+      gMET_DEV_BOTTOM_2_m10 = interacting( gMET_DEV_BOTTOM_2_m10_1i, gMET_TERM_BOTTOM_m10 );
+      gMET_DEV_LEFT_2_m10_2i = shrink( gMET_AND_RES_MARK_m10, west = vSIZE_VALUE_m514 );
+      gMET_DEV_LEFT_2_m10_1i = gMET_AND_RES_MARK_m10 not gMET_DEV_LEFT_2_m10_2i;
+      gMET_DEV_LEFT_2_m10 = interacting( gMET_DEV_LEFT_2_m10_1i, gMET_TERM_RIGHT_m10 );
+      gRM4_OUT_2i = gMET_DEV_TOP_2_m10 or gMET_DEV_RIGHT_2_m10;
+      gRM4_OUT_1i = gRM4_OUT_2i or gMET_DEV_BOTTOM_2_m10;
+      gRM4_OUT = gRM4_OUT_1i or gMET_DEV_LEFT_2_m10;
+      gRM4_DEV_3i = gMET_DEV_TOP_m10 or gMET_DEV_RIGHT_m10;
+      gRM4_DEV_2i = gRM4_DEV_3i or gMET_DEV_BOTTOM_m10;
+      gRM4_DEV_1i = gRM4_DEV_2i or gMET_DEV_LEFT_m10;
+      gRM4_DEV = gRM4_DEV_1i or gRM4_OUT;
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM4_TERM_1i = and_edge( gRM4_DEV, aMETAL4, false );
+      gRM4_TERM = edge_size( gRM4_TERM_1i, outside = 0.001 );
+   #else
+      gMET_TERM_LEFT_m10_5i = not_interacting( gMET_AND_RES_MARK_m10, gMET_DEV_TOP_m10 );
+      gMET_TERM_LEFT_m10_4i = not_interacting( gMET_TERM_LEFT_m10_5i, gMET_DEV_RIGHT_m10 );
+      gMET_TERM_LEFT_m10_3i = not_interacting( gMET_TERM_LEFT_m10_4i, gMET_DEV_BOTTOM_m10 );
+      gMET_TERM_LEFT_m10_2i = grow( gMET_TERM_LEFT_m10_3i, west = vSIZE_VALUE_m514 );
+      gMET_TERM_LEFT_m10_1i = gMET_TERM_LEFT_m10_2i not gMET_AND_RES_MARK_m10;
+      gMET_TERM_LEFT_m10 = gMET_TERM_LEFT_m10_1i inside gMET_NOT_RES_MARK_m10;
+      gOUT_DEV_TERM_1_m10_2i = gMET_TERM_TOP_m10 or gMET_TERM_RIGHT_m10;
+      gOUT_DEV_TERM_1_m10_1i = gOUT_DEV_TERM_1_m10_2i or gMET_TERM_BOTTOM_m10;
+      gOUT_DEV_TERM_1_m10 = gOUT_DEV_TERM_1_m10_1i or gMET_TERM_LEFT_m10;
+      gMET_TERM_TOP_2_m10 = gMET_AND_RES_MARK_m10 not gMET_DEV_TOP_m10;
+      gMET_TERM_RIGHT_2_m10 = gMET_AND_RES_MARK_m10 not gMET_DEV_RIGHT_m10;
+      gMET_TERM_BOTTOM_2_m10 = gMET_AND_RES_MARK_m10 not gMET_DEV_BOTTOM_m10;
+      gMET_TERM_LEFT_2_m10 = gMET_AND_RES_MARK_m10 not gMET_DEV_LEFT_m10;
+      gOUT_DEV_TERM_2_m10_2i = gMET_TERM_TOP_2_m10 or gMET_TERM_RIGHT_2_m10;
+      gOUT_DEV_TERM_2_m10_1i = gOUT_DEV_TERM_2_m10_2i or gMET_TERM_BOTTOM_2_m10;
+      gOUT_DEV_TERM_2_m10 = gOUT_DEV_TERM_2_m10_1i or gMET_TERM_LEFT_2_m10;
+      gRM4_TERM_2i = gOUT_DEV_TERM_1_m10 or gOUT_DEV_TERM_2_m10;
+      gRM4_TERM = gRM4_TERM_2i not gRM4_DEV;
+   #endif
+   #ifdef d_MIM_OPTION_A
+      gM4_NODEV_2i = gRM4_DEV or aMETAL4_SLOT;
+      gM4_NODEV_1i = gM4_NODEV_2i or gRM4_TERM;
+      gM4_NODEV = aMETAL4 not gM4_NODEV_1i;
+   #endif
+#endif
+#ifndef d_MIM_OPTION_A
+   #ifdef d_BEOL_1P4M
+      gFTVIA3_1i = aVIA3 and aFUSETOP;
+      gFTVIA3 = gFTVIA3_1i and aLVS_CAP;
+      gM4_FTDEV_2i = aMETAL4 and gLVS_CAP_FT;
+      gM4_FTDEV_1i = enclosing( gM4_FTDEV_2i, gFTVIA3 );
+      gM4_FTDEV = interacting( gM4_FTDEV_1i, aFUSETOP );
+   #endif
+#endif
+#ifdef d_BEOL_1P4M
+   #ifndef d_MIM_OPTION_A
+      gM4_NODEV_5i = gRM4_DEV or aMETAL4_SLOT;
+      gM4_NODEV_4i = gM4_NODEV_5i or gRM4_TERM;
+      gM4_NODEV_3i = gM4_NODEV_4i or gM4_FTDEV;
+      gM4_NODEV = aMETAL4 not gM4_NODEV_3i;
+   #endif
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gRM4_TERM }}} );
+   #ifdef d_MIM_OPTION_A
+      gM3_NODEV_8i = gRM3_DEV or aMETAL3_SLOT;
+      gM3_NODEV_7i = gM3_NODEV_8i or gRM3_TERM;
+      gM3_NODEV_6i = gM3_NODEV_7i or gM3_FTDEV;
+      gM3_NODEV = aMETAL3 not gM3_NODEV_6i;
+   #endif
+#endif
+#ifndef d_MIM_OPTION_A
+   #ifdef d_BEOL_1P4M
+      gM3_MIMDEV_OPT_B_1i = aMETAL3 and gLVS_CAP_FT;
+      gM3_MIMDEV_OPT_B = interacting( gM3_MIMDEV_OPT_B_1i, aFUSETOP );
+   #endif
+#endif
+#ifdef d_BEOL_1P4M
+   #ifndef d_MIM_OPTION_A
+      gM3_NODEV_11i = gRM3_DEV or aMETAL3_SLOT;
+      gM3_NODEV_10i = gM3_NODEV_11i or gRM3_TERM;
+      gM3_NODEV_9i = gM3_NODEV_10i or gM3_MIMDEV_OPT_B;
+      gM3_NODEV = aMETAL3 not gM3_NODEV_9i;
+   #endif
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gRM3_TERM }}} );
+   #ifdef d_MIM_OPTION_A
+      gM2_NODEV_10i = gRM2_DEV or aMETAL2_SLOT;
+      gM2_NODEV_9i = gM2_NODEV_10i or gRM2_TERM;
+      gM2_NODEV_8i = gM2_NODEV_9i or gM2_MIMDEV;
+      gM2_NODEV = aMETAL2 not gM2_NODEV_8i;
+   #else
+      gM2_NODEV_12i = gRM2_DEV or aMETAL2_SLOT;
+      gM2_NODEV_11i = gM2_NODEV_12i or gRM2_TERM;
+      gM2_NODEV = aMETAL2 not gM2_NODEV_11i;
+   #endif
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gRM2_TERM }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gRM1_TERM }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM2_TERM, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM2_TERM, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   #ifdef d_MIM_OPTION_A
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gM3_FTDEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM4_TERM, gM3_FTDEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, aFUSETOP }, gFTVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gM2_NODEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gM2_MIMDEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gRM2_TERM }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gM2_MIMDEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gM2_MIMDEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gM3_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gRM3_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gM2_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gRM2_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gRM3_TERM }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM4_TERM, gRM3_TERM }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM4_TERM, gM3_NODEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gRM2_TERM }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gRM2_TERM }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gM2_NODEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gM3_NODEV }, aVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gM2_NODEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+   #endif
+#endif
+#ifndef d_MIM_OPTION_A
+   #ifdef d_BEOL_1P4M
+      gMVIA34 = aVIA3 not gFTVIA3;
+   #endif
+#endif
+#ifdef d_BEOL_1P4M
+   #ifndef d_MIM_OPTION_A
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_FTDEV, aFUSETOP }, gFTVIA3, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_FTDEV, gM3_NODEV }, gMVIA34, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_FTDEV, gM3_MIMDEV_OPT_B }, gMVIA34, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_FTDEV, gRM3_TERM }, gMVIA34, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gM3_MIMDEV_OPT_B }, gMVIA34, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM4_TERM, gM3_MIMDEV_OPT_B }, gMVIA34, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_MIMDEV_OPT_B, gM2_NODEV }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_MIMDEV_OPT_B, gRM2_TERM }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_FTDEV, gM4_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_MIMDEV_OPT_B, gM3_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_FTDEV, gRM4_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_MIMDEV_OPT_B, gRM3_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gRM3_TERM }, gMVIA34, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM4_TERM, gRM3_TERM }, gMVIA34, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM4_TERM, gM3_NODEV }, gMVIA34, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gRM2_TERM }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gRM2_TERM }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gM2_NODEV }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV, gM3_NODEV }, gMVIA34, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gM2_NODEV }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+   #endif
+#endif
+#ifdef d_BEOL_1P3M
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gRM3_TERM }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gRM2_TERM }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gRM1_TERM }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM2_TERM, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM2_TERM, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   #ifdef d_MIM_OPTION_A
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, aFUSETOP }, gFTVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gM2_NODEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gM2_MIMDEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gRM2_TERM }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gM2_MIMDEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gM2_MIMDEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gM3_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV, gRM3_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gM2_NODEV }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV, gRM2_TERM }}} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gRM2_TERM }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gRM2_TERM }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gM2_NODEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gM2_NODEV }, gMVIA23, NONE, SHIELDED_OVERLAP }} );
+   #else
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gRM2_TERM }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gRM2_TERM }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM3_TERM, gM2_NODEV }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV, gM2_NODEV }, aVIA2, NONE, SHIELDED_OVERLAP }} );
+   #endif
+#endif
+#ifdef d_BEOL_1P2M
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gRM2_TERM }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gRM1_TERM }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM2_TERM, gRM1_TERM }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gRM2_TERM, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV, gM1_NODEV }, aVIA1, NONE, SHIELDED_OVERLAP }} );
+#endif
+gPOLY2_CONT = aCONT and aPOLY2;
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gGPLY }, gPOLY2_CONT, NONE, SHIELDED_OVERLAP }} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gGATE }, gPOLY2_CONT, NONE, SHIELDED_OVERLAP }} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gSAB_NGATE }, gPOLY2_CONT, NONE, SHIELDED_OVERLAP }} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gSAB_PGATE }, gPOLY2_CONT, NONE, SHIELDED_OVERLAP }} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gLDMNGATE_10P0 }, gPOLY2_CONT, NONE, SHIELDED_OVERLAP }} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gLDMPGATE_10P0 }, gPOLY2_CONT, NONE, SHIELDED_OVERLAP }} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gPOLY_MOD }, gPOLY2_CONT, NONE, SHIELDED_OVERLAP }} );
+
+
+
+g_EFUSE_EXCL_38i = aCOMP or aNWELL;
+g_EFUSE_EXCL_37i = g_EFUSE_EXCL_38i or aNPLUS;
+g_EFUSE_EXCL_36i = g_EFUSE_EXCL_37i or aHSR;
+g_EFUSE_EXCL_35i = g_EFUSE_EXCL_36i or aESD;
+g_EFUSE_EXCL_34i = g_EFUSE_EXCL_35i or aSAB;
+g_EFUSE_EXCL_33i = g_EFUSE_EXCL_34i or aFUSEWINDOW;
+g_EFUSE_EXCL_32i = g_EFUSE_EXCL_33i or aPOLYFUSE;
+g_EFUSE_EXCL_31i = g_EFUSE_EXCL_32i or aRES_MK;
+g_EFUSE_EXCL_30i = g_EFUSE_EXCL_31i or aLVS_DIO;
+g_EFUSE_EXCL_29i = g_EFUSE_EXCL_30i or aLVS_BJT;
+g_EFUSE_EXCL_28i = g_EFUSE_EXCL_29i or aNAT;
+g_EFUSE_EXCL_27i = g_EFUSE_EXCL_28i or aMOS_CAP_MK;
+g_EFUSE_EXCL_26i = g_EFUSE_EXCL_27i or aESD_MK;
+g_EFUSE_EXCL_25i = g_EFUSE_EXCL_26i or aWELL_DIODE_MK;
+g_EFUSE_EXCL_24i = g_EFUSE_EXCL_25i or aMVNSD;
+g_EFUSE_EXCL_23i = g_EFUSE_EXCL_24i or aMVPSD;
+g_EFUSE_EXCL_22i = g_EFUSE_EXCL_23i or aLDMOS;
+g_EFUSE_EXCL_21i = g_EFUSE_EXCL_22i or aFUSETOP;
+g_EFUSE_EXCL_20i = g_EFUSE_EXCL_21i or aLVS_CAP;
+g_EFUSE_EXCL = g_EFUSE_EXCL_20i or aSCHOTTKY_DIODE;
+gP2_EFUSE = aPOLY2 not g_EFUSE_EXCL;
+gP2_EFUSE_DEV_1i = gP2_EFUSE and aEFUSE_MK;
+gP2_EFUSE_DEV = gP2_EFUSE_DEV_1i and aPPLUS;
+gEFUSE_TERMINAL = gP2_EFUSE_DEV not aPLFUSE;
+gEFUSE_ANODE_1i = gEFUSE_TERMINAL and aLVS_SOURCE;
+gEFUSE_ANODE = gEFUSE_ANODE_1i not g_EFUSE_EXCL;
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gEFUSE_ANODE }, gPOLY2_CONT, NONE, SHIELDED_OVERLAP }} );
+gEFUSE_CATHODE_1i = gEFUSE_TERMINAL not aLVS_SOURCE;
+gEFUSE_CATHODE = gEFUSE_CATHODE_1i not g_EFUSE_EXCL;
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gEFUSE_CATHODE }, gPOLY2_CONT, NONE, SHIELDED_OVERLAP }} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGPLY, gGATE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGPLY, gSAB_NGATE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGPLY, gSAB_PGATE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGPLY, gLDMNGATE_10P0 }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGPLY, gLDMPGATE_10P0 }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGPLY, gPOLY_MOD }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGPLY, gEFUSE_ANODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGPLY, gEFUSE_CATHODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGATE, gEFUSE_ANODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGATE, gEFUSE_CATHODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_NGATE, gEFUSE_ANODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_NGATE, gEFUSE_CATHODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_PGATE, gEFUSE_ANODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_PGATE, gEFUSE_CATHODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gLDMNGATE_10P0, gEFUSE_ANODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gLDMNGATE_10P0, gEFUSE_CATHODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gLDMPGATE_10P0, gEFUSE_ANODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gLDMPGATE_10P0, gEFUSE_CATHODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gPOLY_MOD, gEFUSE_ANODE }}} );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gPOLY_MOD, gEFUSE_CATHODE }}} );
+gNMOSCAP_NSD_3i = gDN_LP_ALL or gPSUB_BULK;
+gNMOSCAP_NSD_2i = gNDIFF inside gNMOSCAP_NSD_3i;
+gNMOSCAP_NSD_1i = gNMOSCAP_NSD_2i not aRES_MK;
+gNMOSCAP_NSD = gNMOSCAP_NSD_1i inside aMOS_CAP_MK;
+gDIFF_CONT = aCONT and aCOMP;
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gNMOSCAP_NSD }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+gPMOSCAP_PSD_3i = gPURENWELL_ALL or gDN_SUB_ALL;
+gPMOSCAP_PSD_2i = gPDIFF inside gPMOSCAP_PSD_3i;
+gPMOSCAP_PSD_1i = gPMOSCAP_PSD_2i not aRES_MK;
+gPMOSCAP_PSD = gPMOSCAP_PSD_1i inside aMOS_CAP_MK;
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gPMOSCAP_PSD }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+gNSD_ALL_3i = gPSUB_BULK or gDN_LP_ALL;
+gNSD_ALL_2i = gNDIFF inside gNSD_ALL_3i;
+gNSD_ALL_1i = gNSD_ALL_2i not aRES_MK;
+gNSD_ALL_6i = aCOMP not aNPLUS;
+gNSD_ALL_5i = gNSD_ALL_6i not aPPLUS;
+gNSD_ALL_4i = gNSD_ALL_5i inside aSCHOTTKY_DIODE;
+gNSD_ALL = gNSD_ALL_1i or gNSD_ALL_4i;
+
+
+
+
+
+g_BJT_EXCL_LAY_26i = aHSR or aESD;
+g_BJT_EXCL_LAY_25i = g_BJT_EXCL_LAY_26i or aSAB;
+g_BJT_EXCL_LAY_24i = g_BJT_EXCL_LAY_25i or aFUSEWINDOW;
+g_BJT_EXCL_LAY_23i = g_BJT_EXCL_LAY_24i or aPOLYFUSE;
+g_BJT_EXCL_LAY_22i = g_BJT_EXCL_LAY_23i or aRES_MK;
+g_BJT_EXCL_LAY_21i = g_BJT_EXCL_LAY_22i or aNAT;
+g_BJT_EXCL_LAY_20i = g_BJT_EXCL_LAY_21i or aMOS_CAP_MK;
+g_BJT_EXCL_LAY_19i = g_BJT_EXCL_LAY_20i or aV5_XTOR;
+g_BJT_EXCL_LAY_18i = g_BJT_EXCL_LAY_19i or aESD_MK;
+g_BJT_EXCL_LAY_17i = g_BJT_EXCL_LAY_18i or aEFUSE_MK;
+g_BJT_EXCL_LAY_16i = g_BJT_EXCL_LAY_17i or aMVNSD;
+g_BJT_EXCL_LAY_15i = g_BJT_EXCL_LAY_16i or aMVPSD;
+g_BJT_EXCL_LAY_14i = g_BJT_EXCL_LAY_15i or aLDMOS;
+g_BJT_EXCL_LAY = g_BJT_EXCL_LAY_14i or aSCHOTTKY_DIODE;
+gVNPN_DEV_6i = donut_holes( aPOLY2, outer_boundary_point_touch = CLOSED_OUTER_BOUNDARY );
+gVNPN_DEV_5i = not_interacting( aLVS_BJT, gVNPN_DEV_6i );
+gVNPN_DEV_4i = gVNPN_DEV_5i and gNSD_ALL;
+gVNPN_DEV_3i = gVNPN_DEV_4i and gDN_LP_ALL;
+gVNPN_DEV_2i = gVNPN_DEV_3i not aDUALGATE;
+gVNPN_DEV_1i = gVNPN_DEV_2i not aNWELL;
+gVNPN_DEV = gVNPN_DEV_1i not g_BJT_EXCL_LAY;
+gVNPN_COL = enclosing( aDNWELL, gVNPN_DEV );
+gDN_SUB = gDN_SUB_ALL not gVNPN_COL;
+gPSD_ALL_2i = gPURENWELL_ALL or gDN_SUB;
+gPSD_ALL_1i = gPDIFF inside gPSD_ALL_2i;
+gPSD_ALL = gPSD_ALL_1i not aRES_MK;
+gVPNP_3P3_DEV_6i = donut_holes( aPOLY2, outer_boundary_point_touch = CLOSED_OUTER_BOUNDARY );
+gVPNP_3P3_DEV_5i = not_interacting( aLVS_BJT, gVPNP_3P3_DEV_6i );
+gVPNP_3P3_DEV_4i = gVPNP_3P3_DEV_5i and gPSD_ALL;
+gVPNP_3P3_DEV_3i = gVPNP_3P3_DEV_4i and gPURENWELL_ALL;
+gVPNP_3P3_DEV_2i = gVPNP_3P3_DEV_3i not aDUALGATE;
+gVPNP_3P3_DEV_1i = gVPNP_3P3_DEV_2i not aLVPWELL;
+gVPNP_3P3_DEV = gVPNP_3P3_DEV_1i not g_BJT_EXCL_LAY;
+gVPNP_EMI = enclosing( gPSD_ALL, gVPNP_3P3_DEV );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gVPNP_EMI }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gDIFF_CONT }}} );
+#endif
+gSAB_NDRN_2i = gNSD_ALL and aESD_MK;
+gSAB_NDRN_1i = interacting( gSAB_NDRN_2i, aSAB );
+gSAB_NDRN = not_interacting( gSAB_NDRN_1i, aLVS_SOURCE );
+gSAB_NSRC_1i = gNSD_ALL and aESD_MK;
+gSAB_NSRC = interacting( gSAB_NSRC_1i, aLVS_SOURCE );
+gLDMNDRN_10P0_4i = gNDIFF and aLDMOS;
+gLDMNDRN_10P0_3i = gLDMNDRN_10P0_4i and aDUALGATE;
+gLDMNDRN_10P0_2i = gLDMNDRN_10P0_3i inside gPSUB;
+gLDMNDRN_10P0_5i = interacting( aMVNSD, gLDMNGATE_10P0_L );
+gLDMNDRN_10P0_1i = gLDMNDRN_10P0_2i inside gLDMNDRN_10P0_5i;
+gLDMNDRN_10P0 = interacting( aMVNSD, gLDMNDRN_10P0_1i );
+gNSD_4i = gNMOSCAP_NSD or gSAB_NDRN;
+gNSD_3i = gNSD_4i or gSAB_NSRC;
+gNSD_2i = gNSD_3i or gLDMNSRC_10P0;
+gNSD_1i = gNSD_ALL not gNSD_2i;
+gNSD = gNSD_1i outside gLDMNDRN_10P0;
+gLDMPDRN_10P0_4i = gPDIFF and aLDMOS;
+gLDMPDRN_10P0_3i = gLDMPDRN_10P0_4i and aDUALGATE;
+gLDMPDRN_10P0_2i = gLDMPDRN_10P0_3i inside gDN_SUB_ALL;
+gLDMPDRN_10P0_5i = interacting( aMVPSD, gLDMPGATE_10P0_L );
+gLDMPDRN_10P0_1i = gLDMPDRN_10P0_2i inside gLDMPDRN_10P0_5i;
+gLDMPDRN_10P0 = interacting( aMVPSD, gLDMPDRN_10P0_1i );
+gPTAP_PDDD = gPDIFF inside gLDMPDRN_10P0;
+gSAB_PDRN_2i = gPSD_ALL and aESD_MK;
+gSAB_PDRN_1i = interacting( gSAB_PDRN_2i, aSAB );
+gSAB_PDRN = not_interacting( gSAB_PDRN_1i, aLVS_SOURCE );
+gSAB_PSRC_1i = gPSD_ALL and aESD_MK;
+gSAB_PSRC = interacting( gSAB_PSRC_1i, aLVS_SOURCE );
+gPSD_5i = gPMOSCAP_PSD or gVPNP_EMI;
+gPSD_4i = gPSD_5i or gSAB_PDRN;
+gPSD_3i = gPSD_4i or gSAB_PSRC;
+gPSD_2i = gPSD_3i or gLDMPSRC_10P0;
+gPSD_1i = gPSD_ALL not gPSD_2i;
+gPSD = gPSD_1i outside gLDMPDRN_10P0;
+gNMOSCAP_NSD_B_3i = gPURENWELL_ALL or gDN_SUB_ALL;
+gNMOSCAP_NSD_B_2i = gNDIFF inside gNMOSCAP_NSD_B_3i;
+gNMOSCAP_NSD_B_1i = gNMOSCAP_NSD_B_2i not aRES_MK;
+gNMOSCAP_NSD_B = gNMOSCAP_NSD_B_1i inside aMOS_CAP_MK;
+gNTAP = gNTAP_ALL not gNMOSCAP_NSD_B;
+gNTAP_NDDD = gNDIFF inside gLDMNDRN_10P0;
+#ifndef d_CONNECT_THRU_DIFF_CHECK
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gNSD, gPTAP }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_NDRN, gPTAP }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_NSRC, gPTAP }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gLDMNSRC_10P0, gPTAP }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gNSD, gPTAP_PDDD }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_NDRN, gPTAP_PDDD }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_NSRC, gPTAP_PDDD }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gLDMNSRC_10P0, gPTAP_PDDD }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gPSD, gNTAP }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_PDRN, gNTAP }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_PSRC, gNTAP }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gLDMPSRC_10P0, gNTAP }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gPSD, gNTAP_NDDD }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_PDRN, gNTAP_NDDD }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gSAB_PSRC, gNTAP_NDDD }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gLDMPSRC_10P0, gNTAP_NDDD }}} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gNSD }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gSAB_NDRN }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gSAB_NSRC }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gPSD }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gSAB_PDRN }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gSAB_PSRC }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gNTAP }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gNTAP_NDDD }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gPTAP }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gPTAP_PDDD }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gLDMNSRC_10P0 }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gLDMPSRC_10P0 }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gNMOSCAP_NSD_B }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV, gPMOSCAP_PSD_B }, gDIFF_CONT, NONE, SHIELDED_OVERLAP }} );
+#endif
+gLAYER_13i = grow( gSD_SHIFT_0_m2, west = 0.002 );
+gLAYER_14i = shrink( gLAYER_13i, east = 0.002 );
+gLAYER_15i = grow( gLAYER_14i, north = 0.002 );
+gSD_SHIFT_1_MOS_1i = shrink( gLAYER_15i, south = 0.002 );
+gSD_SHIFT_1_MOS = interacting( gSD_SHIFT_1_MOS_1i, gGATE_SHIFT_1_MOS, == 1 );
+
+soft_connect_layers.push_back( { gGATE_SHIFT_1_MOS, { gSD_SHIFT_1_MOS } } );
+gLAYER_16i = shrink( gSD_SHIFT_0_m2, west = 0.002 );
+gLAYER_17i = grow( gLAYER_16i, east = 0.002 );
+gLAYER_18i = shrink( gLAYER_17i, north = 0.002 );
+gSD_SHIFT_2_MOS_1i = grow( gLAYER_18i, south = 0.002 );
+gSD_SHIFT_2_MOS = interacting( gSD_SHIFT_2_MOS_1i, gGATE_SHIFT_2_MOS, == 1 );
+soft_connect_layers.push_back( { gGATE_SHIFT_2_MOS, { gSD_SHIFT_2_MOS } } );
+#ifdef d_MOS_NF_BY_COUNT
+   gLAYER_19i = grow( gSD_SHIFT_0_m1, west = 0.002 );
+   gLAYER_20i = shrink( gLAYER_19i, east = 0.002 );
+   gLAYER_21i = grow( gLAYER_20i, north = 0.002 );
+   gSD_SHIFT_1_MOS_LOGIC_1i = shrink( gLAYER_21i, south = 0.002 );
+   gSD_SHIFT_1_MOS_LOGIC = interacting( gSD_SHIFT_1_MOS_LOGIC_1i, gGATE_SHIFT_1_MOS_LOGIC, == 1 );
+   
+      soft_connect_layers.push_back( { gGATE_SHIFT_1_MOS_LOGIC, { gSD_SHIFT_1_MOS_LOGIC } } );
+   gLAYER_22i = shrink( gSD_SHIFT_0_m1, west = 0.002 );
+   gLAYER_23i = grow( gLAYER_22i, east = 0.002 );
+   gLAYER_24i = shrink( gLAYER_23i, north = 0.002 );
+   gSD_SHIFT_2_MOS_LOGIC_1i = grow( gLAYER_24i, south = 0.002 );
+   gSD_SHIFT_2_MOS_LOGIC = interacting( gSD_SHIFT_2_MOS_LOGIC_1i, gGATE_SHIFT_2_MOS_LOGIC, == 1 );
+   soft_connect_layers.push_back( { gGATE_SHIFT_2_MOS_LOGIC, { gSD_SHIFT_2_MOS_LOGIC } } );
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   soft_connect_layers.push_back( { gDIFF_CONT, { gNMOSCAP_NSD_B } } );
+   soft_connect_layers.push_back( { gDIFF_CONT, { gNTAP } } );
+   soft_connect_layers.push_back( { gDIFF_CONT, { gNTAP_NDDD } } );
+#endif
+gVPNP_BASE = enclosing( gPURENWELL_ALL, gVPNP_3P3_DEV );
+gPURENWELL = gPURENWELL_ALL not gVPNP_BASE;
+gNTAP_CONT = copy( gNTAP_ALL, ancestry = true );
+
+soft_connect_layers.push_back( { gNMOSCAP_NSD_B, { gPURENWELL }, gNTAP_CONT } );
+soft_connect_layers.push_back( { gNMOSCAP_NSD_B, { gDN_SUB }, gNTAP_CONT } );
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   soft_connect_layers.push_back( { gDIFF_CONT, { gPMOSCAP_PSD_B } } );
+   soft_connect_layers.push_back( { gDIFF_CONT, { gPTAP } } );
+   soft_connect_layers.push_back( { gDIFF_CONT, { gPTAP_PDDD } } );
+#endif
+gVNPN_BASE = enclosing( gDN_LP_ALL, gVNPN_DEV );
+gDN_LP = gDN_LP_ALL not gVNPN_BASE;
+gPTAP_CONT = copy( gPTAP_ALL, ancestry = true );
+soft_connect_layers.push_back( { gPMOSCAP_PSD_B, { gDN_LP }, gPTAP_CONT } );
+soft_connect_layers.push_back( { gPMOSCAP_PSD_B, { gPSUB }, gPTAP_CONT } );
+soft_connect_layers.push_back( { gNTAP, { gPURENWELL }, gNTAP_CONT } );
+soft_connect_layers.push_back( { gNTAP, { gVPNP_BASE }, gNTAP_CONT } );
+soft_connect_layers.push_back( { gNTAP, { gDN_SUB }, gNTAP_CONT } );
+soft_connect_layers.push_back( { gNTAP, { gVNPN_COL }, gNTAP_CONT } );
+gNTAP_NDDD_CONT = copy( gNTAP_NDDD, ancestry = true );
+soft_connect_layers.push_back( { gNTAP_NDDD, { gPURENWELL }, gNTAP_NDDD_CONT } );
+soft_connect_layers.push_back( { gNTAP_NDDD, { gVPNP_BASE }, gNTAP_NDDD_CONT } );
+soft_connect_layers.push_back( { gNTAP_NDDD, { gDN_SUB }, gNTAP_NDDD_CONT } );
+soft_connect_layers.push_back( { gNTAP_NDDD, { gVNPN_COL }, gNTAP_NDDD_CONT } );
+soft_connect_layers.push_back( { gPTAP, { gDN_LP }, gPTAP_CONT } );
+soft_connect_layers.push_back( { gPTAP, { gPSUB }, gPTAP_CONT } );
+soft_connect_layers.push_back( { gPTAP, { gVNPN_BASE }, gPTAP_CONT } );
+gPTAP_PDDD_CONT = copy( gPTAP_PDDD, ancestry = true );
+soft_connect_layers.push_back( { gPTAP_PDDD, { gDN_LP }, gPTAP_PDDD_CONT } );
+soft_connect_layers.push_back( { gPTAP_PDDD, { gPSUB }, gPTAP_PDDD_CONT } );
+soft_connect_layers.push_back( { gPTAP_PDDD, { gVNPN_BASE }, gPTAP_PDDD_CONT } );
+
+gSUB_UNDER_1i = aDNWELL or aNWELL;
+gSUB_UNDER = enclosing( gSUB_UNDER_1i, gVNPN_DEV );    
+soft_connect_layers.push_back( { gPSUB, { gSUB_UNDER }, include_touch = EDGE } );    
+soft_connect_layers.push_back( { gDN_SUB, { aDNWELL } } );
+soft_connect_layers.push_back( { gNTAP_NDDD, { gLDMNDRN_10P0 }, gNTAP_NDDD_CONT } );
+soft_connect_layers.push_back( { gPTAP_PDDD, { gLDMPDRN_10P0 }, gPTAP_PDDD_CONT } );
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   soft_connect_layers.push_back( { gDIFF_CONT, { gNSD } } );
+   soft_connect_layers.push_back( { gDIFF_CONT, { gPSD } } );
+   soft_connect_layers.push_back( { gDIFF_CONT, { gSAB_NDRN } } );
+   soft_connect_layers.push_back( { gDIFF_CONT, { gSAB_NSRC } } );
+   soft_connect_layers.push_back( { gDIFF_CONT, { gSAB_PDRN } } );
+   soft_connect_layers.push_back( { gDIFF_CONT, { gSAB_PSRC } } );
+   soft_connect_layers.push_back( { gDIFF_CONT, { gLDMPSRC_10P0 } } );
+   soft_connect_layers.push_back( { gDIFF_CONT, { gLDMNSRC_10P0 } } );
+#endif
+
+
+
+
+
+create_port_text_items.push_back( { gGPLY, tPOLY2_TEXT } );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gGPLY }, gGPLY }} );
+attach("tPOLY2_TEXT", gGPLY, tPOLY2_TEXT);
+create_port_text_items.push_back( { gM1_NODEV, tMETAL1_TEXT } );
+CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM1_NODEV }, gM1_NODEV }} );
+attach("tMETAL1_TEXT", gM1_NODEV, tMETAL1_TEXT);
+#ifdef d_BEOL_1P2M
+   create_port_text_items.push_back( { gM2_NODEV, tMETAL2_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV }, gM2_NODEV }} );
+   attach("tMETAL2_TEXT", gM2_NODEV, tMETAL2_TEXT);
+#endif
+#ifdef d_BEOL_1P3M
+   create_port_text_items.push_back( { gM2_NODEV, tMETAL2_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV }, gM2_NODEV }} );
+   attach("tMETAL2_TEXT", gM2_NODEV, tMETAL2_TEXT);
+   create_port_text_items.push_back( { gM3_NODEV, tMETAL3_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV }, gM3_NODEV }} );
+   attach("tMETAL3_TEXT", gM3_NODEV, tMETAL3_TEXT);
+   #ifdef d_MIM_OPTION_A
+      create_port_text_items.push_back( { gM2_MIMDEV, tMETAL2_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV }, gM2_MIMDEV }} );
+      attach("tMETAL2_TEXT", gM2_MIMDEV, tMETAL2_TEXT);
+      create_port_text_items.push_back( { gM3_FTDEV, tMETAL3_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV }, gM3_FTDEV }} );
+      attach("tMETAL3_TEXT", gM3_FTDEV, tMETAL3_TEXT);
+   #endif
+#endif
+#ifdef d_BEOL_1P4M
+   create_port_text_items.push_back( { gM2_NODEV, tMETAL2_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV }, gM2_NODEV }} );
+   attach("tMETAL2_TEXT", gM2_NODEV, tMETAL2_TEXT);
+   create_port_text_items.push_back( { gM3_NODEV, tMETAL3_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV }, gM3_NODEV }} );
+   attach("tMETAL3_TEXT", gM3_NODEV, tMETAL3_TEXT);
+   create_port_text_items.push_back( { gM4_NODEV, tMETAL4_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV }, gM4_NODEV }} );
+   attach("tMETAL4_TEXT", gM4_NODEV, tMETAL4_TEXT);
+   #ifdef d_MIM_OPTION_A
+      create_port_text_items.push_back( { gM2_MIMDEV, tMETAL2_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV }, gM2_MIMDEV }} );
+      attach("tMETAL2_TEXT", gM2_MIMDEV, tMETAL2_TEXT);
+      create_port_text_items.push_back( { gM3_FTDEV, tMETAL3_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV }, gM3_FTDEV }} );
+      attach("tMETAL3_TEXT", gM3_FTDEV, tMETAL3_TEXT);
+   #else
+      create_port_text_items.push_back( { gM3_MIMDEV_OPT_B, tMETAL3_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_MIMDEV_OPT_B }, gM3_MIMDEV_OPT_B }} );
+      attach("tMETAL3_TEXT", gM3_MIMDEV_OPT_B, tMETAL3_TEXT);
+      create_port_text_items.push_back( { gM4_FTDEV, tMETAL4_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_FTDEV }, gM4_FTDEV }} );
+      attach("tMETAL4_TEXT", gM4_FTDEV, tMETAL4_TEXT);
+   #endif
+#endif
+#ifdef d_BEOL_1P5M
+   create_port_text_items.push_back( { gM2_NODEV, tMETAL2_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV }, gM2_NODEV }} );
+   attach("tMETAL2_TEXT", gM2_NODEV, tMETAL2_TEXT);
+   create_port_text_items.push_back( { gM3_NODEV, tMETAL3_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV }, gM3_NODEV }} );
+   attach("tMETAL3_TEXT", gM3_NODEV, tMETAL3_TEXT);
+   create_port_text_items.push_back( { gM4_NODEV, tMETAL4_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV }, gM4_NODEV }} );
+   attach("tMETAL4_TEXT", gM4_NODEV, tMETAL4_TEXT);
+   create_port_text_items.push_back( { gM5_NODEV, tMETAL5_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_NODEV }, gM5_NODEV }} );
+   attach("tMETAL5_TEXT", gM5_NODEV, tMETAL5_TEXT);
+   #ifdef d_MIM_OPTION_A
+      create_port_text_items.push_back( { gM2_MIMDEV, tMETAL2_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV }, gM2_MIMDEV }} );
+      attach("tMETAL2_TEXT", gM2_MIMDEV, tMETAL2_TEXT);
+      create_port_text_items.push_back( { gM3_FTDEV, tMETAL3_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV }, gM3_FTDEV }} );
+      attach("tMETAL3_TEXT", gM3_FTDEV, tMETAL3_TEXT);
+   #else
+      create_port_text_items.push_back( { gM4_MIMDEV_OPT_B, tMETAL4_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_MIMDEV_OPT_B }, gM4_MIMDEV_OPT_B }} );
+      attach("tMETAL4_TEXT", gM4_MIMDEV_OPT_B, tMETAL4_TEXT);
+      create_port_text_items.push_back( { gM5_FTDEV, tMETAL5_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_FTDEV }, gM5_FTDEV }} );
+      attach("tMETAL5_TEXT", gM5_FTDEV, tMETAL5_TEXT);
+   #endif
+#endif
+#ifdef d_BEOL_1P6M
+   create_port_text_items.push_back( { gM2_NODEV, tMETAL2_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_NODEV }, gM2_NODEV }} );
+   attach("tMETAL2_TEXT", gM2_NODEV, tMETAL2_TEXT);
+   create_port_text_items.push_back( { gM3_NODEV, tMETAL3_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_NODEV }, gM3_NODEV }} );
+   attach("tMETAL3_TEXT", gM3_NODEV, tMETAL3_TEXT);
+   create_port_text_items.push_back( { gM4_NODEV, tMETAL4_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM4_NODEV }, gM4_NODEV }} );
+   attach("tMETAL4_TEXT", gM4_NODEV, tMETAL4_TEXT);
+   create_port_text_items.push_back( { gM5_NODEV, tMETAL5_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_NODEV }, gM5_NODEV }} );
+   attach("tMETAL5_TEXT", gM5_NODEV, tMETAL5_TEXT);
+   create_port_text_items.push_back( { gM6_NODEV, tMETAL6_TEXT } );
+   CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_NODEV }, gM6_NODEV }} );
+   attach("tMETAL6_TEXT", gM6_NODEV, tMETAL6_TEXT);
+   #ifdef d_MIM_OPTION_A
+      create_port_text_items.push_back( { gM2_MIMDEV, tMETAL2_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM2_MIMDEV }, gM2_MIMDEV }} );
+      attach("tMETAL2_TEXT", gM2_MIMDEV, tMETAL2_TEXT);
+      create_port_text_items.push_back( { gM3_FTDEV, tMETAL3_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM3_FTDEV }, gM3_FTDEV }} );
+      attach("tMETAL3_TEXT", gM3_FTDEV, tMETAL3_TEXT);
+   #else
+      create_port_text_items.push_back( { gM5_MIMDEV_OPT_B, tMETAL5_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM5_MIMDEV_OPT_B }, gM5_MIMDEV_OPT_B }} );
+      attach("tMETAL5_TEXT", gM5_MIMDEV_OPT_B, tMETAL5_TEXT);
+      create_port_text_items.push_back( { gM6_FTDEV, tMETAL6_TEXT } );
+      CONNECT_DB = incremental_connect( CONNECT_DB, {{{ gM6_FTDEV }, gM6_FTDEV }} );
+      attach("tMETAL6_TEXT", gM6_FTDEV, tMETAL6_TEXT);
+   #endif
+#endif
+text_net_items = collect_text_net_items( attach_text_net_items, connect_text_net_items, presort_text_net_items );
+if (!text_net_items.empty()) {
+    CONNECT_DB = text_net( CONNECT_DB, text_layer_items = text_net_items, use_text = use_text_override, attach_text = attach_text_override, opens = opens_override, merge_open_net_names = merge_open_net_names_items, report_errors = report_errors_text_override, rename_open_nets = KEEP_ONE );
+}
+if (!soft_connect_layers.empty()) {
+   CONNECT_DB = soft_connect( CONNECT_DB, soft_connect_layers, conflict_resolution = TRAPEZOID_COUNT );
+}
+SOFTCHK_gPSUB_LOWER @= { @ "SOFTCHK_gPSUB_LOWER";
+    soft_connect_check( CONNECT_DB, gPSUB, LOWER );
+}
+record_softchk(SOFTCHK_gPSUB_LOWER, "SOFTCHK_gPSUB_LOWER");
+SOFTCHK_gPURENWELL_LOWER @= { @ "SOFTCHK_gPURENWELL_LOWER";
+    soft_connect_check( CONNECT_DB, gPURENWELL, LOWER );
+}
+record_softchk(SOFTCHK_gPURENWELL_LOWER, "SOFTCHK_gPURENWELL_LOWER");
+SOFTCHK_gVPNP_BASE_LOWER @= { @ "SOFTCHK_gVPNP_BASE_LOWER";
+    soft_connect_check( CONNECT_DB, gVPNP_BASE, LOWER );
+}
+record_softchk(SOFTCHK_gVPNP_BASE_LOWER, "SOFTCHK_gVPNP_BASE_LOWER");
+SOFTCHK_gDN_SUB_LOWER @= { @ "SOFTCHK_gDN_SUB_LOWER";
+    soft_connect_check( CONNECT_DB, gDN_SUB, LOWER );
+}
+record_softchk(SOFTCHK_gDN_SUB_LOWER, "SOFTCHK_gDN_SUB_LOWER");
+SOFTCHK_gVNPN_COL_LOWER @= { @ "SOFTCHK_gVNPN_COL_LOWER";
+    soft_connect_check( CONNECT_DB, gVNPN_COL, LOWER );
+}
+record_softchk(SOFTCHK_gVNPN_COL_LOWER, "SOFTCHK_gVNPN_COL_LOWER");
+SOFTCHK_gDN_LP_LOWER @= { @ "SOFTCHK_gDN_LP_LOWER";
+    soft_connect_check( CONNECT_DB, gDN_LP, LOWER );
+}
+record_softchk(SOFTCHK_gDN_LP_LOWER, "SOFTCHK_gDN_LP_LOWER");
+SOFTCHK_gPSUB_LOWER @= { @ "SOFTCHK_gPSUB_LOWER";
+    soft_connect_check( CONNECT_DB, gPSUB, LOWER );
+}
+record_softchk(SOFTCHK_gPSUB_LOWER, "SOFTCHK_gPSUB_LOWER");
+SOFTCHK_gVNPN_BASE_LOWER @= { @ "SOFTCHK_gVNPN_BASE_LOWER";
+    soft_connect_check( CONNECT_DB, gVNPN_BASE, LOWER );
+}
+record_softchk(SOFTCHK_gVNPN_BASE_LOWER, "SOFTCHK_gVNPN_BASE_LOWER");
+SOFTCHK_gSUB_UNDER_LOWER @= { @ "SOFTCHK_gSUB_UNDER_LOWER";
+    soft_connect_check( CONNECT_DB, gSUB_UNDER, LOWER );
+}
+record_softchk(SOFTCHK_gSUB_UNDER_LOWER, "SOFTCHK_gSUB_UNDER_LOWER");
+SOFTCHK_gLDMNDRN_10P0_LOWER @= { @ "SOFTCHK_gLDMNDRN_10P0_LOWER";
+    soft_connect_check( CONNECT_DB, gLDMNDRN_10P0, LOWER );
+}
+record_softchk(SOFTCHK_gLDMNDRN_10P0_LOWER, "SOFTCHK_gLDMNDRN_10P0_LOWER");
+SOFTCHK_gLDMPDRN_10P0_LOWER @= { @ "SOFTCHK_gLDMPDRN_10P0_LOWER";
+    soft_connect_check( CONNECT_DB, gLDMPDRN_10P0, LOWER );
+}
+record_softchk(SOFTCHK_gLDMPDRN_10P0_LOWER, "SOFTCHK_gLDMPDRN_10P0_LOWER");
+SOFTCHK_aDNWELL_ALL @= { @ "SOFTCHK_aDNWELL_ALL";
+    soft_connect_check( CONNECT_DB, aDNWELL, ALL );
+}
+record_softchk(SOFTCHK_aDNWELL_ALL, "SOFTCHK_aDNWELL_ALL");
+SOFTCHK_gSD_SHIFT_1_MOS_ALL @= { @ "SOFTCHK_gSD_SHIFT_1_MOS_ALL";
+    soft_connect_check( CONNECT_DB, gSD_SHIFT_1_MOS, ALL );
+}
+record_softchk(SOFTCHK_gSD_SHIFT_1_MOS_ALL, "SOFTCHK_gSD_SHIFT_1_MOS_ALL");
+SOFTCHK_gSD_SHIFT_2_MOS_ALL @= { @ "SOFTCHK_gSD_SHIFT_2_MOS_ALL";
+    soft_connect_check( CONNECT_DB, gSD_SHIFT_2_MOS, ALL );
+}
+record_softchk(SOFTCHK_gSD_SHIFT_2_MOS_ALL, "SOFTCHK_gSD_SHIFT_2_MOS_ALL");
+#ifdef d_MOS_NF_BY_COUNT
+   SOFTCHK_gSD_SHIFT_2_MOS_LOGIC_ALL @= { @ "SOFTCHK_gSD_SHIFT_2_MOS_LOGIC_ALL";
+       soft_connect_check( CONNECT_DB, gSD_SHIFT_2_MOS_LOGIC, ALL );
+   }
+   record_softchk(SOFTCHK_gSD_SHIFT_2_MOS_LOGIC_ALL, "SOFTCHK_gSD_SHIFT_2_MOS_LOGIC_ALL");
+#endif
+#ifdef d_MOS_NF_BY_COUNT
+   SOFTCHK_gSD_SHIFT_1_MOS_LOGIC_ALL @= { @ "SOFTCHK_gSD_SHIFT_1_MOS_LOGIC_ALL";
+       soft_connect_check( CONNECT_DB, gSD_SHIFT_1_MOS_LOGIC, ALL );
+   }
+   record_softchk(SOFTCHK_gSD_SHIFT_1_MOS_LOGIC_ALL, "SOFTCHK_gSD_SHIFT_1_MOS_LOGIC_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gLDMPSRC_10P0_ALL @= { @ "SOFTCHK_gLDMPSRC_10P0_ALL";
+       soft_connect_check( CONNECT_DB, gLDMPSRC_10P0, ALL );
+   }
+   record_softchk(SOFTCHK_gLDMPSRC_10P0_ALL, "SOFTCHK_gLDMPSRC_10P0_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gSAB_PDRN_ALL @= { @ "SOFTCHK_gSAB_PDRN_ALL";
+       soft_connect_check( CONNECT_DB, gSAB_PDRN, ALL );
+   }
+   record_softchk(SOFTCHK_gSAB_PDRN_ALL, "SOFTCHK_gSAB_PDRN_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gNTAP_ALL @= { @ "SOFTCHK_gNTAP_ALL";
+       soft_connect_check( CONNECT_DB, gNTAP, ALL );
+   }
+   record_softchk(SOFTCHK_gNTAP_ALL, "SOFTCHK_gNTAP_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gPSD_ALL @= { @ "SOFTCHK_gPSD_ALL";
+       soft_connect_check( CONNECT_DB, gPSD, ALL );
+   }
+   record_softchk(SOFTCHK_gPSD_ALL, "SOFTCHK_gPSD_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gNTAP_NDDD_ALL @= { @ "SOFTCHK_gNTAP_NDDD_ALL";
+       soft_connect_check( CONNECT_DB, gNTAP_NDDD, ALL );
+   }
+   record_softchk(SOFTCHK_gNTAP_NDDD_ALL, "SOFTCHK_gNTAP_NDDD_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gPTAP_PDDD_ALL @= { @ "SOFTCHK_gPTAP_PDDD_ALL";
+       soft_connect_check( CONNECT_DB, gPTAP_PDDD, ALL );
+   }
+   record_softchk(SOFTCHK_gPTAP_PDDD_ALL, "SOFTCHK_gPTAP_PDDD_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gPMOSCAP_PSD_B_ALL @= { @ "SOFTCHK_gPMOSCAP_PSD_B_ALL";
+       soft_connect_check( CONNECT_DB, gPMOSCAP_PSD_B, ALL );
+   }
+   record_softchk(SOFTCHK_gPMOSCAP_PSD_B_ALL, "SOFTCHK_gPMOSCAP_PSD_B_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gSAB_NSRC_ALL @= { @ "SOFTCHK_gSAB_NSRC_ALL";
+       soft_connect_check( CONNECT_DB, gSAB_NSRC, ALL );
+   }
+   record_softchk(SOFTCHK_gSAB_NSRC_ALL, "SOFTCHK_gSAB_NSRC_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gPTAP_ALL @= { @ "SOFTCHK_gPTAP_ALL";
+       soft_connect_check( CONNECT_DB, gPTAP, ALL );
+   }
+   record_softchk(SOFTCHK_gPTAP_ALL, "SOFTCHK_gPTAP_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gSAB_PSRC_ALL @= { @ "SOFTCHK_gSAB_PSRC_ALL";
+       soft_connect_check( CONNECT_DB, gSAB_PSRC, ALL );
+   }
+   record_softchk(SOFTCHK_gSAB_PSRC_ALL, "SOFTCHK_gSAB_PSRC_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gNMOSCAP_NSD_B_ALL @= { @ "SOFTCHK_gNMOSCAP_NSD_B_ALL";
+       soft_connect_check( CONNECT_DB, gNMOSCAP_NSD_B, ALL );
+   }
+   record_softchk(SOFTCHK_gNMOSCAP_NSD_B_ALL, "SOFTCHK_gNMOSCAP_NSD_B_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gNSD_ALL @= { @ "SOFTCHK_gNSD_ALL";
+       soft_connect_check( CONNECT_DB, gNSD, ALL );
+   }
+   record_softchk(SOFTCHK_gNSD_ALL, "SOFTCHK_gNSD_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gSAB_NDRN_ALL @= { @ "SOFTCHK_gSAB_NDRN_ALL";
+       soft_connect_check( CONNECT_DB, gSAB_NDRN, ALL );
+   }
+   record_softchk(SOFTCHK_gSAB_NDRN_ALL, "SOFTCHK_gSAB_NDRN_ALL");
+#endif
+#ifdef d_CONNECT_THRU_DIFF_CHECK
+   SOFTCHK_gLDMNSRC_10P0_ALL @= { @ "SOFTCHK_gLDMNSRC_10P0_ALL";
+       soft_connect_check( CONNECT_DB, gLDMNSRC_10P0, ALL );
+   }
+   record_softchk(SOFTCHK_gLDMNSRC_10P0_ALL, "SOFTCHK_gLDMNSRC_10P0_ALL");
+#endif
+dump_softchk_violations();
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+gACTIVE = copy( aCOMP, ancestry = true );
+
+
+
+g_MOSCAP_EXCL_LAY_24i = aHSR or aESD;
+g_MOSCAP_EXCL_LAY_23i = g_MOSCAP_EXCL_LAY_24i or aSAB;
+g_MOSCAP_EXCL_LAY_22i = g_MOSCAP_EXCL_LAY_23i or aFUSEWINDOW;
+g_MOSCAP_EXCL_LAY_21i = g_MOSCAP_EXCL_LAY_22i or aPOLYFUSE;
+g_MOSCAP_EXCL_LAY_20i = g_MOSCAP_EXCL_LAY_21i or aRES_MK;
+g_MOSCAP_EXCL_LAY_19i = g_MOSCAP_EXCL_LAY_20i or aLVS_BJT;
+g_MOSCAP_EXCL_LAY_18i = g_MOSCAP_EXCL_LAY_19i or aNAT;
+g_MOSCAP_EXCL_LAY_17i = g_MOSCAP_EXCL_LAY_18i or aESD_MK;
+g_MOSCAP_EXCL_LAY_16i = g_MOSCAP_EXCL_LAY_17i or aEFUSE_MK;
+g_MOSCAP_EXCL_LAY_15i = g_MOSCAP_EXCL_LAY_16i or aMVNSD;
+g_MOSCAP_EXCL_LAY_14i = g_MOSCAP_EXCL_LAY_15i or aMVPSD;
+g_MOSCAP_EXCL_LAY_13i = g_MOSCAP_EXCL_LAY_14i or aLDMOS;
+g_MOSCAP_EXCL_LAY = g_MOSCAP_EXCL_LAY_13i or aSCHOTTKY_DIODE;
+gNMOSCAP_3P3_B_DEV_7i = gPOLY_MOD and aNPLUS;
+gNMOSCAP_3P3_B_DEV_6i = gNMOSCAP_3P3_B_DEV_7i and aNWELL;
+gNMOSCAP_3P3_B_DEV_5i = gNMOSCAP_3P3_B_DEV_6i inside aMOS_CAP_MK;
+gNMOSCAP_3P3_B_DEV_4i = gNMOSCAP_3P3_B_DEV_5i not aDNWELL;
+gNMOSCAP_3P3_B_DEV_3i = gNMOSCAP_3P3_B_DEV_4i not aLVPWELL;
+gNMOSCAP_3P3_B_DEV_2i = gNMOSCAP_3P3_B_DEV_3i not aDUALGATE;
+gNMOSCAP_3P3_B_DEV_1i = gNMOSCAP_3P3_B_DEV_2i not aV5_XTOR;
+gNMOSCAP_3P3_B_DEV = gNMOSCAP_3P3_B_DEV_1i not g_MOSCAP_EXCL_LAY;
+gNMOSCAP_6P0_B_DEV_6i = gPOLY_MOD and aNPLUS;
+gNMOSCAP_6P0_B_DEV_5i = gNMOSCAP_6P0_B_DEV_6i and aDUALGATE;
+gNMOSCAP_6P0_B_DEV_4i = gNMOSCAP_6P0_B_DEV_5i and aNWELL;
+gNMOSCAP_6P0_B_DEV_3i = gNMOSCAP_6P0_B_DEV_4i inside aMOS_CAP_MK;
+gNMOSCAP_6P0_B_DEV_2i = gNMOSCAP_6P0_B_DEV_3i not aDNWELL;
+gNMOSCAP_6P0_B_DEV_1i = gNMOSCAP_6P0_B_DEV_2i not aLVPWELL;
+gNMOSCAP_6P0_B_DEV = gNMOSCAP_6P0_B_DEV_1i not g_MOSCAP_EXCL_LAY;
+gNMOSCAP_NW_1i = gNMOSCAP_3P3_B_DEV or gNMOSCAP_6P0_B_DEV;
+gNMOSCAP_NW = enclosing( aNWELL, gNMOSCAP_NW_1i );
+
+        
+    gSD_NEIG_GATE_SAME_NET_m2_1i = interacting( gMFACT_SD, gGATE_ASYM, == 2 );
+gSD_NEIG_GATE_SAME_NET_m2 = interacting( gSD_NEIG_GATE_SAME_NET_m2_1i, gGATE_ASYM, == 1, connect_sequence = CONNECT_DB, count_by = NET );
+
+                        
+            gSD_SHIFT_1_NEIG_SD_SAME_NET_m2_1i = external2( gSD_SHIFT_1_MOS, gSD_SHIFT_2_MOS, <= 0, connect_sequence = CONNECT_DB, connectivity = SAME_NET, edge_containment = OUTSIDE, extension = NONE, intersecting = {  }, look_thru = NOT_ADJACENT, orientation = { PARALLEL }, projection_filter = MUTUAL_NON_ORTHOGONAL, projection_mode = ASYMMETRIC, relational = { OVERLAP }, relational_expand_direction = INSIDE );
+gSD_SHIFT_1_NEIG_SD_SAME_NET_m2 = interacting( gSD_SHIFT_1_MOS, gSD_SHIFT_1_NEIG_SD_SAME_NET_m2_1i );
+
+    gNF_MARK_0_m2 = interacting( gSD_NEIG_GATE_SAME_NET_m2, gSD_SHIFT_1_NEIG_SD_SAME_NET_m2 );
+
+                        gNF_BREAK_SD_CAND_m2 = interacting( gSD_SHIFT_0_2_m2, gGATE_ASYM, == 2 );
+gNF_BREAK_GATE_W_EDGE_m2 = gGATE_ASYM coincident_outside_edge gNF_BREAK_SD_CAND_m2;
+gNF_BREAK_GATE_W_EDGE_EXP_m2 = edge_size( gNF_BREAK_GATE_W_EDGE_m2, outside = 0.001 );
+
+        gNF_BREAK_EXTENT_W_EDGE_m2 = polygon_extents( gNF_BREAK_GATE_W_EDGE_EXP_m2, inside_layer = gNF_BREAK_SD_CAND_m2 );
+gNF_EXTENT_W_EDGE_m2 = gNF_BREAK_EXTENT_W_EDGE_m2 or gSD_SHIFT_0_1_m2;
+gNMOS_ASYM_BODY_LAYER_2i = interacting( aNPLUS, aCOMP );
+gNMOS_ASYM_BODY_LAYER_1i = interacting( gNMOS_ASYM_BODY_LAYER_2i, aESD_MK );
+gNMOS_ASYM_BODY_LAYER = interacting( gNMOS_ASYM_BODY_LAYER_1i, aSAB );
+gPMOS_ASYM_BODY_LAYER_2i = interacting( aPPLUS, aCOMP );
+gPMOS_ASYM_BODY_LAYER_1i = interacting( gPMOS_ASYM_BODY_LAYER_2i, aESD_MK );
+gPMOS_ASYM_BODY_LAYER = interacting( gPMOS_ASYM_BODY_LAYER_1i, aSAB );
+gMOS_ASYM_BODY_LAYER = gNMOS_ASYM_BODY_LAYER or gPMOS_ASYM_BODY_LAYER;
+gNF_GATE_L_EDGE_m2 = gGATE_ASYM coincident_inside_edge gMOS_ASYM_BODY_LAYER;
+gNF_GATE_1_EDGE_EXP_m2 = edge_size( gNF_GATE_L_EDGE_m2, outside_by_factor = 0.1 );
+
+    gNF_GATE_1_EDGE_EXP_GATE_m2 = gNF_GATE_1_EDGE_EXP_m2 or gGATE_ASYM;
+gNF_BREAK_GATE_L_EDGE_m2 = gNF_GATE_1_EDGE_EXP_GATE_m2 outside_touching_edge gNF_EXTENT_W_EDGE_m2;
+gNF_BREAK_GATE_L_EDGE_EXP_m2 = edge_size( gNF_BREAK_GATE_L_EDGE_m2, inside = 0.001 );
+gNF_BREAK_GATE_L_EDGE_EXP_IN_m2 = gNF_EXTENT_W_EDGE_m2 or gNF_BREAK_GATE_L_EDGE_EXP_m2;
+
+        gNF_BREAK_EXTENT_L_EDGE_m2 = polygon_extents( gNF_BREAK_GATE_L_EDGE_EXP_IN_m2 );
+gNF_L_NOT_m2_1i = gNF_BREAK_EXTENT_L_EDGE_m2 not gNF_BREAK_GATE_L_EDGE_EXP_IN_m2;
+gNF_L_NOT_m2 = not_rectangles( gNF_L_NOT_m2_1i );
+gNF_W_NOT_m2 = gNF_BREAK_EXTENT_W_EDGE_m2 not gNF_BREAK_SD_CAND_m2;
+
+    gNF_BREAK_SD_ALL_m2 = gNF_L_NOT_m2 or gNF_W_NOT_m2;
+gNF_MARK_1_m2 = not_interacting( gNF_MARK_0_m2, gNF_BREAK_SD_ALL_m2 );
+gNF_MARK_MOS = gGATE_ASYM or gNF_MARK_1_m2;
+gEFF_DEV_SEED = copy( gNF_MARK_MOS, ancestry = true );
+
+gVIRTUAL_SHARE_NSD0_2i = gEFF_DEV_SEED coincident_edge gNSD_ALL;
+gVIRTUAL_SHARE_NSD0_1i = edge_size( gVIRTUAL_SHARE_NSD0_2i, inside = 0.001 );
+gVIRTUAL_SHARE_NSD0 = gVIRTUAL_SHARE_NSD0_1i and gSAB_NGATE;
+gVIRTUAL_SHARE_PSD0_2i = gEFF_DEV_SEED coincident_edge gPSD_ALL;
+gVIRTUAL_SHARE_PSD0_1i = edge_size( gVIRTUAL_SHARE_PSD0_2i, inside = 0.001 );
+gVIRTUAL_SHARE_PSD0 = gVIRTUAL_SHARE_PSD0_1i and gSAB_PGATE;
+gSHARED_NSD = outside_touching( gNSD_ALL, gEFF_DEV_SEED, == 2 );
+gSHARED_PSD = outside_touching( gPSD_ALL, gEFF_DEV_SEED, == 2 );
+gVIRTUAL_SHARE_NSD_1i = not_interacting( gEFF_DEV_SEED, gSHARED_NSD );
+gVIRTUAL_SHARE_NSD = interacting( gVIRTUAL_SHARE_NSD0, gVIRTUAL_SHARE_NSD_1i );
+gVIRTUAL_SHARE_PSD_1i = not_interacting( gEFF_DEV_SEED, gSHARED_PSD );
+gVIRTUAL_SHARE_PSD = interacting( gVIRTUAL_SHARE_PSD0, gVIRTUAL_SHARE_PSD_1i );
+gEXT_SHARE_NSD = gSHARED_NSD or gVIRTUAL_SHARE_NSD;
+gEXT_SHARE_PSD = gSHARED_PSD or gVIRTUAL_SHARE_PSD;
+gVIRTUAL_SHARE_NSD_ALL_1i = interacting( gVIRTUAL_SHARE_NSD0, gEFF_DEV_SEED );
+gVIRTUAL_SHARE_NSD_ALL_2i = gEXT_SHARE_NSD not aSAB;
+gVIRTUAL_SHARE_NSD_ALL = not_outside_touching( gVIRTUAL_SHARE_NSD_ALL_1i, gVIRTUAL_SHARE_NSD_ALL_2i );
+gEXT_SHARE_NSD_S_3i = gSHARED_NSD or gVIRTUAL_SHARE_NSD;
+gEXT_SHARE_NSD_S_2i = gEXT_SHARE_NSD_S_3i not aSAB;
+gEXT_SHARE_NSD_S_1i = interacting( gEXT_SHARE_NSD_S_2i, aLVS_SOURCE );
+gEXT_SHARE_NSD_S = gEXT_SHARE_NSD_S_1i or gVIRTUAL_SHARE_NSD_ALL;
+gEXT_SHARE_NSD_D_3i = gSHARED_NSD or gVIRTUAL_SHARE_NSD;
+gEXT_SHARE_NSD_D_2i = gEXT_SHARE_NSD_D_3i not aSAB;
+gEXT_SHARE_NSD_D_1i = not_interacting( gEXT_SHARE_NSD_D_2i, aLVS_SOURCE );
+gEXT_SHARE_NSD_D = gEXT_SHARE_NSD_D_1i or gVIRTUAL_SHARE_NSD_ALL;
+gVIRTUAL_SHARE_PSD_ALL_1i = interacting( gVIRTUAL_SHARE_PSD0, gEFF_DEV_SEED );
+gVIRTUAL_SHARE_PSD_ALL_2i = gEXT_SHARE_PSD not aSAB;
+gVIRTUAL_SHARE_PSD_ALL = not_outside_touching( gVIRTUAL_SHARE_PSD_ALL_1i, gVIRTUAL_SHARE_PSD_ALL_2i );
+gEXT_SHARE_PSD_S_3i = gSHARED_PSD or gVIRTUAL_SHARE_PSD;
+gEXT_SHARE_PSD_S_2i = gEXT_SHARE_PSD_S_3i not aSAB;
+gEXT_SHARE_PSD_S_1i = interacting( gEXT_SHARE_PSD_S_2i, aLVS_SOURCE );
+gEXT_SHARE_PSD_S = gEXT_SHARE_PSD_S_1i or gVIRTUAL_SHARE_PSD_ALL;
+gEXT_SHARE_PSD_D_3i = gSHARED_PSD or gVIRTUAL_SHARE_PSD;
+gEXT_SHARE_PSD_D_2i = gEXT_SHARE_PSD_D_3i not aSAB;
+gEXT_SHARE_PSD_D_1i = not_interacting( gEXT_SHARE_PSD_D_2i, aLVS_SOURCE );
+gEXT_SHARE_PSD_D = gEXT_SHARE_PSD_D_1i or gVIRTUAL_SHARE_PSD_ALL;
+gNGATE_ASYM_SAB_3i = aCOMP and aNPLUS;
+gNGATE_ASYM_SAB_2i = interacting( gNGATE_ASYM_SAB_3i, aESD_MK );
+gNGATE_ASYM_SAB_1i = gNGATE_ASYM_SAB_2i not gMFACT_SD;
+gNGATE_ASYM_SAB = interacting( gNGATE_ASYM_SAB_1i, gSAB_NGATE );
+gPGATE_ASYM_SAB_3i = aCOMP and aPPLUS;
+gPGATE_ASYM_SAB_2i = interacting( gPGATE_ASYM_SAB_3i, aESD_MK );
+gPGATE_ASYM_SAB_1i = gPGATE_ASYM_SAB_2i not gMFACT_SD;
+gPGATE_ASYM_SAB = interacting( gPGATE_ASYM_SAB_1i, gSAB_PGATE );
+
+        gNF_EXTENT_SD_GATE_m2_1i = gNF_BREAK_SD_CAND_m2 or gGATE;
+gNF_EXTENT_SD_GATE_m2 = polygon_extents( gNF_EXTENT_SD_GATE_m2_1i );
+#ifdef d_MOS_NF_BY_COUNT
+   
+                 
+          gSD_NEIG_GATE_SAME_NET_m1_1i = interacting( gMFACT_SD_LOGIC, gGATE_LOGIC, == 2 );
+   gSD_NEIG_GATE_SAME_NET_m1 = interacting( gSD_NEIG_GATE_SAME_NET_m1_1i, gGATE_LOGIC, == 1, connect_sequence = CONNECT_DB, count_by = NET );
+   
+                                             
+                        gSD_SHIFT_1_NEIG_SD_SAME_NET_m1_1i = external2( gSD_SHIFT_1_MOS_LOGIC, gSD_SHIFT_2_MOS_LOGIC, <= 0, connect_sequence = CONNECT_DB, connectivity = SAME_NET, edge_containment = OUTSIDE, extension = NONE, intersecting = {  }, look_thru = NOT_ADJACENT, orientation = { PARALLEL }, projection_filter = MUTUAL_NON_ORTHOGONAL, projection_mode = ASYMMETRIC, relational = { OVERLAP }, relational_expand_direction = INSIDE );
+   gSD_SHIFT_1_NEIG_SD_SAME_NET_m1 = interacting( gSD_SHIFT_1_MOS_LOGIC, gSD_SHIFT_1_NEIG_SD_SAME_NET_m1_1i );
+   
+          gNF_MARK_0_m1 = interacting( gSD_NEIG_GATE_SAME_NET_m1, gSD_SHIFT_1_NEIG_SD_SAME_NET_m1 );
+   
+                                             gNF_BREAK_SD_CAND_m1 = interacting( gSD_SHIFT_0_2_m1, gGATE_LOGIC, == 2 );
+   gNF_BREAK_GATE_W_EDGE_m1 = gGATE_LOGIC coincident_outside_edge gNF_BREAK_SD_CAND_m1;
+   gNF_BREAK_GATE_W_EDGE_EXP_m1 = edge_size( gNF_BREAK_GATE_W_EDGE_m1, outside = 0.001 );
+   
+                 gNF_BREAK_EXTENT_W_EDGE_m1 = polygon_extents( gNF_BREAK_GATE_W_EDGE_EXP_m1, inside_layer = gNF_BREAK_SD_CAND_m1 );
+   gNF_EXTENT_W_EDGE_m1 = gNF_BREAK_EXTENT_W_EDGE_m1 or gSD_SHIFT_0_1_m1;
+   gNMOS_LOGIC_BODY_LAYER_2i = interacting( aNPLUS, aCOMP );
+   gNMOS_LOGIC_BODY_LAYER_1i = not_interacting( gNMOS_LOGIC_BODY_LAYER_2i, aESD_MK );
+   gNMOS_LOGIC_BODY_LAYER = not_interacting( gNMOS_LOGIC_BODY_LAYER_1i, aSAB );
+   gPMOS_LOGIC_BODY_LAYER_2i = interacting( aPPLUS, aCOMP );
+   gPMOS_LOGIC_BODY_LAYER_1i = not_interacting( gPMOS_LOGIC_BODY_LAYER_2i, aESD_MK );
+   gPMOS_LOGIC_BODY_LAYER = not_interacting( gPMOS_LOGIC_BODY_LAYER_1i, aSAB );
+   gMOS_LOGIC_BODY_LAYER = gNMOS_LOGIC_BODY_LAYER or gPMOS_LOGIC_BODY_LAYER;
+   gNF_GATE_L_EDGE_m1 = gGATE_LOGIC coincident_inside_edge gMOS_LOGIC_BODY_LAYER;
+   gNF_GATE_1_EDGE_EXP_m1 = edge_size( gNF_GATE_L_EDGE_m1, outside_by_factor = 0.1 );
+   
+          gNF_GATE_1_EDGE_EXP_GATE_m1 = gNF_GATE_1_EDGE_EXP_m1 or gGATE_LOGIC;
+   gNF_BREAK_GATE_L_EDGE_m1 = gNF_GATE_1_EDGE_EXP_GATE_m1 outside_touching_edge gNF_EXTENT_W_EDGE_m1;
+   gNF_BREAK_GATE_L_EDGE_EXP_m1 = edge_size( gNF_BREAK_GATE_L_EDGE_m1, inside = 0.001 );
+   gNF_BREAK_GATE_L_EDGE_EXP_IN_m1 = gNF_EXTENT_W_EDGE_m1 or gNF_BREAK_GATE_L_EDGE_EXP_m1;
+   
+                 gNF_BREAK_EXTENT_L_EDGE_m1 = polygon_extents( gNF_BREAK_GATE_L_EDGE_EXP_IN_m1 );
+   gNF_L_NOT_m1_1i = gNF_BREAK_EXTENT_L_EDGE_m1 not gNF_BREAK_GATE_L_EDGE_EXP_IN_m1;
+   gNF_L_NOT_m1 = not_rectangles( gNF_L_NOT_m1_1i );
+   gNF_W_NOT_m1 = gNF_BREAK_EXTENT_W_EDGE_m1 not gNF_BREAK_SD_CAND_m1;
+   
+          gNF_BREAK_SD_ALL_m1 = gNF_L_NOT_m1 or gNF_W_NOT_m1;
+   gNF_MARK_1_m1 = not_interacting( gNF_MARK_0_m1, gNF_BREAK_SD_ALL_m1 );
+   gNF_MARK_MOS_LOGIC = gGATE_LOGIC or gNF_MARK_1_m1;
+   
+      gEFF_DEV_SEED_LOGIC = copy( gNF_MARK_MOS_LOGIC, ancestry = true );
+   gVIRTUAL_SHARE_NSD0_LOGIC_2i = gEFF_DEV_SEED_LOGIC coincident_edge gNSD_ALL;
+   gVIRTUAL_SHARE_NSD0_LOGIC_1i = edge_size( gVIRTUAL_SHARE_NSD0_LOGIC_2i, inside = 0.001 );
+   gVIRTUAL_SHARE_NSD0_LOGIC = gVIRTUAL_SHARE_NSD0_LOGIC_1i and gNGATE;
+   gVIRTUAL_SHARE_PSD0_LOGIC_2i = gEFF_DEV_SEED_LOGIC coincident_edge gPSD_ALL;
+   gVIRTUAL_SHARE_PSD0_LOGIC_1i = edge_size( gVIRTUAL_SHARE_PSD0_LOGIC_2i, inside = 0.001 );
+   gVIRTUAL_SHARE_PSD0_LOGIC = gVIRTUAL_SHARE_PSD0_LOGIC_1i and gPGATE;
+   gSHARED_NSD_LOGIC = outside_touching( gNSD_ALL, gEFF_DEV_SEED_LOGIC, == 2 );
+   gSHARED_PSD_LOGIC = outside_touching( gPSD_ALL, gEFF_DEV_SEED_LOGIC, == 2 );
+   gVIRTUAL_SHARE_NSD_LOGIC_1i = not_interacting( gEFF_DEV_SEED_LOGIC, gSHARED_NSD_LOGIC );
+   gVIRTUAL_SHARE_NSD_LOGIC = interacting( gVIRTUAL_SHARE_NSD0_LOGIC, gVIRTUAL_SHARE_NSD_LOGIC_1i );
+   gVIRTUAL_SHARE_PSD_LOGIC_1i = not_interacting( gEFF_DEV_SEED_LOGIC, gSHARED_PSD_LOGIC );
+   gVIRTUAL_SHARE_PSD_LOGIC = interacting( gVIRTUAL_SHARE_PSD0_LOGIC, gVIRTUAL_SHARE_PSD_LOGIC_1i );
+   gEXT_SHARE_NSD_LOGIC = gSHARED_NSD_LOGIC or gVIRTUAL_SHARE_NSD_LOGIC;
+   gEXT_SHARE_PSD_LOGIC = gSHARED_PSD_LOGIC or gVIRTUAL_SHARE_PSD_LOGIC;
+   gNGATE_LOGIC_4i = aCOMP and aNPLUS;
+   gNGATE_LOGIC_3i = interacting( gNGATE_LOGIC_4i, gNGATE );
+   gNGATE_LOGIC_2i = not_interacting( gNGATE_LOGIC_3i, aESD_MK );
+   gNGATE_LOGIC_1i = not_interacting( gNGATE_LOGIC_2i, aSAB );
+   gNGATE_LOGIC = gNGATE_LOGIC_1i not gMFACT_SD_LOGIC;
+   gPGATE_LOGIC_4i = aCOMP and aPPLUS;
+   gPGATE_LOGIC_3i = interacting( gPGATE_LOGIC_4i, gPGATE );
+   gPGATE_LOGIC_2i = not_interacting( gPGATE_LOGIC_3i, aESD_MK );
+   gPGATE_LOGIC_1i = not_interacting( gPGATE_LOGIC_2i, aSAB );
+   gPGATE_LOGIC = gPGATE_LOGIC_1i not gMFACT_SD_LOGIC;
+   
+                 gNF_EXTENT_SD_GATE_m1_1i = gNF_BREAK_SD_CAND_m1 or gGATE;
+   gNF_EXTENT_SD_GATE_m1 = polygon_extents( gNF_EXTENT_SD_GATE_m1_1i );
+#endif                                      
+
+
+
+#ifdef d_LVSRES_ALT_METHODOLOGY
+   gRM1_PROP = copy( gRM1_DEV, ancestry = true );
+   gRM1_OUT = copy( gRM1_TERM, ancestry = true );
+#endif
+#ifndef d_LVSRES_ALT_METHODOLOGY
+   gMET_TERM_ALL_SIDES_OUTSIDE_m16 = gMET_TERM_ALL_SIDES_1_m16 not gMET_AND_RES_MARK_1_m16;
+   gRM1_PROP = copy( gMET_AND_RES_MARK_1_m16, ancestry = true );
+#endif
+#ifdef d_BEOL_1P2M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_PROP = copy( gRM2_DEV, ancestry = true );
+      gRM2_OUT = copy( gRM2_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m15 = gMET_TERM_ALL_SIDES_1_m15 not gMET_AND_RES_MARK_1_m15;
+      gRM2_PROP = copy( gMET_AND_RES_MARK_1_m15, ancestry = true );
+   #endif
+#endif
+#ifdef d_BEOL_1P3M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_PROP = copy( gRM2_DEV, ancestry = true );
+      gRM2_OUT = copy( gRM2_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m14 = gMET_TERM_ALL_SIDES_1_m14 not gMET_AND_RES_MARK_1_m14;
+      gRM2_PROP = copy( gMET_AND_RES_MARK_1_m14, ancestry = true );
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM3_PROP = copy( gRM3_DEV, ancestry = true );
+      gRM3_OUT = copy( gRM3_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m13 = gMET_TERM_ALL_SIDES_1_m13 not gMET_AND_RES_MARK_1_m13;
+      gRM3_PROP = copy( gMET_AND_RES_MARK_1_m13, ancestry = true );
+   #endif
+#endif
+#ifdef d_BEOL_1P4M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_PROP = copy( gRM2_DEV, ancestry = true );
+      gRM2_OUT = copy( gRM2_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m12 = gMET_TERM_ALL_SIDES_1_m12 not gMET_AND_RES_MARK_1_m12;
+      gRM2_PROP = copy( gMET_AND_RES_MARK_1_m12, ancestry = true );
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM3_PROP = copy( gRM3_DEV, ancestry = true );
+      gRM3_OUT = copy( gRM3_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m11 = gMET_TERM_ALL_SIDES_1_m11 not gMET_AND_RES_MARK_1_m11;
+      gRM3_PROP = copy( gMET_AND_RES_MARK_1_m11, ancestry = true );
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM4_PROP = copy( gRM4_DEV, ancestry = true );
+      gRM4_OUT = copy( gRM4_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m10 = gMET_TERM_ALL_SIDES_1_m10 not gMET_AND_RES_MARK_1_m10;
+      gRM4_PROP = copy( gMET_AND_RES_MARK_1_m10, ancestry = true );
+   #endif
+#endif
+#ifdef d_BEOL_1P5M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_PROP = copy( gRM2_DEV, ancestry = true );
+      gRM2_OUT = copy( gRM2_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m9 = gMET_TERM_ALL_SIDES_1_m9 not gMET_AND_RES_MARK_1_m9;
+      gRM2_PROP = copy( gMET_AND_RES_MARK_1_m9, ancestry = true );
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM3_PROP = copy( gRM3_DEV, ancestry = true );
+      gRM3_OUT = copy( gRM3_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m8 = gMET_TERM_ALL_SIDES_1_m8 not gMET_AND_RES_MARK_1_m8;
+      gRM3_PROP = copy( gMET_AND_RES_MARK_1_m8, ancestry = true );
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM4_PROP = copy( gRM4_DEV, ancestry = true );
+      gRM4_OUT = copy( gRM4_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m7 = gMET_TERM_ALL_SIDES_1_m7 not gMET_AND_RES_MARK_1_m7;
+      gRM4_PROP = copy( gMET_AND_RES_MARK_1_m7, ancestry = true );
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM5_PROP = copy( gRM5_DEV, ancestry = true );
+      gRM5_OUT = copy( gRM5_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m6 = gMET_TERM_ALL_SIDES_1_m6 not gMET_AND_RES_MARK_1_m6;
+      gRM5_PROP = copy( gMET_AND_RES_MARK_1_m6, ancestry = true );
+   #endif
+#endif
+#ifdef d_BEOL_1P6M
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM2_PROP = copy( gRM2_DEV, ancestry = true );
+      gRM2_OUT = copy( gRM2_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m5 = gMET_TERM_ALL_SIDES_1_m5 not gMET_AND_RES_MARK_1_m5;
+      gRM2_PROP = copy( gMET_AND_RES_MARK_1_m5, ancestry = true );
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM3_PROP = copy( gRM3_DEV, ancestry = true );
+      gRM3_OUT = copy( gRM3_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m4 = gMET_TERM_ALL_SIDES_1_m4 not gMET_AND_RES_MARK_1_m4;
+      gRM3_PROP = copy( gMET_AND_RES_MARK_1_m4, ancestry = true );
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM4_PROP = copy( gRM4_DEV, ancestry = true );
+      gRM4_OUT = copy( gRM4_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m3 = gMET_TERM_ALL_SIDES_1_m3 not gMET_AND_RES_MARK_1_m3;
+      gRM4_PROP = copy( gMET_AND_RES_MARK_1_m3, ancestry = true );
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM5_PROP = copy( gRM5_DEV, ancestry = true );
+      gRM5_OUT = copy( gRM5_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m2 = gMET_TERM_ALL_SIDES_1_m2 not gMET_AND_RES_MARK_1_m2;
+      gRM5_PROP = copy( gMET_AND_RES_MARK_1_m2, ancestry = true );
+   #endif
+   #ifdef d_LVSRES_ALT_METHODOLOGY
+      gRM6_PROP = copy( gRM6_DEV, ancestry = true );
+      gRM6_OUT = copy( gRM6_TERM, ancestry = true );
+   #endif
+   #ifndef d_LVSRES_ALT_METHODOLOGY
+      gMET_TERM_ALL_SIDES_OUTSIDE_m1 = gMET_TERM_ALL_SIDES_1_m1 not gMET_AND_RES_MARK_1_m1;
+      gRM6_PROP = copy( gMET_AND_RES_MARK_1_m1, ancestry = true );
+   #endif
+#endif
+
+
+
+g_MOS_EXCL_LAY_26i = aHSR or aESD;
+g_MOS_EXCL_LAY_28i = aLVS_IO or aOTP_MK;
+g_MOS_EXCL_LAY_27i = aSAB not g_MOS_EXCL_LAY_28i;
+g_MOS_EXCL_LAY_25i = g_MOS_EXCL_LAY_26i or g_MOS_EXCL_LAY_27i;
+g_MOS_EXCL_LAY_24i = g_MOS_EXCL_LAY_25i or aFUSEWINDOW;
+g_MOS_EXCL_LAY_23i = g_MOS_EXCL_LAY_24i or aPOLYFUSE;
+g_MOS_EXCL_LAY_22i = g_MOS_EXCL_LAY_23i or aRES_MK;
+g_MOS_EXCL_LAY_21i = g_MOS_EXCL_LAY_22i or aLVS_BJT;
+g_MOS_EXCL_LAY_20i = g_MOS_EXCL_LAY_21i or aMOS_CAP_MK;
+g_MOS_EXCL_LAY_19i = g_MOS_EXCL_LAY_20i or aESD_MK;
+g_MOS_EXCL_LAY_18i = g_MOS_EXCL_LAY_19i or aEFUSE_MK;
+g_MOS_EXCL_LAY_17i = g_MOS_EXCL_LAY_18i or aLDMOS;
+g_MOS_EXCL_LAY_16i = g_MOS_EXCL_LAY_17i or aMVNSD;
+g_MOS_EXCL_LAY_15i = g_MOS_EXCL_LAY_16i or aMVPSD;
+g_MOS_EXCL_LAY = g_MOS_EXCL_LAY_15i or aSCHOTTKY_DIODE;
+#ifdef d_MOS_NF_BY_COUNT
+   
+      gNMOS_3P3_DEV_8i = gNGATE inside gPSUB_BULK;
+   gNMOS_3P3_DEV_7i = gNMOS_3P3_DEV_8i not aDNWELL;
+   gNMOS_3P3_DEV_6i = gNMOS_3P3_DEV_7i not aNWELL;
+   gNMOS_3P3_DEV_5i = gNMOS_3P3_DEV_6i not aNAT;
+   gNMOS_3P3_DEV_4i = gNMOS_3P3_DEV_5i not aDUALGATE;
+   gNMOS_3P3_DEV_3i = gNMOS_3P3_DEV_4i not aV5_XTOR;
+   gNMOS_3P3_DEV_2i = gNMOS_3P3_DEV_3i not g_MOS_EXCL_LAY;
+   gNMOS_3P3_DEV_1i = not_interacting( gNMOS_3P3_DEV_2i, aDEV_WF_MK );
+   gNMOS_3P3_DEV = interacting( gEFF_DEV_SEED_LOGIC, gNMOS_3P3_DEV_1i );
+   
+      gNMOS_3P3_DW_DEV_9i = gNGATE inside gDN_LP;
+   gNMOS_3P3_DW_DEV_8i = gNMOS_3P3_DW_DEV_9i and aDNWELL;
+   gNMOS_3P3_DW_DEV_7i = gNMOS_3P3_DW_DEV_8i and aLVPWELL;
+   gNMOS_3P3_DW_DEV_6i = gNMOS_3P3_DW_DEV_7i not aNWELL;
+   gNMOS_3P3_DW_DEV_5i = gNMOS_3P3_DW_DEV_6i not aNAT;
+   gNMOS_3P3_DW_DEV_4i = gNMOS_3P3_DW_DEV_5i not aDUALGATE;
+   gNMOS_3P3_DW_DEV_3i = gNMOS_3P3_DW_DEV_4i not aV5_XTOR;
+   gNMOS_3P3_DW_DEV_2i = gNMOS_3P3_DW_DEV_3i not g_MOS_EXCL_LAY;
+   gNMOS_3P3_DW_DEV_1i = not_interacting( gNMOS_3P3_DW_DEV_2i, aDEV_WF_MK );
+   gNMOS_3P3_DW_DEV = interacting( gEFF_DEV_SEED_LOGIC, gNMOS_3P3_DW_DEV_1i );
+   
+      gNMOS_6P0_DEV_8i = gNGATE inside gPSUB_BULK;
+   gNMOS_6P0_DEV_7i = gNMOS_6P0_DEV_8i and aDUALGATE;
+   gNMOS_6P0_DEV_6i = gNMOS_6P0_DEV_7i not aV5_XTOR;
+   gNMOS_6P0_DEV_5i = gNMOS_6P0_DEV_6i not aDNWELL;
+   gNMOS_6P0_DEV_4i = gNMOS_6P0_DEV_5i not aNWELL;
+   gNMOS_6P0_DEV_3i = gNMOS_6P0_DEV_4i not aNAT;
+   gNMOS_6P0_DEV_2i = gNMOS_6P0_DEV_3i not g_MOS_EXCL_LAY;
+   gNMOS_6P0_DEV_1i = not_interacting( gNMOS_6P0_DEV_2i, aDEV_WF_MK );
+   gNMOS_6P0_DEV = interacting( gEFF_DEV_SEED_LOGIC, gNMOS_6P0_DEV_1i );
+   
+      gNMOS_6P0_DW_DEV_9i = gNGATE inside gDN_LP;
+   gNMOS_6P0_DW_DEV_8i = gNMOS_6P0_DW_DEV_9i and aDNWELL;
+   gNMOS_6P0_DW_DEV_7i = gNMOS_6P0_DW_DEV_8i and aLVPWELL;
+   gNMOS_6P0_DW_DEV_6i = gNMOS_6P0_DW_DEV_7i and aDUALGATE;
+   gNMOS_6P0_DW_DEV_5i = gNMOS_6P0_DW_DEV_6i not aV5_XTOR;
+   gNMOS_6P0_DW_DEV_4i = gNMOS_6P0_DW_DEV_5i not aNWELL;
+   gNMOS_6P0_DW_DEV_3i = gNMOS_6P0_DW_DEV_4i not aNAT;
+   gNMOS_6P0_DW_DEV_2i = gNMOS_6P0_DW_DEV_3i not g_MOS_EXCL_LAY;
+   gNMOS_6P0_DW_DEV_1i = not_interacting( gNMOS_6P0_DW_DEV_2i, aDEV_WF_MK );
+   gNMOS_6P0_DW_DEV = interacting( gEFF_DEV_SEED_LOGIC, gNMOS_6P0_DW_DEV_1i );
+   
+      gNMOS_5P0_DEV_8i = gNGATE inside gPSUB_BULK;
+   gNMOS_5P0_DEV_7i = gNMOS_5P0_DEV_8i and aDUALGATE;
+   gNMOS_5P0_DEV_6i = gNMOS_5P0_DEV_7i and aV5_XTOR;
+   gNMOS_5P0_DEV_5i = gNMOS_5P0_DEV_6i not aDNWELL;
+   gNMOS_5P0_DEV_4i = gNMOS_5P0_DEV_5i not aNWELL;
+   gNMOS_5P0_DEV_3i = gNMOS_5P0_DEV_4i not aNAT;
+   gNMOS_5P0_DEV_2i = gNMOS_5P0_DEV_3i not g_MOS_EXCL_LAY;
+   gNMOS_5P0_DEV_1i = not_interacting( gNMOS_5P0_DEV_2i, aDEV_WF_MK );
+   gNMOS_5P0_DEV = interacting( gEFF_DEV_SEED_LOGIC, gNMOS_5P0_DEV_1i );
+   
+      gNMOS_5P0_DW_DEV_9i = gNGATE inside gDN_LP;
+   gNMOS_5P0_DW_DEV_8i = gNMOS_5P0_DW_DEV_9i and aDNWELL;
+   gNMOS_5P0_DW_DEV_7i = gNMOS_5P0_DW_DEV_8i and aLVPWELL;
+   gNMOS_5P0_DW_DEV_6i = gNMOS_5P0_DW_DEV_7i and aDUALGATE;
+   gNMOS_5P0_DW_DEV_5i = gNMOS_5P0_DW_DEV_6i and aV5_XTOR;
+   gNMOS_5P0_DW_DEV_4i = gNMOS_5P0_DW_DEV_5i not aNWELL;
+   gNMOS_5P0_DW_DEV_3i = gNMOS_5P0_DW_DEV_4i not aNAT;
+   gNMOS_5P0_DW_DEV_2i = gNMOS_5P0_DW_DEV_3i not g_MOS_EXCL_LAY;
+   gNMOS_5P0_DW_DEV_1i = not_interacting( gNMOS_5P0_DW_DEV_2i, aDEV_WF_MK );
+   gNMOS_5P0_DW_DEV = interacting( gEFF_DEV_SEED_LOGIC, gNMOS_5P0_DW_DEV_1i );
+   
+      gPMOS_3P3_DEV_9i = gPGATE inside gPURENWELL;
+   gPMOS_3P3_DEV_8i = gPMOS_3P3_DEV_9i and aNWELL;
+   gPMOS_3P3_DEV_7i = gPMOS_3P3_DEV_8i not aDNWELL;
+   gPMOS_3P3_DEV_6i = gPMOS_3P3_DEV_7i not aLVPWELL;
+   gPMOS_3P3_DEV_5i = gPMOS_3P3_DEV_6i not aNAT;
+   gPMOS_3P3_DEV_4i = gPMOS_3P3_DEV_5i not aDUALGATE;
+   gPMOS_3P3_DEV_3i = gPMOS_3P3_DEV_4i not aV5_XTOR;
+   gPMOS_3P3_DEV_2i = gPMOS_3P3_DEV_3i not g_MOS_EXCL_LAY;
+   gPMOS_3P3_DEV_1i = not_interacting( gPMOS_3P3_DEV_2i, aDEV_WF_MK );
+   gPMOS_3P3_DEV = interacting( gEFF_DEV_SEED_LOGIC, gPMOS_3P3_DEV_1i );
+   
+      gPMOS_3P3_DW_DEV_8i = gPGATE inside gDN_SUB;
+   gPMOS_3P3_DW_DEV_7i = gPMOS_3P3_DW_DEV_8i and aDNWELL;
+   gPMOS_3P3_DW_DEV_6i = gPMOS_3P3_DW_DEV_7i not aLVPWELL;
+   gPMOS_3P3_DW_DEV_5i = gPMOS_3P3_DW_DEV_6i not aNAT;
+   gPMOS_3P3_DW_DEV_4i = gPMOS_3P3_DW_DEV_5i not aDUALGATE;
+   gPMOS_3P3_DW_DEV_3i = gPMOS_3P3_DW_DEV_4i not aV5_XTOR;
+   gPMOS_3P3_DW_DEV_2i = gPMOS_3P3_DW_DEV_3i not g_MOS_EXCL_LAY;
+   gPMOS_3P3_DW_DEV_1i = not_interacting( gPMOS_3P3_DW_DEV_2i, aDEV_WF_MK );
+   gPMOS_3P3_DW_DEV = interacting( gEFF_DEV_SEED_LOGIC, gPMOS_3P3_DW_DEV_1i );
+   
+      gPMOS_6P0_DEV_9i = gPGATE inside gPURENWELL;
+   gPMOS_6P0_DEV_8i = gPMOS_6P0_DEV_9i and aNWELL;
+   gPMOS_6P0_DEV_7i = gPMOS_6P0_DEV_8i and aDUALGATE;
+   gPMOS_6P0_DEV_6i = gPMOS_6P0_DEV_7i not aV5_XTOR;
+   gPMOS_6P0_DEV_5i = gPMOS_6P0_DEV_6i not aDNWELL;
+   gPMOS_6P0_DEV_4i = gPMOS_6P0_DEV_5i not aLVPWELL;
+   gPMOS_6P0_DEV_3i = gPMOS_6P0_DEV_4i not aNAT;
+   gPMOS_6P0_DEV_2i = gPMOS_6P0_DEV_3i not g_MOS_EXCL_LAY;
+   gPMOS_6P0_DEV_1i = not_interacting( gPMOS_6P0_DEV_2i, aDEV_WF_MK );
+   gPMOS_6P0_DEV = interacting( gEFF_DEV_SEED_LOGIC, gPMOS_6P0_DEV_1i );
+   
+      gPMOS_6P0_DW_DEV_8i = gPGATE inside gDN_SUB;
+   gPMOS_6P0_DW_DEV_7i = gPMOS_6P0_DW_DEV_8i and aDNWELL;
+   gPMOS_6P0_DW_DEV_6i = gPMOS_6P0_DW_DEV_7i and aDUALGATE;
+   gPMOS_6P0_DW_DEV_5i = gPMOS_6P0_DW_DEV_6i not aV5_XTOR;
+   gPMOS_6P0_DW_DEV_4i = gPMOS_6P0_DW_DEV_5i not aLVPWELL;
+   gPMOS_6P0_DW_DEV_3i = gPMOS_6P0_DW_DEV_4i not aNAT;
+   gPMOS_6P0_DW_DEV_2i = gPMOS_6P0_DW_DEV_3i not g_MOS_EXCL_LAY;
+   gPMOS_6P0_DW_DEV_1i = not_interacting( gPMOS_6P0_DW_DEV_2i, aDEV_WF_MK );
+   gPMOS_6P0_DW_DEV = interacting( gEFF_DEV_SEED_LOGIC, gPMOS_6P0_DW_DEV_1i );
+   
+      gPMOS_5P0_DEV_9i = gPGATE inside gPURENWELL;
+   gPMOS_5P0_DEV_8i = gPMOS_5P0_DEV_9i and aNWELL;
+   gPMOS_5P0_DEV_7i = gPMOS_5P0_DEV_8i and aDUALGATE;
+   gPMOS_5P0_DEV_6i = gPMOS_5P0_DEV_7i and aV5_XTOR;
+   gPMOS_5P0_DEV_5i = gPMOS_5P0_DEV_6i not aDNWELL;
+   gPMOS_5P0_DEV_4i = gPMOS_5P0_DEV_5i not aLVPWELL;
+   gPMOS_5P0_DEV_3i = gPMOS_5P0_DEV_4i not aNAT;
+   gPMOS_5P0_DEV_2i = gPMOS_5P0_DEV_3i not g_MOS_EXCL_LAY;
+   gPMOS_5P0_DEV_1i = not_interacting( gPMOS_5P0_DEV_2i, aDEV_WF_MK );
+   gPMOS_5P0_DEV = interacting( gEFF_DEV_SEED_LOGIC, gPMOS_5P0_DEV_1i );
+   
+      gPMOS_5P0_DW_DEV_8i = gPGATE inside gDN_SUB;
+   gPMOS_5P0_DW_DEV_7i = gPMOS_5P0_DW_DEV_8i and aDNWELL;
+   gPMOS_5P0_DW_DEV_6i = gPMOS_5P0_DW_DEV_7i and aDUALGATE;
+   gPMOS_5P0_DW_DEV_5i = gPMOS_5P0_DW_DEV_6i and aV5_XTOR;
+   gPMOS_5P0_DW_DEV_4i = gPMOS_5P0_DW_DEV_5i not aLVPWELL;
+   gPMOS_5P0_DW_DEV_3i = gPMOS_5P0_DW_DEV_4i not aNAT;
+   gPMOS_5P0_DW_DEV_2i = gPMOS_5P0_DW_DEV_3i not g_MOS_EXCL_LAY;
+   gPMOS_5P0_DW_DEV_1i = not_interacting( gPMOS_5P0_DW_DEV_2i, aDEV_WF_MK );
+   gPMOS_5P0_DW_DEV = interacting( gEFF_DEV_SEED_LOGIC, gPMOS_5P0_DW_DEV_1i );
+   gNMOS_6P0_NAT_DEV_5i = gNGATE inside gPSUB_BULK;
+   gNMOS_6P0_NAT_DEV_4i = gNMOS_6P0_NAT_DEV_5i and aNAT;
+   gNMOS_6P0_NAT_DEV_3i = gNMOS_6P0_NAT_DEV_4i and aDUALGATE;
+   gNMOS_6P0_NAT_DEV_2i = gNMOS_6P0_NAT_DEV_3i not aNWELL;
+   gNMOS_6P0_NAT_DEV_1i = gNMOS_6P0_NAT_DEV_2i not g_MOS_EXCL_LAY;
+   gNMOS_6P0_NAT_DEV = interacting( gEFF_DEV_SEED_LOGIC, gNMOS_6P0_NAT_DEV_1i );
+#else
+   
+      gNMOS_3P3_DEV_15i = gNGATE inside gPSUB_BULK;
+   gNMOS_3P3_DEV_14i = gNMOS_3P3_DEV_15i not aDNWELL;
+   gNMOS_3P3_DEV_13i = gNMOS_3P3_DEV_14i not aNWELL;
+   gNMOS_3P3_DEV_12i = gNMOS_3P3_DEV_13i not aNAT;
+   gNMOS_3P3_DEV_11i = gNMOS_3P3_DEV_12i not aDUALGATE;
+   gNMOS_3P3_DEV_10i = gNMOS_3P3_DEV_11i not aV5_XTOR;
+   gNMOS_3P3_DEV_9i = gNMOS_3P3_DEV_10i not g_MOS_EXCL_LAY;
+   gNMOS_3P3_DEV = not_interacting( gNMOS_3P3_DEV_9i, aDEV_WF_MK );
+   
+      gNMOS_3P3_DW_DEV_17i = gNGATE inside gDN_LP;
+   gNMOS_3P3_DW_DEV_16i = gNMOS_3P3_DW_DEV_17i and aDNWELL;
+   gNMOS_3P3_DW_DEV_15i = gNMOS_3P3_DW_DEV_16i and aLVPWELL;
+   gNMOS_3P3_DW_DEV_14i = gNMOS_3P3_DW_DEV_15i not aNWELL;
+   gNMOS_3P3_DW_DEV_13i = gNMOS_3P3_DW_DEV_14i not aNAT;
+   gNMOS_3P3_DW_DEV_12i = gNMOS_3P3_DW_DEV_13i not aDUALGATE;
+   gNMOS_3P3_DW_DEV_11i = gNMOS_3P3_DW_DEV_12i not aV5_XTOR;
+   gNMOS_3P3_DW_DEV_10i = gNMOS_3P3_DW_DEV_11i not g_MOS_EXCL_LAY;
+   gNMOS_3P3_DW_DEV = not_interacting( gNMOS_3P3_DW_DEV_10i, aDEV_WF_MK );
+   
+      gNMOS_6P0_DEV_15i = gNGATE inside gPSUB_BULK;
+   gNMOS_6P0_DEV_14i = gNMOS_6P0_DEV_15i and aDUALGATE;
+   gNMOS_6P0_DEV_13i = gNMOS_6P0_DEV_14i not aV5_XTOR;
+   gNMOS_6P0_DEV_12i = gNMOS_6P0_DEV_13i not aDNWELL;
+   gNMOS_6P0_DEV_11i = gNMOS_6P0_DEV_12i not aNWELL;
+   gNMOS_6P0_DEV_10i = gNMOS_6P0_DEV_11i not aNAT;
+   gNMOS_6P0_DEV_9i = gNMOS_6P0_DEV_10i not g_MOS_EXCL_LAY;
+   gNMOS_6P0_DEV = not_interacting( gNMOS_6P0_DEV_9i, aDEV_WF_MK );
+   
+      gNMOS_6P0_DW_DEV_17i = gNGATE inside gDN_LP;
+   gNMOS_6P0_DW_DEV_16i = gNMOS_6P0_DW_DEV_17i and aDNWELL;
+   gNMOS_6P0_DW_DEV_15i = gNMOS_6P0_DW_DEV_16i and aLVPWELL;
+   gNMOS_6P0_DW_DEV_14i = gNMOS_6P0_DW_DEV_15i and aDUALGATE;
+   gNMOS_6P0_DW_DEV_13i = gNMOS_6P0_DW_DEV_14i not aV5_XTOR;
+   gNMOS_6P0_DW_DEV_12i = gNMOS_6P0_DW_DEV_13i not aNWELL;
+   gNMOS_6P0_DW_DEV_11i = gNMOS_6P0_DW_DEV_12i not aNAT;
+   gNMOS_6P0_DW_DEV_10i = gNMOS_6P0_DW_DEV_11i not g_MOS_EXCL_LAY;
+   gNMOS_6P0_DW_DEV = not_interacting( gNMOS_6P0_DW_DEV_10i, aDEV_WF_MK );
+   
+      gNMOS_5P0_DEV_15i = gNGATE inside gPSUB_BULK;
+   gNMOS_5P0_DEV_14i = gNMOS_5P0_DEV_15i and aDUALGATE;
+   gNMOS_5P0_DEV_13i = gNMOS_5P0_DEV_14i and aV5_XTOR;
+   gNMOS_5P0_DEV_12i = gNMOS_5P0_DEV_13i not aDNWELL;
+   gNMOS_5P0_DEV_11i = gNMOS_5P0_DEV_12i not aNWELL;
+   gNMOS_5P0_DEV_10i = gNMOS_5P0_DEV_11i not aNAT;
+   gNMOS_5P0_DEV_9i = gNMOS_5P0_DEV_10i not g_MOS_EXCL_LAY;
+   gNMOS_5P0_DEV = not_interacting( gNMOS_5P0_DEV_9i, aDEV_WF_MK );
+   
+      gNMOS_5P0_DW_DEV_17i = gNGATE inside gDN_LP;
+   gNMOS_5P0_DW_DEV_16i = gNMOS_5P0_DW_DEV_17i and aDNWELL;
+   gNMOS_5P0_DW_DEV_15i = gNMOS_5P0_DW_DEV_16i and aLVPWELL;
+   gNMOS_5P0_DW_DEV_14i = gNMOS_5P0_DW_DEV_15i and aDUALGATE;
+   gNMOS_5P0_DW_DEV_13i = gNMOS_5P0_DW_DEV_14i and aV5_XTOR;
+   gNMOS_5P0_DW_DEV_12i = gNMOS_5P0_DW_DEV_13i not aNWELL;
+   gNMOS_5P0_DW_DEV_11i = gNMOS_5P0_DW_DEV_12i not aNAT;
+   gNMOS_5P0_DW_DEV_10i = gNMOS_5P0_DW_DEV_11i not g_MOS_EXCL_LAY;
+   gNMOS_5P0_DW_DEV = not_interacting( gNMOS_5P0_DW_DEV_10i, aDEV_WF_MK );
+   
+      gPMOS_3P3_DEV_17i = gPGATE inside gPURENWELL;
+   gPMOS_3P3_DEV_16i = gPMOS_3P3_DEV_17i and aNWELL;
+   gPMOS_3P3_DEV_15i = gPMOS_3P3_DEV_16i not aDNWELL;
+   gPMOS_3P3_DEV_14i = gPMOS_3P3_DEV_15i not aLVPWELL;
+   gPMOS_3P3_DEV_13i = gPMOS_3P3_DEV_14i not aNAT;
+   gPMOS_3P3_DEV_12i = gPMOS_3P3_DEV_13i not aDUALGATE;
+   gPMOS_3P3_DEV_11i = gPMOS_3P3_DEV_12i not aV5_XTOR;
+   gPMOS_3P3_DEV_10i = gPMOS_3P3_DEV_11i not g_MOS_EXCL_LAY;
+   gPMOS_3P3_DEV = not_interacting( gPMOS_3P3_DEV_10i, aDEV_WF_MK );
+   
+      gPMOS_3P3_DW_DEV_15i = gPGATE inside gDN_SUB;
+   gPMOS_3P3_DW_DEV_14i = gPMOS_3P3_DW_DEV_15i and aDNWELL;
+   gPMOS_3P3_DW_DEV_13i = gPMOS_3P3_DW_DEV_14i not aLVPWELL;
+   gPMOS_3P3_DW_DEV_12i = gPMOS_3P3_DW_DEV_13i not aNAT;
+   gPMOS_3P3_DW_DEV_11i = gPMOS_3P3_DW_DEV_12i not aDUALGATE;
+   gPMOS_3P3_DW_DEV_10i = gPMOS_3P3_DW_DEV_11i not aV5_XTOR;
+   gPMOS_3P3_DW_DEV_9i = gPMOS_3P3_DW_DEV_10i not g_MOS_EXCL_LAY;
+   gPMOS_3P3_DW_DEV = not_interacting( gPMOS_3P3_DW_DEV_9i, aDEV_WF_MK );
+   
+      gPMOS_6P0_DEV_17i = gPGATE inside gPURENWELL;
+   gPMOS_6P0_DEV_16i = gPMOS_6P0_DEV_17i and aNWELL;
+   gPMOS_6P0_DEV_15i = gPMOS_6P0_DEV_16i and aDUALGATE;
+   gPMOS_6P0_DEV_14i = gPMOS_6P0_DEV_15i not aV5_XTOR;
+   gPMOS_6P0_DEV_13i = gPMOS_6P0_DEV_14i not aDNWELL;
+   gPMOS_6P0_DEV_12i = gPMOS_6P0_DEV_13i not aLVPWELL;
+   gPMOS_6P0_DEV_11i = gPMOS_6P0_DEV_12i not aNAT;
+   gPMOS_6P0_DEV_10i = gPMOS_6P0_DEV_11i not g_MOS_EXCL_LAY;
+   gPMOS_6P0_DEV = not_interacting( gPMOS_6P0_DEV_10i, aDEV_WF_MK );
+   
+      gPMOS_6P0_DW_DEV_15i = gPGATE inside gDN_SUB;
+   gPMOS_6P0_DW_DEV_14i = gPMOS_6P0_DW_DEV_15i and aDNWELL;
+   gPMOS_6P0_DW_DEV_13i = gPMOS_6P0_DW_DEV_14i and aDUALGATE;
+   gPMOS_6P0_DW_DEV_12i = gPMOS_6P0_DW_DEV_13i not aV5_XTOR;
+   gPMOS_6P0_DW_DEV_11i = gPMOS_6P0_DW_DEV_12i not aLVPWELL;
+   gPMOS_6P0_DW_DEV_10i = gPMOS_6P0_DW_DEV_11i not aNAT;
+   gPMOS_6P0_DW_DEV_9i = gPMOS_6P0_DW_DEV_10i not g_MOS_EXCL_LAY;
+   gPMOS_6P0_DW_DEV = not_interacting( gPMOS_6P0_DW_DEV_9i, aDEV_WF_MK );
+   
+      gPMOS_5P0_DEV_17i = gPGATE inside gPURENWELL;
+   gPMOS_5P0_DEV_16i = gPMOS_5P0_DEV_17i and aNWELL;
+   gPMOS_5P0_DEV_15i = gPMOS_5P0_DEV_16i and aDUALGATE;
+   gPMOS_5P0_DEV_14i = gPMOS_5P0_DEV_15i and aV5_XTOR;
+   gPMOS_5P0_DEV_13i = gPMOS_5P0_DEV_14i not aDNWELL;
+   gPMOS_5P0_DEV_12i = gPMOS_5P0_DEV_13i not aLVPWELL;
+   gPMOS_5P0_DEV_11i = gPMOS_5P0_DEV_12i not aNAT;
+   gPMOS_5P0_DEV_10i = gPMOS_5P0_DEV_11i not g_MOS_EXCL_LAY;
+   gPMOS_5P0_DEV = not_interacting( gPMOS_5P0_DEV_10i, aDEV_WF_MK );
+   
+      gPMOS_5P0_DW_DEV_15i = gPGATE inside gDN_SUB;
+   gPMOS_5P0_DW_DEV_14i = gPMOS_5P0_DW_DEV_15i and aDNWELL;
+   gPMOS_5P0_DW_DEV_13i = gPMOS_5P0_DW_DEV_14i and aDUALGATE;
+   gPMOS_5P0_DW_DEV_12i = gPMOS_5P0_DW_DEV_13i and aV5_XTOR;
+   gPMOS_5P0_DW_DEV_11i = gPMOS_5P0_DW_DEV_12i not aLVPWELL;
+   gPMOS_5P0_DW_DEV_10i = gPMOS_5P0_DW_DEV_11i not aNAT;
+   gPMOS_5P0_DW_DEV_9i = gPMOS_5P0_DW_DEV_10i not g_MOS_EXCL_LAY;
+   gPMOS_5P0_DW_DEV = not_interacting( gPMOS_5P0_DW_DEV_9i, aDEV_WF_MK );
+   gNMOS_6P0_NAT_DEV_9i = gNGATE inside gPSUB_BULK;
+   gNMOS_6P0_NAT_DEV_8i = gNMOS_6P0_NAT_DEV_9i and aNAT;
+   gNMOS_6P0_NAT_DEV_7i = gNMOS_6P0_NAT_DEV_8i and aDUALGATE;
+   gNMOS_6P0_NAT_DEV_6i = gNMOS_6P0_NAT_DEV_7i not aNWELL;
+   gNMOS_6P0_NAT_DEV = gNMOS_6P0_NAT_DEV_6i not g_MOS_EXCL_LAY;
+#endif                                      
+
+gGRID_COIN_GATE_SD_2i = gPSD or gNSD;
+gGRID_COIN_GATE_SD_1i = gGRID_COIN_GATE_SD_2i coincident_edge gGATE;
+gGRID_COIN_GATE_SD = edge_size( gGRID_COIN_GATE_SD_1i, outside = 0.01 );
+gGRID_COIN_GATE_COMP_1i = gGATE coincident_inside_edge aCOMP;
+gGRID_COIN_GATE_COMP = edge_size( gGRID_COIN_GATE_COMP_1i, inside = 0.01 );
+
+gNMOS_3P3_GRID_DEV_7i = gNGATE inside gPSUB_BULK;
+gNMOS_3P3_GRID_DEV_6i = gNMOS_3P3_GRID_DEV_7i not aDNWELL;
+gNMOS_3P3_GRID_DEV_5i = gNMOS_3P3_GRID_DEV_6i not aNWELL;
+gNMOS_3P3_GRID_DEV_4i = gNMOS_3P3_GRID_DEV_5i not aNAT;
+gNMOS_3P3_GRID_DEV_3i = gNMOS_3P3_GRID_DEV_4i not aDUALGATE;
+gNMOS_3P3_GRID_DEV_2i = gNMOS_3P3_GRID_DEV_3i not aV5_XTOR;
+gNMOS_3P3_GRID_DEV_1i = gNMOS_3P3_GRID_DEV_2i not g_MOS_EXCL_LAY;
+gNMOS_3P3_GRID_DEV = interacting( aDEV_WF_MK, gNMOS_3P3_GRID_DEV_1i );
+
+gNMOS_3P3_GRID_DW_DEV_8i = gNGATE inside gDN_LP;
+gNMOS_3P3_GRID_DW_DEV_7i = gNMOS_3P3_GRID_DW_DEV_8i and aDNWELL;
+gNMOS_3P3_GRID_DW_DEV_6i = gNMOS_3P3_GRID_DW_DEV_7i and aLVPWELL;
+gNMOS_3P3_GRID_DW_DEV_5i = gNMOS_3P3_GRID_DW_DEV_6i not aNWELL;
+gNMOS_3P3_GRID_DW_DEV_4i = gNMOS_3P3_GRID_DW_DEV_5i not aNAT;
+gNMOS_3P3_GRID_DW_DEV_3i = gNMOS_3P3_GRID_DW_DEV_4i not aDUALGATE;
+gNMOS_3P3_GRID_DW_DEV_2i = gNMOS_3P3_GRID_DW_DEV_3i not aV5_XTOR;
+gNMOS_3P3_GRID_DW_DEV_1i = gNMOS_3P3_GRID_DW_DEV_2i not g_MOS_EXCL_LAY;
+gNMOS_3P3_GRID_DW_DEV = interacting( aDEV_WF_MK, gNMOS_3P3_GRID_DW_DEV_1i );
+
+gNMOS_5P0_GRID_DEV_7i = gNGATE inside gPSUB_BULK;
+gNMOS_5P0_GRID_DEV_6i = gNMOS_5P0_GRID_DEV_7i and aDUALGATE;
+gNMOS_5P0_GRID_DEV_5i = gNMOS_5P0_GRID_DEV_6i and aV5_XTOR;
+gNMOS_5P0_GRID_DEV_4i = gNMOS_5P0_GRID_DEV_5i not aDNWELL;
+gNMOS_5P0_GRID_DEV_3i = gNMOS_5P0_GRID_DEV_4i not aNWELL;
+gNMOS_5P0_GRID_DEV_2i = gNMOS_5P0_GRID_DEV_3i not aNAT;
+gNMOS_5P0_GRID_DEV_1i = gNMOS_5P0_GRID_DEV_2i not g_MOS_EXCL_LAY;
+gNMOS_5P0_GRID_DEV = interacting( aDEV_WF_MK, gNMOS_5P0_GRID_DEV_1i );
+
+gNMOS_5P0_GRID_DW_DEV_8i = gNGATE inside gDN_LP;
+gNMOS_5P0_GRID_DW_DEV_7i = gNMOS_5P0_GRID_DW_DEV_8i and aDNWELL;
+gNMOS_5P0_GRID_DW_DEV_6i = gNMOS_5P0_GRID_DW_DEV_7i and aLVPWELL;
+gNMOS_5P0_GRID_DW_DEV_5i = gNMOS_5P0_GRID_DW_DEV_6i and aDUALGATE;
+gNMOS_5P0_GRID_DW_DEV_4i = gNMOS_5P0_GRID_DW_DEV_5i and aV5_XTOR;
+gNMOS_5P0_GRID_DW_DEV_3i = gNMOS_5P0_GRID_DW_DEV_4i not aNWELL;
+gNMOS_5P0_GRID_DW_DEV_2i = gNMOS_5P0_GRID_DW_DEV_3i not aNAT;
+gNMOS_5P0_GRID_DW_DEV_1i = gNMOS_5P0_GRID_DW_DEV_2i not g_MOS_EXCL_LAY;
+gNMOS_5P0_GRID_DW_DEV = interacting( aDEV_WF_MK, gNMOS_5P0_GRID_DW_DEV_1i );
+
+gNMOS_6P0_GRID_DEV_7i = gNGATE inside gPSUB_BULK;
+gNMOS_6P0_GRID_DEV_6i = gNMOS_6P0_GRID_DEV_7i and aDUALGATE;
+gNMOS_6P0_GRID_DEV_5i = gNMOS_6P0_GRID_DEV_6i not aV5_XTOR;
+gNMOS_6P0_GRID_DEV_4i = gNMOS_6P0_GRID_DEV_5i not aDNWELL;
+gNMOS_6P0_GRID_DEV_3i = gNMOS_6P0_GRID_DEV_4i not aNWELL;
+gNMOS_6P0_GRID_DEV_2i = gNMOS_6P0_GRID_DEV_3i not aNAT;
+gNMOS_6P0_GRID_DEV_1i = gNMOS_6P0_GRID_DEV_2i not g_MOS_EXCL_LAY;
+gNMOS_6P0_GRID_DEV = interacting( aDEV_WF_MK, gNMOS_6P0_GRID_DEV_1i );
+
+gNMOS_6P0_GRID_DW_DEV_8i = gNGATE inside gDN_LP;
+gNMOS_6P0_GRID_DW_DEV_7i = gNMOS_6P0_GRID_DW_DEV_8i and aDNWELL;
+gNMOS_6P0_GRID_DW_DEV_6i = gNMOS_6P0_GRID_DW_DEV_7i and aLVPWELL;
+gNMOS_6P0_GRID_DW_DEV_5i = gNMOS_6P0_GRID_DW_DEV_6i and aDUALGATE;
+gNMOS_6P0_GRID_DW_DEV_4i = gNMOS_6P0_GRID_DW_DEV_5i not aV5_XTOR;
+gNMOS_6P0_GRID_DW_DEV_3i = gNMOS_6P0_GRID_DW_DEV_4i not aNWELL;
+gNMOS_6P0_GRID_DW_DEV_2i = gNMOS_6P0_GRID_DW_DEV_3i not aNAT;
+gNMOS_6P0_GRID_DW_DEV_1i = gNMOS_6P0_GRID_DW_DEV_2i not g_MOS_EXCL_LAY;
+gNMOS_6P0_GRID_DW_DEV = interacting( aDEV_WF_MK, gNMOS_6P0_GRID_DW_DEV_1i );
+
+gPMOS_3P3_GRID_DEV_8i = gPGATE inside gPURENWELL;
+gPMOS_3P3_GRID_DEV_7i = gPMOS_3P3_GRID_DEV_8i and aNWELL;
+gPMOS_3P3_GRID_DEV_6i = gPMOS_3P3_GRID_DEV_7i not aDNWELL;
+gPMOS_3P3_GRID_DEV_5i = gPMOS_3P3_GRID_DEV_6i not aLVPWELL;
+gPMOS_3P3_GRID_DEV_4i = gPMOS_3P3_GRID_DEV_5i not aNAT;
+gPMOS_3P3_GRID_DEV_3i = gPMOS_3P3_GRID_DEV_4i not aDUALGATE;
+gPMOS_3P3_GRID_DEV_2i = gPMOS_3P3_GRID_DEV_3i not aV5_XTOR;
+gPMOS_3P3_GRID_DEV_1i = gPMOS_3P3_GRID_DEV_2i not g_MOS_EXCL_LAY;
+gPMOS_3P3_GRID_DEV = interacting( aDEV_WF_MK, gPMOS_3P3_GRID_DEV_1i );
+
+gPMOS_3P3_GRID_DW_DEV_7i = gPGATE inside gDN_SUB;
+gPMOS_3P3_GRID_DW_DEV_6i = gPMOS_3P3_GRID_DW_DEV_7i and aDNWELL;
+gPMOS_3P3_GRID_DW_DEV_5i = gPMOS_3P3_GRID_DW_DEV_6i not aLVPWELL;
+gPMOS_3P3_GRID_DW_DEV_4i = gPMOS_3P3_GRID_DW_DEV_5i not aNAT;
+gPMOS_3P3_GRID_DW_DEV_3i = gPMOS_3P3_GRID_DW_DEV_4i not aDUALGATE;
+gPMOS_3P3_GRID_DW_DEV_2i = gPMOS_3P3_GRID_DW_DEV_3i not aV5_XTOR;
+gPMOS_3P3_GRID_DW_DEV_1i = gPMOS_3P3_GRID_DW_DEV_2i not g_MOS_EXCL_LAY;
+gPMOS_3P3_GRID_DW_DEV = interacting( aDEV_WF_MK, gPMOS_3P3_GRID_DW_DEV_1i );
+
+gPMOS_5P0_GRID_DEV_8i = gPGATE inside gPURENWELL;
+gPMOS_5P0_GRID_DEV_7i = gPMOS_5P0_GRID_DEV_8i and aNWELL;
+gPMOS_5P0_GRID_DEV_6i = gPMOS_5P0_GRID_DEV_7i and aDUALGATE;
+gPMOS_5P0_GRID_DEV_5i = gPMOS_5P0_GRID_DEV_6i and aV5_XTOR;
+gPMOS_5P0_GRID_DEV_4i = gPMOS_5P0_GRID_DEV_5i not aDNWELL;
+gPMOS_5P0_GRID_DEV_3i = gPMOS_5P0_GRID_DEV_4i not aLVPWELL;
+gPMOS_5P0_GRID_DEV_2i = gPMOS_5P0_GRID_DEV_3i not aNAT;
+gPMOS_5P0_GRID_DEV_1i = gPMOS_5P0_GRID_DEV_2i not g_MOS_EXCL_LAY;
+gPMOS_5P0_GRID_DEV = interacting( aDEV_WF_MK, gPMOS_5P0_GRID_DEV_1i );
+
+gPMOS_5P0_GRID_DW_DEV_7i = gPGATE inside gDN_SUB;
+gPMOS_5P0_GRID_DW_DEV_6i = gPMOS_5P0_GRID_DW_DEV_7i and aDNWELL;
+gPMOS_5P0_GRID_DW_DEV_5i = gPMOS_5P0_GRID_DW_DEV_6i and aDUALGATE;
+gPMOS_5P0_GRID_DW_DEV_4i = gPMOS_5P0_GRID_DW_DEV_5i and aV5_XTOR;
+gPMOS_5P0_GRID_DW_DEV_3i = gPMOS_5P0_GRID_DW_DEV_4i not aLVPWELL;
+gPMOS_5P0_GRID_DW_DEV_2i = gPMOS_5P0_GRID_DW_DEV_3i not aNAT;
+gPMOS_5P0_GRID_DW_DEV_1i = gPMOS_5P0_GRID_DW_DEV_2i not g_MOS_EXCL_LAY;
+gPMOS_5P0_GRID_DW_DEV = interacting( aDEV_WF_MK, gPMOS_5P0_GRID_DW_DEV_1i );
+
+gPMOS_6P0_GRID_DEV_8i = gPGATE inside gPURENWELL;
+gPMOS_6P0_GRID_DEV_7i = gPMOS_6P0_GRID_DEV_8i and aNWELL;
+gPMOS_6P0_GRID_DEV_6i = gPMOS_6P0_GRID_DEV_7i and aDUALGATE;
+gPMOS_6P0_GRID_DEV_5i = gPMOS_6P0_GRID_DEV_6i not aV5_XTOR;
+gPMOS_6P0_GRID_DEV_4i = gPMOS_6P0_GRID_DEV_5i not aDNWELL;
+gPMOS_6P0_GRID_DEV_3i = gPMOS_6P0_GRID_DEV_4i not aLVPWELL;
+gPMOS_6P0_GRID_DEV_2i = gPMOS_6P0_GRID_DEV_3i not aNAT;
+gPMOS_6P0_GRID_DEV_1i = gPMOS_6P0_GRID_DEV_2i not g_MOS_EXCL_LAY;
+gPMOS_6P0_GRID_DEV = interacting( aDEV_WF_MK, gPMOS_6P0_GRID_DEV_1i );
+
+gPMOS_6P0_GRID_DW_DEV_7i = gPGATE inside gDN_SUB;
+gPMOS_6P0_GRID_DW_DEV_6i = gPMOS_6P0_GRID_DW_DEV_7i and aDNWELL;
+gPMOS_6P0_GRID_DW_DEV_5i = gPMOS_6P0_GRID_DW_DEV_6i and aDUALGATE;
+gPMOS_6P0_GRID_DW_DEV_4i = gPMOS_6P0_GRID_DW_DEV_5i not aV5_XTOR;
+gPMOS_6P0_GRID_DW_DEV_3i = gPMOS_6P0_GRID_DW_DEV_4i not aLVPWELL;
+gPMOS_6P0_GRID_DW_DEV_2i = gPMOS_6P0_GRID_DW_DEV_3i not aNAT;
+gPMOS_6P0_GRID_DW_DEV_1i = gPMOS_6P0_GRID_DW_DEV_2i not g_MOS_EXCL_LAY;
+gPMOS_6P0_GRID_DW_DEV = interacting( aDEV_WF_MK, gPMOS_6P0_GRID_DW_DEV_1i );
+
+
+
+
+
+g_ESD_MOS_EXCL_LAY_20i = aHSR or aNAT;
+g_ESD_MOS_EXCL_LAY_19i = g_ESD_MOS_EXCL_LAY_20i or aFUSEWINDOW;
+g_ESD_MOS_EXCL_LAY_18i = g_ESD_MOS_EXCL_LAY_19i or aPOLYFUSE;
+g_ESD_MOS_EXCL_LAY_17i = g_ESD_MOS_EXCL_LAY_18i or aRES_MK;
+g_ESD_MOS_EXCL_LAY_16i = g_ESD_MOS_EXCL_LAY_17i or aLVS_BJT;
+g_ESD_MOS_EXCL_LAY_15i = g_ESD_MOS_EXCL_LAY_16i or aMOS_CAP_MK;
+g_ESD_MOS_EXCL_LAY_14i = g_ESD_MOS_EXCL_LAY_15i or aEFUSE_MK;
+g_ESD_MOS_EXCL_LAY_13i = g_ESD_MOS_EXCL_LAY_14i or aLDMOS;
+g_ESD_MOS_EXCL_LAY_12i = g_ESD_MOS_EXCL_LAY_13i or aMVNSD;
+g_ESD_MOS_EXCL_LAY_11i = g_ESD_MOS_EXCL_LAY_12i or aMVPSD;
+g_ESD_MOS_EXCL_LAY = g_ESD_MOS_EXCL_LAY_11i or aSCHOTTKY_DIODE;
+
+gNMOS_3P3_SAB_MULTI_DEV_2i = gEFF_DEV_SEED or aSAB;
+gNMOS_3P3_SAB_MULTI_DEV_1i = interacting( gNMOS_3P3_SAB_MULTI_DEV_2i, gSHARED_NSD );
+gNMOS_3P3_SAB_MULTI_DEV_9i = gSAB_NGATE inside gPSUB_BULK;
+gNMOS_3P3_SAB_MULTI_DEV_8i = gNMOS_3P3_SAB_MULTI_DEV_9i and aESD_MK;
+gNMOS_3P3_SAB_MULTI_DEV_7i = gNMOS_3P3_SAB_MULTI_DEV_8i not aDNWELL;
+gNMOS_3P3_SAB_MULTI_DEV_6i = gNMOS_3P3_SAB_MULTI_DEV_7i not aNWELL;
+gNMOS_3P3_SAB_MULTI_DEV_5i = gNMOS_3P3_SAB_MULTI_DEV_6i not aDUALGATE;
+gNMOS_3P3_SAB_MULTI_DEV_4i = gNMOS_3P3_SAB_MULTI_DEV_5i not aV5_XTOR;
+gNMOS_3P3_SAB_MULTI_DEV_3i = gNMOS_3P3_SAB_MULTI_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gNMOS_3P3_SAB_MULTI_DEV = interacting( gNMOS_3P3_SAB_MULTI_DEV_1i, gNMOS_3P3_SAB_MULTI_DEV_3i );
+gNMOS_3P3_SAB_SINGLE_DEV_2i = gEFF_DEV_SEED or aSAB;
+gNMOS_3P3_SAB_SINGLE_DEV_1i = not_interacting( gNMOS_3P3_SAB_SINGLE_DEV_2i, gSHARED_NSD );
+gNMOS_3P3_SAB_SINGLE_DEV_9i = gSAB_NGATE inside gPSUB_BULK;
+gNMOS_3P3_SAB_SINGLE_DEV_8i = gNMOS_3P3_SAB_SINGLE_DEV_9i and aESD_MK;
+gNMOS_3P3_SAB_SINGLE_DEV_7i = gNMOS_3P3_SAB_SINGLE_DEV_8i not aDNWELL;
+gNMOS_3P3_SAB_SINGLE_DEV_6i = gNMOS_3P3_SAB_SINGLE_DEV_7i not aNWELL;
+gNMOS_3P3_SAB_SINGLE_DEV_5i = gNMOS_3P3_SAB_SINGLE_DEV_6i not aDUALGATE;
+gNMOS_3P3_SAB_SINGLE_DEV_4i = gNMOS_3P3_SAB_SINGLE_DEV_5i not aV5_XTOR;
+gNMOS_3P3_SAB_SINGLE_DEV_3i = gNMOS_3P3_SAB_SINGLE_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gNMOS_3P3_SAB_SINGLE_DEV = interacting( gNMOS_3P3_SAB_SINGLE_DEV_1i, gNMOS_3P3_SAB_SINGLE_DEV_3i );
+
+gNMOS_3P3_DW_SAB_MULTI_DEV_2i = gEFF_DEV_SEED or aSAB;
+gNMOS_3P3_DW_SAB_MULTI_DEV_1i = interacting( gNMOS_3P3_DW_SAB_MULTI_DEV_2i, gSHARED_NSD );
+gNMOS_3P3_DW_SAB_MULTI_DEV_10i = gSAB_NGATE inside gDN_LP;
+gNMOS_3P3_DW_SAB_MULTI_DEV_9i = gNMOS_3P3_DW_SAB_MULTI_DEV_10i and aDNWELL;
+gNMOS_3P3_DW_SAB_MULTI_DEV_8i = gNMOS_3P3_DW_SAB_MULTI_DEV_9i and aLVPWELL;
+gNMOS_3P3_DW_SAB_MULTI_DEV_7i = gNMOS_3P3_DW_SAB_MULTI_DEV_8i and aESD_MK;
+gNMOS_3P3_DW_SAB_MULTI_DEV_6i = gNMOS_3P3_DW_SAB_MULTI_DEV_7i not aNWELL;
+gNMOS_3P3_DW_SAB_MULTI_DEV_5i = gNMOS_3P3_DW_SAB_MULTI_DEV_6i not aDUALGATE;
+gNMOS_3P3_DW_SAB_MULTI_DEV_4i = gNMOS_3P3_DW_SAB_MULTI_DEV_5i not aV5_XTOR;
+gNMOS_3P3_DW_SAB_MULTI_DEV_3i = gNMOS_3P3_DW_SAB_MULTI_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gNMOS_3P3_DW_SAB_MULTI_DEV = interacting( gNMOS_3P3_DW_SAB_MULTI_DEV_1i, gNMOS_3P3_DW_SAB_MULTI_DEV_3i );
+gNMOS_3P3_DW_SAB_SINGLE_DEV_2i = gEFF_DEV_SEED or aSAB;
+gNMOS_3P3_DW_SAB_SINGLE_DEV_1i = not_interacting( gNMOS_3P3_DW_SAB_SINGLE_DEV_2i, gSHARED_NSD );
+gNMOS_3P3_DW_SAB_SINGLE_DEV_10i = gSAB_NGATE inside gDN_LP;
+gNMOS_3P3_DW_SAB_SINGLE_DEV_9i = gNMOS_3P3_DW_SAB_SINGLE_DEV_10i and aDNWELL;
+gNMOS_3P3_DW_SAB_SINGLE_DEV_8i = gNMOS_3P3_DW_SAB_SINGLE_DEV_9i and aLVPWELL;
+gNMOS_3P3_DW_SAB_SINGLE_DEV_7i = gNMOS_3P3_DW_SAB_SINGLE_DEV_8i and aESD_MK;
+gNMOS_3P3_DW_SAB_SINGLE_DEV_6i = gNMOS_3P3_DW_SAB_SINGLE_DEV_7i not aNWELL;
+gNMOS_3P3_DW_SAB_SINGLE_DEV_5i = gNMOS_3P3_DW_SAB_SINGLE_DEV_6i not aDUALGATE;
+gNMOS_3P3_DW_SAB_SINGLE_DEV_4i = gNMOS_3P3_DW_SAB_SINGLE_DEV_5i not aV5_XTOR;
+gNMOS_3P3_DW_SAB_SINGLE_DEV_3i = gNMOS_3P3_DW_SAB_SINGLE_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gNMOS_3P3_DW_SAB_SINGLE_DEV = interacting( gNMOS_3P3_DW_SAB_SINGLE_DEV_1i, gNMOS_3P3_DW_SAB_SINGLE_DEV_3i );
+
+gNMOS_5P0_SAB_MULTI_DEV_2i = gEFF_DEV_SEED or aSAB;
+gNMOS_5P0_SAB_MULTI_DEV_1i = interacting( gNMOS_5P0_SAB_MULTI_DEV_2i, gSHARED_NSD );
+gNMOS_5P0_SAB_MULTI_DEV_9i = gSAB_NGATE inside gPSUB_BULK;
+gNMOS_5P0_SAB_MULTI_DEV_8i = gNMOS_5P0_SAB_MULTI_DEV_9i and aESD_MK;
+gNMOS_5P0_SAB_MULTI_DEV_7i = gNMOS_5P0_SAB_MULTI_DEV_8i and aDUALGATE;
+gNMOS_5P0_SAB_MULTI_DEV_6i = gNMOS_5P0_SAB_MULTI_DEV_7i and aV5_XTOR;
+gNMOS_5P0_SAB_MULTI_DEV_5i = gNMOS_5P0_SAB_MULTI_DEV_6i not aDNWELL;
+gNMOS_5P0_SAB_MULTI_DEV_4i = gNMOS_5P0_SAB_MULTI_DEV_5i not aNWELL;
+gNMOS_5P0_SAB_MULTI_DEV_3i = gNMOS_5P0_SAB_MULTI_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gNMOS_5P0_SAB_MULTI_DEV = interacting( gNMOS_5P0_SAB_MULTI_DEV_1i, gNMOS_5P0_SAB_MULTI_DEV_3i );
+gNMOS_5P0_SAB_SINGLE_DEV_2i = gEFF_DEV_SEED or aSAB;
+gNMOS_5P0_SAB_SINGLE_DEV_1i = not_interacting( gNMOS_5P0_SAB_SINGLE_DEV_2i, gSHARED_NSD );
+gNMOS_5P0_SAB_SINGLE_DEV_9i = gSAB_NGATE inside gPSUB_BULK;
+gNMOS_5P0_SAB_SINGLE_DEV_8i = gNMOS_5P0_SAB_SINGLE_DEV_9i and aESD_MK;
+gNMOS_5P0_SAB_SINGLE_DEV_7i = gNMOS_5P0_SAB_SINGLE_DEV_8i and aDUALGATE;
+gNMOS_5P0_SAB_SINGLE_DEV_6i = gNMOS_5P0_SAB_SINGLE_DEV_7i and aV5_XTOR;
+gNMOS_5P0_SAB_SINGLE_DEV_5i = gNMOS_5P0_SAB_SINGLE_DEV_6i not aDNWELL;
+gNMOS_5P0_SAB_SINGLE_DEV_4i = gNMOS_5P0_SAB_SINGLE_DEV_5i not aNWELL;
+gNMOS_5P0_SAB_SINGLE_DEV_3i = gNMOS_5P0_SAB_SINGLE_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gNMOS_5P0_SAB_SINGLE_DEV = interacting( gNMOS_5P0_SAB_SINGLE_DEV_1i, gNMOS_5P0_SAB_SINGLE_DEV_3i );
+
+gNMOS_5P0_DW_SAB_MULTI_DEV_2i = gEFF_DEV_SEED or aSAB;
+gNMOS_5P0_DW_SAB_MULTI_DEV_1i = interacting( gNMOS_5P0_DW_SAB_MULTI_DEV_2i, gSHARED_NSD );
+gNMOS_5P0_DW_SAB_MULTI_DEV_10i = gSAB_NGATE inside gDN_LP;
+gNMOS_5P0_DW_SAB_MULTI_DEV_9i = gNMOS_5P0_DW_SAB_MULTI_DEV_10i and aDNWELL;
+gNMOS_5P0_DW_SAB_MULTI_DEV_8i = gNMOS_5P0_DW_SAB_MULTI_DEV_9i and aLVPWELL;
+gNMOS_5P0_DW_SAB_MULTI_DEV_7i = gNMOS_5P0_DW_SAB_MULTI_DEV_8i and aESD_MK;
+gNMOS_5P0_DW_SAB_MULTI_DEV_6i = gNMOS_5P0_DW_SAB_MULTI_DEV_7i and aDUALGATE;
+gNMOS_5P0_DW_SAB_MULTI_DEV_5i = gNMOS_5P0_DW_SAB_MULTI_DEV_6i and aV5_XTOR;
+gNMOS_5P0_DW_SAB_MULTI_DEV_4i = gNMOS_5P0_DW_SAB_MULTI_DEV_5i not aNWELL;
+gNMOS_5P0_DW_SAB_MULTI_DEV_3i = gNMOS_5P0_DW_SAB_MULTI_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gNMOS_5P0_DW_SAB_MULTI_DEV = interacting( gNMOS_5P0_DW_SAB_MULTI_DEV_1i, gNMOS_5P0_DW_SAB_MULTI_DEV_3i );
+gNMOS_5P0_DW_SAB_SINGLE_DEV_2i = gEFF_DEV_SEED or aSAB;
+gNMOS_5P0_DW_SAB_SINGLE_DEV_1i = not_interacting( gNMOS_5P0_DW_SAB_SINGLE_DEV_2i, gSHARED_NSD );
+gNMOS_5P0_DW_SAB_SINGLE_DEV_10i = gSAB_NGATE inside gDN_LP;
+gNMOS_5P0_DW_SAB_SINGLE_DEV_9i = gNMOS_5P0_DW_SAB_SINGLE_DEV_10i and aDNWELL;
+gNMOS_5P0_DW_SAB_SINGLE_DEV_8i = gNMOS_5P0_DW_SAB_SINGLE_DEV_9i and aLVPWELL;
+gNMOS_5P0_DW_SAB_SINGLE_DEV_7i = gNMOS_5P0_DW_SAB_SINGLE_DEV_8i and aESD_MK;
+gNMOS_5P0_DW_SAB_SINGLE_DEV_6i = gNMOS_5P0_DW_SAB_SINGLE_DEV_7i and aDUALGATE;
+gNMOS_5P0_DW_SAB_SINGLE_DEV_5i = gNMOS_5P0_DW_SAB_SINGLE_DEV_6i and aV5_XTOR;
+gNMOS_5P0_DW_SAB_SINGLE_DEV_4i = gNMOS_5P0_DW_SAB_SINGLE_DEV_5i not aNWELL;
+gNMOS_5P0_DW_SAB_SINGLE_DEV_3i = gNMOS_5P0_DW_SAB_SINGLE_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gNMOS_5P0_DW_SAB_SINGLE_DEV = interacting( gNMOS_5P0_DW_SAB_SINGLE_DEV_1i, gNMOS_5P0_DW_SAB_SINGLE_DEV_3i );
+
+gNMOS_6P0_SAB_MULTI_DEV_2i = gEFF_DEV_SEED or aSAB;
+gNMOS_6P0_SAB_MULTI_DEV_1i = interacting( gNMOS_6P0_SAB_MULTI_DEV_2i, gSHARED_NSD );
+gNMOS_6P0_SAB_MULTI_DEV_9i = gSAB_NGATE inside gPSUB_BULK;
+gNMOS_6P0_SAB_MULTI_DEV_8i = gNMOS_6P0_SAB_MULTI_DEV_9i and aESD_MK;
+gNMOS_6P0_SAB_MULTI_DEV_7i = gNMOS_6P0_SAB_MULTI_DEV_8i and aDUALGATE;
+gNMOS_6P0_SAB_MULTI_DEV_6i = gNMOS_6P0_SAB_MULTI_DEV_7i not aV5_XTOR;
+gNMOS_6P0_SAB_MULTI_DEV_5i = gNMOS_6P0_SAB_MULTI_DEV_6i not aDNWELL;
+gNMOS_6P0_SAB_MULTI_DEV_4i = gNMOS_6P0_SAB_MULTI_DEV_5i not aNWELL;
+gNMOS_6P0_SAB_MULTI_DEV_3i = gNMOS_6P0_SAB_MULTI_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gNMOS_6P0_SAB_MULTI_DEV = interacting( gNMOS_6P0_SAB_MULTI_DEV_1i, gNMOS_6P0_SAB_MULTI_DEV_3i );
+gNMOS_6P0_SAB_SINGLE_DEV_2i = gEFF_DEV_SEED or aSAB;
+gNMOS_6P0_SAB_SINGLE_DEV_1i = not_interacting( gNMOS_6P0_SAB_SINGLE_DEV_2i, gSHARED_NSD );
+gNMOS_6P0_SAB_SINGLE_DEV_9i = gSAB_NGATE inside gPSUB_BULK;
+gNMOS_6P0_SAB_SINGLE_DEV_8i = gNMOS_6P0_SAB_SINGLE_DEV_9i and aESD_MK;
+gNMOS_6P0_SAB_SINGLE_DEV_7i = gNMOS_6P0_SAB_SINGLE_DEV_8i and aDUALGATE;
+gNMOS_6P0_SAB_SINGLE_DEV_6i = gNMOS_6P0_SAB_SINGLE_DEV_7i not aV5_XTOR;
+gNMOS_6P0_SAB_SINGLE_DEV_5i = gNMOS_6P0_SAB_SINGLE_DEV_6i not aDNWELL;
+gNMOS_6P0_SAB_SINGLE_DEV_4i = gNMOS_6P0_SAB_SINGLE_DEV_5i not aNWELL;
+gNMOS_6P0_SAB_SINGLE_DEV_3i = gNMOS_6P0_SAB_SINGLE_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gNMOS_6P0_SAB_SINGLE_DEV = interacting( gNMOS_6P0_SAB_SINGLE_DEV_1i, gNMOS_6P0_SAB_SINGLE_DEV_3i );
+
+gNMOS_6P0_DW_SAB_MULTI_DEV_2i = gEFF_DEV_SEED or aSAB;
+gNMOS_6P0_DW_SAB_MULTI_DEV_1i = interacting( gNMOS_6P0_DW_SAB_MULTI_DEV_2i, gSHARED_NSD );
+gNMOS_6P0_DW_SAB_MULTI_DEV_10i = gSAB_NGATE inside gDN_LP;
+gNMOS_6P0_DW_SAB_MULTI_DEV_9i = gNMOS_6P0_DW_SAB_MULTI_DEV_10i and aDNWELL;
+gNMOS_6P0_DW_SAB_MULTI_DEV_8i = gNMOS_6P0_DW_SAB_MULTI_DEV_9i and aLVPWELL;
+gNMOS_6P0_DW_SAB_MULTI_DEV_7i = gNMOS_6P0_DW_SAB_MULTI_DEV_8i and aESD_MK;
+gNMOS_6P0_DW_SAB_MULTI_DEV_6i = gNMOS_6P0_DW_SAB_MULTI_DEV_7i and aDUALGATE;
+gNMOS_6P0_DW_SAB_MULTI_DEV_5i = gNMOS_6P0_DW_SAB_MULTI_DEV_6i not aV5_XTOR;
+gNMOS_6P0_DW_SAB_MULTI_DEV_4i = gNMOS_6P0_DW_SAB_MULTI_DEV_5i not aNWELL;
+gNMOS_6P0_DW_SAB_MULTI_DEV_3i = gNMOS_6P0_DW_SAB_MULTI_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gNMOS_6P0_DW_SAB_MULTI_DEV = interacting( gNMOS_6P0_DW_SAB_MULTI_DEV_1i, gNMOS_6P0_DW_SAB_MULTI_DEV_3i );
+gNMOS_6P0_DW_SAB_SINGLE_DEV_2i = gEFF_DEV_SEED or aSAB;
+gNMOS_6P0_DW_SAB_SINGLE_DEV_1i = not_interacting( gNMOS_6P0_DW_SAB_SINGLE_DEV_2i, gSHARED_NSD );
+gNMOS_6P0_DW_SAB_SINGLE_DEV_10i = gSAB_NGATE inside gDN_LP;
+gNMOS_6P0_DW_SAB_SINGLE_DEV_9i = gNMOS_6P0_DW_SAB_SINGLE_DEV_10i and aDNWELL;
+gNMOS_6P0_DW_SAB_SINGLE_DEV_8i = gNMOS_6P0_DW_SAB_SINGLE_DEV_9i and aLVPWELL;
+gNMOS_6P0_DW_SAB_SINGLE_DEV_7i = gNMOS_6P0_DW_SAB_SINGLE_DEV_8i and aESD_MK;
+gNMOS_6P0_DW_SAB_SINGLE_DEV_6i = gNMOS_6P0_DW_SAB_SINGLE_DEV_7i and aDUALGATE;
+gNMOS_6P0_DW_SAB_SINGLE_DEV_5i = gNMOS_6P0_DW_SAB_SINGLE_DEV_6i not aV5_XTOR;
+gNMOS_6P0_DW_SAB_SINGLE_DEV_4i = gNMOS_6P0_DW_SAB_SINGLE_DEV_5i not aNWELL;
+gNMOS_6P0_DW_SAB_SINGLE_DEV_3i = gNMOS_6P0_DW_SAB_SINGLE_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gNMOS_6P0_DW_SAB_SINGLE_DEV = interacting( gNMOS_6P0_DW_SAB_SINGLE_DEV_1i, gNMOS_6P0_DW_SAB_SINGLE_DEV_3i );
+
+gPMOS_3P3_SAB_MULTI_DEV_2i = gEFF_DEV_SEED or aSAB;
+gPMOS_3P3_SAB_MULTI_DEV_1i = interacting( gPMOS_3P3_SAB_MULTI_DEV_2i, gSHARED_PSD );
+gPMOS_3P3_SAB_MULTI_DEV_10i = gSAB_PGATE inside gPURENWELL;
+gPMOS_3P3_SAB_MULTI_DEV_9i = gPMOS_3P3_SAB_MULTI_DEV_10i and aNWELL;
+gPMOS_3P3_SAB_MULTI_DEV_8i = gPMOS_3P3_SAB_MULTI_DEV_9i and aESD_MK;
+gPMOS_3P3_SAB_MULTI_DEV_7i = gPMOS_3P3_SAB_MULTI_DEV_8i not aDNWELL;
+gPMOS_3P3_SAB_MULTI_DEV_6i = gPMOS_3P3_SAB_MULTI_DEV_7i not aLVPWELL;
+gPMOS_3P3_SAB_MULTI_DEV_5i = gPMOS_3P3_SAB_MULTI_DEV_6i not aDUALGATE;
+gPMOS_3P3_SAB_MULTI_DEV_4i = gPMOS_3P3_SAB_MULTI_DEV_5i not aV5_XTOR;
+gPMOS_3P3_SAB_MULTI_DEV_3i = gPMOS_3P3_SAB_MULTI_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gPMOS_3P3_SAB_MULTI_DEV = interacting( gPMOS_3P3_SAB_MULTI_DEV_1i, gPMOS_3P3_SAB_MULTI_DEV_3i );
+gPMOS_3P3_SAB_SINGLE_DEV_2i = gEFF_DEV_SEED or aSAB;
+gPMOS_3P3_SAB_SINGLE_DEV_1i = not_interacting( gPMOS_3P3_SAB_SINGLE_DEV_2i, gSHARED_PSD );
+gPMOS_3P3_SAB_SINGLE_DEV_10i = gSAB_PGATE inside gPURENWELL;
+gPMOS_3P3_SAB_SINGLE_DEV_9i = gPMOS_3P3_SAB_SINGLE_DEV_10i and aNWELL;
+gPMOS_3P3_SAB_SINGLE_DEV_8i = gPMOS_3P3_SAB_SINGLE_DEV_9i and aESD_MK;
+gPMOS_3P3_SAB_SINGLE_DEV_7i = gPMOS_3P3_SAB_SINGLE_DEV_8i not aDNWELL;
+gPMOS_3P3_SAB_SINGLE_DEV_6i = gPMOS_3P3_SAB_SINGLE_DEV_7i not aLVPWELL;
+gPMOS_3P3_SAB_SINGLE_DEV_5i = gPMOS_3P3_SAB_SINGLE_DEV_6i not aDUALGATE;
+gPMOS_3P3_SAB_SINGLE_DEV_4i = gPMOS_3P3_SAB_SINGLE_DEV_5i not aV5_XTOR;
+gPMOS_3P3_SAB_SINGLE_DEV_3i = gPMOS_3P3_SAB_SINGLE_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gPMOS_3P3_SAB_SINGLE_DEV = interacting( gPMOS_3P3_SAB_SINGLE_DEV_1i, gPMOS_3P3_SAB_SINGLE_DEV_3i );
+
+gPMOS_3P3_DW_SAB_MULTI_DEV_2i = gEFF_DEV_SEED or aSAB;
+gPMOS_3P3_DW_SAB_MULTI_DEV_1i = interacting( gPMOS_3P3_DW_SAB_MULTI_DEV_2i, gSHARED_PSD );
+gPMOS_3P3_DW_SAB_MULTI_DEV_9i = gSAB_PGATE inside gDN_SUB;
+gPMOS_3P3_DW_SAB_MULTI_DEV_8i = gPMOS_3P3_DW_SAB_MULTI_DEV_9i and aDNWELL;
+gPMOS_3P3_DW_SAB_MULTI_DEV_7i = gPMOS_3P3_DW_SAB_MULTI_DEV_8i and aESD_MK;
+gPMOS_3P3_DW_SAB_MULTI_DEV_6i = gPMOS_3P3_DW_SAB_MULTI_DEV_7i not aLVPWELL;
+gPMOS_3P3_DW_SAB_MULTI_DEV_5i = gPMOS_3P3_DW_SAB_MULTI_DEV_6i not aDUALGATE;
+gPMOS_3P3_DW_SAB_MULTI_DEV_4i = gPMOS_3P3_DW_SAB_MULTI_DEV_5i not aV5_XTOR;
+gPMOS_3P3_DW_SAB_MULTI_DEV_3i = gPMOS_3P3_DW_SAB_MULTI_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gPMOS_3P3_DW_SAB_MULTI_DEV = interacting( gPMOS_3P3_DW_SAB_MULTI_DEV_1i, gPMOS_3P3_DW_SAB_MULTI_DEV_3i );
+gPMOS_3P3_DW_SAB_SINGLE_DEV_2i = gEFF_DEV_SEED or aSAB;
+gPMOS_3P3_DW_SAB_SINGLE_DEV_1i = not_interacting( gPMOS_3P3_DW_SAB_SINGLE_DEV_2i, gSHARED_PSD );
+gPMOS_3P3_DW_SAB_SINGLE_DEV_9i = gSAB_PGATE inside gDN_SUB;
+gPMOS_3P3_DW_SAB_SINGLE_DEV_8i = gPMOS_3P3_DW_SAB_SINGLE_DEV_9i and aDNWELL;
+gPMOS_3P3_DW_SAB_SINGLE_DEV_7i = gPMOS_3P3_DW_SAB_SINGLE_DEV_8i and aESD_MK;
+gPMOS_3P3_DW_SAB_SINGLE_DEV_6i = gPMOS_3P3_DW_SAB_SINGLE_DEV_7i not aLVPWELL;
+gPMOS_3P3_DW_SAB_SINGLE_DEV_5i = gPMOS_3P3_DW_SAB_SINGLE_DEV_6i not aDUALGATE;
+gPMOS_3P3_DW_SAB_SINGLE_DEV_4i = gPMOS_3P3_DW_SAB_SINGLE_DEV_5i not aV5_XTOR;
+gPMOS_3P3_DW_SAB_SINGLE_DEV_3i = gPMOS_3P3_DW_SAB_SINGLE_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gPMOS_3P3_DW_SAB_SINGLE_DEV = interacting( gPMOS_3P3_DW_SAB_SINGLE_DEV_1i, gPMOS_3P3_DW_SAB_SINGLE_DEV_3i );
+
+gPMOS_5P0_SAB_MULTI_DEV_2i = gEFF_DEV_SEED or aSAB;
+gPMOS_5P0_SAB_MULTI_DEV_1i = interacting( gPMOS_5P0_SAB_MULTI_DEV_2i, gSHARED_PSD );
+gPMOS_5P0_SAB_MULTI_DEV_10i = gSAB_PGATE inside gPURENWELL;
+gPMOS_5P0_SAB_MULTI_DEV_9i = gPMOS_5P0_SAB_MULTI_DEV_10i and aNWELL;
+gPMOS_5P0_SAB_MULTI_DEV_8i = gPMOS_5P0_SAB_MULTI_DEV_9i and aESD_MK;
+gPMOS_5P0_SAB_MULTI_DEV_7i = gPMOS_5P0_SAB_MULTI_DEV_8i and aDUALGATE;
+gPMOS_5P0_SAB_MULTI_DEV_6i = gPMOS_5P0_SAB_MULTI_DEV_7i and aV5_XTOR;
+gPMOS_5P0_SAB_MULTI_DEV_5i = gPMOS_5P0_SAB_MULTI_DEV_6i not aDNWELL;
+gPMOS_5P0_SAB_MULTI_DEV_4i = gPMOS_5P0_SAB_MULTI_DEV_5i not aLVPWELL;
+gPMOS_5P0_SAB_MULTI_DEV_3i = gPMOS_5P0_SAB_MULTI_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gPMOS_5P0_SAB_MULTI_DEV = interacting( gPMOS_5P0_SAB_MULTI_DEV_1i, gPMOS_5P0_SAB_MULTI_DEV_3i );
+gPMOS_5P0_SAB_SINGLE_DEV_2i = gEFF_DEV_SEED or aSAB;
+gPMOS_5P0_SAB_SINGLE_DEV_1i = not_interacting( gPMOS_5P0_SAB_SINGLE_DEV_2i, gSHARED_PSD );
+gPMOS_5P0_SAB_SINGLE_DEV_10i = gSAB_PGATE inside gPURENWELL;
+gPMOS_5P0_SAB_SINGLE_DEV_9i = gPMOS_5P0_SAB_SINGLE_DEV_10i and aNWELL;
+gPMOS_5P0_SAB_SINGLE_DEV_8i = gPMOS_5P0_SAB_SINGLE_DEV_9i and aESD_MK;
+gPMOS_5P0_SAB_SINGLE_DEV_7i = gPMOS_5P0_SAB_SINGLE_DEV_8i and aDUALGATE;
+gPMOS_5P0_SAB_SINGLE_DEV_6i = gPMOS_5P0_SAB_SINGLE_DEV_7i and aV5_XTOR;
+gPMOS_5P0_SAB_SINGLE_DEV_5i = gPMOS_5P0_SAB_SINGLE_DEV_6i not aDNWELL;
+gPMOS_5P0_SAB_SINGLE_DEV_4i = gPMOS_5P0_SAB_SINGLE_DEV_5i not aLVPWELL;
+gPMOS_5P0_SAB_SINGLE_DEV_3i = gPMOS_5P0_SAB_SINGLE_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gPMOS_5P0_SAB_SINGLE_DEV = interacting( gPMOS_5P0_SAB_SINGLE_DEV_1i, gPMOS_5P0_SAB_SINGLE_DEV_3i );
+
+gPMOS_5P0_DW_SAB_MULTI_DEV_2i = gEFF_DEV_SEED or aSAB;
+gPMOS_5P0_DW_SAB_MULTI_DEV_1i = interacting( gPMOS_5P0_DW_SAB_MULTI_DEV_2i, gSHARED_PSD );
+gPMOS_5P0_DW_SAB_MULTI_DEV_9i = gSAB_PGATE inside gDN_SUB;
+gPMOS_5P0_DW_SAB_MULTI_DEV_8i = gPMOS_5P0_DW_SAB_MULTI_DEV_9i and aDNWELL;
+gPMOS_5P0_DW_SAB_MULTI_DEV_7i = gPMOS_5P0_DW_SAB_MULTI_DEV_8i and aESD_MK;
+gPMOS_5P0_DW_SAB_MULTI_DEV_6i = gPMOS_5P0_DW_SAB_MULTI_DEV_7i and aDUALGATE;
+gPMOS_5P0_DW_SAB_MULTI_DEV_5i = gPMOS_5P0_DW_SAB_MULTI_DEV_6i and aV5_XTOR;
+gPMOS_5P0_DW_SAB_MULTI_DEV_4i = gPMOS_5P0_DW_SAB_MULTI_DEV_5i not aLVPWELL;
+gPMOS_5P0_DW_SAB_MULTI_DEV_3i = gPMOS_5P0_DW_SAB_MULTI_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gPMOS_5P0_DW_SAB_MULTI_DEV = interacting( gPMOS_5P0_DW_SAB_MULTI_DEV_1i, gPMOS_5P0_DW_SAB_MULTI_DEV_3i );
+gPMOS_5P0_DW_SAB_SINGLE_DEV_2i = gEFF_DEV_SEED or aSAB;
+gPMOS_5P0_DW_SAB_SINGLE_DEV_1i = not_interacting( gPMOS_5P0_DW_SAB_SINGLE_DEV_2i, gSHARED_PSD );
+gPMOS_5P0_DW_SAB_SINGLE_DEV_9i = gSAB_PGATE inside gDN_SUB;
+gPMOS_5P0_DW_SAB_SINGLE_DEV_8i = gPMOS_5P0_DW_SAB_SINGLE_DEV_9i and aDNWELL;
+gPMOS_5P0_DW_SAB_SINGLE_DEV_7i = gPMOS_5P0_DW_SAB_SINGLE_DEV_8i and aESD_MK;
+gPMOS_5P0_DW_SAB_SINGLE_DEV_6i = gPMOS_5P0_DW_SAB_SINGLE_DEV_7i and aDUALGATE;
+gPMOS_5P0_DW_SAB_SINGLE_DEV_5i = gPMOS_5P0_DW_SAB_SINGLE_DEV_6i and aV5_XTOR;
+gPMOS_5P0_DW_SAB_SINGLE_DEV_4i = gPMOS_5P0_DW_SAB_SINGLE_DEV_5i not aLVPWELL;
+gPMOS_5P0_DW_SAB_SINGLE_DEV_3i = gPMOS_5P0_DW_SAB_SINGLE_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gPMOS_5P0_DW_SAB_SINGLE_DEV = interacting( gPMOS_5P0_DW_SAB_SINGLE_DEV_1i, gPMOS_5P0_DW_SAB_SINGLE_DEV_3i );
+
+gPMOS_6P0_SAB_MULTI_DEV_2i = gEFF_DEV_SEED or aSAB;
+gPMOS_6P0_SAB_MULTI_DEV_1i = interacting( gPMOS_6P0_SAB_MULTI_DEV_2i, gSHARED_PSD );
+gPMOS_6P0_SAB_MULTI_DEV_10i = gSAB_PGATE inside gPURENWELL;
+gPMOS_6P0_SAB_MULTI_DEV_9i = gPMOS_6P0_SAB_MULTI_DEV_10i and aNWELL;
+gPMOS_6P0_SAB_MULTI_DEV_8i = gPMOS_6P0_SAB_MULTI_DEV_9i and aESD_MK;
+gPMOS_6P0_SAB_MULTI_DEV_7i = gPMOS_6P0_SAB_MULTI_DEV_8i and aDUALGATE;
+gPMOS_6P0_SAB_MULTI_DEV_6i = gPMOS_6P0_SAB_MULTI_DEV_7i not aV5_XTOR;
+gPMOS_6P0_SAB_MULTI_DEV_5i = gPMOS_6P0_SAB_MULTI_DEV_6i not aDNWELL;
+gPMOS_6P0_SAB_MULTI_DEV_4i = gPMOS_6P0_SAB_MULTI_DEV_5i not aLVPWELL;
+gPMOS_6P0_SAB_MULTI_DEV_3i = gPMOS_6P0_SAB_MULTI_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gPMOS_6P0_SAB_MULTI_DEV = interacting( gPMOS_6P0_SAB_MULTI_DEV_1i, gPMOS_6P0_SAB_MULTI_DEV_3i );
+gPMOS_6P0_SAB_SINGLE_DEV_2i = gEFF_DEV_SEED or aSAB;
+gPMOS_6P0_SAB_SINGLE_DEV_1i = not_interacting( gPMOS_6P0_SAB_SINGLE_DEV_2i, gSHARED_PSD );
+gPMOS_6P0_SAB_SINGLE_DEV_10i = gSAB_PGATE inside gPURENWELL;
+gPMOS_6P0_SAB_SINGLE_DEV_9i = gPMOS_6P0_SAB_SINGLE_DEV_10i and aNWELL;
+gPMOS_6P0_SAB_SINGLE_DEV_8i = gPMOS_6P0_SAB_SINGLE_DEV_9i and aESD_MK;
+gPMOS_6P0_SAB_SINGLE_DEV_7i = gPMOS_6P0_SAB_SINGLE_DEV_8i and aDUALGATE;
+gPMOS_6P0_SAB_SINGLE_DEV_6i = gPMOS_6P0_SAB_SINGLE_DEV_7i not aV5_XTOR;
+gPMOS_6P0_SAB_SINGLE_DEV_5i = gPMOS_6P0_SAB_SINGLE_DEV_6i not aDNWELL;
+gPMOS_6P0_SAB_SINGLE_DEV_4i = gPMOS_6P0_SAB_SINGLE_DEV_5i not aLVPWELL;
+gPMOS_6P0_SAB_SINGLE_DEV_3i = gPMOS_6P0_SAB_SINGLE_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gPMOS_6P0_SAB_SINGLE_DEV = interacting( gPMOS_6P0_SAB_SINGLE_DEV_1i, gPMOS_6P0_SAB_SINGLE_DEV_3i );
+
+gPMOS_6P0_DW_SAB_MULTI_DEV_2i = gEFF_DEV_SEED or aSAB;
+gPMOS_6P0_DW_SAB_MULTI_DEV_1i = interacting( gPMOS_6P0_DW_SAB_MULTI_DEV_2i, gSHARED_PSD );
+gPMOS_6P0_DW_SAB_MULTI_DEV_9i = gSAB_PGATE inside gDN_SUB;
+gPMOS_6P0_DW_SAB_MULTI_DEV_8i = gPMOS_6P0_DW_SAB_MULTI_DEV_9i and aDNWELL;
+gPMOS_6P0_DW_SAB_MULTI_DEV_7i = gPMOS_6P0_DW_SAB_MULTI_DEV_8i and aESD_MK;
+gPMOS_6P0_DW_SAB_MULTI_DEV_6i = gPMOS_6P0_DW_SAB_MULTI_DEV_7i and aDUALGATE;
+gPMOS_6P0_DW_SAB_MULTI_DEV_5i = gPMOS_6P0_DW_SAB_MULTI_DEV_6i not aV5_XTOR;
+gPMOS_6P0_DW_SAB_MULTI_DEV_4i = gPMOS_6P0_DW_SAB_MULTI_DEV_5i not aLVPWELL;
+gPMOS_6P0_DW_SAB_MULTI_DEV_3i = gPMOS_6P0_DW_SAB_MULTI_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gPMOS_6P0_DW_SAB_MULTI_DEV = interacting( gPMOS_6P0_DW_SAB_MULTI_DEV_1i, gPMOS_6P0_DW_SAB_MULTI_DEV_3i );
+gPMOS_6P0_DW_SAB_SINGLE_DEV_2i = gEFF_DEV_SEED or aSAB;
+gPMOS_6P0_DW_SAB_SINGLE_DEV_1i = not_interacting( gPMOS_6P0_DW_SAB_SINGLE_DEV_2i, gSHARED_PSD );
+gPMOS_6P0_DW_SAB_SINGLE_DEV_9i = gSAB_PGATE inside gDN_SUB;
+gPMOS_6P0_DW_SAB_SINGLE_DEV_8i = gPMOS_6P0_DW_SAB_SINGLE_DEV_9i and aDNWELL;
+gPMOS_6P0_DW_SAB_SINGLE_DEV_7i = gPMOS_6P0_DW_SAB_SINGLE_DEV_8i and aESD_MK;
+gPMOS_6P0_DW_SAB_SINGLE_DEV_6i = gPMOS_6P0_DW_SAB_SINGLE_DEV_7i and aDUALGATE;
+gPMOS_6P0_DW_SAB_SINGLE_DEV_5i = gPMOS_6P0_DW_SAB_SINGLE_DEV_6i not aV5_XTOR;
+gPMOS_6P0_DW_SAB_SINGLE_DEV_4i = gPMOS_6P0_DW_SAB_SINGLE_DEV_5i not aLVPWELL;
+gPMOS_6P0_DW_SAB_SINGLE_DEV_3i = gPMOS_6P0_DW_SAB_SINGLE_DEV_4i not g_ESD_MOS_EXCL_LAY;
+gPMOS_6P0_DW_SAB_SINGLE_DEV = interacting( gPMOS_6P0_DW_SAB_SINGLE_DEV_1i, gPMOS_6P0_DW_SAB_SINGLE_DEV_3i );
+gSAB_NDRN0_3i = gNSD_ALL and aESD_MK;
+gSAB_NDRN0_2i = interacting( gSAB_NDRN0_3i, aSAB );
+gSAB_NDRN0_1i = not_interacting( gSAB_NDRN0_2i, aLVS_SOURCE );
+gSAB_NDRN0 = gSAB_NDRN0_1i not aSAB;
+gSAB_NSRC0_2i = gNSD_ALL and aESD_MK;
+gSAB_NSRC0_1i = interacting( gSAB_NSRC0_2i, aLVS_SOURCE );
+gSAB_NSRC0 = gSAB_NSRC0_1i not aSAB;
+gMARKER_NSRC_DEV_1i = aLVS_SOURCE and gNDIF;
+gMARKER_NSRC_DEV = gMARKER_NSRC_DEV_1i not aSAB;
+gEXT_SHARE_NSD_NOTSAB = gEXT_SHARE_NSD not aSAB;
+gSAB_PDRN0_3i = gPSD_ALL and aESD_MK;
+gSAB_PDRN0_2i = interacting( gSAB_PDRN0_3i, aSAB );
+gSAB_PDRN0_1i = not_interacting( gSAB_PDRN0_2i, aLVS_SOURCE );
+gSAB_PDRN0 = gSAB_PDRN0_1i not aSAB;
+gSAB_PSRC0_2i = gPSD_ALL and aESD_MK;
+gSAB_PSRC0_1i = interacting( gSAB_PSRC0_2i, aLVS_SOURCE );
+gSAB_PSRC0 = gSAB_PSRC0_1i not aSAB;
+gMARKER_PSRC_DEV_1i = aLVS_SOURCE and gPDIF;
+gMARKER_PSRC_DEV = gMARKER_PSRC_DEV_1i not aSAB;
+gEXT_SHARE_PSD_NOTSAB = gEXT_SHARE_PSD not aSAB;
+gDRAIN_SAB_1i = gSAB_NDRN or gSAB_PDRN;
+gDRAIN_SAB = aSAB and gDRAIN_SAB_1i;
+gSOURCE_SAB_AA_1i = gSAB_NSRC or gSAB_PSRC;
+gSOURCE_SAB_AA = gSOURCE_SAB_AA_1i and aSAB;
+gSOURCE_SAB_BB_1i = gSAB_NSRC or gSAB_PSRC;
+gSOURCE_SAB_BB = gSOURCE_SAB_BB_1i not aSAB;
+gSOURCE_SAB = gSOURCE_SAB_AA or gSOURCE_SAB_BB;
+
+
+
+
+
+g_DIO_EXCL_LAY_14i = aHSR or aESD;
+g_DIO_EXCL_LAY_13i = g_DIO_EXCL_LAY_14i or aSAB;
+g_DIO_EXCL_LAY_12i = g_DIO_EXCL_LAY_13i or aFUSEWINDOW;
+g_DIO_EXCL_LAY_11i = g_DIO_EXCL_LAY_12i or aPOLYFUSE;
+g_DIO_EXCL_LAY_10i = g_DIO_EXCL_LAY_11i or aRES_MK;
+g_DIO_EXCL_LAY_9i = g_DIO_EXCL_LAY_10i or aLVS_BJT;
+g_DIO_EXCL_LAY_8i = g_DIO_EXCL_LAY_9i or aMOS_CAP_MK;
+g_DIO_EXCL_LAY = g_DIO_EXCL_LAY_8i or aEFUSE_MK;
+g_DIFF_DIO_EXCL_LAY_4i = aMVNSD or aMVPSD;
+g_DIFF_DIO_EXCL_LAY_3i = g_DIFF_DIO_EXCL_LAY_4i or aLDMOS;
+g_DIFF_DIO_EXCL_LAY = g_DIFF_DIO_EXCL_LAY_3i or aSCHOTTKY_DIODE;
+gNP_3P3_DEV_8i = gNSD and aLVS_DIO;
+gNP_3P3_DEV_7i = gNP_3P3_DEV_8i inside gPSUB_BULK;
+gNP_3P3_DEV_6i = not_interacting( gNP_3P3_DEV_7i, aDUALGATE );
+gNP_3P3_DEV_5i = gNP_3P3_DEV_6i not aDNWELL;
+gNP_3P3_DEV_4i = gNP_3P3_DEV_5i not aNWELL;
+gNP_3P3_DEV_3i = gNP_3P3_DEV_4i not aNAT;
+gNP_3P3_DEV_2i = not_interacting( gNP_3P3_DEV_3i, aV5_XTOR );
+gNP_3P3_DEV_1i = gNP_3P3_DEV_2i not g_DIO_EXCL_LAY;
+gNP_3P3_DEV = gNP_3P3_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+gNP_3P3_DW_DEV_9i = gNSD and aLVS_DIO;
+gNP_3P3_DW_DEV_8i = gNP_3P3_DW_DEV_9i inside gDN_LP;
+gNP_3P3_DW_DEV_7i = gNP_3P3_DW_DEV_8i and aDNWELL;
+gNP_3P3_DW_DEV_6i = gNP_3P3_DW_DEV_7i and aLVPWELL;
+gNP_3P3_DW_DEV_5i = not_interacting( gNP_3P3_DW_DEV_6i, aDUALGATE );
+gNP_3P3_DW_DEV_4i = gNP_3P3_DW_DEV_5i not aNWELL;
+gNP_3P3_DW_DEV_3i = gNP_3P3_DW_DEV_4i not aNAT;
+gNP_3P3_DW_DEV_2i = not_interacting( gNP_3P3_DW_DEV_3i, aV5_XTOR );
+gNP_3P3_DW_DEV_1i = gNP_3P3_DW_DEV_2i not g_DIO_EXCL_LAY;
+gNP_3P3_DW_DEV = gNP_3P3_DW_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+gNP_6P0_DEV_7i = gNSD and aLVS_DIO;
+gNP_6P0_DEV_6i = gNP_6P0_DEV_7i inside gPSUB_BULK;
+gNP_6P0_DEV_5i = interacting( gNP_6P0_DEV_6i, aDUALGATE );
+gNP_6P0_DEV_4i = gNP_6P0_DEV_5i not aDNWELL;
+gNP_6P0_DEV_3i = gNP_6P0_DEV_4i not aNWELL;
+gNP_6P0_DEV_2i = gNP_6P0_DEV_3i not aNAT;
+gNP_6P0_DEV_1i = gNP_6P0_DEV_2i not g_DIO_EXCL_LAY;
+gNP_6P0_DEV = gNP_6P0_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+gNP_6P0_DW_DEV_8i = gNSD and aLVS_DIO;
+gNP_6P0_DW_DEV_7i = gNP_6P0_DW_DEV_8i inside gDN_LP;
+gNP_6P0_DW_DEV_6i = gNP_6P0_DW_DEV_7i and aDNWELL;
+gNP_6P0_DW_DEV_5i = gNP_6P0_DW_DEV_6i and aLVPWELL;
+gNP_6P0_DW_DEV_4i = interacting( gNP_6P0_DW_DEV_5i, aDUALGATE );
+gNP_6P0_DW_DEV_3i = gNP_6P0_DW_DEV_4i not aNWELL;
+gNP_6P0_DW_DEV_2i = gNP_6P0_DW_DEV_3i not aNAT;
+gNP_6P0_DW_DEV_1i = gNP_6P0_DW_DEV_2i not g_DIO_EXCL_LAY;
+gNP_6P0_DW_DEV = gNP_6P0_DW_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+gPN_3P3_DEV_9i = gPSD and aLVS_DIO;
+gPN_3P3_DEV_8i = gPN_3P3_DEV_9i inside gPURENWELL;
+gPN_3P3_DEV_7i = gPN_3P3_DEV_8i and aNWELL;
+gPN_3P3_DEV_6i = not_interacting( gPN_3P3_DEV_7i, aDUALGATE );
+gPN_3P3_DEV_5i = gPN_3P3_DEV_6i not aDNWELL;
+gPN_3P3_DEV_4i = gPN_3P3_DEV_5i not aLVPWELL;
+gPN_3P3_DEV_3i = gPN_3P3_DEV_4i not aNAT;
+gPN_3P3_DEV_2i = not_interacting( gPN_3P3_DEV_3i, aV5_XTOR );
+gPN_3P3_DEV_1i = gPN_3P3_DEV_2i not g_DIO_EXCL_LAY;
+gPN_3P3_DEV = gPN_3P3_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+gPN_3P3_DW_DEV_8i = gPSD and aLVS_DIO;
+gPN_3P3_DW_DEV_7i = gPN_3P3_DW_DEV_8i inside gDN_SUB;
+gPN_3P3_DW_DEV_6i = gPN_3P3_DW_DEV_7i and aDNWELL;
+gPN_3P3_DW_DEV_5i = gPN_3P3_DW_DEV_6i not aLVPWELL;
+gPN_3P3_DW_DEV_4i = not_interacting( gPN_3P3_DW_DEV_5i, aDUALGATE );
+gPN_3P3_DW_DEV_3i = gPN_3P3_DW_DEV_4i not aNAT;
+gPN_3P3_DW_DEV_2i = not_interacting( gPN_3P3_DW_DEV_3i, aV5_XTOR );
+gPN_3P3_DW_DEV_1i = gPN_3P3_DW_DEV_2i not g_DIO_EXCL_LAY;
+gPN_3P3_DW_DEV = gPN_3P3_DW_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+gPN_6P0_DEV_8i = gPSD and aLVS_DIO;
+gPN_6P0_DEV_7i = gPN_6P0_DEV_8i inside gPURENWELL;
+gPN_6P0_DEV_6i = gPN_6P0_DEV_7i and aNWELL;
+gPN_6P0_DEV_5i = interacting( gPN_6P0_DEV_6i, aDUALGATE );
+gPN_6P0_DEV_4i = gPN_6P0_DEV_5i not aDNWELL;
+gPN_6P0_DEV_3i = gPN_6P0_DEV_4i not aLVPWELL;
+gPN_6P0_DEV_2i = gPN_6P0_DEV_3i not aNAT;
+gPN_6P0_DEV_1i = gPN_6P0_DEV_2i not g_DIO_EXCL_LAY;
+gPN_6P0_DEV = gPN_6P0_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+gPN_6P0_DW_DEV_7i = gPSD and aLVS_DIO;
+gPN_6P0_DW_DEV_6i = gPN_6P0_DW_DEV_7i inside gDN_SUB;
+gPN_6P0_DW_DEV_5i = gPN_6P0_DW_DEV_6i and aDNWELL;
+gPN_6P0_DW_DEV_4i = gPN_6P0_DW_DEV_5i not aLVPWELL;
+gPN_6P0_DW_DEV_3i = interacting( gPN_6P0_DW_DEV_4i, aDUALGATE );
+gPN_6P0_DW_DEV_2i = gPN_6P0_DW_DEV_3i not aNAT;
+gPN_6P0_DW_DEV_1i = gPN_6P0_DW_DEV_2i not g_DIO_EXCL_LAY;
+gPN_6P0_DW_DEV = gPN_6P0_DW_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+gNWP_3P3_DEV_7i = aLVS_DIO or aWELL_DIODE_MK;
+gNWP_3P3_DEV_6i = gPURENWELL_ALL inside gNWP_3P3_DEV_7i;
+gNWP_3P3_DEV_5i = enclosing( gNWP_3P3_DEV_6i, gNDIFF );
+gNWP_3P3_DEV_4i = not_interacting( gNWP_3P3_DEV_5i, aDUALGATE );
+gNWP_3P3_DEV_3i = gNWP_3P3_DEV_4i not aLVPWELL;
+gNWP_3P3_DEV_2i = not_interacting( gNWP_3P3_DEV_3i, aV5_XTOR );
+gNWP_3P3_DEV_1i = not_interacting( gNWP_3P3_DEV_2i, aSCHOTTKY_DIODE );
+gNWP_3P3_DEV = gNWP_3P3_DEV_1i not g_DIO_EXCL_LAY;
+gNWP_6P0_DEV_6i = aLVS_DIO or aWELL_DIODE_MK;
+gNWP_6P0_DEV_5i = gPURENWELL_ALL inside gNWP_6P0_DEV_6i;
+gNWP_6P0_DEV_4i = enclosing( gNWP_6P0_DEV_5i, gNDIFF );
+gNWP_6P0_DEV_3i = interacting( gNWP_6P0_DEV_4i, aDUALGATE );
+gNWP_6P0_DEV_2i = gNWP_6P0_DEV_3i not aLVPWELL;
+gNWP_6P0_DEV_1i = not_interacting( gNWP_6P0_DEV_2i, aSCHOTTKY_DIODE );
+gNWP_6P0_DEV = gNWP_6P0_DEV_1i not g_DIO_EXCL_LAY;
+gDNWPW_3P3_DEV_5i = aLVS_DIO or aWELL_DIODE_MK;
+gDNWPW_3P3_DEV_4i = gDN_LP_ALL inside gDNWPW_3P3_DEV_5i;
+gDNWPW_3P3_DEV_3i = not_interacting( gDNWPW_3P3_DEV_4i, aDUALGATE );
+gDNWPW_3P3_DEV_2i = not_interacting( gDNWPW_3P3_DEV_3i, aV5_XTOR );
+gDNWPW_3P3_DEV_1i = not_interacting( gDNWPW_3P3_DEV_2i, aSCHOTTKY_DIODE );
+gDNWPW_3P3_DEV = gDNWPW_3P3_DEV_1i not g_DIO_EXCL_LAY;
+gDNWPW_6P0_DEV_4i = aLVS_DIO or aWELL_DIODE_MK;
+gDNWPW_6P0_DEV_3i = gDN_LP_ALL inside gDNWPW_6P0_DEV_4i;
+gDNWPW_6P0_DEV_2i = interacting( gDNWPW_6P0_DEV_3i, aDUALGATE );
+gDNWPW_6P0_DEV_1i = not_interacting( gDNWPW_6P0_DEV_2i, aSCHOTTKY_DIODE );
+gDNWPW_6P0_DEV = gDNWPW_6P0_DEV_1i not g_DIO_EXCL_LAY;
+gDNWPS_3P3_DEV_5i = aLVS_DIO or aWELL_DIODE_MK;
+gDNWPS_3P3_DEV_4i = aDNWELL inside gDNWPS_3P3_DEV_5i;
+gDNWPS_3P3_DEV_3i = not_interacting( gDNWPS_3P3_DEV_4i, aDUALGATE );
+gDNWPS_3P3_DEV_2i = not_interacting( gDNWPS_3P3_DEV_3i, aV5_XTOR );
+gDNWPS_3P3_DEV_1i = not_interacting( gDNWPS_3P3_DEV_2i, aSCHOTTKY_DIODE );
+gDNWPS_3P3_DEV = gDNWPS_3P3_DEV_1i not g_DIO_EXCL_LAY;
+gDNWPS_6P0_DEV_4i = aLVS_DIO or aWELL_DIODE_MK;
+gDNWPS_6P0_DEV_3i = aDNWELL inside gDNWPS_6P0_DEV_4i;
+gDNWPS_6P0_DEV_2i = interacting( gDNWPS_6P0_DEV_3i, aDUALGATE );
+gDNWPS_6P0_DEV_1i = not_interacting( gDNWPS_6P0_DEV_2i, aSCHOTTKY_DIODE );
+gDNWPS_6P0_DEV = gDNWPS_6P0_DEV_1i not g_DIO_EXCL_LAY;
+
+gDNWPS_6P0_SC_DEV_3i = aLVS_DIO or aWELL_DIODE_MK;
+gDNWPS_6P0_SC_DEV_2i = aDNWELL inside gDNWPS_6P0_SC_DEV_3i;
+gDNWPS_6P0_SC_DEV_1i = interacting( gDNWPS_6P0_SC_DEV_2i, aSCHOTTKY_DIODE );
+gDNWPS_6P0_SC_DEV = gDNWPS_6P0_SC_DEV_1i not g_DIO_EXCL_LAY;
+
+gSC_DIO_EXCL_LAY_24i = aHSR or aESD;
+gSC_DIO_EXCL_LAY_23i = gSC_DIO_EXCL_LAY_24i or aSAB;
+gSC_DIO_EXCL_LAY_22i = gSC_DIO_EXCL_LAY_23i or aFUSEWINDOW;
+gSC_DIO_EXCL_LAY_21i = gSC_DIO_EXCL_LAY_22i or aPOLYFUSE;
+gSC_DIO_EXCL_LAY_20i = gSC_DIO_EXCL_LAY_21i or aRES_MK;
+gSC_DIO_EXCL_LAY_19i = gSC_DIO_EXCL_LAY_20i or aLVS_DIO;
+gSC_DIO_EXCL_LAY_18i = gSC_DIO_EXCL_LAY_19i or aNAT;
+gSC_DIO_EXCL_LAY_17i = gSC_DIO_EXCL_LAY_18i or aMOS_CAP_MK;
+gSC_DIO_EXCL_LAY_16i = gSC_DIO_EXCL_LAY_17i or aESD_MK;
+gSC_DIO_EXCL_LAY_15i = gSC_DIO_EXCL_LAY_16i or aEFUSE_MK;
+gSC_DIO_EXCL_LAY_14i = gSC_DIO_EXCL_LAY_15i or aMVNSD;
+gSC_DIO_EXCL_LAY_13i = gSC_DIO_EXCL_LAY_14i or aMVPSD;
+gSC_DIO_EXCL_LAY = gSC_DIO_EXCL_LAY_13i or aLDMOS;
+gSC_DIODE_DEV_2i = gNSD and aSCHOTTKY_DIODE;
+gSC_DIODE_DEV_1i = gSC_DIODE_DEV_2i and gDN_SUB_ALL;
+gSC_DIODE_DEV = gSC_DIODE_DEV_1i not gSC_DIO_EXCL_LAY;
+gSC_DIODE_ANODE_2i = aCOMP not aNPLUS;
+gSC_DIODE_ANODE_1i = gSC_DIODE_ANODE_2i and aSCHOTTKY_DIODE;
+gSC_DIODE_ANODE = gSC_DIODE_ANODE_1i and gDN_SUB_ALL;
+gSC_DIODE_CATHODE_2i = aCOMP and aNPLUS;
+gSC_DIODE_CATHODE_1i = gSC_DIODE_CATHODE_2i and aSCHOTTKY_DIODE;
+gSC_DIODE_CATHODE = gSC_DIODE_CATHODE_1i and gDN_SUB_ALL;
+
+gSC_DIODE_COMP_1i = edge_size( gSC_DIODE_ANODE, outside = 0.28 );
+gSC_DIODE_COMP = outside_touching( gSC_DIODE_COMP_1i, gSC_DIODE_CATHODE );
+
+#ifdef d_PEX_RUN
+   gDIO_NJUNC_P_1i = not_interacting( gNDIFF, aPOLY2 );
+   gDIO_NJUNC_P = not_interacting( gDIO_NJUNC_P_1i, aRES_MK );
+   gDIO_PJUNC_P_1i = not_interacting( gPDIFF, aPOLY2 );
+   gDIO_PJUNC_P = not_interacting( gDIO_PJUNC_P_1i, aRES_MK );
+   
+        gNP_3P3_P_DEV_8i = gDIO_NJUNC_P inside gPSUB_BULK;
+   gNP_3P3_P_DEV_7i = gNP_3P3_P_DEV_8i not gNP_3P3_DEV;
+   gNP_3P3_P_DEV_6i = not_interacting( gNP_3P3_P_DEV_7i, aDUALGATE );
+   gNP_3P3_P_DEV_5i = gNP_3P3_P_DEV_6i not aDNWELL;
+   gNP_3P3_P_DEV_4i = gNP_3P3_P_DEV_5i not aNWELL;
+   gNP_3P3_P_DEV_3i = gNP_3P3_P_DEV_4i not aNAT;
+   gNP_3P3_P_DEV_2i = not_interacting( gNP_3P3_P_DEV_3i, aV5_XTOR );
+   gNP_3P3_P_DEV_1i = gNP_3P3_P_DEV_2i not g_DIO_EXCL_LAY;
+   gNP_3P3_P_DEV = gNP_3P3_P_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+   
+        gNP_3P3_DW_P_DEV_9i = gDIO_NJUNC_P inside gDN_LP;
+   gNP_3P3_DW_P_DEV_8i = gNP_3P3_DW_P_DEV_9i not gNP_3P3_DW_DEV;
+   gNP_3P3_DW_P_DEV_7i = gNP_3P3_DW_P_DEV_8i and aDNWELL;
+   gNP_3P3_DW_P_DEV_6i = gNP_3P3_DW_P_DEV_7i and aLVPWELL;
+   gNP_3P3_DW_P_DEV_5i = not_interacting( gNP_3P3_DW_P_DEV_6i, aDUALGATE );
+   gNP_3P3_DW_P_DEV_4i = gNP_3P3_DW_P_DEV_5i not aNWELL;
+   gNP_3P3_DW_P_DEV_3i = gNP_3P3_DW_P_DEV_4i not aNAT;
+   gNP_3P3_DW_P_DEV_2i = not_interacting( gNP_3P3_DW_P_DEV_3i, aV5_XTOR );
+   gNP_3P3_DW_P_DEV_1i = gNP_3P3_DW_P_DEV_2i not g_DIO_EXCL_LAY;
+   gNP_3P3_DW_P_DEV = gNP_3P3_DW_P_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+   
+        gNP_6P0_P_DEV_7i = gDIO_NJUNC_P inside gPSUB_BULK;
+   gNP_6P0_P_DEV_6i = gNP_6P0_P_DEV_7i not gNP_6P0_DEV;
+   gNP_6P0_P_DEV_5i = interacting( gNP_6P0_P_DEV_6i, aDUALGATE );
+   gNP_6P0_P_DEV_4i = gNP_6P0_P_DEV_5i not aDNWELL;
+   gNP_6P0_P_DEV_3i = gNP_6P0_P_DEV_4i not aNWELL;
+   gNP_6P0_P_DEV_2i = gNP_6P0_P_DEV_3i not aNAT;
+   gNP_6P0_P_DEV_1i = gNP_6P0_P_DEV_2i not g_DIO_EXCL_LAY;
+   gNP_6P0_P_DEV = gNP_6P0_P_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+   
+        gNP_6P0_DW_P_DEV_8i = gDIO_NJUNC_P inside gDN_LP;
+   gNP_6P0_DW_P_DEV_7i = gNP_6P0_DW_P_DEV_8i not gNP_6P0_DW_DEV;
+   gNP_6P0_DW_P_DEV_6i = gNP_6P0_DW_P_DEV_7i and aDNWELL;
+   gNP_6P0_DW_P_DEV_5i = gNP_6P0_DW_P_DEV_6i and aLVPWELL;
+   gNP_6P0_DW_P_DEV_4i = interacting( gNP_6P0_DW_P_DEV_5i, aDUALGATE );
+   gNP_6P0_DW_P_DEV_3i = gNP_6P0_DW_P_DEV_4i not aNWELL;
+   gNP_6P0_DW_P_DEV_2i = gNP_6P0_DW_P_DEV_3i not aNAT;
+   gNP_6P0_DW_P_DEV_1i = gNP_6P0_DW_P_DEV_2i not g_DIO_EXCL_LAY;
+   gNP_6P0_DW_P_DEV = gNP_6P0_DW_P_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+   
+        gPN_3P3_P_DEV_9i = gDIO_PJUNC_P inside gPURENWELL;
+   gPN_3P3_P_DEV_8i = gPN_3P3_P_DEV_9i not gPN_3P3_DEV;
+   gPN_3P3_P_DEV_7i = gPN_3P3_P_DEV_8i and aNWELL;
+   gPN_3P3_P_DEV_6i = not_interacting( gPN_3P3_P_DEV_7i, aDUALGATE );
+   gPN_3P3_P_DEV_5i = gPN_3P3_P_DEV_6i not aDNWELL;
+   gPN_3P3_P_DEV_4i = gPN_3P3_P_DEV_5i not aLVPWELL;
+   gPN_3P3_P_DEV_3i = gPN_3P3_P_DEV_4i not aNAT;
+   gPN_3P3_P_DEV_2i = not_interacting( gPN_3P3_P_DEV_3i, aV5_XTOR );
+   gPN_3P3_P_DEV_1i = gPN_3P3_P_DEV_2i not g_DIO_EXCL_LAY;
+   gPN_3P3_P_DEV = gPN_3P3_P_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+   
+        gPN_3P3_DW_P_DEV_8i = gDIO_PJUNC_P inside gDN_SUB;
+   gPN_3P3_DW_P_DEV_7i = gPN_3P3_DW_P_DEV_8i not gPN_3P3_DW_DEV;
+   gPN_3P3_DW_P_DEV_6i = gPN_3P3_DW_P_DEV_7i and aDNWELL;
+   gPN_3P3_DW_P_DEV_5i = gPN_3P3_DW_P_DEV_6i not aLVPWELL;
+   gPN_3P3_DW_P_DEV_4i = not_interacting( gPN_3P3_DW_P_DEV_5i, aDUALGATE );
+   gPN_3P3_DW_P_DEV_3i = gPN_3P3_DW_P_DEV_4i not aNAT;
+   gPN_3P3_DW_P_DEV_2i = not_interacting( gPN_3P3_DW_P_DEV_3i, aV5_XTOR );
+   gPN_3P3_DW_P_DEV_1i = gPN_3P3_DW_P_DEV_2i not g_DIO_EXCL_LAY;
+   gPN_3P3_DW_P_DEV = gPN_3P3_DW_P_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+   
+        gPN_6P0_P_DEV_8i = gDIO_PJUNC_P inside gPURENWELL;
+   gPN_6P0_P_DEV_7i = gPN_6P0_P_DEV_8i not gPN_6P0_DEV;
+   gPN_6P0_P_DEV_6i = gPN_6P0_P_DEV_7i and aNWELL;
+   gPN_6P0_P_DEV_5i = interacting( gPN_6P0_P_DEV_6i, aDUALGATE );
+   gPN_6P0_P_DEV_4i = gPN_6P0_P_DEV_5i not aDNWELL;
+   gPN_6P0_P_DEV_3i = gPN_6P0_P_DEV_4i not aLVPWELL;
+   gPN_6P0_P_DEV_2i = gPN_6P0_P_DEV_3i not aNAT;
+   gPN_6P0_P_DEV_1i = gPN_6P0_P_DEV_2i not g_DIO_EXCL_LAY;
+   gPN_6P0_P_DEV = gPN_6P0_P_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+   
+        gPN_6P0_DW_P_DEV_7i = gDIO_PJUNC_P inside gDN_SUB;
+   gPN_6P0_DW_P_DEV_6i = gPN_6P0_DW_P_DEV_7i not gPN_6P0_DW_DEV;
+   gPN_6P0_DW_P_DEV_5i = gPN_6P0_DW_P_DEV_6i and aDNWELL;
+   gPN_6P0_DW_P_DEV_4i = gPN_6P0_DW_P_DEV_5i not aLVPWELL;
+   gPN_6P0_DW_P_DEV_3i = interacting( gPN_6P0_DW_P_DEV_4i, aDUALGATE );
+   gPN_6P0_DW_P_DEV_2i = gPN_6P0_DW_P_DEV_3i not aNAT;
+   gPN_6P0_DW_P_DEV_1i = gPN_6P0_DW_P_DEV_2i not g_DIO_EXCL_LAY;
+   gPN_6P0_DW_P_DEV = gPN_6P0_DW_P_DEV_1i not g_DIFF_DIO_EXCL_LAY;
+   
+        gNWP_3P3_P_DEV_5i = not_interacting( gPURENWELL_ALL, aDUALGATE );
+   gNWP_3P3_P_DEV_4i = gNWP_3P3_P_DEV_5i not gNWP_3P3_DEV;
+   gNWP_3P3_P_DEV_3i = not_interacting( gNWP_3P3_P_DEV_4i, aLVS_BJT );
+   gNWP_3P3_P_DEV_2i = not_interacting( gNWP_3P3_P_DEV_3i, gNWELL_DEV );
+   gNWP_3P3_P_DEV_1i = gNWP_3P3_P_DEV_2i not aEFUSE_MK;
+   gNWP_3P3_P_DEV = not_interacting( gNWP_3P3_P_DEV_1i, aSCHOTTKY_DIODE );
+   
+        gNWP_6P0_P_DEV_4i = interacting( gPURENWELL_ALL, aDUALGATE );
+   gNWP_6P0_P_DEV_3i = gNWP_6P0_P_DEV_4i not gNWP_6P0_DEV;
+   gNWP_6P0_P_DEV_2i = not_interacting( gNWP_6P0_P_DEV_3i, aLVS_BJT );
+   gNWP_6P0_P_DEV_1i = gNWP_6P0_P_DEV_2i not aEFUSE_MK;
+   gNWP_6P0_P_DEV = not_interacting( gNWP_6P0_P_DEV_1i, aSCHOTTKY_DIODE );
+   
+        gDNWPW_3P3_P_DEV_4i = gDN_LP_ALL not gDNWPW_3P3_DEV;
+   gDNWPW_3P3_P_DEV_3i = not_interacting( gDNWPW_3P3_P_DEV_4i, aDUALGATE );
+   gDNWPW_3P3_P_DEV_2i = not_interacting( gDNWPW_3P3_P_DEV_3i, aLVS_BJT );
+   gDNWPW_3P3_P_DEV_1i = gDNWPW_3P3_P_DEV_2i not aEFUSE_MK;
+   gDNWPW_3P3_P_DEV = not_interacting( gDNWPW_3P3_P_DEV_1i, aSCHOTTKY_DIODE );
+   
+        gDNWPW_6P0_P_DEV_4i = gDN_LP_ALL not gDNWPW_6P0_DEV;
+   gDNWPW_6P0_P_DEV_3i = interacting( gDNWPW_6P0_P_DEV_4i, aDUALGATE );
+   gDNWPW_6P0_P_DEV_2i = not_interacting( gDNWPW_6P0_P_DEV_3i, aLVS_BJT );
+   gDNWPW_6P0_P_DEV_1i = gDNWPW_6P0_P_DEV_2i not aEFUSE_MK;
+   gDNWPW_6P0_P_DEV = not_interacting( gDNWPW_6P0_P_DEV_1i, aSCHOTTKY_DIODE );
+   
+        gDNWPS_3P3_P_DEV_4i = aDNWELL not gDNWPS_3P3_DEV;
+   gDNWPS_3P3_P_DEV_3i = not_interacting( gDNWPS_3P3_P_DEV_4i, aDUALGATE );
+   gDNWPS_3P3_P_DEV_2i = not_interacting( gDNWPS_3P3_P_DEV_3i, aLVS_BJT );
+   gDNWPS_3P3_P_DEV_1i = gDNWPS_3P3_P_DEV_2i not aEFUSE_MK;
+   gDNWPS_3P3_P_DEV = not_interacting( gDNWPS_3P3_P_DEV_1i, aSCHOTTKY_DIODE );
+   
+        gDNWPS_6P0_P_DEV_4i = aDNWELL not gDNWPS_6P0_DEV;
+   gDNWPS_6P0_P_DEV_3i = interacting( gDNWPS_6P0_P_DEV_4i, aDUALGATE );
+   gDNWPS_6P0_P_DEV_2i = not_interacting( gDNWPS_6P0_P_DEV_3i, aLVS_BJT );
+   gDNWPS_6P0_P_DEV_1i = gDNWPS_6P0_P_DEV_2i not aEFUSE_MK;
+   gDNWPS_6P0_P_DEV = not_interacting( gDNWPS_6P0_P_DEV_1i, aSCHOTTKY_DIODE );
+   gDNWPS_6P0_P1_DEV_1i = aDNWELL not gDNWPS_6P0_SC_DEV;
+   gDNWPS_6P0_P1_DEV = interacting( gDNWPS_6P0_P1_DEV_1i, aSCHOTTKY_DIODE );
+#endif                                      
+gVPNP_3P3_0P42X5_1i = area( gPSD_ALL, == 2.1 );
+gVPNP_3P3_0P42X5 = enclosing( gVPNP_3P3_DEV, gVPNP_3P3_0P42X5_1i );
+gVPNP_3P3_0P42X5_DEV_1i_1i = length_edge( gPSD_ALL, == 10.84, CONNECT );
+gVPNP_3P3_0P42X5_DEV_1i = gPSD_ALL touching gVPNP_3P3_0P42X5_DEV_1i_1i;
+gVPNP_3P3_0P42X5_DEV = enclosing( gVPNP_3P3_0P42X5, gVPNP_3P3_0P42X5_DEV_1i );
+gVPNP_3P3_0P42X10_1i = area( gPSD_ALL, == 4.2 );
+gVPNP_3P3_0P42X10 = enclosing( gVPNP_3P3_DEV, gVPNP_3P3_0P42X10_1i );
+gVPNP_3P3_0P42X10_DEV_1i_1i = length_edge( gPSD_ALL, == 20.84, CONNECT );
+gVPNP_3P3_0P42X10_DEV_1i = gPSD_ALL touching gVPNP_3P3_0P42X10_DEV_1i_1i;
+gVPNP_3P3_0P42X10_DEV = enclosing( gVPNP_3P3_0P42X10, gVPNP_3P3_0P42X10_DEV_1i );
+gVPNP_3P3_5X5_1i = area( gPSD_ALL, == 25 );
+gVPNP_3P3_5X5 = enclosing( gVPNP_3P3_DEV, gVPNP_3P3_5X5_1i );
+gVPNP_3P3_5X5_DEV_1i_1i = length_edge( gPSD_ALL, == 20, CONNECT );
+gVPNP_3P3_5X5_DEV_1i = gPSD_ALL touching gVPNP_3P3_5X5_DEV_1i_1i;
+gVPNP_3P3_5X5_DEV = enclosing( gVPNP_3P3_5X5, gVPNP_3P3_5X5_DEV_1i );
+gVPNP_3P3_10X10_1i = area( gPSD_ALL, == 100 );
+gVPNP_3P3_10X10 = enclosing( gVPNP_3P3_DEV, gVPNP_3P3_10X10_1i );
+gVPNP_3P3_10X10_DEV_1i_1i = length_edge( gPSD_ALL, == 40, CONNECT );
+gVPNP_3P3_10X10_DEV_1i = gPSD_ALL touching gVPNP_3P3_10X10_DEV_1i_1i;
+gVPNP_3P3_10X10_DEV = enclosing( gVPNP_3P3_10X10, gVPNP_3P3_10X10_DEV_1i );
+gVNPN_10X10_1i = area( gNSD_ALL, == 100 );
+gVNPN_10X10 = enclosing( gVNPN_DEV, gVNPN_10X10_1i );
+gVNPN_10X10_DEV_1i_1i = length_edge( gNSD_ALL, == 40, CONNECT );
+gVNPN_10X10_DEV_1i = gNSD_ALL touching gVNPN_10X10_DEV_1i_1i;
+gVNPN_10X10_DEV = enclosing( gVNPN_10X10, gVNPN_10X10_DEV_1i );
+gVNPN_5X5_1i = area( gNSD_ALL, == 25 );
+gVNPN_5X5 = enclosing( gVNPN_DEV, gVNPN_5X5_1i );
+gVNPN_5X5_DEV_1i_1i = length_edge( gNSD_ALL, == 20, CONNECT );
+gVNPN_5X5_DEV_1i = gNSD_ALL touching gVNPN_5X5_DEV_1i_1i;
+gVNPN_5X5_DEV = enclosing( gVNPN_5X5, gVNPN_5X5_DEV_1i );
+gVNPN_0P54X16_1i = area( gNSD_ALL, == 8.64 );
+gVNPN_0P54X16 = enclosing( gVNPN_DEV, gVNPN_0P54X16_1i );
+gVNPN_0P54X16_DEV_1i_1i = length_edge( gNSD_ALL, == 33.08, CONNECT );
+gVNPN_0P54X16_DEV_1i = gNSD_ALL touching gVNPN_0P54X16_DEV_1i_1i;
+gVNPN_0P54X16_DEV = enclosing( gVNPN_0P54X16, gVNPN_0P54X16_DEV_1i );
+gVNPN_0P54X8_1i = area( gNSD_ALL, == 4.32 );
+gVNPN_0P54X8 = enclosing( gVNPN_DEV, gVNPN_0P54X8_1i );
+gVNPN_0P54X8_DEV_1i_1i = length_edge( gNSD_ALL, == 17.08, CONNECT );
+gVNPN_0P54X8_DEV_1i = gNSD_ALL touching gVNPN_0P54X8_DEV_1i_1i;
+gVNPN_0P54X8_DEV = enclosing( gVNPN_0P54X8, gVNPN_0P54X8_DEV_1i );
+gVNPN_0P54X4_1i = area( gNSD_ALL, == 2.16 );
+gVNPN_0P54X4 = enclosing( gVNPN_DEV, gVNPN_0P54X4_1i );
+gVNPN_0P54X4_DEV_1i_1i = length_edge( gNSD_ALL, == 9.08, CONNECT );
+gVNPN_0P54X4_DEV_1i = gNSD_ALL touching gVNPN_0P54X4_DEV_1i_1i;
+gVNPN_0P54X4_DEV = enclosing( gVNPN_0P54X4, gVNPN_0P54X4_DEV_1i );
+gVNPN_0P54X2_1i = area( gNSD_ALL, == 1.08 );
+gVNPN_0P54X2 = enclosing( gVNPN_DEV, gVNPN_0P54X2_1i );
+gVNPN_0P54X2_DEV_1i_1i = length_edge( gNSD_ALL, == 5.08, CONNECT );
+gVNPN_0P54X2_DEV_1i = gNSD_ALL touching gVNPN_0P54X2_DEV_1i_1i;
+gVNPN_0P54X2_DEV = enclosing( gVNPN_0P54X2, gVNPN_0P54X2_DEV_1i );
+
+
+
+
+
+g_MIMCAP_EXCL_LAY = copy( aEFUSE_MK, ancestry = true );
+#ifdef d_MIM_OPTION_A
+   gMIM_DEV_4i = aFUSETOP and aLVS_CAP;
+   gMIM_DEV_3i = gMIM_DEV_4i and aMETAL2;
+   gMIM_DEV_2i = interacting( gMIM_DEV_3i, aMETAL3 );
+   gMIM_DEV_1i = gMIM_DEV_2i not gLVS_RF;
+   gMIM_DEV = gMIM_DEV_1i not g_MIMCAP_EXCL_LAY;
+#else
+   #ifdef d_BEOL_1P4M
+      gMIM_DEV_OPT_B_4i = aFUSETOP and aLVS_CAP;
+      gMIM_DEV_OPT_B_3i = gMIM_DEV_OPT_B_4i and aMETAL3;
+      gMIM_DEV_OPT_B_2i = interacting( gMIM_DEV_OPT_B_3i, aMETAL4 );
+      gMIM_DEV_OPT_B_1i = gMIM_DEV_OPT_B_2i not gLVS_RF;
+      gMIM_DEV_OPT_B = gMIM_DEV_OPT_B_1i not g_MIMCAP_EXCL_LAY;
+   #endif                                   
+   #ifdef d_BEOL_1P5M
+      gMIM_DEV_OPT_B_8i = aFUSETOP and aLVS_CAP;
+      gMIM_DEV_OPT_B_7i = gMIM_DEV_OPT_B_8i and aMETAL4;
+      gMIM_DEV_OPT_B_6i = interacting( gMIM_DEV_OPT_B_7i, aMETAL5 );
+      gMIM_DEV_OPT_B_5i = gMIM_DEV_OPT_B_6i not gLVS_RF;
+      gMIM_DEV_OPT_B = gMIM_DEV_OPT_B_5i not g_MIMCAP_EXCL_LAY;
+   #endif                                   
+   #ifdef d_BEOL_1P6M
+      gMIM_DEV_OPT_B_12i = aFUSETOP and aLVS_CAP;
+      gMIM_DEV_OPT_B_11i = gMIM_DEV_OPT_B_12i and aMETAL5;
+      gMIM_DEV_OPT_B_10i = interacting( gMIM_DEV_OPT_B_11i, aMETAL6 );
+      gMIM_DEV_OPT_B_9i = gMIM_DEV_OPT_B_10i not gLVS_RF;
+      gMIM_DEV_OPT_B = gMIM_DEV_OPT_B_9i not g_MIMCAP_EXCL_LAY;
+   #endif                                   
+#endif                                      
+
+
+gUNSAL_RES_MARK = aRES_MK and aSAB;
+gHRES_MARK_1i = aRES_MK and aHSR;
+gHRES_MARK = gHRES_MARK_1i and aSAB;
+gFHRES_MARK_1i = aRES_MK and aFHRES;
+gFHRES_MARK = gFHRES_MARK_1i and aSAB;
+gNPLUS_S_DEV_5i = gNDIF and gSAL_RES_MARK;
+gNPLUS_S_DEV_4i = gNPLUS_S_DEV_5i inside gPSUB_BULK;
+gNPLUS_S_DEV_3i = gNPLUS_S_DEV_4i not aDNWELL;
+gNPLUS_S_DEV_2i = gNPLUS_S_DEV_3i not aNWELL;
+gNPLUS_S_DEV_1i = gNPLUS_S_DEV_2i not aDUALGATE;
+gNPLUS_S_DEV = gNPLUS_S_DEV_1i not g_RES_EXCL_LAY;
+gNPLUS_S_DW_DEV_6i = gNDIF and gSAL_RES_MARK;
+gNPLUS_S_DW_DEV_5i = gNPLUS_S_DW_DEV_6i inside gDN_LP;
+gNPLUS_S_DW_DEV_4i = gNPLUS_S_DW_DEV_5i and aLVPWELL;
+gNPLUS_S_DW_DEV_3i = gNPLUS_S_DW_DEV_4i and aDNWELL;
+gNPLUS_S_DW_DEV_2i = gNPLUS_S_DW_DEV_3i not aNWELL;
+gNPLUS_S_DW_DEV_1i = gNPLUS_S_DW_DEV_2i not aDUALGATE;
+gNPLUS_S_DW_DEV = gNPLUS_S_DW_DEV_1i not g_RES_EXCL_LAY;
+gPPLUS_S_DEV_6i = gPDIF and gSAL_RES_MARK;
+gPPLUS_S_DEV_5i = gPPLUS_S_DEV_6i inside gPURENWELL;
+gPPLUS_S_DEV_4i = gPPLUS_S_DEV_5i and aNWELL;
+gPPLUS_S_DEV_3i = gPPLUS_S_DEV_4i not aDNWELL;
+gPPLUS_S_DEV_2i = gPPLUS_S_DEV_3i not aLVPWELL;
+gPPLUS_S_DEV_1i = gPPLUS_S_DEV_2i not aDUALGATE;
+gPPLUS_S_DEV = gPPLUS_S_DEV_1i not g_RES_EXCL_LAY;
+gPPLUS_S_DW_DEV_5i = gPDIF and gSAL_RES_MARK;
+gPPLUS_S_DW_DEV_4i = gPPLUS_S_DW_DEV_5i inside gDN_SUB;
+gPPLUS_S_DW_DEV_3i = gPPLUS_S_DW_DEV_4i and aDNWELL;
+gPPLUS_S_DW_DEV_2i = gPPLUS_S_DW_DEV_3i not aLVPWELL;
+gPPLUS_S_DW_DEV_1i = gPPLUS_S_DW_DEV_2i not aDUALGATE;
+gPPLUS_S_DW_DEV = gPPLUS_S_DW_DEV_1i not g_RES_EXCL_LAY;
+gNPLUS_U_DEV_5i = gNDIF and gUNSAL_RES_MARK;
+gNPLUS_U_DEV_4i = gNPLUS_U_DEV_5i inside gPSUB_BULK;
+gNPLUS_U_DEV_3i = gNPLUS_U_DEV_4i not aDNWELL;
+gNPLUS_U_DEV_2i = gNPLUS_U_DEV_3i not aNWELL;
+gNPLUS_U_DEV_1i = gNPLUS_U_DEV_2i not aDUALGATE;
+gNPLUS_U_DEV = gNPLUS_U_DEV_1i not g_RES_EXCL_LAY;
+gNPLUS_U_DW_DEV_6i = gNDIF and gUNSAL_RES_MARK;
+gNPLUS_U_DW_DEV_5i = gNPLUS_U_DW_DEV_6i inside gDN_LP;
+gNPLUS_U_DW_DEV_4i = gNPLUS_U_DW_DEV_5i and aLVPWELL;
+gNPLUS_U_DW_DEV_3i = gNPLUS_U_DW_DEV_4i and aDNWELL;
+gNPLUS_U_DW_DEV_2i = gNPLUS_U_DW_DEV_3i not aNWELL;
+gNPLUS_U_DW_DEV_1i = gNPLUS_U_DW_DEV_2i not aDUALGATE;
+gNPLUS_U_DW_DEV = gNPLUS_U_DW_DEV_1i not g_RES_EXCL_LAY;
+gPPLUS_U_DEV_6i = gPDIF and gUNSAL_RES_MARK;
+gPPLUS_U_DEV_5i = gPPLUS_U_DEV_6i inside gPURENWELL;
+gPPLUS_U_DEV_4i = gPPLUS_U_DEV_5i and aNWELL;
+gPPLUS_U_DEV_3i = gPPLUS_U_DEV_4i not aDNWELL;
+gPPLUS_U_DEV_2i = gPPLUS_U_DEV_3i not aLVPWELL;
+gPPLUS_U_DEV_1i = gPPLUS_U_DEV_2i not aDUALGATE;
+gPPLUS_U_DEV = gPPLUS_U_DEV_1i not g_RES_EXCL_LAY;
+gPPLUS_U_DW_DEV_5i = gPDIF and gUNSAL_RES_MARK;
+gPPLUS_U_DW_DEV_4i = gPPLUS_U_DW_DEV_5i inside gDN_SUB;
+gPPLUS_U_DW_DEV_3i = gPPLUS_U_DW_DEV_4i and aDNWELL;
+gPPLUS_U_DW_DEV_2i = gPPLUS_U_DW_DEV_3i not aLVPWELL;
+gPPLUS_U_DW_DEV_1i = gPPLUS_U_DW_DEV_2i not aDUALGATE;
+gPPLUS_U_DW_DEV = gPPLUS_U_DW_DEV_1i not g_RES_EXCL_LAY;
+gNPOLYF_U_LP_DEV_4i = aPOLY2 and gUNSAL_RES_MARK;
+gNPOLYF_U_LP_DEV_3i = gNPOLYF_U_LP_DEV_4i and aNPLUS;
+gNPOLYF_U_LP_DEV_2i = gNPOLYF_U_LP_DEV_3i not aCOMP;
+gNPOLYF_U_LP_DEV_1i = gNPOLYF_U_LP_DEV_2i inside gDN_LP;
+gNPOLYF_U_LP_DEV = gNPOLYF_U_LP_DEV_1i not g_RES_EXCL_LAY;
+gNPOLYF_U_NW_DEV_4i = aPOLY2 and gUNSAL_RES_MARK;
+gNPOLYF_U_NW_DEV_3i = gNPOLYF_U_NW_DEV_4i and aNPLUS;
+gNPOLYF_U_NW_DEV_2i = gNPOLYF_U_NW_DEV_3i not aCOMP;
+gNPOLYF_U_NW_DEV_1i = gNPOLYF_U_NW_DEV_2i inside gPURENWELL;
+gNPOLYF_U_NW_DEV = gNPOLYF_U_NW_DEV_1i not g_RES_EXCL_LAY;
+gNPOLYF_U_DW_DEV_4i = aPOLY2 and gUNSAL_RES_MARK;
+gNPOLYF_U_DW_DEV_3i = gNPOLYF_U_DW_DEV_4i and aNPLUS;
+gNPOLYF_U_DW_DEV_2i = gNPOLYF_U_DW_DEV_3i not aCOMP;
+gNPOLYF_U_DW_DEV_1i = gNPOLYF_U_DW_DEV_2i inside gDN_SUB;
+gNPOLYF_U_DW_DEV = gNPOLYF_U_DW_DEV_1i not g_RES_EXCL_LAY;
+gNPOLYF_U_DEV_7i = aPOLY2 and gUNSAL_RES_MARK;
+gNPOLYF_U_DEV_6i = gNPOLYF_U_DEV_7i and aNPLUS;
+gNPOLYF_U_DEV_5i = gNPOLYF_U_DEV_6i not aCOMP;
+gNPOLYF_U_DEV_4i = gNPOLYF_U_DEV_5i not g_RES_EXCL_LAY;
+gNPOLYF_U_DEV_3i = gNPOLYF_U_DEV_4i not gNPOLYF_U_LP_DEV;
+gNPOLYF_U_DEV_2i = gNPOLYF_U_DEV_3i not gNPOLYF_U_NW_DEV;
+gNPOLYF_U_DEV_1i = gNPOLYF_U_DEV_2i not gNPOLYF_U_NW_DEV;
+gNPOLYF_U_DEV = gNPOLYF_U_DEV_1i not gNPOLYF_U_DW_DEV;
+gPPOLYF_U_LP_DEV_4i = aPOLY2 and gUNSAL_RES_MARK;
+gPPOLYF_U_LP_DEV_3i = gPPOLYF_U_LP_DEV_4i and aPPLUS;
+gPPOLYF_U_LP_DEV_2i = gPPOLYF_U_LP_DEV_3i not aCOMP;
+gPPOLYF_U_LP_DEV_1i = gPPOLYF_U_LP_DEV_2i inside gDN_LP;
+gPPOLYF_U_LP_DEV = gPPOLYF_U_LP_DEV_1i not g_RES_EXCL_LAY;
+gPPOLYF_U_NW_DEV_4i = aPOLY2 and gUNSAL_RES_MARK;
+gPPOLYF_U_NW_DEV_3i = gPPOLYF_U_NW_DEV_4i and aPPLUS;
+gPPOLYF_U_NW_DEV_2i = gPPOLYF_U_NW_DEV_3i not aCOMP;
+gPPOLYF_U_NW_DEV_1i = gPPOLYF_U_NW_DEV_2i inside gPURENWELL;
+gPPOLYF_U_NW_DEV = gPPOLYF_U_NW_DEV_1i not g_RES_EXCL_LAY;
+gPPOLYF_U_DW_DEV_4i = aPOLY2 and gUNSAL_RES_MARK;
+gPPOLYF_U_DW_DEV_3i = gPPOLYF_U_DW_DEV_4i and aPPLUS;
+gPPOLYF_U_DW_DEV_2i = gPPOLYF_U_DW_DEV_3i not aCOMP;
+gPPOLYF_U_DW_DEV_1i = gPPOLYF_U_DW_DEV_2i inside gDN_SUB;
+gPPOLYF_U_DW_DEV = gPPOLYF_U_DW_DEV_1i not g_RES_EXCL_LAY;
+gPPOLYF_U_DEV_6i = aPOLY2 and gUNSAL_RES_MARK;
+gPPOLYF_U_DEV_5i = gPPOLYF_U_DEV_6i and aPPLUS;
+gPPOLYF_U_DEV_4i = gPPOLYF_U_DEV_5i not aCOMP;
+gPPOLYF_U_DEV_3i = gPPOLYF_U_DEV_4i not g_RES_EXCL_LAY;
+gPPOLYF_U_DEV_2i = gPPOLYF_U_DEV_3i not gPPOLYF_U_LP_DEV;
+gPPOLYF_U_DEV_1i = gPPOLYF_U_DEV_2i not gPPOLYF_U_NW_DEV;
+gPPOLYF_U_DEV = gPPOLYF_U_DEV_1i not gPPOLYF_U_DW_DEV;
+gPPOLYF_U_HR_3P3_NW_DEV_6i = aPOLY2 and gHRES_MARK;
+gPPOLYF_U_HR_3P3_NW_DEV_5i = gPPOLYF_U_HR_3P3_NW_DEV_6i not aCOMP;
+gPPOLYF_U_HR_3P3_NW_DEV_4i = interacting( gPPOLYF_U_HR_3P3_NW_DEV_5i, aPPLUS );
+gPPOLYF_U_HR_3P3_NW_DEV_3i = gPPOLYF_U_HR_3P3_NW_DEV_4i inside gPURENWELL;
+gPPOLYF_U_HR_3P3_NW_DEV_2i = gPPOLYF_U_HR_3P3_NW_DEV_3i not aPPLUS;
+gPPOLYF_U_HR_3P3_NW_DEV_1i = gPPOLYF_U_HR_3P3_NW_DEV_2i not aDUALGATE;
+gPPOLYF_U_HR_3P3_NW_DEV = gPPOLYF_U_HR_3P3_NW_DEV_1i not g_RES_EXCL_LAY;
+gPPOLYF_U_HR_3P3_LP_DEV_6i = aPOLY2 and gHRES_MARK;
+gPPOLYF_U_HR_3P3_LP_DEV_5i = gPPOLYF_U_HR_3P3_LP_DEV_6i not aCOMP;
+gPPOLYF_U_HR_3P3_LP_DEV_4i = interacting( gPPOLYF_U_HR_3P3_LP_DEV_5i, aPPLUS );
+gPPOLYF_U_HR_3P3_LP_DEV_3i = gPPOLYF_U_HR_3P3_LP_DEV_4i inside gDN_LP;
+gPPOLYF_U_HR_3P3_LP_DEV_2i = gPPOLYF_U_HR_3P3_LP_DEV_3i not aPPLUS;
+gPPOLYF_U_HR_3P3_LP_DEV_1i = gPPOLYF_U_HR_3P3_LP_DEV_2i not aDUALGATE;
+gPPOLYF_U_HR_3P3_LP_DEV = gPPOLYF_U_HR_3P3_LP_DEV_1i not g_RES_EXCL_LAY;
+gPPOLYF_U_HR_3P3_DW_DEV_6i = aPOLY2 and gHRES_MARK;
+gPPOLYF_U_HR_3P3_DW_DEV_5i = gPPOLYF_U_HR_3P3_DW_DEV_6i not aCOMP;
+gPPOLYF_U_HR_3P3_DW_DEV_4i = interacting( gPPOLYF_U_HR_3P3_DW_DEV_5i, aPPLUS );
+gPPOLYF_U_HR_3P3_DW_DEV_3i = gPPOLYF_U_HR_3P3_DW_DEV_4i inside gDN_SUB;
+gPPOLYF_U_HR_3P3_DW_DEV_2i = gPPOLYF_U_HR_3P3_DW_DEV_3i not aPPLUS;
+gPPOLYF_U_HR_3P3_DW_DEV_1i = gPPOLYF_U_HR_3P3_DW_DEV_2i not aDUALGATE;
+gPPOLYF_U_HR_3P3_DW_DEV = gPPOLYF_U_HR_3P3_DW_DEV_1i not g_RES_EXCL_LAY;
+gPPOLYF_U_HR_3P3_DEV_8i = aPOLY2 and gHRES_MARK;
+gPPOLYF_U_HR_3P3_DEV_7i = gPPOLYF_U_HR_3P3_DEV_8i not aCOMP;
+gPPOLYF_U_HR_3P3_DEV_6i = interacting( gPPOLYF_U_HR_3P3_DEV_7i, aPPLUS );
+gPPOLYF_U_HR_3P3_DEV_5i = gPPOLYF_U_HR_3P3_DEV_6i not aPPLUS;
+gPPOLYF_U_HR_3P3_DEV_4i = gPPOLYF_U_HR_3P3_DEV_5i not aDUALGATE;
+gPPOLYF_U_HR_3P3_DEV_3i = gPPOLYF_U_HR_3P3_DEV_4i not g_RES_EXCL_LAY;
+gPPOLYF_U_HR_3P3_DEV_2i = gPPOLYF_U_HR_3P3_DEV_3i not gPPOLYF_U_HR_3P3_NW_DEV;
+gPPOLYF_U_HR_3P3_DEV_1i = gPPOLYF_U_HR_3P3_DEV_2i not gPPOLYF_U_HR_3P3_LP_DEV;
+gPPOLYF_U_HR_3P3_DEV = gPPOLYF_U_HR_3P3_DEV_1i not gPPOLYF_U_HR_3P3_DW_DEV;
+gPPOLYF_U_HR_6P0_NW_DEV_6i = aPOLY2 and gHRES_MARK;
+gPPOLYF_U_HR_6P0_NW_DEV_5i = gPPOLYF_U_HR_6P0_NW_DEV_6i not aCOMP;
+gPPOLYF_U_HR_6P0_NW_DEV_4i = interacting( gPPOLYF_U_HR_6P0_NW_DEV_5i, aPPLUS );
+gPPOLYF_U_HR_6P0_NW_DEV_3i = gPPOLYF_U_HR_6P0_NW_DEV_4i inside gPURENWELL;
+gPPOLYF_U_HR_6P0_NW_DEV_2i = gPPOLYF_U_HR_6P0_NW_DEV_3i not aPPLUS;
+gPPOLYF_U_HR_6P0_NW_DEV_1i = gPPOLYF_U_HR_6P0_NW_DEV_2i and aDUALGATE;
+gPPOLYF_U_HR_6P0_NW_DEV = gPPOLYF_U_HR_6P0_NW_DEV_1i not g_RES_EXCL_LAY;
+gPPOLYF_U_HR_6P0_LP_DEV_6i = aPOLY2 and gHRES_MARK;
+gPPOLYF_U_HR_6P0_LP_DEV_5i = gPPOLYF_U_HR_6P0_LP_DEV_6i not aCOMP;
+gPPOLYF_U_HR_6P0_LP_DEV_4i = interacting( gPPOLYF_U_HR_6P0_LP_DEV_5i, aPPLUS );
+gPPOLYF_U_HR_6P0_LP_DEV_3i = gPPOLYF_U_HR_6P0_LP_DEV_4i inside gDN_LP;
+gPPOLYF_U_HR_6P0_LP_DEV_2i = gPPOLYF_U_HR_6P0_LP_DEV_3i not aPPLUS;
+gPPOLYF_U_HR_6P0_LP_DEV_1i = gPPOLYF_U_HR_6P0_LP_DEV_2i and aDUALGATE;
+gPPOLYF_U_HR_6P0_LP_DEV = gPPOLYF_U_HR_6P0_LP_DEV_1i not g_RES_EXCL_LAY;
+gPPOLYF_U_HR_6P0_DW_DEV_6i = aPOLY2 and gHRES_MARK;
+gPPOLYF_U_HR_6P0_DW_DEV_5i = gPPOLYF_U_HR_6P0_DW_DEV_6i not aCOMP;
+gPPOLYF_U_HR_6P0_DW_DEV_4i = interacting( gPPOLYF_U_HR_6P0_DW_DEV_5i, aPPLUS );
+gPPOLYF_U_HR_6P0_DW_DEV_3i = gPPOLYF_U_HR_6P0_DW_DEV_4i inside gDN_SUB;
+gPPOLYF_U_HR_6P0_DW_DEV_2i = gPPOLYF_U_HR_6P0_DW_DEV_3i not aPPLUS;
+gPPOLYF_U_HR_6P0_DW_DEV_1i = gPPOLYF_U_HR_6P0_DW_DEV_2i and aDUALGATE;
+gPPOLYF_U_HR_6P0_DW_DEV = gPPOLYF_U_HR_6P0_DW_DEV_1i not g_RES_EXCL_LAY;
+gPPOLYF_U_HR_6P0_DEV_8i = aPOLY2 and gHRES_MARK;
+gPPOLYF_U_HR_6P0_DEV_7i = gPPOLYF_U_HR_6P0_DEV_8i not aCOMP;
+gPPOLYF_U_HR_6P0_DEV_6i = interacting( gPPOLYF_U_HR_6P0_DEV_7i, aPPLUS );
+gPPOLYF_U_HR_6P0_DEV_5i = gPPOLYF_U_HR_6P0_DEV_6i not aPPLUS;
+gPPOLYF_U_HR_6P0_DEV_4i = gPPOLYF_U_HR_6P0_DEV_5i and aDUALGATE;
+gPPOLYF_U_HR_6P0_DEV_3i = gPPOLYF_U_HR_6P0_DEV_4i not g_RES_EXCL_LAY;
+gPPOLYF_U_HR_6P0_DEV_2i = gPPOLYF_U_HR_6P0_DEV_3i not gPPOLYF_U_HR_6P0_NW_DEV;
+gPPOLYF_U_HR_6P0_DEV_1i = gPPOLYF_U_HR_6P0_DEV_2i not gPPOLYF_U_HR_6P0_LP_DEV;
+gPPOLYF_U_HR_6P0_DEV = gPPOLYF_U_HR_6P0_DEV_1i not gPPOLYF_U_HR_6P0_DW_DEV;
+gNPOLYF_S_NW_DEV_4i = aPOLY2 and gSAL_RES_MARK;
+gNPOLYF_S_NW_DEV_3i = gNPOLYF_S_NW_DEV_4i and aNPLUS;
+gNPOLYF_S_NW_DEV_2i = gNPOLYF_S_NW_DEV_3i not aCOMP;
+gNPOLYF_S_NW_DEV_1i = gNPOLYF_S_NW_DEV_2i inside gPURENWELL;
+gNPOLYF_S_NW_DEV = gNPOLYF_S_NW_DEV_1i not g_RES_EXCL_LAY;
+gNPOLYF_S_LP_DEV_4i = aPOLY2 and gSAL_RES_MARK;
+gNPOLYF_S_LP_DEV_3i = gNPOLYF_S_LP_DEV_4i and aNPLUS;
+gNPOLYF_S_LP_DEV_2i = gNPOLYF_S_LP_DEV_3i not aCOMP;
+gNPOLYF_S_LP_DEV_1i = gNPOLYF_S_LP_DEV_2i inside gDN_LP;
+gNPOLYF_S_LP_DEV = gNPOLYF_S_LP_DEV_1i not g_RES_EXCL_LAY;
+gNPOLYF_S_DW_DEV_4i = aPOLY2 and gSAL_RES_MARK;
+gNPOLYF_S_DW_DEV_3i = gNPOLYF_S_DW_DEV_4i and aNPLUS;
+gNPOLYF_S_DW_DEV_2i = gNPOLYF_S_DW_DEV_3i not aCOMP;
+gNPOLYF_S_DW_DEV_1i = gNPOLYF_S_DW_DEV_2i inside gDN_SUB;
+gNPOLYF_S_DW_DEV = gNPOLYF_S_DW_DEV_1i not g_RES_EXCL_LAY;
+gNPOLYF_S_DEV_6i = aPOLY2 and gSAL_RES_MARK;
+gNPOLYF_S_DEV_5i = gNPOLYF_S_DEV_6i and aNPLUS;
+gNPOLYF_S_DEV_4i = gNPOLYF_S_DEV_5i not aCOMP;
+gNPOLYF_S_DEV_3i = gNPOLYF_S_DEV_4i not g_RES_EXCL_LAY;
+gNPOLYF_S_DEV_2i = gNPOLYF_S_DEV_3i not gNPOLYF_S_NW_DEV;
+gNPOLYF_S_DEV_1i = gNPOLYF_S_DEV_2i not gNPOLYF_S_LP_DEV;
+gNPOLYF_S_DEV = gNPOLYF_S_DEV_1i not gNPOLYF_S_DW_DEV;
+gPPOLYF_S_NW_DEV_4i = aPOLY2 and gSAL_RES_MARK;
+gPPOLYF_S_NW_DEV_3i = gPPOLYF_S_NW_DEV_4i and aPPLUS;
+gPPOLYF_S_NW_DEV_2i = gPPOLYF_S_NW_DEV_3i not aCOMP;
+gPPOLYF_S_NW_DEV_1i = gPPOLYF_S_NW_DEV_2i inside gPURENWELL;
+gPPOLYF_S_NW_DEV = gPPOLYF_S_NW_DEV_1i not g_RES_EXCL_LAY;
+gPPOLYF_S_LP_DEV_4i = aPOLY2 and gSAL_RES_MARK;
+gPPOLYF_S_LP_DEV_3i = gPPOLYF_S_LP_DEV_4i and aPPLUS;
+gPPOLYF_S_LP_DEV_2i = gPPOLYF_S_LP_DEV_3i not aCOMP;
+gPPOLYF_S_LP_DEV_1i = gPPOLYF_S_LP_DEV_2i inside gDN_LP;
+gPPOLYF_S_LP_DEV = gPPOLYF_S_LP_DEV_1i not g_RES_EXCL_LAY;
+gPPOLYF_S_DW_DEV_4i = aPOLY2 and gSAL_RES_MARK;
+gPPOLYF_S_DW_DEV_3i = gPPOLYF_S_DW_DEV_4i and aPPLUS;
+gPPOLYF_S_DW_DEV_2i = gPPOLYF_S_DW_DEV_3i not aCOMP;
+gPPOLYF_S_DW_DEV_1i = gPPOLYF_S_DW_DEV_2i inside gDN_SUB;
+gPPOLYF_S_DW_DEV = gPPOLYF_S_DW_DEV_1i not g_RES_EXCL_LAY;
+gPPOLYF_S_DEV_6i = aPOLY2 and gSAL_RES_MARK;
+gPPOLYF_S_DEV_5i = gPPOLYF_S_DEV_6i and aPPLUS;
+gPPOLYF_S_DEV_4i = gPPOLYF_S_DEV_5i not aCOMP;
+gPPOLYF_S_DEV_3i = gPPOLYF_S_DEV_4i not g_RES_EXCL_LAY;
+gPPOLYF_S_DEV_2i = gPPOLYF_S_DEV_3i not gPPOLYF_S_NW_DEV;
+gPPOLYF_S_DEV_1i = gPPOLYF_S_DEV_2i not gPPOLYF_S_LP_DEV;
+gPPOLYF_S_DEV = gPPOLYF_S_DEV_1i not gPPOLYF_S_DW_DEV;
+   
+               
+                        gNMOSCAP_3P3_DEV_6i = gPOLY_MOD and aNPLUS;
+gNMOSCAP_3P3_DEV_5i = gNMOSCAP_3P3_DEV_6i inside aMOS_CAP_MK;
+gNMOSCAP_3P3_DEV_4i = gNMOSCAP_3P3_DEV_5i not aDUALGATE;
+gNMOSCAP_3P3_DEV_3i = gNMOSCAP_3P3_DEV_4i not aDNWELL;
+gNMOSCAP_3P3_DEV_2i = gNMOSCAP_3P3_DEV_3i not aNWELL;
+gNMOSCAP_3P3_DEV_1i = gNMOSCAP_3P3_DEV_2i not aV5_XTOR;
+gNMOSCAP_3P3_DEV = gNMOSCAP_3P3_DEV_1i not g_MOSCAP_EXCL_LAY;
+gNMOSCAP_3P3_DW_DEV_7i = gPOLY_MOD and aNPLUS;
+gNMOSCAP_3P3_DW_DEV_6i = gNMOSCAP_3P3_DW_DEV_7i and aDNWELL;
+gNMOSCAP_3P3_DW_DEV_5i = gNMOSCAP_3P3_DW_DEV_6i and aLVPWELL;
+gNMOSCAP_3P3_DW_DEV_4i = gNMOSCAP_3P3_DW_DEV_5i inside aMOS_CAP_MK;
+gNMOSCAP_3P3_DW_DEV_3i = gNMOSCAP_3P3_DW_DEV_4i not aDUALGATE;
+gNMOSCAP_3P3_DW_DEV_2i = gNMOSCAP_3P3_DW_DEV_3i not aNWELL;
+gNMOSCAP_3P3_DW_DEV_1i = gNMOSCAP_3P3_DW_DEV_2i not aV5_XTOR;
+gNMOSCAP_3P3_DW_DEV = gNMOSCAP_3P3_DW_DEV_1i not g_MOSCAP_EXCL_LAY;
+gNMOSCAP_6P0_DEV_5i = gPOLY_MOD and aNPLUS;
+gNMOSCAP_6P0_DEV_4i = gNMOSCAP_6P0_DEV_5i and aDUALGATE;
+gNMOSCAP_6P0_DEV_3i = gNMOSCAP_6P0_DEV_4i inside aMOS_CAP_MK;
+gNMOSCAP_6P0_DEV_2i = gNMOSCAP_6P0_DEV_3i not aDNWELL;
+gNMOSCAP_6P0_DEV_1i = gNMOSCAP_6P0_DEV_2i not aNWELL;
+gNMOSCAP_6P0_DEV = gNMOSCAP_6P0_DEV_1i not g_MOSCAP_EXCL_LAY;
+gNMOSCAP_6P0_DW_DEV_6i = gPOLY_MOD and aNPLUS;
+gNMOSCAP_6P0_DW_DEV_5i = gNMOSCAP_6P0_DW_DEV_6i and aDNWELL;
+gNMOSCAP_6P0_DW_DEV_4i = gNMOSCAP_6P0_DW_DEV_5i and aLVPWELL;
+gNMOSCAP_6P0_DW_DEV_3i = gNMOSCAP_6P0_DW_DEV_4i and aDUALGATE;
+gNMOSCAP_6P0_DW_DEV_2i = gNMOSCAP_6P0_DW_DEV_3i inside aMOS_CAP_MK;
+gNMOSCAP_6P0_DW_DEV_1i = gNMOSCAP_6P0_DW_DEV_2i not aNWELL;
+gNMOSCAP_6P0_DW_DEV = gNMOSCAP_6P0_DW_DEV_1i not g_MOSCAP_EXCL_LAY;
+gPMOSCAP_3P3_DEV_7i = gPOLY_MOD and aPPLUS;
+gPMOSCAP_3P3_DEV_6i = gPMOSCAP_3P3_DEV_7i and aNWELL;
+gPMOSCAP_3P3_DEV_5i = gPMOSCAP_3P3_DEV_6i inside aMOS_CAP_MK;
+gPMOSCAP_3P3_DEV_4i = gPMOSCAP_3P3_DEV_5i not aDUALGATE;
+gPMOSCAP_3P3_DEV_3i = gPMOSCAP_3P3_DEV_4i not aDNWELL;
+gPMOSCAP_3P3_DEV_2i = gPMOSCAP_3P3_DEV_3i not aLVPWELL;
+gPMOSCAP_3P3_DEV_1i = gPMOSCAP_3P3_DEV_2i not aV5_XTOR;
+gPMOSCAP_3P3_DEV = gPMOSCAP_3P3_DEV_1i not g_MOSCAP_EXCL_LAY;
+gPMOSCAP_3P3_DW_DEV_6i = gPOLY_MOD and aPPLUS;
+gPMOSCAP_3P3_DW_DEV_5i = gPMOSCAP_3P3_DW_DEV_6i and aDNWELL;
+gPMOSCAP_3P3_DW_DEV_4i = gPMOSCAP_3P3_DW_DEV_5i inside aMOS_CAP_MK;
+gPMOSCAP_3P3_DW_DEV_3i = gPMOSCAP_3P3_DW_DEV_4i not aDUALGATE;
+gPMOSCAP_3P3_DW_DEV_2i = gPMOSCAP_3P3_DW_DEV_3i not aLVPWELL;
+gPMOSCAP_3P3_DW_DEV_1i = gPMOSCAP_3P3_DW_DEV_2i not aV5_XTOR;
+gPMOSCAP_3P3_DW_DEV = gPMOSCAP_3P3_DW_DEV_1i not g_MOSCAP_EXCL_LAY;
+gPMOSCAP_6P0_DEV_6i = gPOLY_MOD and aPPLUS;
+gPMOSCAP_6P0_DEV_5i = gPMOSCAP_6P0_DEV_6i and aDUALGATE;
+gPMOSCAP_6P0_DEV_4i = gPMOSCAP_6P0_DEV_5i and aNWELL;
+gPMOSCAP_6P0_DEV_3i = gPMOSCAP_6P0_DEV_4i inside aMOS_CAP_MK;
+gPMOSCAP_6P0_DEV_2i = gPMOSCAP_6P0_DEV_3i not aDNWELL;
+gPMOSCAP_6P0_DEV_1i = gPMOSCAP_6P0_DEV_2i not aLVPWELL;
+gPMOSCAP_6P0_DEV = gPMOSCAP_6P0_DEV_1i not g_MOSCAP_EXCL_LAY;
+gPMOSCAP_6P0_DW_DEV_5i = gPOLY_MOD and aPPLUS;
+gPMOSCAP_6P0_DW_DEV_4i = gPMOSCAP_6P0_DW_DEV_5i and aDUALGATE;
+gPMOSCAP_6P0_DW_DEV_3i = gPMOSCAP_6P0_DW_DEV_4i and aDNWELL;
+gPMOSCAP_6P0_DW_DEV_2i = gPMOSCAP_6P0_DW_DEV_3i inside aMOS_CAP_MK;
+gPMOSCAP_6P0_DW_DEV_1i = gPMOSCAP_6P0_DW_DEV_2i not aLVPWELL;
+gPMOSCAP_6P0_DW_DEV = gPMOSCAP_6P0_DW_DEV_1i not g_MOSCAP_EXCL_LAY;
+gNMOSCAP_3P3_B_DW_DEV_6i = gPOLY_MOD and aNPLUS;
+gNMOSCAP_3P3_B_DW_DEV_5i = gNMOSCAP_3P3_B_DW_DEV_6i and aDNWELL;
+gNMOSCAP_3P3_B_DW_DEV_4i = gNMOSCAP_3P3_B_DW_DEV_5i inside aMOS_CAP_MK;
+gNMOSCAP_3P3_B_DW_DEV_3i = gNMOSCAP_3P3_B_DW_DEV_4i not aLVPWELL;
+gNMOSCAP_3P3_B_DW_DEV_2i = gNMOSCAP_3P3_B_DW_DEV_3i not aDUALGATE;
+gNMOSCAP_3P3_B_DW_DEV_1i = gNMOSCAP_3P3_B_DW_DEV_2i not aV5_XTOR;
+gNMOSCAP_3P3_B_DW_DEV = gNMOSCAP_3P3_B_DW_DEV_1i not g_MOSCAP_EXCL_LAY;
+gNMOSCAP_6P0_B_DW_DEV_5i = gPOLY_MOD and aNPLUS;
+gNMOSCAP_6P0_B_DW_DEV_4i = gNMOSCAP_6P0_B_DW_DEV_5i and aDUALGATE;
+gNMOSCAP_6P0_B_DW_DEV_3i = gNMOSCAP_6P0_B_DW_DEV_4i and aDNWELL;
+gNMOSCAP_6P0_B_DW_DEV_2i = gNMOSCAP_6P0_B_DW_DEV_3i inside aMOS_CAP_MK;
+gNMOSCAP_6P0_B_DW_DEV_1i = gNMOSCAP_6P0_B_DW_DEV_2i not aLVPWELL;
+gNMOSCAP_6P0_B_DW_DEV = gNMOSCAP_6P0_B_DW_DEV_1i not g_MOSCAP_EXCL_LAY;
+gPMOSCAP_3P3_B_DEV_6i = gPOLY_MOD and aPPLUS;
+gPMOSCAP_3P3_B_DEV_5i = gPMOSCAP_3P3_B_DEV_6i inside aMOS_CAP_MK;
+gPMOSCAP_3P3_B_DEV_4i = gPMOSCAP_3P3_B_DEV_5i not aDNWELL;
+gPMOSCAP_3P3_B_DEV_3i = gPMOSCAP_3P3_B_DEV_4i not aNWELL;
+gPMOSCAP_3P3_B_DEV_2i = gPMOSCAP_3P3_B_DEV_3i not aDUALGATE;
+gPMOSCAP_3P3_B_DEV_1i = gPMOSCAP_3P3_B_DEV_2i not aV5_XTOR;
+gPMOSCAP_3P3_B_DEV = gPMOSCAP_3P3_B_DEV_1i not g_MOSCAP_EXCL_LAY;
+gPMOSCAP_3P3_B_DW_DEV_7i = gPOLY_MOD and aPPLUS;
+gPMOSCAP_3P3_B_DW_DEV_6i = gPMOSCAP_3P3_B_DW_DEV_7i and aDNWELL;
+gPMOSCAP_3P3_B_DW_DEV_5i = gPMOSCAP_3P3_B_DW_DEV_6i and aLVPWELL;
+gPMOSCAP_3P3_B_DW_DEV_4i = gPMOSCAP_3P3_B_DW_DEV_5i inside aMOS_CAP_MK;
+gPMOSCAP_3P3_B_DW_DEV_3i = gPMOSCAP_3P3_B_DW_DEV_4i not aNWELL;
+gPMOSCAP_3P3_B_DW_DEV_2i = gPMOSCAP_3P3_B_DW_DEV_3i not aDUALGATE;
+gPMOSCAP_3P3_B_DW_DEV_1i = gPMOSCAP_3P3_B_DW_DEV_2i not aV5_XTOR;
+gPMOSCAP_3P3_B_DW_DEV = gPMOSCAP_3P3_B_DW_DEV_1i not g_MOSCAP_EXCL_LAY;
+gPMOSCAP_6P0_B_DEV_5i = gPOLY_MOD and aPPLUS;
+gPMOSCAP_6P0_B_DEV_4i = gPMOSCAP_6P0_B_DEV_5i and aDUALGATE;
+gPMOSCAP_6P0_B_DEV_3i = gPMOSCAP_6P0_B_DEV_4i inside aMOS_CAP_MK;
+gPMOSCAP_6P0_B_DEV_2i = gPMOSCAP_6P0_B_DEV_3i not aDNWELL;
+gPMOSCAP_6P0_B_DEV_1i = gPMOSCAP_6P0_B_DEV_2i not aNWELL;
+gPMOSCAP_6P0_B_DEV = gPMOSCAP_6P0_B_DEV_1i not g_MOSCAP_EXCL_LAY;
+gPMOSCAP_6P0_B_DW_DEV_6i = gPOLY_MOD and aPPLUS;
+gPMOSCAP_6P0_B_DW_DEV_5i = gPMOSCAP_6P0_B_DW_DEV_6i and aDUALGATE;
+gPMOSCAP_6P0_B_DW_DEV_4i = gPMOSCAP_6P0_B_DW_DEV_5i and aDNWELL;
+gPMOSCAP_6P0_B_DW_DEV_3i = gPMOSCAP_6P0_B_DW_DEV_4i and aLVPWELL;
+gPMOSCAP_6P0_B_DW_DEV_2i = gPMOSCAP_6P0_B_DW_DEV_3i inside aMOS_CAP_MK;
+gPMOSCAP_6P0_B_DW_DEV_1i = gPMOSCAP_6P0_B_DW_DEV_2i not aNWELL;
+gPMOSCAP_6P0_B_DW_DEV = gPMOSCAP_6P0_B_DW_DEV_1i not g_MOSCAP_EXCL_LAY;
+gEFUSE_PLFUSE = gP2_EFUSE_DEV and aPLFUSE;
+gEFUSE_BODY = gEFUSE_PLFUSE not g_EFUSE_EXCL;
+
+
+
+
+
+   
+         
+            
+
+
+
+
+
+
+#ifdef d_ERC_RUN
+   
+   
+    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   rERC1 @= { @ "ERC1 : All Substrate Regions Should be tied to ground or most negative chip supply";
+       sERC1_1i = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gPSUB }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+       gPSUB not sERC1_1i;
+   } 
+   rERC2 @= { @ "ERC2 : All Nwell regions not part of BJT or nwell/psub diode or 3.3V/6V NMOS in Nwell capacitor (outside DNWELL) should be tied to an appropriate power supply";
+       sERC2_6i = aLVS_BJT or aLVS_DIO;
+       sERC2_5i = sERC2_6i or gNMOSCAP_3P3_B_DEV;
+       sERC2_4i = sERC2_5i or gNMOSCAP_6P0_B_DEV;
+       sERC2_3i = sERC2_4i or gPMOSCAP_3P3_DEV;
+       sERC2_2i = sERC2_3i or gPMOSCAP_6P0_DEV;
+       sERC2_1i = not_interacting( gPURENWELL, sERC2_2i );
+       sERC2_1i = stamp( sERC2_1i, gPURENWELL, CONNECT_DB, CONNECT_DB_ERC2, check_connectivity = false );
+
+
+
+
+       sERC2_7i = net_texted_with( CONNECT_DB_ERC2, text = PWR, output_from_layers = { sERC2_1i }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+       sERC2_1i not sERC2_7i;
+   } 
+   rERC3 @= { @ "ERC3 : All DNWELL not LVPWELL region not identified as controlled should be tied to an appropriate power supply.";
+
+
+
+
+       sERC3_1i = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gDN_SUB }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+       gDN_SUB not sERC3_1i;
+   } 
+   rERC4 @= { @ "ERC4 : All LVPWELL not part of BJT inside DNWELL Region Should be tied to ground or most negative chip supply.";
+       sERC4_2i = aLVS_BJT or aLVS_DIO;
+       sERC4_1i = not_interacting( gDN_LP, sERC4_2i );
+       sERC4_1i = stamp( sERC4_1i, gDN_LP, CONNECT_DB, CONNECT_DB_ERC4, check_connectivity = false );
+       sERC4_3i = net_texted_with( CONNECT_DB_ERC4, text = GND, output_from_layers = { sERC4_1i }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+       sERC4_1i not sERC4_3i;
+   } 
+   rERC5 @= { @ "ERC5 : No Substrate region should be tied to a defined power supply.";
+
+
+
+
+       net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gPSUB }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   } 
+   rERC6 @= { @ "ERC6 : No Nwell region not part of a BJT device should be tied to a ground or vss net";
+       sERC6_6i = aLVS_BJT or aLVS_DIO;
+       sERC6_5i = sERC6_6i or gNMOSCAP_3P3_B_DEV;
+       sERC6_4i = sERC6_5i or gNMOSCAP_6P0_B_DEV;
+       sERC6_3i = sERC6_4i or gPMOSCAP_3P3_DEV;
+       sERC6_2i = sERC6_3i or gPMOSCAP_6P0_DEV;
+       sERC6_1i = not_interacting( gPURENWELL, sERC6_2i );
+       sERC6_1i = stamp( sERC6_1i, gPURENWELL, CONNECT_DB, CONNECT_DB_ERC6, check_connectivity = false );
+       net_texted_with( CONNECT_DB_ERC6, text = GND, output_from_layers = { sERC6_1i }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   } 
+   rERC7 @= { @ "ERC7 : No DNWELL not LVPWELL region should be tied to a ground or vss net.";
+       net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gDN_SUB }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   } 
+   rERC8 @= { @ "ERC8 : No LVPWELL not part of BJT inside DNWELL region should be tied to a defined power supply.";
+       sERC8_2i = aLVS_BJT or aLVS_DIO;
+       sERC8_1i = not_interacting( gDN_LP, sERC8_2i );
+       sERC8_1i = stamp( sERC8_1i, gDN_LP, CONNECT_DB, CONNECT_DB_ERC8, check_connectivity = false );
+
+
+
+
+       net_texted_with( CONNECT_DB_ERC8, text = PWR, output_from_layers = { sERC8_1i }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   } 
+   
+   
+   
+   
+   
+   
+   gNWELL3P3PWR = net_texted_with( CONNECT_DB, text = PWR3P3, output_from_layers = { gPURENWELL }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gNWELL5PWR = net_texted_with( CONNECT_DB, text = PWR5, output_from_layers = { gPURENWELL }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gNWELL6PWR = net_texted_with( CONNECT_DB, text = PWR6, output_from_layers = { gPURENWELL }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gDNWELL3P3PWR = net_texted_with( CONNECT_DB, text = PWR3P3, output_from_layers = { gDN_SUB }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gDNWELL5PWR = net_texted_with( CONNECT_DB, text = PWR5, output_from_layers = { gDN_SUB }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gDNWELL6PWR = net_texted_with( CONNECT_DB, text = PWR6, output_from_layers = { gDN_SUB }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gDNWELL10PWR = net_texted_with( CONNECT_DB, text = PWR10, output_from_layers = { gDN_SUB }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   g3P3VPD_1i = not_interacting( gPSD, aPOLY2 );
+   g3P3VPD_2i = gNWELL3P3PWR or gDNWELL3P3PWR;
+   g3P3VPD = g3P3VPD_1i inside g3P3VPD_2i;
+   g5VPD_1i = not_interacting( gPSD, aPOLY2 );
+   g5VPD_2i = gNWELL5PWR or gDNWELL5PWR;
+   g5VPD = g5VPD_1i inside g5VPD_2i;
+   g6VPD_1i = not_interacting( gPSD, aPOLY2 );
+   g6VPD_2i = gNWELL6PWR or gDNWELL6PWR;
+   g6VPD = g6VPD_1i inside g6VPD_2i;
+   g10VPD_1i = not_interacting( gPSD, aPOLY2 );
+   g10VPD = g10VPD_1i inside gDNWELL10PWR;
+   g3P3VPSD_1i = interacting( gPSD, gPGATE );
+   g3P3VPSD_2i = gNWELL3P3PWR or gDNWELL3P3PWR;
+   g3P3VPSD = g3P3VPSD_1i inside g3P3VPSD_2i;
+   g5VPSD_1i = interacting( gPSD, gPGATE );
+   g5VPSD_2i = gNWELL5PWR or gDNWELL5PWR;
+   g5VPSD = g5VPSD_1i inside g5VPSD_2i;
+   g5VPSD = stamp( g5VPSD, gPSD, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   g6VPSD_1i = interacting( gPSD, gPGATE );
+   g6VPSD_2i = gNWELL6PWR or gDNWELL6PWR;
+   g6VPSD = g6VPSD_1i inside g6VPSD_2i;
+   g6VPSD = stamp( g6VPSD, gPSD, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   g3P3VPSD_SAB_DRN_1i = interacting( gSAB_PDRN, gSAB_PGATE );
+   g3P3VPSD_SAB_DRN_2i = gNWELL3P3PWR or gDNWELL3P3PWR;
+   g3P3VPSD_SAB_DRN = g3P3VPSD_SAB_DRN_1i inside g3P3VPSD_SAB_DRN_2i;
+   g3P3VPSD_SAB_SRC_1i = interacting( gSAB_PSRC, gSAB_PGATE );
+   g3P3VPSD_SAB_SRC_2i = gNWELL3P3PWR or gDNWELL3P3PWR;
+   g3P3VPSD_SAB_SRC = g3P3VPSD_SAB_SRC_1i inside g3P3VPSD_SAB_SRC_2i;
+   g5VPSD_SAB_DRN_1i = interacting( gSAB_PDRN, gSAB_PGATE );
+   g5VPSD_SAB_DRN_2i = gNWELL5PWR or gDNWELL5PWR;
+   g5VPSD_SAB_DRN = g5VPSD_SAB_DRN_1i inside g5VPSD_SAB_DRN_2i;
+   g5VPSD_SAB_DRN = stamp( g5VPSD_SAB_DRN, gSAB_PDRN, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   g5VPSD_SAB_SRC_1i = interacting( gSAB_PSRC, gSAB_PGATE );
+   g5VPSD_SAB_SRC_2i = gNWELL5PWR or gDNWELL5PWR;
+   g5VPSD_SAB_SRC = g5VPSD_SAB_SRC_1i inside g5VPSD_SAB_SRC_2i;
+   g5VPSD_SAB_SRC = stamp( g5VPSD_SAB_SRC, gSAB_PSRC, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   g6VPSD_SAB_DRN_1i = interacting( gSAB_PDRN, gSAB_PGATE );
+   g6VPSD_SAB_DRN_2i = gNWELL6PWR or gDNWELL6PWR;
+   g6VPSD_SAB_DRN = g6VPSD_SAB_DRN_1i inside g6VPSD_SAB_DRN_2i;
+   g6VPSD_SAB_DRN = stamp( g6VPSD_SAB_DRN, gSAB_PDRN, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   g6VPSD_SAB_SRC_1i = interacting( gSAB_PSRC, gSAB_PGATE );
+   g6VPSD_SAB_SRC_2i = gNWELL6PWR or gDNWELL6PWR;
+   g6VPSD_SAB_SRC = g6VPSD_SAB_SRC_1i inside g6VPSD_SAB_SRC_2i;
+   g6VPSD_SAB_SRC = stamp( g6VPSD_SAB_SRC, gSAB_PSRC, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   g10VPSD_SRC_1i = interacting( gLDMPSRC_10P0, gLDMPGATE_10P0 );
+   g10VPSD_SRC = g10VPSD_SRC_1i inside gDNWELL10PWR;
+   g10VPSD_SRC = stamp( g10VPSD_SRC, gLDMPSRC_10P0, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   g10VPSD_DRN_1i = interacting( gLDMPDRN_10P0, gLDMPGATE_10P0 );
+   g10VPSD_DRN = g10VPSD_DRN_1i inside gDNWELL10PWR;
+   g10VPSD_DRN = stamp( g10VPSD_DRN, gLDMPDRN_10P0, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   rERC9 @= { @ "ERC9 : Anode of pdiode connected to PWR3P3 cannot have a path to PWR6";
+       sERC9_1i = not_interacting( g3P3VPD, aLVS_DIO );
+       sERC9_1i = stamp( sERC9_1i, gPSD, CONNECT_DB, CONNECT_DB_ERC9, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9, connected_to_any = { g6VPSD }, output_from_layers = { sERC9_1i }, error_net_output = ALL );
+       sERC9_2i = not_interacting( g3P3VPD, aLVS_DIO );
+       sERC9_2i = stamp( sERC9_2i, gPSD, CONNECT_DB_ERC9, CONNECT_DB_ERC9, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9, connected_to_any = { g6VPSD_SAB_DRN }, output_from_layers = { sERC9_2i }, error_net_output = ALL );
+       sERC9_3i = not_interacting( g3P3VPD, aLVS_DIO );
+       sERC9_3i = stamp( sERC9_3i, gPSD, CONNECT_DB_ERC9, CONNECT_DB_ERC9, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9, connected_to_any = { g6VPSD_SAB_SRC }, output_from_layers = { sERC9_3i }, error_net_output = ALL );
+       sERC9_4i = not_interacting( g3P3VPSD, aLVS_DIO );
+       sERC9_4i = stamp( sERC9_4i, gPSD, CONNECT_DB_ERC9, CONNECT_DB_ERC9, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9, connected_to_any = { g6VPSD }, output_from_layers = { sERC9_4i }, error_net_output = ALL );
+       sERC9_5i = not_interacting( g3P3VPSD, aLVS_DIO );
+       sERC9_5i = stamp( sERC9_5i, gPSD, CONNECT_DB_ERC9, CONNECT_DB_ERC9, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9, connected_to_any = { g6VPSD_SAB_DRN }, output_from_layers = { sERC9_5i }, error_net_output = ALL );
+       sERC9_6i = not_interacting( g3P3VPSD, aLVS_DIO );
+       sERC9_6i = stamp( sERC9_6i, gPSD, CONNECT_DB_ERC9, CONNECT_DB_ERC9, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9, connected_to_any = { g6VPSD_SAB_SRC }, output_from_layers = { sERC9_6i }, error_net_output = ALL );
+       sERC9_7i = not_interacting( g3P3VPSD_SAB_DRN, aLVS_DIO );
+       sERC9_7i = stamp( sERC9_7i, gSAB_PDRN, CONNECT_DB_ERC9, CONNECT_DB_ERC9, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9, connected_to_any = { g6VPSD }, output_from_layers = { sERC9_7i }, error_net_output = ALL );
+       sERC9_8i = not_interacting( g3P3VPSD_SAB_DRN, aLVS_DIO );
+       sERC9_8i = stamp( sERC9_8i, gSAB_PDRN, CONNECT_DB_ERC9, CONNECT_DB_ERC9, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9, connected_to_any = { g6VPSD_SAB_DRN }, output_from_layers = { sERC9_8i }, error_net_output = ALL );
+       sERC9_9i = not_interacting( g3P3VPSD_SAB_DRN, aLVS_DIO );
+       sERC9_9i = stamp( sERC9_9i, gSAB_PDRN, CONNECT_DB_ERC9, CONNECT_DB_ERC9, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9, connected_to_any = { g6VPSD_SAB_SRC }, output_from_layers = { sERC9_9i }, error_net_output = ALL );
+       sERC9_10i = not_interacting( g3P3VPSD_SAB_SRC, aLVS_DIO );
+       sERC9_10i = stamp( sERC9_10i, gSAB_PSRC, CONNECT_DB_ERC9, CONNECT_DB_ERC9, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9, connected_to_any = { g6VPSD }, output_from_layers = { sERC9_10i }, error_net_output = ALL );
+       sERC9_11i = not_interacting( g3P3VPSD_SAB_SRC, aLVS_DIO );
+       sERC9_11i = stamp( sERC9_11i, gSAB_PSRC, CONNECT_DB_ERC9, CONNECT_DB_ERC9, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9, connected_to_any = { g6VPSD_SAB_DRN }, output_from_layers = { sERC9_11i }, error_net_output = ALL );
+       sERC9_12i = not_interacting( g3P3VPSD_SAB_SRC, aLVS_DIO );
+       sERC9_12i = stamp( sERC9_12i, gSAB_PSRC, CONNECT_DB_ERC9, CONNECT_DB_ERC9, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9, connected_to_any = { g6VPSD_SAB_SRC }, output_from_layers = { sERC9_12i }, error_net_output = ALL );
+   } 
+   rERC9A @= { @ "ERC9a : Anode of device pdiode connected to PWR3P3 cannot have a path to PWR6";
+       sERC9A_1i = interacting( g3P3VPD, aLVS_DIO );
+       sERC9A_1i = stamp( sERC9A_1i, gPSD, CONNECT_DB, CONNECT_DB_ERC9A, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9A, connected_to_any = { g6VPSD }, output_from_layers = { sERC9A_1i }, error_net_output = ALL );
+       sERC9A_2i = interacting( g3P3VPD, aLVS_DIO );
+       sERC9A_2i = stamp( sERC9A_2i, gPSD, CONNECT_DB_ERC9A, CONNECT_DB_ERC9A, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9A, connected_to_any = { g6VPSD_SAB_DRN }, output_from_layers = { sERC9A_2i }, error_net_output = ALL );
+       sERC9A_3i = interacting( g3P3VPD, aLVS_DIO );
+       sERC9A_3i = stamp( sERC9A_3i, gPSD, CONNECT_DB_ERC9A, CONNECT_DB_ERC9A, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9A, connected_to_any = { g6VPSD_SAB_SRC }, output_from_layers = { sERC9A_3i }, error_net_output = ALL );
+   } 
+   rERC9B @= { @ "ERC9b : Anode of pdiode connected to PWR3P3 cannot have a path to PWR5";
+       sERC9B_1i = not_interacting( g3P3VPD, aLVS_DIO );
+       sERC9B_1i = stamp( sERC9B_1i, gPSD, CONNECT_DB, CONNECT_DB_ERC9B, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9B, connected_to_any = { g5VPSD }, output_from_layers = { sERC9B_1i }, error_net_output = ALL );
+       sERC9B_2i = not_interacting( g3P3VPD, aLVS_DIO );
+       sERC9B_2i = stamp( sERC9B_2i, gPSD, CONNECT_DB_ERC9B, CONNECT_DB_ERC9B, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9B, connected_to_any = { g5VPSD_SAB_DRN }, output_from_layers = { sERC9B_2i }, error_net_output = ALL );
+       sERC9B_3i = not_interacting( g3P3VPD, aLVS_DIO );
+       sERC9B_3i = stamp( sERC9B_3i, gPSD, CONNECT_DB_ERC9B, CONNECT_DB_ERC9B, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9B, connected_to_any = { g5VPSD_SAB_SRC }, output_from_layers = { sERC9B_3i }, error_net_output = ALL );
+       sERC9B_4i = not_interacting( g3P3VPSD, aLVS_DIO );
+       sERC9B_4i = stamp( sERC9B_4i, gPSD, CONNECT_DB_ERC9B, CONNECT_DB_ERC9B, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9B, connected_to_any = { g5VPSD }, output_from_layers = { sERC9B_4i }, error_net_output = ALL );
+       sERC9B_5i = not_interacting( g3P3VPSD, aLVS_DIO );
+       sERC9B_5i = stamp( sERC9B_5i, gPSD, CONNECT_DB_ERC9B, CONNECT_DB_ERC9B, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9B, connected_to_any = { g5VPSD_SAB_DRN }, output_from_layers = { sERC9B_5i }, error_net_output = ALL );
+       sERC9B_6i = not_interacting( g3P3VPSD, aLVS_DIO );
+       sERC9B_6i = stamp( sERC9B_6i, gPSD, CONNECT_DB_ERC9B, CONNECT_DB_ERC9B, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9B, connected_to_any = { g5VPSD_SAB_SRC }, output_from_layers = { sERC9B_6i }, error_net_output = ALL );
+       sERC9B_7i = not_interacting( g3P3VPSD_SAB_DRN, aLVS_DIO );
+       sERC9B_7i = stamp( sERC9B_7i, gSAB_PDRN, CONNECT_DB_ERC9B, CONNECT_DB_ERC9B, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9B, connected_to_any = { g5VPSD }, output_from_layers = { sERC9B_7i }, error_net_output = ALL );
+       sERC9B_8i = not_interacting( g3P3VPSD_SAB_DRN, aLVS_DIO );
+       sERC9B_8i = stamp( sERC9B_8i, gSAB_PDRN, CONNECT_DB_ERC9B, CONNECT_DB_ERC9B, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9B, connected_to_any = { g5VPSD_SAB_DRN }, output_from_layers = { sERC9B_8i }, error_net_output = ALL );
+       sERC9B_9i = not_interacting( g3P3VPSD_SAB_DRN, aLVS_DIO );
+       sERC9B_9i = stamp( sERC9B_9i, gSAB_PDRN, CONNECT_DB_ERC9B, CONNECT_DB_ERC9B, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9B, connected_to_any = { g5VPSD_SAB_SRC }, output_from_layers = { sERC9B_9i }, error_net_output = ALL );
+       sERC9B_10i = not_interacting( g3P3VPSD_SAB_SRC, aLVS_DIO );
+       sERC9B_10i = stamp( sERC9B_10i, gSAB_PSRC, CONNECT_DB_ERC9B, CONNECT_DB_ERC9B, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9B, connected_to_any = { g5VPSD }, output_from_layers = { sERC9B_10i }, error_net_output = ALL );
+       sERC9B_11i = not_interacting( g3P3VPSD_SAB_SRC, aLVS_DIO );
+       sERC9B_11i = stamp( sERC9B_11i, gSAB_PSRC, CONNECT_DB_ERC9B, CONNECT_DB_ERC9B, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9B, connected_to_any = { g5VPSD_SAB_DRN }, output_from_layers = { sERC9B_11i }, error_net_output = ALL );
+       sERC9B_12i = not_interacting( g3P3VPSD_SAB_SRC, aLVS_DIO );
+       sERC9B_12i = stamp( sERC9B_12i, gSAB_PSRC, CONNECT_DB_ERC9B, CONNECT_DB_ERC9B, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9B, connected_to_any = { g5VPSD_SAB_SRC }, output_from_layers = { sERC9B_12i }, error_net_output = ALL );
+   } 
+   rERC9C @= { @ "ERC9c : Anode of device pdiode connected to PWR3P3 cannot have a path to PWR5";
+       sERC9C_1i = interacting( g3P3VPD, aLVS_DIO );
+       sERC9C_1i = stamp( sERC9C_1i, gPSD, CONNECT_DB, CONNECT_DB_ERC9C, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9C, connected_to_any = { g5VPSD }, output_from_layers = { sERC9C_1i }, error_net_output = ALL );
+       sERC9C_2i = interacting( g3P3VPD, aLVS_DIO );
+       sERC9C_2i = stamp( sERC9C_2i, gPSD, CONNECT_DB_ERC9C, CONNECT_DB_ERC9C, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9C, connected_to_any = { g5VPSD_SAB_DRN }, output_from_layers = { sERC9C_2i }, error_net_output = ALL );
+       sERC9C_3i = interacting( g3P3VPD, aLVS_DIO );
+       sERC9C_3i = stamp( sERC9C_3i, gPSD, CONNECT_DB_ERC9C, CONNECT_DB_ERC9C, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9C, connected_to_any = { g5VPSD_SAB_SRC }, output_from_layers = { sERC9C_3i }, error_net_output = ALL );
+   } 
+   rERC9D @= { @ "ERC9d : Anode of pdiode connected to PWR3P3, PWR5, PWR6 cannot have a path to PWR10";
+       sERC9D_1i = not_interacting( g3P3VPD, aLVS_DIO );
+       sERC9D_1i = stamp( sERC9D_1i, gPSD, CONNECT_DB, CONNECT_DB_ERC9D, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9D, connected_to_any = { g10VPSD_SRC }, output_from_layers = { sERC9D_1i }, error_net_output = ALL );
+       sERC9D_2i = not_interacting( g3P3VPD, aLVS_DIO );
+       sERC9D_2i = stamp( sERC9D_2i, gPSD, CONNECT_DB_ERC9D, CONNECT_DB_ERC9D, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9D, connected_to_any = { g10VPSD_DRN }, output_from_layers = { sERC9D_2i }, error_net_output = ALL );
+       sERC9D_3i = not_interacting( g3P3VPSD_SAB_SRC, aLVS_DIO );
+       sERC9D_3i = stamp( sERC9D_3i, gSAB_PSRC, CONNECT_DB_ERC9D, CONNECT_DB_ERC9D, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9D, connected_to_any = { g10VPSD_SRC }, output_from_layers = { sERC9D_3i }, error_net_output = ALL );
+       sERC9D_4i = not_interacting( g3P3VPSD_SAB_SRC, aLVS_DIO );
+       sERC9D_4i = stamp( sERC9D_4i, gSAB_PSRC, CONNECT_DB_ERC9D, CONNECT_DB_ERC9D, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9D, connected_to_any = { g10VPSD_DRN }, output_from_layers = { sERC9D_4i }, error_net_output = ALL );
+       sERC9D_5i = not_interacting( g5VPD, aLVS_DIO );
+       sERC9D_5i = stamp( sERC9D_5i, gPSD, CONNECT_DB_ERC9D, CONNECT_DB_ERC9D, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9D, connected_to_any = { g10VPSD_SRC }, output_from_layers = { sERC9D_5i }, error_net_output = ALL );
+       sERC9D_6i = not_interacting( g5VPD, aLVS_DIO );
+       sERC9D_6i = stamp( sERC9D_6i, gPSD, CONNECT_DB_ERC9D, CONNECT_DB_ERC9D, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9D, connected_to_any = { g10VPSD_DRN }, output_from_layers = { sERC9D_6i }, error_net_output = ALL );
+       sERC9D_7i = not_interacting( g5VPSD_SAB_SRC, aLVS_DIO );
+       sERC9D_7i = stamp( sERC9D_7i, g5VPSD_SAB_SRC, CONNECT_DB_ERC9D, CONNECT_DB_ERC9D, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9D, connected_to_any = { g10VPSD_SRC }, output_from_layers = { sERC9D_7i }, error_net_output = ALL );
+       sERC9D_8i = not_interacting( g5VPSD_SAB_SRC, aLVS_DIO );
+       sERC9D_8i = stamp( sERC9D_8i, g5VPSD_SAB_SRC, CONNECT_DB_ERC9D, CONNECT_DB_ERC9D, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9D, connected_to_any = { g10VPSD_DRN }, output_from_layers = { sERC9D_8i }, error_net_output = ALL );
+       sERC9D_9i = not_interacting( g6VPD, aLVS_DIO );
+       sERC9D_9i = stamp( sERC9D_9i, gPSD, CONNECT_DB_ERC9D, CONNECT_DB_ERC9D, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9D, connected_to_any = { g10VPSD_SRC }, output_from_layers = { sERC9D_9i }, error_net_output = ALL );
+       sERC9D_10i = not_interacting( g6VPD, aLVS_DIO );
+       sERC9D_10i = stamp( sERC9D_10i, gPSD, CONNECT_DB_ERC9D, CONNECT_DB_ERC9D, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9D, connected_to_any = { g10VPSD_DRN }, output_from_layers = { sERC9D_10i }, error_net_output = ALL );
+       sERC9D_11i = not_interacting( g6VPSD_SAB_SRC, aLVS_DIO );
+       sERC9D_11i = stamp( sERC9D_11i, g6VPSD_SAB_SRC, CONNECT_DB_ERC9D, CONNECT_DB_ERC9D, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9D, connected_to_any = { g10VPSD_SRC }, output_from_layers = { sERC9D_11i }, error_net_output = ALL );
+       sERC9D_12i = not_interacting( g6VPSD_SAB_SRC, aLVS_DIO );
+       sERC9D_12i = stamp( sERC9D_12i, g6VPSD_SAB_SRC, CONNECT_DB_ERC9D, CONNECT_DB_ERC9D, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9D, connected_to_any = { g10VPSD_DRN }, output_from_layers = { sERC9D_12i }, error_net_output = ALL );
+   } 
+   rERC9E @= { @ "ERC9e : Anode of device pdiode connected to PWR3P3, PWR5, PWR6 cannot have a path to PWR10";
+       sERC9E_1i = interacting( g3P3VPD, aLVS_DIO );
+       sERC9E_1i = stamp( sERC9E_1i, gPSD, CONNECT_DB, CONNECT_DB_ERC9E, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9E, connected_to_any = { g10VPSD_SRC }, output_from_layers = { sERC9E_1i }, error_net_output = ALL );
+       sERC9E_2i = interacting( g3P3VPD, aLVS_DIO );
+       sERC9E_2i = stamp( sERC9E_2i, gPSD, CONNECT_DB_ERC9E, CONNECT_DB_ERC9E, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9E, connected_to_any = { g10VPSD_DRN }, output_from_layers = { sERC9E_2i }, error_net_output = ALL );
+       sERC9E_3i = interacting( g5VPD, aLVS_DIO );
+       sERC9E_3i = stamp( sERC9E_3i, gPSD, CONNECT_DB_ERC9E, CONNECT_DB_ERC9E, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9E, connected_to_any = { g10VPSD_SRC }, output_from_layers = { sERC9E_3i }, error_net_output = ALL );
+       sERC9E_4i = interacting( g5VPD, aLVS_DIO );
+       sERC9E_4i = stamp( sERC9E_4i, gPSD, CONNECT_DB_ERC9E, CONNECT_DB_ERC9E, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9E, connected_to_any = { g10VPSD_DRN }, output_from_layers = { sERC9E_4i }, error_net_output = ALL );
+       sERC9E_5i = interacting( g6VPD, aLVS_DIO );
+       sERC9E_5i = stamp( sERC9E_5i, gPSD, CONNECT_DB_ERC9E, CONNECT_DB_ERC9E, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9E, connected_to_any = { g10VPSD_SRC }, output_from_layers = { sERC9E_5i }, error_net_output = ALL );
+       sERC9E_6i = interacting( g6VPD, aLVS_DIO );
+       sERC9E_6i = stamp( sERC9E_6i, gPSD, CONNECT_DB_ERC9E, CONNECT_DB_ERC9E, check_connectivity = false );
+       net_select( CONNECT_DB_ERC9E, connected_to_any = { g10VPSD_DRN }, output_from_layers = { sERC9E_6i }, error_net_output = ALL );
+   } 
+   
+   
+   
+   gMV6VPSD_SD_4i = gPSD and aDUALGATE;
+   gMV6VPSD_SD_3i = interacting( gMV6VPSD_SD_4i, gGATE );
+   gMV6VPSD_SD_2i = not_interacting( gMV6VPSD_SD_3i, aV5_XTOR );
+   gMV6VPSD_SD_1i = not_interacting( gMV6VPSD_SD_2i, aESD_MK );
+   gMV6VPSD_SD = not_interacting( gMV6VPSD_SD_1i, aLDMOS );    
+   gMV6VPSD_SD = stamp( gMV6VPSD_SD, gPSD, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gMV5VPSD_SD_4i = gPSD and aDUALGATE;
+   gMV5VPSD_SD_3i = interacting( gMV5VPSD_SD_4i, gGATE );
+   gMV5VPSD_SD_2i = interacting( gMV5VPSD_SD_3i, aV5_XTOR );
+   gMV5VPSD_SD_1i = not_interacting( gMV5VPSD_SD_2i, aESD_MK );
+   gMV5VPSD_SD = not_interacting( gMV5VPSD_SD_1i, aLDMOS );    
+   gMV5VPSD_SD = stamp( gMV5VPSD_SD, gPSD, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gMV6VPSD_SRC_SAB_4i = gSAB_PSRC and aDUALGATE;
+   gMV6VPSD_SRC_SAB_3i = interacting( gMV6VPSD_SRC_SAB_4i, gSAB_PGATE );
+   gMV6VPSD_SRC_SAB_2i = interacting( gMV6VPSD_SRC_SAB_3i, aESD_MK );
+   gMV6VPSD_SRC_SAB_1i = not_interacting( gMV6VPSD_SRC_SAB_2i, aV5_XTOR );
+   gMV6VPSD_SRC_SAB = not_interacting( gMV6VPSD_SRC_SAB_1i, aLDMOS );    
+   gMV6VPSD_SRC_SAB = stamp( gMV6VPSD_SRC_SAB, gSAB_PSRC, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gMV6VPSD_DRN_SAB_4i = gSAB_PDRN and aDUALGATE;
+   gMV6VPSD_DRN_SAB_3i = interacting( gMV6VPSD_DRN_SAB_4i, gSAB_PGATE );
+   gMV6VPSD_DRN_SAB_2i = interacting( gMV6VPSD_DRN_SAB_3i, aESD_MK );
+   gMV6VPSD_DRN_SAB_1i = not_interacting( gMV6VPSD_DRN_SAB_2i, aV5_XTOR );
+   gMV6VPSD_DRN_SAB = not_interacting( gMV6VPSD_DRN_SAB_1i, aLDMOS );    
+   gMV6VPSD_DRN_SAB = stamp( gMV6VPSD_DRN_SAB, gSAB_PDRN, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gMV5VPSD_SRC_SAB_4i = gSAB_PSRC and aDUALGATE;
+   gMV5VPSD_SRC_SAB_3i = interacting( gMV5VPSD_SRC_SAB_4i, gSAB_PGATE );
+   gMV5VPSD_SRC_SAB_2i = interacting( gMV5VPSD_SRC_SAB_3i, aV5_XTOR );
+   gMV5VPSD_SRC_SAB_1i = interacting( gMV5VPSD_SRC_SAB_2i, aESD_MK );
+   gMV5VPSD_SRC_SAB = not_interacting( gMV5VPSD_SRC_SAB_1i, aLDMOS );    
+   gMV5VPSD_SRC_SAB = stamp( gMV5VPSD_SRC_SAB, gSAB_PSRC, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gMV5VPSD_DRN_SAB_4i = gSAB_PDRN and aDUALGATE;
+   gMV5VPSD_DRN_SAB_3i = interacting( gMV5VPSD_DRN_SAB_4i, gSAB_PGATE );
+   gMV5VPSD_DRN_SAB_2i = interacting( gMV5VPSD_DRN_SAB_3i, aV5_XTOR );
+   gMV5VPSD_DRN_SAB_1i = interacting( gMV5VPSD_DRN_SAB_2i, aESD_MK );
+   gMV5VPSD_DRN_SAB = not_interacting( gMV5VPSD_DRN_SAB_1i, aLDMOS );    
+   gMV5VPSD_DRN_SAB = stamp( gMV5VPSD_DRN_SAB, gSAB_PDRN, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gLD10VPSD_SRC_4i = gLDMPSRC_10P0 and aDUALGATE;
+   gLD10VPSD_SRC_3i = gLD10VPSD_SRC_4i and aLDMOS;
+   gLD10VPSD_SRC_2i = interacting( gLD10VPSD_SRC_3i, gLDMPGATE_10P0 );
+   gLD10VPSD_SRC_1i = not_interacting( gLD10VPSD_SRC_2i, aV5_XTOR );
+   gLD10VPSD_SRC = not_interacting( gLD10VPSD_SRC_1i, aESD_MK );    
+   gLD10VPSD_SRC = stamp( gLD10VPSD_SRC, gLDMPSRC_10P0, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gLD10VPSD_DRN_4i = gLDMPDRN_10P0 and aDUALGATE;
+   gLD10VPSD_DRN_3i = gLD10VPSD_DRN_4i and aLDMOS;
+   gLD10VPSD_DRN_2i = interacting( gLD10VPSD_DRN_3i, gLDMPGATE_10P0 );
+   gLD10VPSD_DRN_1i = not_interacting( gLD10VPSD_DRN_2i, aV5_XTOR );
+   gLD10VPSD_DRN = not_interacting( gLD10VPSD_DRN_1i, aESD_MK );    
+   gLD10VPSD_DRN = stamp( gLD10VPSD_DRN, gLDMPDRN_10P0, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gLGATE_2i = not_interacting( gGATE, aDUALGATE );
+   gLGATE_1i = not_interacting( gLGATE_2i, aESD_MK );
+   gLGATE = not_interacting( gLGATE_1i, aLDMOS );    
+   gLGATE = stamp( gLGATE, gGATE, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gLGATE_SAB_2i = not_interacting( gSAB_PGATE, aDUALGATE );
+   gLGATE_SAB_1i = interacting( gLGATE_SAB_2i, aESD_MK );
+   gLGATE_SAB = not_interacting( gLGATE_SAB_1i, aLDMOS );    
+   gLGATE_SAB = stamp( gLGATE_SAB, gSAB_PGATE, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gLGATE_5P0_3i = gGATE and aDUALGATE;
+   gLGATE_5P0_2i = gLGATE_5P0_3i and aV5_XTOR;
+   gLGATE_5P0_1i = not_interacting( gLGATE_5P0_2i, aESD_MK );
+   gLGATE_5P0 = not_interacting( gLGATE_5P0_1i, aLDMOS );    
+   gLGATE_5P0 = stamp( gLGATE_5P0, gGATE, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gLGATE_5P0_SAB_3i = gSAB_PGATE and aDUALGATE;
+   gLGATE_5P0_SAB_2i = gLGATE_5P0_SAB_3i and aV5_XTOR;
+   gLGATE_5P0_SAB_1i = interacting( gLGATE_5P0_SAB_2i, aESD_MK );
+   gLGATE_5P0_SAB = not_interacting( gLGATE_5P0_SAB_1i, aLDMOS );    
+   gLGATE_5P0_SAB = stamp( gLGATE_5P0_SAB, gSAB_PGATE, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gLGATE_6P0_3i = gGATE and aDUALGATE;
+   gLGATE_6P0_2i = not_interacting( gLGATE_6P0_3i, aV5_XTOR );
+   gLGATE_6P0_1i = not_interacting( gLGATE_6P0_2i, aESD_MK );
+   gLGATE_6P0 = not_interacting( gLGATE_6P0_1i, aLDMOS );    
+   gLGATE_6P0 = stamp( gLGATE_6P0, gGATE, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gLGATE_6P0_SAB_3i = gSAB_PGATE and aDUALGATE;
+   gLGATE_6P0_SAB_2i = gLGATE_6P0_SAB_3i not aV5_XTOR;
+   gLGATE_6P0_SAB_1i = interacting( gLGATE_6P0_SAB_2i, aESD_MK );
+   gLGATE_6P0_SAB = not_interacting( gLGATE_6P0_SAB_1i, aLDMOS );    
+   gLGATE_6P0_SAB = stamp( gLGATE_6P0_SAB, gSAB_PGATE, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gLGATE_10P0_3i = gLDMPGATE_10P0 and aDUALGATE;
+   gLGATE_10P0_2i = gLGATE_10P0_3i and aLDMOS;
+   gLGATE_10P0_1i = not_interacting( gLGATE_10P0_2i, aV5_XTOR );
+   gLGATE_10P0 = not_interacting( gLGATE_10P0_1i, aESD_MK );    
+   rERC10 @= { @ "ERC10 : no path from 6V pmos SD to 3.3V gate";
+       net_select( CONNECT_DB, connected_to_any = { gMV6VPSD_SD }, output_from_layers = { gLGATE }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gMV6VPSD_SRC_SAB }, output_from_layers = { gLGATE }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gMV6VPSD_DRN_SAB }, output_from_layers = { gLGATE }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gMV6VPSD_SD }, output_from_layers = { gLGATE_SAB }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gMV6VPSD_SRC_SAB }, output_from_layers = { gLGATE_SAB }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gMV6VPSD_DRN_SAB }, output_from_layers = { gLGATE_SAB }, error_net_output = ALL );
+   } 
+   rERC10A @= { @ "ERC10a : no path from 5V pmos SD to 3.3V gate";
+       net_select( CONNECT_DB, connected_to_any = { gMV5VPSD_SD }, output_from_layers = { gLGATE }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gMV5VPSD_SRC_SAB }, output_from_layers = { gLGATE }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gMV5VPSD_DRN_SAB }, output_from_layers = { gLGATE }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gMV5VPSD_SD }, output_from_layers = { gLGATE_SAB }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gMV5VPSD_SRC_SAB }, output_from_layers = { gLGATE_SAB }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gMV5VPSD_DRN_SAB }, output_from_layers = { gLGATE_SAB }, error_net_output = ALL );
+   } 
+   rERC10B @= { @ "ERC10b : no path from 10V pmos SD to 3.3V, 5V, 6V gate";
+       net_select( CONNECT_DB, connected_to_any = { gLD10VPSD_SRC }, output_from_layers = { gLGATE }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gLD10VPSD_DRN }, output_from_layers = { gLGATE }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gLD10VPSD_SRC }, output_from_layers = { gLGATE_SAB }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gLD10VPSD_DRN }, output_from_layers = { gLGATE_SAB }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gLD10VPSD_SRC }, output_from_layers = { gLGATE_5P0 }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gLD10VPSD_DRN }, output_from_layers = { gLGATE_5P0 }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gLD10VPSD_SRC }, output_from_layers = { gLGATE_5P0_SAB }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gLD10VPSD_DRN }, output_from_layers = { gLGATE_5P0_SAB }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gLD10VPSD_SRC }, output_from_layers = { gLGATE_6P0 }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gLD10VPSD_DRN }, output_from_layers = { gLGATE_6P0 }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gLD10VPSD_SRC }, output_from_layers = { gLGATE_6P0_SAB }, error_net_output = ALL );
+       net_select( CONNECT_DB, connected_to_any = { gLD10VPSD_DRN }, output_from_layers = { gLGATE_6P0_SAB }, error_net_output = ALL );
+   } 
+   gCA_ERC = copy( gPOLY2_CONT, ancestry = true );
+   gGPLY_CONNECT_NET_1i = gCA_ERC and gM1_NODEV;
+   gGPLY_CONNECT_NET_1i = stamp( gGPLY_CONNECT_NET_1i, gPOLY2_CONT, CONNECT_DB, CONNECT_DB, check_connectivity = false );
+   gGPLY_CONNECT_NET = net_area_ratio( CONNECT_DB, >= 1, { "layer1" => gGPLY, "layer2" => gGPLY_CONNECT_NET_1i }, 2, 2, {  }, NAR_SAVE_NET_1, true );
+   rERC11 @= { @ "ERC11 : Floating gate error (POLY must have contact and metal)";
+       sERC11_1i = gCA_ERC and gM1_NODEV;
+       sERC11_1i = stamp( sERC11_1i, gPOLY2_CONT, CONNECT_DB, CONNECT_DB_ERC11, check_connectivity = false );
+       net_select( CONNECT_DB_ERC11, not_connected_to_any = { sERC11_1i }, output_from_layers = { gGPLY }, error_net_output = ALL );
+       sERC11_3i = not_interacting( gGPLY, gGPLY_CONNECT_NET );
+       sERC11_2i = interacting( sERC11_3i, gM1_NODEV );
+       not_interacting( sERC11_2i, gCA_ERC );
+       sERC11_5i = not_interacting( gGPLY, gGPLY_CONNECT_NET );
+       sERC11_4i = interacting( sERC11_5i, gCA_ERC );
+       not_interacting( sERC11_4i, gM1_NODEV );
+   } 
+
+
+
+
+   gNSD_POWER = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gNSD }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+
+
+
+
+   gNSD_SAB_POWER1 = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gSAB_NDRN }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+
+
+
+
+   gNSD_SAB_POWER2 = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gSAB_NSRC }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+
+
+
+
+   gNSD_10P0_POWER1 = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gLDMNSRC_10P0 }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+
+
+
+
+   gNSD_10P0_POWER2 = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gLDMNDRN_10P0 }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gNSD_GROUND = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gNSD }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gNSD_SAB_GROUND1 = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gSAB_NDRN }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gNSD_SAB_GROUND2 = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gSAB_NSRC }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gNSD_10P0_GROUND1 = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gLDMNSRC_10P0 }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gNSD_10P0_GROUND2 = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gLDMNDRN_10P0 }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gNGATE_POWER = outside_touching( gNGATE, gNSD_POWER );
+   gNGATE_GROUND = outside_touching( gNGATE, gNSD_GROUND );
+   gNGATE_SAB_POWER_1i = gNSD_SAB_POWER1 or gNSD_SAB_POWER2;
+   gNGATE_SAB_POWER = outside_touching( gSAB_NGATE, gNGATE_SAB_POWER_1i );
+   gNGATE_SAB_GROUND_1i = gNSD_SAB_GROUND1 or gNSD_SAB_GROUND2;
+   gNGATE_SAB_GROUND = outside_touching( gSAB_NGATE, gNGATE_SAB_GROUND_1i );
+   gNGATE_10P0_POWER_1i = gNSD_10P0_POWER1 or gNSD_10P0_POWER2;
+   gNGATE_10P0_POWER = interacting( gLDMNGATE_10P0, gNGATE_10P0_POWER_1i );
+   gNGATE_10P0_GROUND_1i = gNSD_10P0_GROUND1 or gNSD_10P0_GROUND2;
+   gNGATE_10P0_GROUND = interacting( gLDMNGATE_10P0, gNGATE_10P0_GROUND_1i );
+   
+      rNGATE_1 @= { @ "NGATE.1 : ngate S/D connect to power & ground "
+                             "and gate not connect to ground";
+       sNGATE_p_1_1i = gNGATE_POWER and gNGATE_GROUND;
+       sNGATE_p_1_2i = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gGATE }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+       not_interacting( sNGATE_p_1_1i, sNGATE_p_1_2i );
+       sNGATE_p_1_3i = gNGATE_SAB_POWER and gNGATE_SAB_GROUND;
+       sNGATE_p_1_4i = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gSAB_NGATE }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+       not_interacting( sNGATE_p_1_3i, sNGATE_p_1_4i );
+       sNGATE_p_1_5i = gNGATE_10P0_POWER and gNGATE_10P0_GROUND;
+       sNGATE_p_1_6i = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gLDMNGATE_10P0 }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+       not_interacting( sNGATE_p_1_5i, sNGATE_p_1_6i );
+   } 
+
+
+
+
+   gPSD_POWER = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gPSD }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+
+
+
+
+   gPSD_SAB_POWER1 = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gSAB_PDRN }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+
+
+
+
+   gPSD_SAB_POWER2 = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gSAB_PSRC }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+
+
+
+
+   gPSD_10P0_POWER1 = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gLDMPSRC_10P0 }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+
+
+
+
+   gPSD_10P0_POWER2 = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gLDMPDRN_10P0 }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gPSD_GROUND = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gPSD }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gPSD_SAB_GROUND1 = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gSAB_PDRN }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gPSD_SAB_GROUND2 = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gSAB_PSRC }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gPSD_10P0_GROUND1 = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gLDMPSRC_10P0 }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gPSD_10P0_GROUND2 = net_texted_with( CONNECT_DB, text = GND, output_from_layers = { gLDMPDRN_10P0 }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+   gPGATE_POWER = outside_touching( gPGATE, gPSD_POWER );
+   gPGATE_GROUND = outside_touching( gPGATE, gPSD_GROUND );
+   gPGATE_SAB_POWER_1i = gPSD_SAB_POWER1 or gPSD_SAB_POWER2;
+   gPGATE_SAB_POWER = outside_touching( gSAB_PGATE, gPGATE_SAB_POWER_1i );
+   gPGATE_SAB_GROUND_1i = gPSD_SAB_GROUND1 or gPSD_SAB_GROUND2;
+   gPGATE_SAB_GROUND = outside_touching( gSAB_PGATE, gPGATE_SAB_GROUND_1i );
+   gPGATE_10P0_POWER_1i = gPSD_10P0_POWER1 or gPSD_10P0_POWER2;
+   gPGATE_10P0_POWER = interacting( gLDMPGATE_10P0, gPGATE_10P0_POWER_1i );
+   gPGATE_10P0_GROUND_1i = gPSD_10P0_GROUND1 or gPSD_10P0_GROUND2;
+   gPGATE_10P0_GROUND = interacting( gLDMPGATE_10P0, gPGATE_10P0_GROUND_1i );
+   
+      rPGATE_1 @= { @ "PGATE.1 : pgate S/D connect to power & ground "
+                             "and gate not connect to power";
+       sPGATE_p_1_1i = gPGATE_POWER and gPGATE_GROUND;
+
+
+
+
+       sPGATE_p_1_2i = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gGATE }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+       not_interacting( sPGATE_p_1_1i, sPGATE_p_1_2i );
+       sPGATE_p_1_3i = gPGATE_SAB_POWER and gPGATE_SAB_GROUND;
+
+
+
+
+       sPGATE_p_1_4i = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gSAB_PGATE }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+       not_interacting( sPGATE_p_1_3i, sPGATE_p_1_4i );
+       sPGATE_p_1_5i = gPGATE_10P0_POWER and gPGATE_10P0_GROUND;
+
+
+
+
+       sPGATE_p_1_6i = net_texted_with( CONNECT_DB, text = PWR, output_from_layers = { gLDMPGATE_10P0 }, texted_at = texted_at_override, processing_mode = HIERARCHICAL );
+       not_interacting( sPGATE_p_1_5i, sPGATE_p_1_6i );
+   } 
+   gFRES_MARK_2i = gSAL_RES_MARK or gUNSAL_RES_MARK;
+   gFRES_MARK_1i = gFRES_MARK_2i or gHRES_MARK;
+   gFRES_MARK = gFRES_MARK_1i or gFHRES_MARK;
+   rRES_1 @= { @ "RES.1 : * "
+                         "*                        ERROR MESSAGES !!! "
+                         "* "
+                         "********************************************************************* "
+                         "* Contact / Via is NOT ALLOWED to be drawn on the resistor body area. "
+                         "*********************************************************************";
+       gFRES_MARK and aCONT;
+       gRM1_DEV and aCONT;
+       gRM1_DEV and aVIA1;
+   #ifdef d_BEOL_1P2M
+          gRM2_DEV and aVIA1;
+          gRM2_DEV and aVIA2;
+   #endif
+   #ifdef d_BEOL_1P3M
+          gRM2_DEV and aVIA1;
+          gRM2_DEV and aVIA2;
+          gRM3_DEV and aVIA2;
+          gRM3_DEV and aVIA3;
+   #endif
+   #ifdef d_BEOL_1P4M
+          gRM2_DEV and aVIA1;
+          gRM2_DEV and aVIA2;
+          gRM3_DEV and aVIA2;
+          gRM3_DEV and aVIA3;
+          gRM4_DEV and aVIA3;
+          gRM4_DEV and aVIA4;
+   #endif
+   #ifdef d_BEOL_1P5M
+          gRM2_DEV and aVIA1;
+          gRM2_DEV and aVIA2;
+          gRM3_DEV and aVIA2;
+          gRM3_DEV and aVIA3;
+          gRM4_DEV and aVIA3;
+          gRM4_DEV and aVIA4;
+          gRM5_DEV and aVIA4;
+          gRM5_DEV and aVIA5;
+   #endif
+   #ifdef d_BEOL_1P6M
+          gRM2_DEV and aVIA1;
+          gRM2_DEV and aVIA2;
+          gRM3_DEV and aVIA2;
+          gRM3_DEV and aVIA3;
+          gRM4_DEV and aVIA3;
+          gRM4_DEV and aVIA4;
+          gRM5_DEV and aVIA4;
+          gRM5_DEV and aVIA5;
+          gRM6_DEV and aVIA5;
+   #endif
+   } 
+   
+#endif
+#ifdef d_PEX_RUN
+   
+            #endif                                      
+#ifdef d_ENV_INCLUDE_FILE
+   
+      
+#else
+   
+       #endif
+
+
+
+
+
+
+
+
+
+
+
+dual_hier_TorF:boolean = false;
+#ifdef d_PEX_RUN
+dual_hier_TorF = true;
+#endif 

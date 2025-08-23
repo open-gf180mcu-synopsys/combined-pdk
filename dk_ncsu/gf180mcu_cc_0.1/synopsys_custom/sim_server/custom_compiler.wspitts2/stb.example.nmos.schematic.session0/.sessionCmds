@@ -1,0 +1,82 @@
+1755957620279#0: ::sa::_simServer::_removeFromMsgList false 0
+
+1755957620298#1: ::sa::_simServer::_removeFromMsgList false 1
+
+1755957676232#2: ::sa::_simServer::_removeFromMsgList true 0
+
+1755957676745#3: ::sa::_simServer::openSimServerProgressDialog stb.example.nmos.schematic.session0 {Creating simulation server environment done} 
+
+1755957676751#4: sa::showBgNetlistAndRunProgressDialog::printMsg {} {Creating structural netlist for testbench default ...} {}
+
+1755957676971#5: sa::showBgNetlistAndRunProgressDialog::printMsg {} {Creating final netlist for testbench default ...} {}
+
+1755957676976#6: ::sa::_simServer::preSimulationStartCallback stb.example.nmos.schematic.session0 default /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results history_1 1
+
+1755957677217#7: sa::showBgNetlistAndRunProgressDialog::printMsg {} {                                         Composing Nominal                                         } {}
+
+1755957677260#8: sa::showBgNetlistAndRunProgressDialog::printMsg {} {} {                            Launching jobs for testbench default started                            }
+
+1755957677269#9: sa::showBgNetlistAndRunProgressDialog::printMsg {} {} {                            Creating jobs for testbench default (0 / 1)                            }
+
+1755957677272#10: ::sa::_simServer::simulationStartCallback stb.example.nmos.schematic.session0 default /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results history_1 1 0
+
+1755957677273#11: sa::showBgNetlistAndRunProgressDialog::printMsg {} {} {                               Launching 1 jobs for testbench default                               }
+
+1755957678154#12: sa::showBgNetlistAndRunProgressDialog::printMsg {} {} {                           Launching jobs for testbench default finished                           }
+
+1755957678160#13: ::sa::_simServer::closeSimServerProgressDialog stb.example.nmos.schematic.session0 {Creating simulation jobs completed.} 
+
+1755957686377#14: ::sa::_coreUtils::printMessage {Simulation completed successfully for design: example/nmos/schematic  (PW-651)} -severity information
+
+1755957686415#15: ::sa::_simServer::simulationDoneCallback stb.example.nmos.schematic.session0 default /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results history_1 1 success 0
+
+1755957686765#16: ::sa::_simServer::calculationDoneCallback stb.example.nmos.schematic.session0 default /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results {} 1 1000001
+
+1755957686766#17: ::sa::_coreUtils::printMessage {Evaluating and plotting completed for testbench: default in 0s} -severity information
+
+1755957686769#18: ::sa::_simServer::seqRunRunNextTestbenches stb.example.nmos.schematic.session0 {default} {Complete}
+
+1755957696291#19: ::sa::_simServer::_removeFromMsgList false 2
+
+1755957697471#20: ::sa::_simServer::_removeFromMsgList false 3
+
+1755957848672#21: ::sa::_simServer::_removeFromMsgList true 1
+
+1755957849242#22: ::sa::_simServer::openSimServerProgressDialog stb.example.nmos.schematic.session0 {Creating simulation server environment done} 
+
+1755957849249#23: sa::showBgNetlistAndRunProgressDialog::printMsg {} {Creating structural netlist for testbench default ...} {}
+
+1755957849392#24: sa::showBgNetlistAndRunProgressDialog::printMsg {} {Creating final netlist for testbench default ...} {}
+
+1755957849397#25: ::sa::_simServer::preSimulationStartCallback stb.example.nmos.schematic.session0 default /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results history_1 1
+
+1755957849636#26: sa::showBgNetlistAndRunProgressDialog::printMsg {} {                                         Composing Nominal                                         } {}
+
+1755957849668#27: sa::showBgNetlistAndRunProgressDialog::printMsg {} {} {                            Launching jobs for testbench default started                            }
+
+1755957849676#28: sa::showBgNetlistAndRunProgressDialog::printMsg {} {} {                            Creating jobs for testbench default (0 / 1)                            }
+
+1755957849679#29: ::sa::_simServer::simulationStartCallback stb.example.nmos.schematic.session0 default /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results history_1 1 0
+
+1755957849680#30: sa::showBgNetlistAndRunProgressDialog::printMsg {} {} {                               Launching 1 jobs for testbench default                               }
+
+1755957850533#31: sa::showBgNetlistAndRunProgressDialog::printMsg {} {} {                           Launching jobs for testbench default finished                           }
+
+1755957850694#32: ::sa::_simServer::closeSimServerProgressDialog stb.example.nmos.schematic.session0 {Creating simulation jobs completed.} 
+
+1755957858977#33: ::sa::_coreUtils::printMessage {Simulation completed successfully for design: example/nmos/schematic  (PW-651)} -severity information
+
+1755957858995#34: ::sa::_simServer::simulationDoneCallback stb.example.nmos.schematic.session0 default /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results history_1 1 success 0
+
+1755957859292#35: ::sa::_simServer::calculationDoneCallback stb.example.nmos.schematic.session0 default /home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/simulation/example,nmos,schematic/history_1/simulation/default/PrimeSimSPICE/nominal/results {} 1 1001001
+
+1755957859294#36: ::sa::_coreUtils::printMessage {Evaluating and plotting completed for testbench: default in 1s} -severity information
+
+1755957859296#37: ::sa::_simServer::seqRunRunNextTestbenches stb.example.nmos.schematic.session0 {default} {Complete}
+
+1755957862978#38: ::sa::_simServer::_removeFromMsgList false 4
+
+1755957864158#39: ::sa::_simServer::_removeFromMsgList false 5
+
+1755957868298#40: ::sa::_simServer::_removeFromMsgList false 6
+

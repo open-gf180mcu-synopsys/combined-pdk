@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--pw_worker Based on Custom Infrastructure
+Version W-2024.09-SP1-2-->
+<file-format version="2.0" name="synopsysPrefs"/>
+<preferences>
+	<pref name="saFineSimProModelsFiles" value="{ngspice/design.ngspice {}} {ngspice/sm141064.ngspice typical}"/>
+	<pref name="saFineSimProModelsIncludePath" value="/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/Models_HSPICE/"/>
+	<pref name="saHSPICEModelsFiles" value="{ngspice/design.ngspice {}} {ngspice/sm141064.ngspice typical}"/>
+	<pref name="saHSPICEModelsIncludePath" value="/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/Models_HSPICE/"/>
+	<pref name="saIndependentProcessesDistributionMode" value="LocalHost"/>
+	<pref name="saPrimeSimEnvOptsIncludePath" value="/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/Models_HSPICE/"/>
+	<pref name="saPrimeSimEnvOptsNetlistLanguage" value="HSPICE"/>
+	<pref name="saPrimeSimModelsFiles" value="{ngspice/design.ngspice {}} {aliases.spice {}} {ngspice/sm141064.ngspice typical}"/>
+	<pref name="saPrimeSimModelsIncludePath" value="/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/Models_HSPICE/"/>
+	<pref name="saResultsDir" value="./simulation"/>
+	<pref name="xtIncrementalNetlisting" value="false"/>
+	<pref name="xtJobManagerSaveFilename" value="~/.sae_jobs.xml"/>
+</preferences>
+

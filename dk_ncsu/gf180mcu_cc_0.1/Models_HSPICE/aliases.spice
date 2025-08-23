@@ -1,0 +1,44 @@
+* include this file when netlisting to map synopsys PDK device names to open
+* source device models
+* ngspice models are held at:
+* /mnt/designkits/gf180MCU/dk_open/share/pdk/gf180mcuA/libs.tech/ngspice/sm141064.ngspice
+
+* format is .ALIAS [dk_open model] [dk_synopsys symbol]
+
+* NFETs
+.ALIAS nfet_03v3 nmos_3p3
+.ALIAS nfet_03v3_dss nmos_3p3_sab
+.ALIAS nfet_06v0 nmos_6p0
+.ALIAS nfet_06v0_nvt nmos_6p0_nat
+
+* PFETs
+.ALIAS pfet_03v3 pmos_3p3
+.ALIAS pfet_03v3_dss pmos_3p3_sab
+.ALIAS pfet_06v0 pmos_6p0
+
+* diode
+.ALIAS diode_pw2dw dnwpw
+*.ALIAS diode_nd2ps_03v3 np_3p3
+* jk: i'm not sure what the above device should map to (TODO)
+
+* BJTs
+.ALIAS pnp_10p00x00p42 vpnp_10x10
+.ALIAS npn_10p00x10p00 vnpn_10x10
+
+* RESISTORS
+* .ALIAS pplus_u pplus_u ; models match already
+* .ALIAS nplus_u nplus_u
+* .ALIAS ppolyf_u ppolyf_u
+* .ALIAS npolyf_u npolyf_u
+* .ALIAS nwell nwell
+* .ALIAS rm1 rm1
+
+* caps
+.ALIAS cap_nmos_03v3 nmoscap_3p3
+.ALIAS cap_nmos_06v0 nmoscap_6p0
+.ALIAS cap_pmos_03v3 pmoscap_3p3
+.ALIAS cap_pmos_06v0 pmoscap_6p0
+.ALIAS cap_mim_2f0fF mim_2p0fF
+* jk: not sure if the model name is a typo. note 2p vs 2fF/um2
+
+.end

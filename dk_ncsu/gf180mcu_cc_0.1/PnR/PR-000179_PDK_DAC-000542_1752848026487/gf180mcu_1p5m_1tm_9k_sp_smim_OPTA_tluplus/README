@@ -1,0 +1,14 @@
+######################### README #######################
+##GLOBALFOUNDRIES 180MCU Synopsys TLU+ Release##
+## Design Manual:DM-000013 Rev 13
+## PEX doc      :PEX-000026 Rev 6
+## PLM doc      :PR-000179                                            
+## Revision     : 4                     
+## Release date :12/02/2018
+########################################################	
+1. Contents of gf180mcu_<metal_stack>_tluplus.tar.gz:
+	a. TLU+ files for 3 corners (bst, typ, wst)
+		a. gf180mcu_<metal_stack>_<corner>.TLUplus
+	b. README
+	c. mdb2itf.map
+2. The TLUPlus files are sanity checked using ICC version synopsysICC/2016.03-SP3

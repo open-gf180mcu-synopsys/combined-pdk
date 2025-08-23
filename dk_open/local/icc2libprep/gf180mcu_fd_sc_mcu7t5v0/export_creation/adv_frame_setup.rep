@@ -1,0 +1,19 @@
+set block_option "auto"
+set connect_within_pin "true"  
+set hierarchical "true"  
+set merge_metal_blockage "false" 
+set preserve_blockage "auto"
+set non_default_contacts ""
+set design_rule_via_blockages ""
+set drc_distance ""
+set block_core_margin ""
+set trim_blockage ""
+set connect_layer ""
+set connect_threshold ""
+set convert_blockage ""
+set routing_pg_list "" ; # if empty, auto search by script(all pg ports exclude VDD/VSS/GND)
+set remove_non_pin_shapes "" ; 
+set create_zero_spacing_blockages_around_pins "";
+set keepout_spacing_for_non_pin_shapes "";
+set create_frame_for_subblocks "false";
+set color_based_dpt_flow "auto";
