@@ -55,7 +55,8 @@ if {!("sae_shell"==$pName || "nti_shell"==$pName)} {
     db::setPrefValue xtLPELVSTool          -value "IC Validator"
     db::setPrefValue xtLPETool          -value "StarRC"
     db::setPrefValue xtLPEOpenParasiticView -value false
-#    db::setPrefValue xtStarTcadGrdFile   -value "${DEVICELIB_PATH}/../PEX_StarRC/latest/gf180mcu_1p2m_1tm_30k_sp/gf180mcu_1p2m_1tm_30k_sp_typ.nxtgrd"
+    db::setPrefValue xtStarTcadGrdFile   -value "${DEVICELIB_PATH}/../PEX_StarRC/latest/gf180mcu_1p5m_1tm_11k_sp_smim_OPTB/gf180mcu_1p5m_1tm_11k_sp_smim_OPTB_typ.nxtgrd"
+### NEED HELP WITH THIS ONE
 #    db::setPrefValue xtLPEStarOADeviceMappingFile -value "${DEVICELIB_PATH}/../starrc/oa.device.map"
 #    db::setPrefValue xtStarOALayerMappingFile -value "${DEVICELIB_PATH}/../starrc/oa.layer.map"
     db::setPrefValue saSimulator -value  "PrimeSim"
