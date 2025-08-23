@@ -1,8 +1,14 @@
 <?xml version="1.0"?>
-<!--Created by Custom Compiler (TM), build , on Sat Aug 23 14:19:46 2025-->
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 15:33:18 2025-->
 <file-format name="stateCategory" version="1.0">
  <object name="outputs" type="saOutputs" version="1">
-  <collection name="customPlotModes"/>
+  <collection name="customPlotModes">
+   <object name="customPlotModes" type="wfCustomPlotMode" version="1">
+    <attribute name="isAlltbs" type="giBoolean" value="0"/>
+    <attribute name="isGlobal" type="giBoolean" value="0"/>
+    <attribute name="name" type="giString" value="last"/>
+   </object>
+  </collection>
   <attribute name="importMeasures" type="giBoolean" value="1"/>
   <attribute name="outputSet" type="giString" value="default"/>
   <collection name="outputSets">

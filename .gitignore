@@ -7,3 +7,6 @@ latestResults*
 *.swp
 *.sw0
 simv.*
+*.cdslck
+*.cdslck.*
+*.swo

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<!--Created by Custom Compiler (TM), build , on Sat Aug 23 13:12:58 2025-->
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 15:03:50 2025-->
 <file-format name="stateCategory" version="1.0">
- <object type="saDigitalTiming" name="digitalTiming" version="1">
+ <object name="digitalTiming" type="saDigitalTiming" version="1">
   <collection name="sdfConfigs"/>
  </object>
 </file-format>

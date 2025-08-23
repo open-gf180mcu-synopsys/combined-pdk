@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
-<!--Created by Custom Compiler (TM), build , on Sat Aug 23 14:19:46 2025-->
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 15:33:18 2025-->
 <file-format name="stateData" version="1.0">
- <attribute name="dcop_splitted" type="giBoolean" value="0"/>
- <attribute name="description" type="giString" value=""/>
- <attribute name="design" type="dmCellView" value="example/inverter_testbench/config_systemVerilog"/>
- <attribute name="dspfInfo" type="giString" value=""/>
- <attribute name="enabled" type="giBoolean" value="1"/>
- <attribute name="enabledJobClass" type="giBoolean" value="0"/>
- <attribute name="migratedSimulator" type="giString" value="PrimeSim"/>
- <attribute name="name" type="giString" value="VCS_PrimeSimSPICE_AMS_systemverilog"/>
- <attribute name="openaccessState" type="dmCellView" value="example/inverter_testbench/VCS_PrimeSimSPICE_AMS_systemverilog"/>
- <attribute name="simulator" type="giString" value="PrimeSimVCS"/>
+ <attribute name="dcop_splitted" value="0" type="giBoolean"/>
+ <attribute name="description" value="" type="giString"/>
+ <attribute name="design" value="example/inverter_testbench/config_systemVerilog" type="dmCellView"/>
+ <attribute name="dspfInfo" value="" type="giString"/>
+ <attribute name="enabled" value="1" type="giBoolean"/>
+ <attribute name="enabledJobClass" value="0" type="giBoolean"/>
+ <attribute name="migratedSimulator" value="" type="giString"/>
+ <attribute name="name" value="VCS_PrimeSimSPICE_AMS_systemverilog" type="giString"/>
+ <attribute name="openaccessState" value="example/inverter_testbench/VCS_PrimeSimSPICE_AMS_systemverilog" type="dmCellView"/>
+ <attribute name="simulator" value="PrimeSimVCS" type="giString"/>
  <comment></comment>
  <resultsDir>./simulation</resultsDir>
  <enableTestbenchHistory>0</enableTestbenchHistory>

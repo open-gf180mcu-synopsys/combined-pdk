@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!--Created by Custom Compiler (TM), build , on Sat Aug 23 15:33:05 2025-->
+<file-format name="stateCategory" version="1.0">
+ <object name="mixedSignalOptions" type="saMixedSignalOptions" version="1">
+  <collection name="a2dInterfaceElements">
+   <object name="a2dInterfaceElements" type="saA2DInterfaceElement" version="1">
+    <attribute name="ceff" value="" type="giString"/>
+    <attribute name="element" value="*" type="giString"/>
+    <attribute name="elementType" value="net" type="saElementType"/>
+    <attribute name="highImpedance" value="off" type="saHiZState"/>
+    <attribute name="highThreshold" value="80" type="giString"/>
+    <attribute name="lowThreshold" value="20" type="giString"/>
+    <attribute name="midvLogic" value="X" type="saLogicValue"/>
+    <attribute name="midvTime" value="" type="giString"/>
+    <attribute name="minv" value="0.1" type="giString"/>
+    <attribute name="minvLogic" value="X" type="saLogicValue"/>
+    <attribute name="thresholdUnit" value="%" type="saIEThresholdUnit"/>
+    <attribute name="vdd" value="/vdd!" type="giString"/>
+    <attribute name="xband" value="" type="giString"/>
+   </object>
+  </collection>
+  <attribute name="alwaysUsePortMapOption" value="0" type="giBoolean"/>
+  <attribute name="busFormat" value="[%d]" type="giString"/>
+  <attribute name="connectModulesInstallDirFilePatterns" value="" type="giString"/>
+  <attribute name="connectModulesInstallDirFiles" value="" type="giString"/>
+  <attribute name="connectModulesUserDir" value="" type="giString"/>
+  <attribute name="connectModulesUserDirFilePatterns" value="" type="giString"/>
+  <collection name="connectRuleElements"/>
+  <attribute name="connectRulesInstallDirFilePatterns" value="" type="giString"/>
+  <attribute name="connectRulesInstallDirFiles" value="" type="giString"/>
+  <attribute name="connectRulesUserDirFilePatterns" value="" type="giString"/>
+  <collection name="connectionModules"/>
+  <collection name="connectionRules"/>
+  <collection name="d2aInterfaceElements">
+   <object name="d2aInterfaceElements" type="saD2AInterfaceElement" version="1">
+    <attribute name="delay" value="0.1n" type="giString"/>
+    <attribute name="element" value="*" type="giString"/>
+    <attribute name="elementType" value="net" type="saElementType"/>
+    <attribute name="fallTime" value="0.1n" type="giString"/>
+    <attribute name="highVoltage" value="90" type="giString"/>
+    <attribute name="levelUnit" value="%" type="saIEThresholdUnit"/>
+    <attribute name="logicX" value="midPoint" type="saD2ALogicXAction"/>
+    <attribute name="lowVoltage" value="10" type="giString"/>
+    <attribute name="powerNet" value="1" type="giBoolean"/>
+    <attribute name="riseTime" value="0.1n" type="giString"/>
+    <attribute name="vdd" value="/vdd!" type="giString"/>
+   </object>
+  </collection>
+  <attribute name="defaultNetDiscipline" value="ddiscrete" type="giString"/>
+  <attribute name="defaultResistanceMapFile" value="" type="giString"/>
+  <attribute name="digitalRunMode" value="batch" type="saDigitalRunMode"/>
+  <attribute name="digitalRunStep" value="analyze" type="saDigitalRunStep"/>
+  <attribute name="disciplineResolution" value="basic" type="saDisciplineResolution"/>
+  <collection name="e2nInterfaceElements"/>
+  <collection name="e2rInterfaceElements"/>
+  <attribute name="enableRTVS" value="0" type="giBoolean"/>
+  <attribute name="existingControlFile" value="" type="giString"/>
+  <attribute name="extraOptions" value="" type="giString"/>
+  <attribute name="extraOptionsTop" value="" type="giString"/>
+  <attribute name="extraOptionsUcli" value="" type="giString"/>
+  <attribute name="extraOptionsUcliTop" value="" type="giString"/>
+  <attribute name="flowType" value="cosim" type="saMixedSignalFlow"/>
+  <collection name="forceDigitalNets"/>
+  <attribute name="ieReportAMS" value="0" type="giBoolean"/>
+  <attribute name="ieReportActivity" value="0" type="giBoolean"/>
+  <attribute name="mviewVlogNoPortSwap" value="0" type="giBoolean"/>
+  <collection name="n2eInterfaceElements"/>
+  <collection name="nodeResistanceOverrides"/>
+  <collection name="r2eInterfaceElements"/>
+  <collection name="resistanceMapConfigs"/>
+  <attribute name="resolveXInstPrefix" value="0" type="giBoolean"/>
+  <attribute name="spicePortOrderAsVlog" value="1" type="giBoolean"/>
+  <attribute name="spiceTopName" value="snps_sptop" type="giString"/>
+  <attribute name="useExistingControlFile" value="0" type="giBoolean"/>
+ </object>
+ <object name="environmentOptions" type="saEnvironmentOptions" version="1">
+  <attribute name="accuracyLevel" value="Default" type="giString"/>
+  <attribute name="analogSimulatorOptions" value="" type="giString"/>
+  <attribute name="commandLineOptions" value="" type="giString"/>
+  <attribute name="compilationOptions" value="" type="giString"/>
+  <attribute name="digitalOutputDataFormat" value="fsdb" type="giString"/>
+  <attribute name="elaborationOptions" value="" type="giString"/>
+  <attribute name="enableParallelSim" value="0" type="giBoolean"/>
+  <attribute name="ignoreParasitics" value="0" type="giBoolean"/>
+  <attribute name="includeGlobal" value="1" type="giBoolean"/>
+  <attribute name="includePath" value="/home/wspitts2/gf180MCU_synopsys_shared/dk_ncsu/gf180mcu_cc_0.1/Models_HSPICE/" type="giString"/>
+  <attribute name="mergedFile" value="1" type="giBoolean"/>
+  <attribute name="netlistLanguage" value="HSPICE" type="giString"/>
+  <attribute name="numProcesses" value="1" type="giInt"/>
+  <attribute name="outputDataFormat" value="fsdb" type="giString"/>
+  <attribute name="stopViewList" value="hspice hspiceD functional behavioral symbol" type="giString"/>
+  <attribute name="switchViewList" value="hspice hspiceD schematic verilog functional behavioral vhdl_config vhdl spice veriloga verilogams" type="giString"/>
+  <attribute name="use64Bit" value="1" type="giBoolean"/>
+  <attribute name="vhdlanOptions" value="" type="giString"/>
+ </object>
+ <object name="digitalFileOptions" type="saDigitalFileOptions" version="1">
+  <attribute name="extInclude" value="0" type="giBoolean"/>
+  <attribute name="libExt" value="" type="giString"/>
+  <collection name="pathOptions"/>
+  <attribute name="sverilog" value="1" type="giBoolean"/>
+  <attribute name="sverilogExt" value="" type="giString"/>
+  <attribute name="vlog2001Ext" value="" type="giString"/>
+  <attribute name="vlogAMSExt" value="" type="giString"/>
+ </object>
+</file-format>
