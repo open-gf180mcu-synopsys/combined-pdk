@@ -3,13 +3,17 @@
 `include "constants.vams"
 `include "disciplines.vams"
 
-module gf180mcu_fd_sc_mcu7t5v0__inv_1(Y, A, VDD, VSS);
-output Y;
-electrical Y;
-input A;
-electrical A;
+module gf180mcu_fd_sc_mcu7t5v0__inv_1(ZN, I, VDD, VNW, VPW, VSS);
+output ZN;
+electrical ZN;
+input I;
+electrical I;
 inout VDD;
 electrical VDD;
+inout VNW;
+electrical VNW;
+inout VPW;
+electrical VPW;
 inout VSS;
 electrical VSS;
 
@@ -27,14 +31,14 @@ real vout;
 analog begin
     @( initial_step ) 
 	begin // initial condition
-		if ( V(A) > vth ) vout = vol;
+		if ( V(I) > vth ) vout = vol;
 		else vout = voh;
 	end 
-    @(cross(V(A) - vth, +1,tt))
+    @(cross(V(I) - vth, +1,tt))
         vout = vol; // Vin>vth => vout_low
-    @(cross(V(A) - vth, -1,tt))
+    @(cross(V(I) - vth, -1,tt))
         vout = voh;  // Vin<vth => vout_high 
-    V(Y) <+ transition(vout,td,tr,tf,tt);
+    V(ZN) <+ transition(vout,td,tr,tf,tt);
   end
 
 endmodule

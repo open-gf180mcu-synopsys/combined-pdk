@@ -1,2 +1,18 @@
 
+.subckt NMOS_3P3 d g s bulk 
+.ends
 
+.subckt PMOS_3P3 d g s bulk
+.ends
+
+.subckt NMOS_5P0 d g s bulk 
+.ends
+
+.subckt PMOS_5P0 d g s bulk
+.ends
+
+.subckt NMOS_6P0 d g s bulk 
+.ends
+
+.subckt PMOS_6P0 d g s bulk
+.ends
