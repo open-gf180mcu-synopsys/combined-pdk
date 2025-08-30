@@ -24,9 +24,21 @@ You will need to modify any files such as the setup.sh file to point to your PDK
 
 ## Examples
 
-### Analog Flow Setup
+### Analog Flow
 
-https://docs.google.com/document/d/13Y0Sog9NZ4M8XTbR7IEIIz5xI5KXeFEdzHiUwyy_8L0/edit?usp=sharing
+Clone the repository and then go into the following directory to run the setup script (note you might need to make changes to the setup script to load your environment):
+```
+cd gf180MCU_synopsys_shared
+cd dk_ncsu
+cd gf180mcu
+source setup.sh
+```
+
+Following these instructions:
+
+[Video: How to run the NC State Example PDK, LVS and DRC](https://ncsu.zoom.us/rec/share/txlwofC5i1w89VHd6PUCxr1TOueCAOt3EomUtCQPf_1HvmmnrrShkAO5qFcbKIg3.W6X8lW3dusrbWBkw?startTime=1756523681000)
+
+[Video: How to run PrimeSim SPICE simulation and how to run PrimeSim AMS Mixed Signal simulations](https://ncsu.zoom.us/rec/share/2nVY9yAYXVhgejIXKWP3t4hMVz0Wi1l0t7OimEghYCtZ-U1ZmgNqMjH8CdSsxoek.iUzD2a9VaSmS9N4O)
 
 ### Digital Flow Example NC States Student Club Voltmeter Example
 
