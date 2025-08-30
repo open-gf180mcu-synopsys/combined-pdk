@@ -32,6 +32,7 @@ cd gf180MCU_synopsys_shared
 cd dk_ncsu
 cd gf180mcu
 source setup.sh
+custom_compiler &
 ```
 
 Following these instructions:
