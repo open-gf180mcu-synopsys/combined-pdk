@@ -33,7 +33,7 @@ as=\\"'int((nf+2)/2) * W/nf * 0.18u'\\"
 ps=\\"'2*int((nf+2)/2) * (W/nf + 0.18u)'\\"
 nrd=\\"'0.18u / W'\\" nrs=\\"'0.18u / W'\\"
 sa=0 sb=0 sd=0
-model=pmos_6p0
+model=pfet_06v0
 spiceprefix=X
 "
 }

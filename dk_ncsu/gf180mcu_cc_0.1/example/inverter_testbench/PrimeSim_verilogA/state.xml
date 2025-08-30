@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
-<!--Created by Custom Compiler (TM), build , on Sat Aug 23 11:51:27 2025-->
+<!--Created by Custom Compiler (TM), build , on Sat Aug 30 02:41:30 2025-->
 <file-format name="stateData" version="1.0">
  <attribute name="dcop_splitted" type="giBoolean" value="0"/>
  <attribute name="description" type="giString" value=""/>
- <attribute name="design" type="dmCellView" value="example/inverter_testbench/config"/>
+ <attribute name="design" type="dmCellView" value="example/inverter_testbench/config_verilogA"/>
+ <attribute name="dspfInfo" type="giString" value=""/>
  <attribute name="enabled" type="giBoolean" value="1"/>
  <attribute name="enabledJobClass" type="giBoolean" value="0"/>
- <attribute name="migratedSimulator" type="giString" value="PrimeSim"/>
+ <attribute name="migratedSimulator" type="giString" value=""/>
  <attribute name="name" type="giString" value="PrimeSim_verilogA"/>
  <attribute name="openaccessState" type="dmCellView" value="example/inverter_testbench/PrimeSim_verilogA"/>
  <attribute name="simulator" type="giString" value="PrimeSim"/>

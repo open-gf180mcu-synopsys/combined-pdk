@@ -6,26 +6,26 @@
 * format is .ALIAS [dk_open model] [dk_synopsys symbol]
 
 * NFETs
-.ALIAS nfet_03v3 nmos_3p3
-.ALIAS nfet_03v3_dss nmos_3p3_sab
-.ALIAS nfet_05v0 nmos_5p0
-.ALIAS nfet_06v0 nmos_6p0
-.ALIAS nfet_06v0_nvt nmos_6p0_nat
+.ALIAS nfet_03v3 nfet_03v3
+.ALIAS nfet_03v3_dss nfet_03v3_sab
+.ALIAS nfet_05v0 nfet_05v0
+.ALIAS nfet_06v0 nfet_06v0
+.ALIAS nfet_06v0_nvt nfet_06v0_nvt
 
 * PFETs
-.ALIAS pfet_03v3 pmos_3p3
-.ALIAS pfet_03v3_dss pmos_3p3_sab
-.ALIAS pfet_05v0 pmos_5p0
-.ALIAS pfet_06v0 pmos_6p0
+.ALIAS pfet_03v3 pfet_03v3
+.ALIAS pfet_03v3_dss pfet_03v3_dss
+.ALIAS pfet_05v0 pfet_05v0
+.ALIAS pfet_06v0 pfet_06v0
 
 * diode
-.ALIAS diode_pw2dw dnwpw
-*.ALIAS diode_nd2ps_03v3 np_3p3
+.ALIAS diode_pw2dw diode_dw2ps
+*.ALIAS diode_nd2ps_03v3 diode_nd2ps_03v3
 * jk: i'm not sure what the above device should map to (TODO)
 
 * BJTs
-.ALIAS pnp_10p00x00p42 vpnp_10x10
-.ALIAS npn_10p00x10p00 vnpn_10x10
+.ALIAS pnp_10p00x00p42 pnp_10p00x10p00
+.ALIAS npn_10p00x10p00 npn_10p00x10p00
 
 * RESISTORS
 * .ALIAS pplus_u pplus_u ; models match already
@@ -36,10 +36,10 @@
 * .ALIAS rm1 rm1
 
 * caps
-.ALIAS cap_nmos_03v3 nmoscap_3p3
-.ALIAS cap_nmos_06v0 nmoscap_6p0
-.ALIAS cap_pmos_03v3 pmoscap_3p3
-.ALIAS cap_pmos_06v0 pmoscap_6p0
+.ALIAS cap_nmos_03v3 cap_nmos_03v3
+.ALIAS cap_nmos_06v0 cap_nmos_06v0
+.ALIAS cap_pmos_03v3 cap_pmos_03v3
+.ALIAS cap_pmos_06v0 cap_pmos_06v0
 .ALIAS cap_mim_2f0fF mim_2p0fF
 * jk: not sure if the model name is a typo. note 2p vs 2fF/um2
 

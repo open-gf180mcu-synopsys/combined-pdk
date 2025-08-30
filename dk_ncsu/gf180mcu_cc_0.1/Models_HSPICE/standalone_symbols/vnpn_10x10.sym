@@ -19,7 +19,7 @@ G {}
 K {type=vertical_npn
 format="@spiceprefix@name @pinlist @model m=@m"
 template="name=Q1
-model=vnpn_10x10
+model=npn_10p00x10p00
 spiceprefix=X
 m=1"
 }

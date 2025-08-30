@@ -21,7 +21,7 @@ format="@spiceprefix@name @pinlist @model c_width=@W c_length=@L m=@m"
 template="name=C1
 W=1e-6
 L=1e-6
-model=nmoscap_3p3
+model=cap_nmos_03v3
 spiceprefix=X
 m=1"
 }

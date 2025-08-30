@@ -64,7 +64,8 @@ if {!("sae_shell"==$pName || "nti_shell"==$pName)} {
     db::setPrefValue saPrimeSimEnvOptsNetlistLanguage -value  "HSPICE"
     db::setPrefValue saPrimeSimEnvOptsIncludePath -value  "${DEVICELIB_PATH}/"
     db::setPrefValue saPrimeSimModelsIncludePath -value  "${DEVICELIB_PATH}/"
-    db::setPrefValue saPrimeSimModelsFiles -value  [list [list ngspice/design.ngspice {}] [list aliases.spice {}] [list ngspice/sm141064.ngspice typical ]  ]
+    db::setPrefValue saPrimeSimModelsFiles -value  [list [list ngspice/design.ngspice {}] [list ngspice/sm141064.ngspice typical ]  ]
+#    db::setPrefValue saPrimeSimModelsFiles -value  [list [list ngspice/design.ngspice {}] [list aliases.spice {}] [list ngspice/sm141064.ngspice typical ]  ]
     db::setPrefValue saHSPICEEnvOptsIncludePath -value  "${DEVICELIB_PATH}/"
     db::setPrefValue saHSPICEModelsIncludePath -value  "${DEVICELIB_PATH}/"
     db::setPrefValue saHSPICEModelsFiles -value  [list [list ngspice/design.ngspice {}] [list ngspice/sm141064.ngspice typical ]  ]

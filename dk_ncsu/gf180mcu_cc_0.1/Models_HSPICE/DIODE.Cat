@@ -1,4 +1,4 @@
 TDMCHECKPOINT="1.0"
 keepEmptyCategory type="unknown"
-gf180mcu/dnwpw type="cell"
-gf180mcu/np_3p3 type="cell"
+gf180mcu/diode_dw2ps type="cell"
+gf180mcu/diode_nd2ps_03v3 type="cell"

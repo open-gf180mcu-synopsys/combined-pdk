@@ -39,7 +39,7 @@ merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "nmos_3p3" }, property_functions = { { "merge_props_func_1"} });
+ }, device_names = { "nfet_03v3" }, property_functions = { { "merge_props_func_1"} });
 merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { 
 #ifdef d_MOS_NF_BY_COUNT
    { property = "L", tolerance = [-1,1] },
@@ -48,7 +48,7 @@ merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "nmos_3p3_dw" }, property_functions = { { "merge_props_func_1"} });
+ }, device_names = { "nfet_03v3_dw" }, property_functions = { { "merge_props_func_1"} });
 merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { 
 #ifdef d_MOS_NF_BY_COUNT
    { property = "L", tolerance = [-1,1] },
@@ -57,7 +57,7 @@ merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "pmos_3p3" }, property_functions = { { "merge_props_func_1"} });
+ }, device_names = { "pfet_03v3" }, property_functions = { { "merge_props_func_1"} });
 merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { 
 #ifdef d_MOS_NF_BY_COUNT
    { property = "L", tolerance = [-1,1] },
@@ -66,7 +66,7 @@ merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "pmos_3p3_dw" }, property_functions = { { "merge_props_func_1"} });
+ }, device_names = { "pfet_03v3_dw" }, property_functions = { { "merge_props_func_1"} });
 merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { 
 #ifdef d_MOS_NF_BY_COUNT
    { property = "L", tolerance = [-1,1] },
@@ -75,7 +75,7 @@ merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "nmos_6p0" }, property_functions = { { "merge_props_func_1"} });
+ }, device_names = { "nfet_06v0" }, property_functions = { { "merge_props_func_1"} });
 merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { 
 #ifdef d_MOS_NF_BY_COUNT
    { property = "L", tolerance = [-1,1] },
@@ -84,7 +84,7 @@ merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "nmos_6p0_dw" }, property_functions = { { "merge_props_func_1"} });
+ }, device_names = { "nfet_06v0_dw" }, property_functions = { { "merge_props_func_1"} });
 merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { 
 #ifdef d_MOS_NF_BY_COUNT
    { property = "L", tolerance = [-1,1] },
@@ -93,7 +93,7 @@ merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "nmos_5p0" }, property_functions = { { "merge_props_func_1"} });
+ }, device_names = { "nfet_05v0" }, property_functions = { { "merge_props_func_1"} });
 merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { 
 #ifdef d_MOS_NF_BY_COUNT
    { property = "L", tolerance = [-1,1] },
@@ -102,7 +102,7 @@ merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "nmos_5p0_dw" }, property_functions = { { "merge_props_func_1"} });
+ }, device_names = { "nfet_05v0_dw" }, property_functions = { { "merge_props_func_1"} });
 merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { 
 #ifdef d_MOS_NF_BY_COUNT
    { property = "L", tolerance = [-1,1] },
@@ -111,7 +111,7 @@ merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "pmos_6p0" }, property_functions = { { "merge_props_func_1"} });
+ }, device_names = { "pfet_06v0" }, property_functions = { { "merge_props_func_1"} });
 merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { 
 #ifdef d_MOS_NF_BY_COUNT
    { property = "L", tolerance = [-1,1] },
@@ -120,7 +120,7 @@ merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "pmos_6p0_dw" }, property_functions = { { "merge_props_func_1"} });
+ }, device_names = { "pfet_06v0_dw" }, property_functions = { { "merge_props_func_1"} });
 merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { 
 #ifdef d_MOS_NF_BY_COUNT
    { property = "L", tolerance = [-1,1] },
@@ -129,7 +129,7 @@ merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "pmos_5p0" }, property_functions = { { "merge_props_func_1"} });
+ }, device_names = { "pfet_05v0" }, property_functions = { { "merge_props_func_1"} });
 merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { 
 #ifdef d_MOS_NF_BY_COUNT
    { property = "L", tolerance = [-1,1] },
@@ -138,7 +138,7 @@ merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "pmos_5p0_dw" }, property_functions = { { "merge_props_func_1"} });
+ }, device_names = { "pfet_05v0_dw" }, property_functions = { { "merge_props_func_1"} });
 merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { 
 #ifdef d_MOS_NF_BY_COUNT
    { property = "L", tolerance = [-1,1] },
@@ -147,23 +147,23 @@ merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances 
 #else
    { property = "L", tolerance = [-1,1] },
 #endif
- }, device_names = { "nmos_6p0_nat" }, property_functions = { { "merge_props_func_1"} });
-merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nmos_3p3_sab" }, property_functions = { { "merge_props_func_2"} });
-merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pmos_3p3_sab" }, property_functions = { { "merge_props_func_2"} });
-merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nmos_3p3_dw_sab" }, property_functions = { { "merge_props_func_2"} });
-merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pmos_3p3_dw_sab" }, property_functions = { { "merge_props_func_2"} });
-merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nmos_5p0_sab" }, property_functions = { { "merge_props_func_2"} });
-merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pmos_5p0_sab" }, property_functions = { { "merge_props_func_2"} });
-merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nmos_5p0_dw_sab" }, property_functions = { { "merge_props_func_2"} });
-merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pmos_5p0_dw_sab" }, property_functions = { { "merge_props_func_2"} });
-merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nmos_6p0_sab" }, property_functions = { { "merge_props_func_2"} });
-merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pmos_6p0_sab" }, property_functions = { { "merge_props_func_2"} });
-merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nmos_6p0_dw_sab" }, property_functions = { { "merge_props_func_2"} });
-merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pmos_6p0_dw_sab" }, property_functions = { { "merge_props_func_2"} });
-merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nmos_10p0_asym" }, property_functions = { { "merge_props_func_3"} });
-merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pmos_10p0_asym" }, property_functions = { { "merge_props_func_3"} });
-merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "np_3p3" }, property_functions = { { "merge_props_func_4"} });
-merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "np_3p3_dw" }, property_functions = { { "merge_props_func_4"} });
+ }, device_names = { "nfet_06v0_nvt" }, property_functions = { { "merge_props_func_1"} });
+merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nfet_03v3_sab" }, property_functions = { { "merge_props_func_2"} });
+merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pfet_03v3_dss" }, property_functions = { { "merge_props_func_2"} });
+merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nfet_03v3_dw_sab" }, property_functions = { { "merge_props_func_2"} });
+merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pfet_03v3_dw_sab" }, property_functions = { { "merge_props_func_2"} });
+merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nfet_05v0_sab" }, property_functions = { { "merge_props_func_2"} });
+merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pfet_05v0_sab" }, property_functions = { { "merge_props_func_2"} });
+merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nfet_05v0_dw_sab" }, property_functions = { { "merge_props_func_2"} });
+merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pfet_05v0_dw_sab" }, property_functions = { { "merge_props_func_2"} });
+merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nfet_06v0_sab" }, property_functions = { { "merge_props_func_2"} });
+merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pfet_06v0_dss" }, property_functions = { { "merge_props_func_2"} });
+merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nfet_06v0_dw_sab" }, property_functions = { { "merge_props_func_2"} });
+merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] }, { property = "s_sab", tolerance = [0, 0] }, { property = "d_sab", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pfet_06v0_dw_sab" }, property_functions = { { "merge_props_func_2"} });
+merge_parallel(state = compare_settings, device_type = NMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "nfet_10v0_asym" }, property_functions = { { "merge_props_func_3"} });
+merge_parallel(state = compare_settings, device_type = PMOS, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "nf", tolerance = [0, 0] } }, device_names = { "pfet_10v0_asym" }, property_functions = { { "merge_props_func_3"} });
+merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "diode_nd2ps_03v3" }, property_functions = { { "merge_props_func_4"} });
+merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "diode_nd2ps_03v3_dw" }, property_functions = { { "merge_props_func_4"} });
 merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "np_6p0" }, property_functions = { { "merge_props_func_4"} });
 merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "np_6p0_dw" }, property_functions = { { "merge_props_func_4"} });
 merge_parallel(state = compare_settings, device_type = PN, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "pn_3p3" }, property_functions = { { "merge_props_func_4"} });
@@ -172,8 +172,8 @@ merge_parallel(state = compare_settings, device_type = PN, exclude_tolerances = 
 merge_parallel(state = compare_settings, device_type = PN, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "pn_6p0_dw" }, property_functions = { { "merge_props_func_4"} });
 merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "nwp_3p3" }, property_functions = { { "merge_props_func_4"} });
 merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "nwp_6p0" }, property_functions = { { "merge_props_func_4"} });
-merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "dnwpw_3p3" }, property_functions = { { "merge_props_func_4"} });
-merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "dnwpw_6p0" }, property_functions = { { "merge_props_func_4"} });
+merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "diode_dw2ps_3p3" }, property_functions = { { "merge_props_func_4"} });
+merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "diode_dw2ps_6p0" }, property_functions = { { "merge_props_func_4"} });
 merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "dnwps_3p3" }, property_functions = { { "merge_props_func_4"} });
 merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "A", tolerance = [0, 0] }, { property = "P", tolerance = [0, 0] } }, device_names = { "dnwps_6p0" }, property_functions = { { "merge_props_func_4"} });
 merge_parallel(state = compare_settings, device_type = NP, exclude_tolerances = { { property = "W", tolerance = [0, 0] }, { property = "L", tolerance = [0, 0] } }, device_names = { "sc_diode" }, property_functions = { { "merge_props_func_5"} });
@@ -497,23 +497,23 @@ merge_parallel(state = compare_settings, device_type = RESISTOR, exclude_toleran
       #endif
    #endif
 #endif
-merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "nmoscap_3p3" }, property_functions = { { "merge_props_func_5"} });
-merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "nmoscap_3p3_dw" }, property_functions = { { "merge_props_func_5"} });
-merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "nmoscap_6p0" }, property_functions = { { "merge_props_func_5"} });
-merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "nmoscap_6p0_dw" }, property_functions = { { "merge_props_func_5"} });
-merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "pmoscap_3p3" }, property_functions = { { "merge_props_func_5"} });
-merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "pmoscap_3p3_dw" }, property_functions = { { "merge_props_func_5"} });
-merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "pmoscap_6p0" }, property_functions = { { "merge_props_func_5"} });
-merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "pmoscap_6p0_dw" }, property_functions = { { "merge_props_func_5"} });
-merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "nmoscap_3p3_b" }, property_functions = { { "merge_props_func_5"} });
-merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "nmoscap_6p0_b" }, property_functions = { { "merge_props_func_5"} });
-merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "pmoscap_3p3_b" }, property_functions = { { "merge_props_func_5"} });
-merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "pmoscap_6p0_b" }, property_functions = { { "merge_props_func_5"} });
+merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "cap_nmos_03v3" }, property_functions = { { "merge_props_func_5"} });
+merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "cap_nmos_03v3_dw" }, property_functions = { { "merge_props_func_5"} });
+merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "cap_nmos_06v0" }, property_functions = { { "merge_props_func_5"} });
+merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "cap_nmos_06v0_dw" }, property_functions = { { "merge_props_func_5"} });
+merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "cap_pmos_03v3" }, property_functions = { { "merge_props_func_5"} });
+merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "cap_pmos_03v3_dw" }, property_functions = { { "merge_props_func_5"} });
+merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "cap_pmos_06v0" }, property_functions = { { "merge_props_func_5"} });
+merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "cap_pmos_06v0_dw" }, property_functions = { { "merge_props_func_5"} });
+merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "cap_nmos_03v3_b" }, property_functions = { { "merge_props_func_5"} });
+merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "cap_nmos_06v0_b" }, property_functions = { { "merge_props_func_5"} });
+merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "cap_pmos_03v3_b" }, property_functions = { { "merge_props_func_5"} });
+merge_parallel(state = compare_settings, device_type = CAPACITOR, exclude_tolerances = { { property = "L", tolerance = [0, 0] }, { property = "W", tolerance = [0, 0] } }, device_names = { "cap_pmos_06v0_b" }, property_functions = { { "merge_props_func_5"} });
 merge_parallel(state = compare_settings, device_type = PNP, device_names = { "vpnp_0p42x5" }, property_functions = { { "merge_props_func_8"} });
 merge_parallel(state = compare_settings, device_type = PNP, device_names = { "vpnp_0p42x10" }, property_functions = { { "merge_props_func_8"} });
 merge_parallel(state = compare_settings, device_type = PNP, device_names = { "vpnp_5x5" }, property_functions = { { "merge_props_func_8"} });
-merge_parallel(state = compare_settings, device_type = PNP, device_names = { "vpnp_10x10" }, property_functions = { { "merge_props_func_8"} });
-merge_parallel(state = compare_settings, device_type = NPN, device_names = { "vnpn_10x10" }, property_functions = { { "merge_props_func_8"} });
+merge_parallel(state = compare_settings, device_type = PNP, device_names = { "pnp_10p00x10p00" }, property_functions = { { "merge_props_func_8"} });
+merge_parallel(state = compare_settings, device_type = NPN, device_names = { "npn_10p00x10p00" }, property_functions = { { "merge_props_func_8"} });
 merge_parallel(state = compare_settings, device_type = NPN, device_names = { "vnpn_5x5" }, property_functions = { { "merge_props_func_8"} });
 merge_parallel(state = compare_settings, device_type = NPN, device_names = { "vnpn_0p54x16" }, property_functions = { { "merge_props_func_8"} });
 merge_parallel(state = compare_settings, device_type = NPN, device_names = { "vnpn_0p54x8" }, property_functions = { { "merge_props_func_8"} });
@@ -843,18 +843,18 @@ merge_series(state = compare_settings, device_type = RESISTOR, exclude_tolerance
       #endif
    #endif
 #endif
-merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "nmoscap_3p3" });
-merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "nmoscap_3p3_dw" });
-merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "nmoscap_6p0" });
-merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "nmoscap_6p0_dw" });
-merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "pmoscap_3p3" });
-merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "pmoscap_3p3_dw" });
-merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "pmoscap_6p0" });
-merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "pmoscap_6p0_dw" });
-merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "nmoscap_3p3_b" });
-merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "nmoscap_6p0_b" });
-merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "pmoscap_3p3_b" });
-merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "pmoscap_6p0_b" });
+merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "cap_nmos_03v3" });
+merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "cap_nmos_03v3_dw" });
+merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "cap_nmos_06v0" });
+merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "cap_nmos_06v0_dw" });
+merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "cap_pmos_03v3" });
+merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "cap_pmos_03v3_dw" });
+merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "cap_pmos_06v0" });
+merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "cap_pmos_06v0_dw" });
+merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "cap_nmos_03v3_b" });
+merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "cap_nmos_06v0_b" });
+merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "cap_pmos_03v3_b" });
+merge_series_off(state = compare_settings, device_type = CAPACITOR, device_names = { "cap_pmos_06v0_b" });
 recognize_gate(state = compare_settings, type = ALL);
 short_equivalent_nodes(state = compare_settings, device_type = NMOS, exclude_tolerances = { { "W", [ -infinity, infinity ], RELATIVE, RATIO } });
 short_equivalent_nodes(state = compare_settings, device_type = PMOS, exclude_tolerances = { { "W", [ -infinity, infinity ], RELATIVE, RATIO } });
@@ -1150,12 +1150,12 @@ short_equivalent_nodes(state = compare_settings, device_type = PMOS, exclude_tol
       
    #endif
 #endif
-recalculate_property(state = compare_settings, device_type = NMOS, device_names = { "nmos_3p3" }, property_function = "property_init_mn_nmos_3p3");
-recalculate_property(state = compare_settings, device_type = PMOS, device_names = { "pmos_3p3" }, property_function = "property_init_mp_pmos_3p3");
-recalculate_property(state = compare_settings, device_type = NMOS, device_names = { "nmos_6p0" }, property_function = "property_init_mn_nmos_6p0");
-recalculate_property(state = compare_settings, device_type = NMOS, device_names = { "nmos_5p0" }, property_function = "property_init_mn_nmos_5p0");
-recalculate_property(state = compare_settings, device_type = PMOS, device_names = { "pmos_6p0" }, property_function = "property_init_mp_pmos_6p0");
-recalculate_property(state = compare_settings, device_type = PMOS, device_names = { "pmos_5p0" }, property_function = "property_init_mp_pmos_5p0");
+recalculate_property(state = compare_settings, device_type = NMOS, device_names = { "nfet_03v3" }, property_function = "property_init_mn_nfet_03v3");
+recalculate_property(state = compare_settings, device_type = PMOS, device_names = { "pfet_03v3" }, property_function = "property_init_mp_pfet_03v3");
+recalculate_property(state = compare_settings, device_type = NMOS, device_names = { "nfet_06v0" }, property_function = "property_init_mn_nfet_06v0");
+recalculate_property(state = compare_settings, device_type = NMOS, device_names = { "nfet_05v0" }, property_function = "property_init_mn_nfet_05v0");
+recalculate_property(state = compare_settings, device_type = PMOS, device_names = { "pfet_06v0" }, property_function = "property_init_mp_pfet_06v0");
+recalculate_property(state = compare_settings, device_type = PMOS, device_names = { "pfet_05v0" }, property_function = "property_init_mp_pfet_05v0");
 recalculate_property(state = compare_settings, device_type = RESISTOR, device_names = { "nwell" }, property_function = "property_init_r_nwell");
 recalculate_property(state = compare_settings, device_type = RESISTOR, device_names = { "nplus_u" }, property_function = "property_init_r_nplus_u");
 recalculate_property(state = compare_settings, device_type = RESISTOR, device_names = { "nplus_u_dw" }, property_function = "property_init_r_nplus_u_dw");
@@ -1270,227 +1270,227 @@ recalculate_property(state = compare_settings, device_type = RESISTOR, device_na
    #endif
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "nmos_3p3" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_3p3" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_3p3" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_3p3" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "nmos_3p3" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_3p3" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_3p3" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "nmos_3p3_dw" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_3p3_dw" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_3p3_dw" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_3p3_dw" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3_dw" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3_dw" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3_dw" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3_dw" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "nmos_3p3_dw" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_3p3_dw" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_3p3_dw" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3_dw" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3_dw" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_03v3_dw" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "pmos_3p3" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_3p3" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_3p3" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "pmos_3p3" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "pmos_3p3" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_3p3" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "pmos_3p3" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "pmos_3p3_dw" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_3p3_dw" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_3p3_dw" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "pmos_3p3_dw" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3_dw" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3_dw" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3_dw" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3_dw" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "pmos_3p3_dw" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_3p3_dw" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "pmos_3p3_dw" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3_dw" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3_dw" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_03v3_dw" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "nmos_6p0" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "nmos_6p0" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "nmos_6p0_dw" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0_dw" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0_dw" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0_dw" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_dw" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_dw" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_dw" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_dw" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "nmos_6p0_dw" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0_dw" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0_dw" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_dw" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_dw" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_dw" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "nmos_5p0" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_5p0" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_5p0" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_5p0" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "nmos_5p0" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_5p0" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_5p0" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "nmos_5p0_dw" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_5p0_dw" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_5p0_dw" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_5p0_dw" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0_dw" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0_dw" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0_dw" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0_dw" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "nmos_5p0_dw" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_5p0_dw" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_5p0_dw" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0_dw" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0_dw" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_05v0_dw" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "pmos_6p0" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_6p0" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_6p0" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "pmos_6p0" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "pmos_6p0" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_6p0" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "pmos_6p0" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "pmos_6p0_dw" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_6p0_dw" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_6p0_dw" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "pmos_6p0_dw" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0_dw" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0_dw" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0_dw" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0_dw" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "pmos_6p0_dw" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_6p0_dw" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "pmos_6p0_dw" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0_dw" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0_dw" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_06v0_dw" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "pmos_5p0" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_5p0" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_5p0" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "pmos_5p0" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "pmos_5p0" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_5p0" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "pmos_5p0" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "pmos_5p0_dw" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_5p0_dw" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_5p0_dw" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "pmos_5p0_dw" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0_dw" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0_dw" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0_dw" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0_dw" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "pmos_5p0_dw" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "pmos_5p0_dw" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "pmos_5p0_dw" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0_dw" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0_dw" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "pfet_05v0_dw" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
 #ifdef d_MOS_NF_BY_COUNT
-   check_property( device_names = { "nmos_6p0_nat" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0_nat" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0_nat" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0_nat" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_nvt" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_nvt" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_nvt" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_nvt" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #else
-   check_property( device_names = { "nmos_6p0_nat" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0_nat" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-   check_property( device_names = { "nmos_6p0_nat" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_nvt" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_nvt" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+   check_property( device_names = { "nfet_06v0_nvt" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
 #endif
-check_property( device_names = { "nmos_3p3_sab" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_3p3_sab" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_3p3_sab" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_3p3_sab" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_3p3_sab" }, device_type = NMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_3p3_sab" }, device_type = NMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_3p3_sab" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_3p3_sab" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_3p3_sab" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_3p3_sab" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_3p3_sab" }, device_type = PMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_3p3_sab" }, device_type = PMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_3p3_dw_sab" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_3p3_dw_sab" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_3p3_dw_sab" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_3p3_dw_sab" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_3p3_dw_sab" }, device_type = NMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_3p3_dw_sab" }, device_type = NMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_3p3_dw_sab" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_3p3_dw_sab" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_3p3_dw_sab" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_3p3_dw_sab" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_3p3_dw_sab" }, device_type = PMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_3p3_dw_sab" }, device_type = PMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_5p0_sab" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_5p0_sab" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_5p0_sab" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_5p0_sab" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_5p0_sab" }, device_type = NMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_5p0_sab" }, device_type = NMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_5p0_sab" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_5p0_sab" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_5p0_sab" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_5p0_sab" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_5p0_sab" }, device_type = PMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_5p0_sab" }, device_type = PMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_5p0_dw_sab" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_5p0_dw_sab" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_5p0_dw_sab" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_5p0_dw_sab" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_5p0_dw_sab" }, device_type = NMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_5p0_dw_sab" }, device_type = NMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_5p0_dw_sab" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_5p0_dw_sab" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_5p0_dw_sab" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_5p0_dw_sab" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_5p0_dw_sab" }, device_type = PMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_5p0_dw_sab" }, device_type = PMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_6p0_sab" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_6p0_sab" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_6p0_sab" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_6p0_sab" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_6p0_sab" }, device_type = NMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_6p0_sab" }, device_type = NMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_6p0_sab" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_6p0_sab" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_6p0_sab" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_6p0_sab" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_6p0_sab" }, device_type = PMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_6p0_sab" }, device_type = PMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_6p0_dw_sab" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_6p0_dw_sab" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_6p0_dw_sab" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_6p0_dw_sab" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_6p0_dw_sab" }, device_type = NMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "nmos_6p0_dw_sab" }, device_type = NMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_6p0_dw_sab" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_6p0_dw_sab" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_6p0_dw_sab" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_6p0_dw_sab" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_6p0_dw_sab" }, device_type = PMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
-check_property( device_names = { "pmos_6p0_dw_sab" }, device_type = PMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_03v3_sab" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_03v3_sab" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_03v3_sab" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_03v3_sab" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_03v3_sab" }, device_type = NMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_03v3_sab" }, device_type = NMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_03v3_dss" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_03v3_dss" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_03v3_dss" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_03v3_dss" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_03v3_dss" }, device_type = PMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_03v3_dss" }, device_type = PMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_03v3_dw_sab" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_03v3_dw_sab" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_03v3_dw_sab" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_03v3_dw_sab" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_03v3_dw_sab" }, device_type = NMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_03v3_dw_sab" }, device_type = NMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_03v3_dw_sab" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_03v3_dw_sab" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_03v3_dw_sab" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_03v3_dw_sab" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_03v3_dw_sab" }, device_type = PMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_03v3_dw_sab" }, device_type = PMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_05v0_sab" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_05v0_sab" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_05v0_sab" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_05v0_sab" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_05v0_sab" }, device_type = NMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_05v0_sab" }, device_type = NMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_05v0_sab" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_05v0_sab" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_05v0_sab" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_05v0_sab" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_05v0_sab" }, device_type = PMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_05v0_sab" }, device_type = PMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_05v0_dw_sab" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_05v0_dw_sab" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_05v0_dw_sab" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_05v0_dw_sab" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_05v0_dw_sab" }, device_type = NMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_05v0_dw_sab" }, device_type = NMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_05v0_dw_sab" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_05v0_dw_sab" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_05v0_dw_sab" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_05v0_dw_sab" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_05v0_dw_sab" }, device_type = PMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_05v0_dw_sab" }, device_type = PMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_06v0_sab" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_06v0_sab" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_06v0_sab" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_06v0_sab" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_06v0_sab" }, device_type = NMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_06v0_sab" }, device_type = NMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_06v0_dss" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_06v0_dss" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_06v0_dss" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_06v0_dss" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_06v0_dss" }, device_type = PMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_06v0_dss" }, device_type = PMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_06v0_dw_sab" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_06v0_dw_sab" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_06v0_dw_sab" }, device_type = NMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_06v0_dw_sab" }, device_type = NMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_06v0_dw_sab" }, device_type = NMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "nfet_06v0_dw_sab" }, device_type = NMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_06v0_dw_sab" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_06v0_dw_sab" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_06v0_dw_sab" }, device_type = PMOS, property_tolerances = { { "L", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_06v0_dw_sab" }, device_type = PMOS, property_tolerances = { { "W", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_06v0_dw_sab" }, device_type = PMOS, property_tolerances = { { "d_sab", [- 1, 1] } }, state = compare_settings );
+check_property( device_names = { "pfet_06v0_dw_sab" }, device_type = PMOS, property_tolerances = { { "s_sab", [- 1, 1] } }, state = compare_settings );
 
 
 
-check_property( device_names = { "nmos_10p0_asym" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_10p0_asym" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmos_10p0_asym" }, device_type = NMOS, property_tolerances = { { "L", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
-check_property( device_names = { "nmos_10p0_asym" }, device_type = NMOS, property_tolerances = { { "W", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
-check_property( device_names = { "pmos_10p0_asym" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_10p0_asym" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmos_10p0_asym" }, device_type = PMOS, property_tolerances = { { "L", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
-check_property( device_names = { "pmos_10p0_asym" }, device_type = PMOS, property_tolerances = { { "W", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
+check_property( device_names = { "nfet_10v0_asym" }, device_type = NMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_10v0_asym" }, device_type = NMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "nfet_10v0_asym" }, device_type = NMOS, property_tolerances = { { "L", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
+check_property( device_names = { "nfet_10v0_asym" }, device_type = NMOS, property_tolerances = { { "W", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
+check_property( device_names = { "pfet_10v0_asym" }, device_type = PMOS, property_tolerances = { { "M", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_10v0_asym" }, device_type = PMOS, property_tolerances = { { "nf", [- vTRACE_VALUE, vTRACE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "pfet_10v0_asym" }, device_type = PMOS, property_tolerances = { { "L", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
+check_property( device_names = { "pfet_10v0_asym" }, device_type = PMOS, property_tolerances = { { "W", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
 
 
 
-check_property( device_names = { "np_3p3" }, device_type = NP, property_tolerances = { { "M", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
-check_property( device_names = { "np_3p3" }, device_type = NP, property_tolerances = { { "area", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
-check_property( device_names = { "np_3p3" }, device_type = NP, property_tolerances = { { "pj", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
-check_property( device_names = { "np_3p3_dw" }, device_type = NP, property_tolerances = { { "M", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
-check_property( device_names = { "np_3p3_dw" }, device_type = NP, property_tolerances = { { "area", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
-check_property( device_names = { "np_3p3_dw" }, device_type = NP, property_tolerances = { { "pj", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
+check_property( device_names = { "diode_nd2ps_03v3" }, device_type = NP, property_tolerances = { { "M", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
+check_property( device_names = { "diode_nd2ps_03v3" }, device_type = NP, property_tolerances = { { "area", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
+check_property( device_names = { "diode_nd2ps_03v3" }, device_type = NP, property_tolerances = { { "pj", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
+check_property( device_names = { "diode_nd2ps_03v3_dw" }, device_type = NP, property_tolerances = { { "M", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
+check_property( device_names = { "diode_nd2ps_03v3_dw" }, device_type = NP, property_tolerances = { { "area", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
+check_property( device_names = { "diode_nd2ps_03v3_dw" }, device_type = NP, property_tolerances = { { "pj", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
 check_property( device_names = { "np_6p0" }, device_type = NP, property_tolerances = { { "M", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
 check_property( device_names = { "np_6p0" }, device_type = NP, property_tolerances = { { "area", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
 check_property( device_names = { "np_6p0" }, device_type = NP, property_tolerances = { { "pj", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
@@ -1515,12 +1515,12 @@ check_property( device_names = { "nwp_3p3" }, device_type = NP, property_toleran
 check_property( device_names = { "nwp_6p0" }, device_type = NP, property_tolerances = { { "M", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
 check_property( device_names = { "nwp_6p0" }, device_type = NP, property_tolerances = { { "area", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
 check_property( device_names = { "nwp_6p0" }, device_type = NP, property_tolerances = { { "pj", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
-check_property( device_names = { "dnwpw_3p3" }, device_type = NP, property_tolerances = { { "M", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
-check_property( device_names = { "dnwpw_3p3" }, device_type = NP, property_tolerances = { { "area", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
-check_property( device_names = { "dnwpw_3p3" }, device_type = NP, property_tolerances = { { "pj", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
-check_property( device_names = { "dnwpw_6p0" }, device_type = NP, property_tolerances = { { "M", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
-check_property( device_names = { "dnwpw_6p0" }, device_type = NP, property_tolerances = { { "area", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
-check_property( device_names = { "dnwpw_6p0" }, device_type = NP, property_tolerances = { { "pj", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
+check_property( device_names = { "diode_dw2ps_3p3" }, device_type = NP, property_tolerances = { { "M", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
+check_property( device_names = { "diode_dw2ps_3p3" }, device_type = NP, property_tolerances = { { "area", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
+check_property( device_names = { "diode_dw2ps_3p3" }, device_type = NP, property_tolerances = { { "pj", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
+check_property( device_names = { "diode_dw2ps_6p0" }, device_type = NP, property_tolerances = { { "M", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
+check_property( device_names = { "diode_dw2ps_6p0" }, device_type = NP, property_tolerances = { { "area", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
+check_property( device_names = { "diode_dw2ps_6p0" }, device_type = NP, property_tolerances = { { "pj", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
 check_property( device_names = { "dnwps_3p3" }, device_type = NP, property_tolerances = { { "M", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
 check_property( device_names = { "dnwps_3p3" }, device_type = NP, property_tolerances = { { "area", [- vTRACE_AREA, vTRACE_AREA] } }, state = compare_settings );
 check_property( device_names = { "dnwps_3p3" }, device_type = NP, property_tolerances = { { "pj", [- vTRACE_LENGTH, vTRACE_LENGTH] } }, state = compare_settings );
@@ -1659,42 +1659,42 @@ check_property( device_type = RESISTOR, property_tolerances = { { "s", [- vTRACE
 
 
 
-check_property( device_names = { "nmoscap_3p3" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_3p3" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_3p3" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_3p3_dw" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_3p3_dw" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_3p3_dw" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_6p0" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_6p0" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_6p0" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_6p0_dw" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_6p0_dw" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_6p0_dw" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_3p3" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_3p3" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_3p3" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_3p3_dw" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_3p3_dw" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_3p3_dw" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_6p0" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_6p0" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_6p0" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_6p0_dw" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_6p0_dw" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_6p0_dw" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_3p3_b" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_3p3_b" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_3p3_b" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_6p0_b" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_6p0_b" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "nmoscap_6p0_b" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_3p3_b" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_3p3_b" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_3p3_b" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_6p0_b" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_6p0_b" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
-check_property( device_names = { "pmoscap_6p0_b" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_03v3" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_03v3" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_03v3" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_03v3_dw" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_03v3_dw" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_03v3_dw" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_06v0" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_06v0" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_06v0" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_06v0_dw" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_06v0_dw" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_06v0_dw" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_03v3" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_03v3" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_03v3" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_03v3_dw" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_03v3_dw" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_03v3_dw" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_06v0" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_06v0" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_06v0" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_06v0_dw" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_06v0_dw" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_06v0_dw" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_03v3_b" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_03v3_b" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_03v3_b" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_06v0_b" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_06v0_b" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_nmos_06v0_b" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_03v3_b" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_03v3_b" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_03v3_b" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_06v0_b" }, device_type = CAPACITOR, property_tolerances = { { "M", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_06v0_b" }, device_type = CAPACITOR, property_tolerances = { { "W", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
+check_property( device_names = { "cap_pmos_06v0_b" }, device_type = CAPACITOR, property_tolerances = { { "L", [- vZERO_TOLERANCE_VALUE, vZERO_TOLERANCE_VALUE] } }, state = compare_settings );
 
 
 
@@ -1702,12 +1702,12 @@ check_property( device_type = NPN, property_tolerances = { { "M", [- vTRACE_VALU
 #ifdef d_PEX_RUN
 filter(state = compare_settings, device_type = NP, device_names = { "nwp_3p3_p" }, layout_filter_options = { NP_0 });
 filter(state = compare_settings, device_type = NP, device_names = { "nwp_6p0_p" }, layout_filter_options = { NP_0 });
-filter(state = compare_settings, device_type = NP, device_names = { "dnwpw_3p3_p" }, layout_filter_options = { NP_0 });
-filter(state = compare_settings, device_type = NP, device_names = { "dnwpw_6p0_p" }, layout_filter_options = { NP_0 });
+filter(state = compare_settings, device_type = NP, device_names = { "diode_dw2ps_3p3_p" }, layout_filter_options = { NP_0 });
+filter(state = compare_settings, device_type = NP, device_names = { "diode_dw2ps_6p0_p" }, layout_filter_options = { NP_0 });
 filter(state = compare_settings, device_type = NP, device_names = { "dnwps_3p3_p" }, layout_filter_options = { NP_0 });
 filter(state = compare_settings, device_type = NP, device_names = { "dnwps_6p0_p" }, layout_filter_options = { NP_0 });
-filter(state = compare_settings, device_type = NP, device_names = { "np_3p3_p" }, layout_filter_options = { NP_0 });
-filter(state = compare_settings, device_type = NP, device_names = { "np_3p3_dw_p" }, layout_filter_options = { NP_0 });
+filter(state = compare_settings, device_type = NP, device_names = { "diode_nd2ps_03v3_p" }, layout_filter_options = { NP_0 });
+filter(state = compare_settings, device_type = NP, device_names = { "diode_nd2ps_03v3_dw_p" }, layout_filter_options = { NP_0 });
 filter(state = compare_settings, device_type = NP, device_names = { "np_6p0_p" }, layout_filter_options = { NP_0 });
 filter(state = compare_settings, device_type = NP, device_names = { "np_6p0_dw_p" }, layout_filter_options = { NP_0 });
 filter(state = compare_settings, device_type = PN, device_names = { "pn_3p3_p" }, layout_filter_options = { PN_0 });

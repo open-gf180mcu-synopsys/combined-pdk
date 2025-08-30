@@ -532,7 +532,7 @@ default_ser_wl_props : entrypoint function (void) returning void
         lvs_save_double_property("L", vL);
     }
 }
-property_init_mn_nmos_3p3 : entrypoint function (void) returning void
+property_init_mn_nfet_03v3 : entrypoint function (void) returning void
 {
     vINPUT_COMP : boolean;
     vM : double;
@@ -550,7 +550,7 @@ property_init_mn_nmos_3p3 : entrypoint function (void) returning void
     lvs_save_double_property("M", vM);
 }
 
-property_init_mp_pmos_3p3 : entrypoint function (void) returning void
+property_init_mp_pfet_03v3 : entrypoint function (void) returning void
 {
     vINPUT_COMP : boolean;
     vM : double;
@@ -568,7 +568,7 @@ property_init_mp_pmos_3p3 : entrypoint function (void) returning void
     lvs_save_double_property("M", vM);
 }
 
-property_init_mn_nmos_6p0 : entrypoint function (void) returning void
+property_init_mn_nfet_06v0 : entrypoint function (void) returning void
 {
     vINPUT_COMP : boolean;
     vM : double;
@@ -586,7 +586,7 @@ property_init_mn_nmos_6p0 : entrypoint function (void) returning void
     lvs_save_double_property("M", vM);
 }
 
-property_init_mn_nmos_5p0 : entrypoint function (void) returning void
+property_init_mn_nfet_05v0 : entrypoint function (void) returning void
 {
     vINPUT_COMP : boolean;
     vM : double;
@@ -604,7 +604,7 @@ property_init_mn_nmos_5p0 : entrypoint function (void) returning void
     lvs_save_double_property("M", vM);
 }
 
-property_init_mp_pmos_6p0 : entrypoint function (void) returning void
+property_init_mp_pfet_06v0 : entrypoint function (void) returning void
 {
     vINPUT_COMP : boolean;
     vM : double;
@@ -622,7 +622,7 @@ property_init_mp_pmos_6p0 : entrypoint function (void) returning void
     lvs_save_double_property("M", vM);
 }
 
-property_init_mp_pmos_5p0 : entrypoint function (void) returning void
+property_init_mp_pfet_05v0 : entrypoint function (void) returning void
 {
     vINPUT_COMP : boolean;
     vM : double;

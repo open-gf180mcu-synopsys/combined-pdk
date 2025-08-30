@@ -13,35 +13,35 @@
 .ends
 
 // Core 3.3V / 6.0V / native + SAB (DSS)
-.subckt NMOS_3P3 bulk drn gate src          // nfet_03v3
+.subckt NFET_03V3 bulk drn gate src          // nfet_03v3
 .ends
-.subckt PMOS_3P3 bulk drn gate src          // pfet_03v3
+.subckt PFET_03V3 bulk drn gate src          // pfet_03v3
 .ends
-.subckt NMOS_6P0 bulk drn gate src          // nfet_06v0
+.subckt NFET_06V0 bulk drn gate src          // nfet_06v0
 .ends
-.subckt PMOS_6P0 bulk drn gate src          // pfet_06v0
+.subckt PFET_06V0 bulk drn gate src          // pfet_06v0
 .ends
-.subckt NMOS_3P3_SAB bulk drn gate src      // nfet_03v3_dss
+.subckt NFET_03V3_DSS bulk drn gate src      // nfet_03v3_dss
 .ends
-.subckt PMOS_3P3_SAB bulk drn gate src      // pfet_03v3_dss
+.subckt PFET_03V3_DSS bulk drn gate src      // pfet_03v3_dss
 .ends
-.subckt NMOS_6P0_SAB bulk drn gate src      // nfet_06v0_dss
+.subckt NFET_06V0_DSS bulk drn gate src      // nfet_06v0_dss
 .ends
-.subckt PMOS_6P0_SAB bulk drn gate src      // pfet_06v0_dss
+.subckt PFET_06V0_DSS bulk drn gate src      // pfet_06v0_dss
 .ends
-.subckt NMOS_6P0_NAT bulk drn gate src      // nfet_06v0_nvt (native)
+.subckt NFET_06V0_NVT bulk drn gate src      // nfet_06v0_nvt (native)
 .ends
 
 // An nfet_05v0 device is defined as a regular nFET device allowing a slightly shorter gate length than required at 6V.
-.subckt NMOS_5P0 bulk drn gate src
+.subckt NFET_05V0 bulk drn gate src
 .ends
-.subckt PMOS_5P0 bulk drn gate src
+.subckt PFET_05V0 bulk drn gate src
 .ends
 
 // 0.18um MCU 10V high voltage process
-.subckt NMOS_10P0_ASYM bulk drn gate src    // nfet_10v0_asym
+.subckt NFET_10V0_ASYM bulk drn gate src    // nfet_10v0_asym
 .ends
-.subckt PMOS_10P0_ASYM bulk drn gate src    // pfet_10v0_asym
+.subckt PFET_10V0_ASYM bulk drn gate src    // pfet_10v0_asym
 .ends
 
 
@@ -67,35 +67,29 @@
 .ends
 
 // N+/Psub, P+/Nwell (3.3V / 6.0V)
-.subckt ND2PS_3P3 a b     // diode_nd2ps_03v3
+.subckt DIODE_ND2PS_03V3 a b     // diode_nd2ps_03v3
 .ends
-.subckt PD2NW_3P3 a b     // diode_pd2nw_03v3
+.subckt DIODE_PD2NW_03V3 a b     // diode_pd2nw_03v3
 .ends
-.subckt ND2PS_6P0 a b     // diode_nd2ps_06v0
+.subckt DIODE_ND2PS_06V0 a b     // diode_nd2ps_06v0
 .ends
-.subckt PD2NW_6P0 a b     // diode_pd2nw_06v0
+.subckt DIODE_PD2NW_06V0 a b     // diode_pd2nw_06v0
 .ends
 
 // Nwell/Psub
-.subckt NW2PS_3P3 a b     // diode_nw2ps_03v3
+.subckt DIODE_NW2PS_03V3 a b     // diode_nw2ps_03v3
 .ends
-.subckt NW2PS_6P0 a b     // diode_nw2ps_06v0
+.subckt DIODE_NW2PS_06v0 a b     // diode_nw2ps_06v0
 .ends
 
 // Pwell/DNwell and DNwell/Psub
-.subckt PW2DW a b         // diode_pw2dw
+.subckt DIODE_PW2DW a b         // diode_pw2dw
 .ends
-.subckt DW2PS a b         // diode_dw2ps
+.subckt DIODE_DW2PS a b         // diode_dw2ps
 .ends
 
 // Schottky
-.subckt SC a b            // sc_diode
-.ends
-
-// Legacy aliases you already started (keep for back-compat)
-.subckt DNWPW a b           // alias for PWELL/DNWELL
-.ends
-.subckt NP_3P3 a b          // alias for some 3.3V N+/Psub mapping if used in legacy netlists
+.subckt SC_DIODE a b            // sc_diode
 .ends
 
 
@@ -114,23 +108,23 @@
 .ends
 
 // Inversion-mode MOS caps (core)
-.subckt NMOSCAP_3P3 a b     // cap_nmos_03v3
+.subckt CAP_NMOS_03V3 a b     // cap_nmos_03v3
 .ends
-.subckt PMOSCAP_3P3 a b     // cap_pmos_03v3
+.subckt CAP_PMOS_03V3 a b     // cap_pmos_03v3
 .ends
-.subckt NMOSCAP_6P0 a b     // cap_nmos_06v0
+.subckt CAP_NMOS_06V0 a b     // cap_nmos_06v0
 .ends
-.subckt PMOSCAP_6P0 a b     // cap_pmos_06v0
+.subckt CAP_PMOS_06V0 a b     // cap_pmos_06v0
 .ends
 
 // Well-based MOS caps (“_b”)
-.subckt NMOSCAP_3P3_B a b   // cap_nmos_03v3_b
+.subckt CAP_NMOS_03V3_B a b   // cap_nmos_03v3_b
 .ends
-.subckt PMOSCAP_3P3_B a b   // cap_pmos_03v3_b
+.subckt CAP_PMOS_03V3_B a b   // cap_pmos_03v3_b
 .ends
-.subckt NMOSCAP_6P0_B a b   // cap_nmos_06v0_b
+.subckt CAP_NMOS_06V0_B a b   // cap_nmos_06v0_b
 .ends
-.subckt PMOSCAP_6P0_B a b   // cap_pmos_06v0_b
+.subckt CAP_PMOS_06V0_B a b   // cap_pmos_06v0_b
 .ends
 
 
@@ -143,71 +137,70 @@
 .ends
 
 // VNPN (vertical NPN)
-.subckt VNPN_10X10 base emit bulk   // npn_10p00x10p00
+.subckt NPN_10P00X10P00 base emit bulk   // npn_10p00x10p00
 .ends
-.subckt VNPN_05X05 base emit bulk   // npn_05p00x05p00
+.subckt NPN_05P00X05P00 base emit bulk   // npn_05p00x05p00
 .ends
-.subckt VNPN_00P54X16 base emit bulk   // npn_00p54x16p00
+.subckt NPN_00P54X16P00 base emit bulk   // npn_00p54x16p00
 .ends
-.subckt VNPN_00P54X08 base emit bulk   // npn_00p54x08p00
+.subckt NPN_00P54X08P00 base emit bulk   // npn_00p54x08p00
 .ends
-.subckt VNPN_00P54X04 base emit bulk   // npn_00p54x04p00
+.subckt NPN_00P54X04P00 base emit bulk   // npn_00p54x04p00
 .ends
-.subckt VNPN_00P54X02 base emit bulk   // npn_00p54x02p00
+.subckt NPN_00P54X02P00 base emit bulk   // npn_00p54x02p00
 .ends
 
 // VPNP (vertical PNP)
-.subckt VPNP_10X00P42 base emit bulk   // pnp_10p00x00p42
+.subckt PNP_10P00X00P42 base emit bulk   // pnp_10p00x00p42
 .ends
-.subckt VPNP_05X00P42 base emit bulk   // pnp_05p00x00p42
+.subckt PNP_05P00X00P42 base emit bulk   // pnp_05p00x00p42
 .ends
-.subckt VPNP_10X10 base emit bulk   // pnp_10p00x10p00
+.subckt PNP_10P00X10P00 base emit bulk   // pnp_10p00x10p00
 .ends
-.subckt VPNP_05X05 base emit bulk   // pnp_05p00x05p00
+.subckt PNP_05P00X05P00 base emit bulk   // pnp_05p00x05p00
 .ends
 
 // =====================
 // Resistors
-// Note: many PDK resistors are 3-terminal (body/tap). You’ve
-// chosen 2-terminal stubs; these match your current pattern.
+// Note: many PDK resistors are 3-terminal (body/tap).
 // =====================
 .subckt RESISTOR a b
 .ends
 
 // Diffusion (salicided / unsalicided)
-.subckt NPLUS_U a b       // nplus_u (3-term in PDK)
+.subckt NPLUS_U a b bulk      // nplus_u (3-term in PDK)
 .ends
-.subckt PPLUS_U a b       // pplus_u
+.subckt PPLUS_U a b bulk      // pplus_u
 .ends
-.subckt NPLUS_S a b       // nplus_s
+.subckt NPLUS_S a b bulk      // nplus_s
 .ends
-.subckt PPLUS_S a b       // pplus_s
+.subckt PPLUS_S a b bulk      // pplus_s
 .ends
 
 // Well resistor
-.subckt NWELL a b         // nwell (under STI)
+.subckt NWELL a b bulk        // nwell (under STI)
 .ends
 
 // Poly (salicided / unsalicided)
-.subckt NPOLYF_U a b      // npolyf_u
+.subckt NPOLYF_U a b bulk     // npolyf_u
 .ends
-.subckt PPOLYF_U a b      // ppolyf_u
+.subckt PPOLYF_U a b bulk     // ppolyf_u
 .ends
-.subckt NPOLYF_S a b      // npolyf_s
+.subckt NPOLYF_S a b bulk     // npolyf_s
 .ends
-.subckt PPOLYF_S a b      // ppolyf_s
+.subckt PPOLYF_S a b bulk     // ppolyf_s
 .ends
 
 // High-R p+ poly on field oxide
-.subckt PPOLYF_U_1K a b         // ppolyf_u_1k (3.3V area)
+.subckt PPOLYF_U_1K a b bulk        // ppolyf_u_1k (3.3V area)
 .ends
-.subckt PPOLYF_U_2K a b         // ppolyf_u_2k (3.3V area)
+.subckt PPOLYF_U_2K a b bulk        // ppolyf_u_2k (3.3V area)
 .ends
-.subckt PPOLYF_U_1K_6P0 a b     // ppolyf_u_1k_6p0 (6.0V area)
+.subckt PPOLYF_U_1K_6P0 a b bulk    // ppolyf_u_1k_6p0 (6.0V area)
 .ends
-.subckt PPOLYF_U_2K_6P0 a b     // ppolyf_u_2k_6p0 (6.0V area)
+.subckt PPOLYF_U_2K_6P0 a b bulk    // ppolyf_u_2k_6p0 (6.0V area)
 .ends
-.subckt PPOLYF_U_3K a b         // ppolyf_u_3k (both areas)
+.subckt PPOLYF_U_3K a b bulk        // ppolyf_u_3k (both areas)
 .ends
 
 // Metals
