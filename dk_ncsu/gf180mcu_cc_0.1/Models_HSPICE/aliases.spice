@@ -8,12 +8,14 @@
 * NFETs
 .ALIAS nfet_03v3 nmos_3p3
 .ALIAS nfet_03v3_dss nmos_3p3_sab
+.ALIAS nfet_05v0 nmos_5p0
 .ALIAS nfet_06v0 nmos_6p0
 .ALIAS nfet_06v0_nvt nmos_6p0_nat
 
 * PFETs
 .ALIAS pfet_03v3 pmos_3p3
 .ALIAS pfet_03v3_dss pmos_3p3_sab
+.ALIAS pfet_05v0 pmos_5p0
 .ALIAS pfet_06v0 pmos_6p0
 
 * diode
