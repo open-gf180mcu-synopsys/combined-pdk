@@ -2000,10 +2000,12 @@ precision = 6
 );
 #endif
 #else
+// https://spdocs.synopsys.com/dow_retrieve/qsc-x/dg/icvolh/X-2025.06-SP1/icvolh/icvlvsug/lvs_overview/comparing_schematic_layout_netlists.html
 match(
   state = compare_settings,
   detect_permutable_ports = true,
   match_by_net_name = true,
+//  match_condition = { ports_matched_with_different_name = ERROR }
   match_condition = {
     empty_cell_not_defined_as_device = WARNING,
        top_layout_port_net_match_non_port_net = ERROR,

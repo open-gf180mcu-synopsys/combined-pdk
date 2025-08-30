@@ -6,13 +6,13 @@ library(
 
 icv_unit_file = gICV_LVS + "/unit.cdl";
 schematic_netlist_db = schematic(
-uppercase = !schematic_case_sensitive,
-expand_multiple_devices = true,
-schematic_file          = {{ "xxx.cdl", SPICE }},
-schematic_library_file = {{icv_unit_file, SPICE}},
-spice_settings          = { slash_is_space = true,
-ignore_cdl_resi = true
-}
+     uppercase = !schematic_case_sensitive,
+     expand_multiple_devices = true,
+     schematic_file          = {{ "xxx.cdl", SPICE }},
+     schematic_library_file = {{icv_unit_file, SPICE}},
+     spice_settings          = { slash_is_space = true,
+     ignore_cdl_resi = true
+     }
 );
 run_options( 
     instance_prefix  = "I_",
@@ -76,8 +76,8 @@ LVS_POWER_NAMES: list of string = {};
 
 //Below are the list of POWER / GROUND settings available for this runset  
 //Please update the default values, as desired for the run
-GND : list of string = { "GND" };
-PWR : list of string = { "PWR" };
+GND : list of string = { "GND", "GND!", "gnd", "gnd!", "VSS", "VSS!"};
+PWR : list of string = { "PWR", "VDD", "VDD!", "vdd", "vdd!"};
 PWR3P3 : list of string = { "PWR3P3" };
 PWR5 : list of string = { "PWR5" };
 PWR6 : list of string = { "PWR6" };
@@ -96,6 +96,7 @@ text_options(
     edtext            = edtext_items,
     layout_ground     = LVS_GROUND_NAMES,
     layout_power      = LVS_POWER_NAMES,
+    replace_text_characters_regex = { { { { search_string = "[\\s\\*\"={},]", replace_string = "_" } } } },    
     semicolon_text    = REGULAR_TEXT
 );
 

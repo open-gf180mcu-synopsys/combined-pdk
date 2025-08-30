@@ -3,23 +3,19 @@
 `include "constants.vams"
 `include "disciplines.vams"
 
-module gf180mcu_fd_sc_mcu7t5v0__inv_1(ZN, I, VDD, VNW, VPW, VSS);
+module gf180mcu_fd_sc_mcu7t5v0__inv_1(ZN, I, VDD, VSS);
 output ZN;
 electrical ZN;
 input I;
 electrical I;
 inout VDD;
 electrical VDD;
-inout VNW;
-electrical VNW;
-inout VPW;
-electrical VPW;
 inout VSS;
 electrical VSS;
 
-parameter real vth=0.4; // Threshold
+parameter real vth=1.65; // Threshold
 parameter real vol=0.0; // Output Low
-parameter real voh=0.8; // Output High
+parameter real voh=3.3; // Output High
 parameter real tr=10p;   //rise,fall time
 parameter real tf=10p;   //rise,fall time
 parameter real tt=0.1p;   //time tolerance

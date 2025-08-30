@@ -1,18 +1,236 @@
+// All Rights Reserved.
+// Copyright 2024 North Carolina State University 2024-08-29
+// W. Shepherd Pitts (PhD) - wspitts2@ncsu.edu
+// 8/29/2025 added devices from open PDK sm141064.ngspice and smbb000149.spice
+// 
+//https://spdocs.synopsys.com/dow_retrieve/qsc-t/dg/icvolh/T-2022.03/icvolh/Content/icvlvsug/pdf/icvlvsug.pdf
+// See pages around ~66 for device defaults & pin orders
 
-.subckt NMOS_3P3 d g s bulk 
+// =====================
+// FETs
+// =====================
+.subckt MOSFET bulk drn gate src
 .ends
 
-.subckt PMOS_3P3 d g s bulk
+// Core 3.3V / 6.0V / native + SAB (DSS)
+.subckt NMOS_3P3 bulk drn gate src          // nfet_03v3
+.ends
+.subckt PMOS_3P3 bulk drn gate src          // pfet_03v3
+.ends
+.subckt NMOS_6P0 bulk drn gate src          // nfet_06v0
+.ends
+.subckt PMOS_6P0 bulk drn gate src          // pfet_06v0
+.ends
+.subckt NMOS_3P3_SAB bulk drn gate src      // nfet_03v3_dss
+.ends
+.subckt PMOS_3P3_SAB bulk drn gate src      // pfet_03v3_dss
+.ends
+.subckt NMOS_6P0_SAB bulk drn gate src      // nfet_06v0_dss
+.ends
+.subckt PMOS_6P0_SAB bulk drn gate src      // pfet_06v0_dss
+.ends
+.subckt NMOS_6P0_NAT bulk drn gate src      // nfet_06v0_nvt (native)
 .ends
 
-.subckt NMOS_5P0 d g s bulk 
+// An nfet_05v0 device is defined as a regular nFET device allowing a slightly shorter gate length than required at 6V.
+.subckt NMOS_5P0 bulk drn gate src
+.ends
+.subckt PMOS_5P0 bulk drn gate src
 .ends
 
-.subckt PMOS_5P0 d g s bulk
+// 0.18um MCU 10V high voltage process
+.subckt NMOS_10P0_ASYM bulk drn gate src    // nfet_10v0_asym
+.ends
+.subckt PMOS_10P0_ASYM bulk drn gate src    // pfet_10v0_asym
 .ends
 
-.subckt NMOS_6P0 d g s bulk 
+
+// =====================
+// Inductor
+// =====================
+.subckt L a b
 .ends
 
-.subckt PMOS_6P0 d g s bulk
+
+// =====================
+// JFET
+// =====================
+.subckt JFET drn gate src bulk
+.ends
+
+
+// =====================
+// Diodes
+// Use 2-terminal convention: anode (a), cathode (b)
+// =====================
+.subckt DIODE a b
+.ends
+
+// N+/Psub, P+/Nwell (3.3V / 6.0V)
+.subckt ND2PS_3P3 a b     // diode_nd2ps_03v3
+.ends
+.subckt PD2NW_3P3 a b     // diode_pd2nw_03v3
+.ends
+.subckt ND2PS_6P0 a b     // diode_nd2ps_06v0
+.ends
+.subckt PD2NW_6P0 a b     // diode_pd2nw_06v0
+.ends
+
+// Nwell/Psub
+.subckt NW2PS_3P3 a b     // diode_nw2ps_03v3
+.ends
+.subckt NW2PS_6P0 a b     // diode_nw2ps_06v0
+.ends
+
+// Pwell/DNwell and DNwell/Psub
+.subckt PW2DW a b         // diode_pw2dw
+.ends
+.subckt DW2PS a b         // diode_dw2ps
+.ends
+
+// Schottky
+.subckt SC a b            // sc_diode
+.ends
+
+// Legacy aliases you already started (keep for back-compat)
+.subckt DNWPW a b           // alias for PWELL/DNWELL
+.ends
+.subckt NP_3P3 a b          // alias for some 3.3V N+/Psub mapping if used in legacy netlists
+.ends
+
+
+// =====================
+// Capacitors (2-terminal)
+// =====================
+.subckt CAPACITOR a b
+.ends
+
+// MIM density variants
+.subckt MIM_1P5FF a b       // cap_mim_1f5fF  (<= 6V)
+.ends
+.subckt MIM_1P0FF a b       // cap_mim_1f0fF  (<= 20V)
+.ends
+.subckt MIM_2P0FF a b       // cap_mim_2f0fF  (<= 6V)
+.ends
+
+// Inversion-mode MOS caps (core)
+.subckt NMOSCAP_3P3 a b     // cap_nmos_03v3
+.ends
+.subckt PMOSCAP_3P3 a b     // cap_pmos_03v3
+.ends
+.subckt NMOSCAP_6P0 a b     // cap_nmos_06v0
+.ends
+.subckt PMOSCAP_6P0 a b     // cap_pmos_06v0
+.ends
+
+// Well-based MOS caps (“_b”)
+.subckt NMOSCAP_3P3_B a b   // cap_nmos_03v3_b
+.ends
+.subckt PMOSCAP_3P3_B a b   // cap_pmos_03v3_b
+.ends
+.subckt NMOSCAP_6P0_B a b   // cap_nmos_06v0_b
+.ends
+.subckt PMOSCAP_6P0_B a b   // cap_pmos_06v0_b
+.ends
+
+
+// =====================
+// BJTs (you’re using 3-terminal stubs: base, emit, bulk)
+// VNPN entries below are “four terminal” in the PDK, but we keep
+// your simplified 3-pin convention for LVS placeholders.
+// =====================
+.subckt BJT base emit bulk
+.ends
+
+// VNPN (vertical NPN)
+.subckt VNPN_10X10 base emit bulk   // npn_10p00x10p00
+.ends
+.subckt VNPN_05X05 base emit bulk   // npn_05p00x05p00
+.ends
+.subckt VNPN_00P54X16 base emit bulk   // npn_00p54x16p00
+.ends
+.subckt VNPN_00P54X08 base emit bulk   // npn_00p54x08p00
+.ends
+.subckt VNPN_00P54X04 base emit bulk   // npn_00p54x04p00
+.ends
+.subckt VNPN_00P54X02 base emit bulk   // npn_00p54x02p00
+.ends
+
+// VPNP (vertical PNP)
+.subckt VPNP_10X00P42 base emit bulk   // pnp_10p00x00p42
+.ends
+.subckt VPNP_05X00P42 base emit bulk   // pnp_05p00x00p42
+.ends
+.subckt VPNP_10X10 base emit bulk   // pnp_10p00x10p00
+.ends
+.subckt VPNP_05X05 base emit bulk   // pnp_05p00x05p00
+.ends
+
+// =====================
+// Resistors
+// Note: many PDK resistors are 3-terminal (body/tap). You’ve
+// chosen 2-terminal stubs; these match your current pattern.
+// =====================
+.subckt RESISTOR a b
+.ends
+
+// Diffusion (salicided / unsalicided)
+.subckt NPLUS_U a b       // nplus_u (3-term in PDK)
+.ends
+.subckt PPLUS_U a b       // pplus_u
+.ends
+.subckt NPLUS_S a b       // nplus_s
+.ends
+.subckt PPLUS_S a b       // pplus_s
+.ends
+
+// Well resistor
+.subckt NWELL a b         // nwell (under STI)
+.ends
+
+// Poly (salicided / unsalicided)
+.subckt NPOLYF_U a b      // npolyf_u
+.ends
+.subckt PPOLYF_U a b      // ppolyf_u
+.ends
+.subckt NPOLYF_S a b      // npolyf_s
+.ends
+.subckt PPOLYF_S a b      // ppolyf_s
+.ends
+
+// High-R p+ poly on field oxide
+.subckt PPOLYF_U_1K a b         // ppolyf_u_1k (3.3V area)
+.ends
+.subckt PPOLYF_U_2K a b         // ppolyf_u_2k (3.3V area)
+.ends
+.subckt PPOLYF_U_1K_6P0 a b     // ppolyf_u_1k_6p0 (6.0V area)
+.ends
+.subckt PPOLYF_U_2K_6P0 a b     // ppolyf_u_2k_6p0 (6.0V area)
+.ends
+.subckt PPOLYF_U_3K a b         // ppolyf_u_3k (both areas)
+.ends
+
+// Metals
+.subckt RM1 a b           // rm1
+.ends
+.subckt RM2 a b           // rm2
+.ends
+.subckt RM3 a b           // rm3
+.ends
+.subckt RM4 a b           // rm4
+.ends
+.subckt TM6K a b          // tm6k
+.ends
+.subckt TM9K a b          // tm9k
+.ends
+.subckt TM11K a b         // tm11k
+.ends
+.subckt TM30K a b         // tm30k
+.ends
+
+
+// =====================
+// eFuse  -- check manual for terminal default names/order
+// =====================
+.subckt EFUSE a b         // efuse (6V/(5V) model)
 .ends

@@ -11,3 +11,4 @@ simv.*
 *.cdslck.*
 *.swo
 *.swn
+run_details*
